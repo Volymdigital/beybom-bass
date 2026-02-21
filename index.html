@@ -206,13 +206,56 @@
 
   .song-nav { display: flex; gap: 6px; }
 
-  /* ===== SONG CONTENT ===== */
+  /* ===== SONG CONTENT — TWO COLUMN ===== */
   .song-content {
-    padding: 24px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 100%;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .song-col-left {
+    flex: 1 1 55%;
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    max-width: 900px;
+    gap: 24px;
+    overflow-y: auto;
+    max-height: calc(100vh - 120px);
+    padding-right: 8px;
+  }
+
+  .song-col-right {
+    flex: 0 0 38%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .song-col-right .lyrics-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+  }
+
+  .song-col-right .lyrics-box {
+    flex: 1;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
+
+  /* Tablet portrait + mobile: stack vertically */
+  @media (max-width: 900px) {
+    .song-content {
+      flex-direction: column;
+      padding: 16px;
+    }
+    .song-col-left { max-height: none; overflow-y: visible; padding-right: 0; }
+    .song-col-right { flex: none; }
+    .song-col-right .lyrics-box { max-height: 380px; }
   }
 
   /* Section blocks */
@@ -384,21 +427,19 @@
   }
 
   /* ===== LIVE MODE ===== */
-  body.live-mode {
-    background: #000;
-  }
-  body.live-mode #song-view .song-header {
-    background: #000;
-    padding: 12px 20px;
-  }
-  body.live-mode .song-header-title { font-size: 3.5rem; }
-  body.live-mode .song-content { max-width: 100%; padding: 16px 20px; }
+  body.live-mode { background: #000; }
+  body.live-mode #song-view .song-header { background: #000; padding: 12px 20px; }
+  body.live-mode .song-header-title { font-size: 3rem; }
+  body.live-mode .song-content { padding: 12px 16px; gap: 16px; }
+  body.live-mode .song-col-left { max-height: calc(100vh - 100px); }
+  body.live-mode .song-col-right .lyrics-box { max-height: calc(100vh - 140px); }
   body.live-mode .section-block { min-height: 70px; }
   body.live-mode .section-label { font-size: 1.5rem; }
   body.live-mode .section-instruction { font-size: 1rem; }
   body.live-mode .key-display { font-size: 2.5rem; }
   body.live-mode .chord-sheet { font-size: 1.1rem; line-height: 2.2; }
   body.live-mode .notes-input { font-size: 1rem; }
+  body.live-mode .lyrics-box { font-size: 1.05rem; line-height: 2.1; }
 
   /* Add section button */
   .add-section-btn {
@@ -538,8 +579,6 @@
   .lyrics-fetch-btn:hover { border-color: var(--green); color: var(--green); }
   .lyrics-fetch-btn:disabled { opacity: 0.4; cursor: default; }
 
-  body.live-mode .lyrics-box { font-size: 1.1rem; max-height: 500px; line-height: 2.2; }
-
   /* Scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -547,8 +586,7 @@
 
   @media (max-width: 600px) {
     .top-bar h1 { font-size: 1.4rem; }
-    .song-header-title { font-size: 1.8rem; }
-    .song-content { padding: 16px; }
+    .song-header-title { font-size: 1.6rem; }
     .song-list { padding: 12px; }
   }
 </style>
@@ -598,41 +636,47 @@
   </div>
 
   <div class="song-content">
-    <!-- Sections -->
-    <div class="sections-area">
-      <div class="sections-title">LÅTFORM</div>
-      <div id="sections-list"></div>
-      <button class="add-section-btn" onclick="addSection()">+ LÄGG TILL SEKTION</button>
-    </div>
-
-    <!-- Chord Sheet -->
-    <div class="chord-area">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-        <div class="chord-area-title">ACKORD / TEXT</div>
-        <button class="btn" onclick="toggleChordEdit()" style="font-size:0.6rem;padding:5px 10px;">REDIGERA</button>
+    <!-- LEFT COLUMN -->
+    <div class="song-col-left">
+      <!-- Sections -->
+      <div class="sections-area">
+        <div class="sections-title">LÅTFORM</div>
+        <div id="sections-list"></div>
+        <button class="add-section-btn" onclick="addSection()">+ LÄGG TILL SEKTION</button>
       </div>
-      <div class="chord-sheet" id="chord-display"></div>
-      <textarea class="chord-raw-input" id="chord-raw" placeholder="Klistra in ackord+text här (Ultimate Guitar, ChordPro, fritext)&#10;&#10;Exempel:&#10;[Verse]&#10;[Am]Here comes the [G]sun&#10;[CHORUS]&#10;[C]Let it [G]be" oninput="updateChordDisplay()"></textarea>
-    </div>
 
-    <!-- Notes -->
-    <div class="notes-area">
-      <div class="notes-title-row" style="display:flex;align-items:center;gap:12px;">
-        <div class="notes-area-title">ÖVRIGA ANTECKNINGAR</div>
-      </div>
-      <textarea class="notes-input" id="sv-notes" placeholder="Anteckningar, varningar, egna kommentarer..." oninput="saveSong()"></textarea>
-    </div>
-    <!-- Lyrics -->
-    <div class="lyrics-area">
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-        <div class="lyrics-tabs">
-          <button class="lyrics-tab active" onclick="switchLyricsTab('plain',this)">TEXT</button>
-          <button class="lyrics-tab" onclick="switchLyricsTab('synced',this)">SYNKAD</button>
+      <!-- Chord Sheet -->
+      <div class="chord-area">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="chord-area-title">ACKORD / TEXT</div>
+          <button class="btn" onclick="toggleChordEdit()" style="font-size:0.6rem;padding:5px 10px;">REDIGERA</button>
         </div>
-        <button class="lyrics-fetch-btn" id="lyrics-fetch-btn" onclick="fetchLyrics()">⬇ HÄMTA LYRICS</button>
-        <span id="lyrics-source" style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);"></span>
+        <div class="chord-sheet" id="chord-display"></div>
+        <textarea class="chord-raw-input" id="chord-raw" placeholder="Klistra in ackord+text här (Ultimate Guitar, ChordPro, fritext)&#10;&#10;Exempel:&#10;[Verse]&#10;[Am]Here comes the [G]sun&#10;[CHORUS]&#10;[C]Let it [G]be" oninput="updateChordDisplay()"></textarea>
       </div>
-      <div class="lyrics-box" id="lyrics-display"><span class="lyrics-status">Tryck "HÄMTA LYRICS" för att söka automatiskt via LRCLIB.</span></div>
+
+      <!-- Notes -->
+      <div class="notes-area">
+        <div class="notes-title-row" style="display:flex;align-items:center;gap:12px;">
+          <div class="notes-area-title">ÖVRIGA ANTECKNINGAR</div>
+        </div>
+        <textarea class="notes-input" id="sv-notes" placeholder="Anteckningar, varningar, egna kommentarer..." oninput="saveSong()"></textarea>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Lyrics -->
+    <div class="song-col-right">
+      <div class="lyrics-area">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="lyrics-tabs">
+            <button class="lyrics-tab active" onclick="switchLyricsTab('plain',this)">TEXT</button>
+            <button class="lyrics-tab" onclick="switchLyricsTab('synced',this)">SYNKAD</button>
+          </div>
+          <button class="lyrics-fetch-btn" id="lyrics-fetch-btn" onclick="fetchLyrics()">⬇ HÄMTA LYRICS</button>
+          <span id="lyrics-source" style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);display:block;margin-top:4px;width:100%;"></span>
+        </div>
+        <div class="lyrics-box" id="lyrics-display"><span class="lyrics-status">Tryck "HÄMTA LYRICS" för att söka automatiskt via LRCLIB.</span></div>
+      </div>
     </div>
   </div>
 
