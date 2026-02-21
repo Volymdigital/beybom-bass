@@ -336,6 +336,20 @@
   .sec-danger .section-label { color: var(--red); }
   .sec-danger .section-instruction { color: #f08080; }
 
+  .section-chords {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--green);
+    letter-spacing: 1px;
+    opacity: 0.85;
+    flex-basis: 100%;
+    margin-top: 2px;
+    line-height: 1.6;
+  }
+  .sec-rest .section-chords { color: #666; }
+  .sec-warn .section-chords { color: #b09040; }
+  .sec-danger .section-chords { color: #a04040; }
+
   /* Edit mode */
   .section-block.edit-mode { cursor: default; }
   .section-block.edit-mode .section-body { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -725,157 +739,358 @@ const DEFAULT_SONGS = [
   {
     title: 'Händerna mot himlen', artist: 'Petra Marklund', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+Bb C F Gm
+Bb C Dm Gm
+
+[Chorus]
+Bb C F Bb
+Bb C F Dm`,
     sections: parseInstructions('Verser — Ingen bas\nChorus — Pump')
   },
   {
     title: 'Gimme! Gimme! Gimme!', artist: 'Molly Sandén', key: 'Am', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro/Verse]
+Am G Am G
+
+[Chorus]
+Am F C G
+Am F C G`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Off beat staccato bas\nPrechorus — Staccato\nChorus — Staccato\nM8 — Slapping på en ton (kort)')
   },
   {
     title: 'Proud Mary', artist: 'Tina Turner', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+C A / C A G F / D
+
+[Verse]
+D D D D
+
+[Pre-Chorus]
+A Bm G
+
+[Chorus]
+D D D D`,
     sections: parseInstructions('Intro — Lugnt i början\nVerse — Snabb pump\nChorus — Basklättring (öva)')
   },
   {
     title: 'I Love It', artist: 'Icona Pop, Charli XCX', key: 'F', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse/Hook]
+Ab Ab Db Db
+Ab Ab Db Db
+
+[Chorus]
+Ab Db Ab Db`,
     sections: parseInstructions('Intro chorus — Ingen bas\nChorus — Pump\nPre — Ingen bas\nM8 — Ingen bas')
   },
   {
     title: 'Shut Up and Dance', artist: 'WALK THE MOON', key: 'A', keyOffset: 0,
     notes: 'Utan tracks',
-    chordRaw: '',
+    chordRaw: `[Verse]
+Db F# Bbm Ab
+Db F# Bbm Ab
+
+[Pre-Chorus]
+F# Bbm / F# Ab
+
+[Chorus]
+Db F# Bbm Ab`,
     sections: parseInstructions('Intro — Pump hög oktav (en ton)\nVerse — Staccato\nPrechorus — Staccato markeringar\nChorus — Pump + markeringar\nM8 — Annorlunda ackord + Chorus + Intro (hög pumpbas) + Chorus\nSlut — Slutmarkeringar (sista 5st)')
   },
   {
     title: 'Slå mig hårt i ansiktet', artist: 'Thomas Stenström', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+C# F# C# G#
+
+[Pre-Chorus / Bridge]
+F# G# C# Bbm`,
     sections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Bas\nChorus — Bass\nStopp — Sedan vers 2\nM8 — Hög pedalton')
   },
   {
     title: 'Teenage Dirtbag', artist: 'Wheatus', key: 'E', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro/Verse]
+E B E A (x2)
+
+[Pre-Chorus]
+C#m A B
+
+[Chorus]
+E A B C#m`,
     sections: parseInstructions('Intro — Trumintro\nVerse — Bass staccato')
   },
   {
     title: 'Sex on Fire', artist: 'Kings of Leon', key: 'E', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+E C#m (x4)
+
+[Verse]
+E C#m A
+
+[Pre-Chorus]
+E Emaj7 C#m A
+
+[Chorus]
+E C#m A`,
     sections: parseInstructions('Intro — 4 takter tyst\nVerse — Staccato\nPrechorus — Pump\nChorus — Pump\nM8 — Staccato')
   },
   {
     title: 'Ramlar', artist: 'Håkan Hellström', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+C Em F G (x2)
+
+[Verse]
+C Em F G
+C C/B F/A G
+
+[Chorus]
+F G F G`,
     sections: []
   },
   {
     title: 'Look Who\'s Laughing', artist: 'Benjamin Ingrosso', key: 'D', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro/Verse]
+F F Bb Bb
+F F Eb Bb
+
+[Chorus]
+F Bb Eb F
+F Bb Eb F`,
     sections: parseInstructions('Intro — Markeringar\nVerse — Pump\nChorus — Markeringar / Pump\nPrechorus — Markering andra toner\nM8 — Ingen bas (diffust)')
   },
   {
     title: 'Let Me Entertain You', artist: 'Robbie Williams', key: 'G', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro/Verse]
+F Ab Bb F
+
+[Chorus]
+F Ab Bb F`,
     sections: parseInstructions('Intro — Tyst\nChorus — Spela')
   },
   {
     title: 'Kan Inte Gå', artist: 'Bolaget', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+Bm G A D
+Bm G A D
+
+[Pre-Chorus]
+Bm G A D A Bm
+
+[Chorus]
+Bm G A D
+Bm G A D`,
     sections: []
   },
   {
     title: 'Take Me Home, Country Roads', artist: 'John Denver', key: 'G', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+G G Em D
+G G Em D G
+
+[Chorus]
+G D Em C
+G D C G`,
     sections: []
   },
   {
     title: '(Du är så) Yeah Yeah', artist: 'Martin', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro/Verse]
+C G C G
+C G C G
+
+[Chorus]
+G D Em C
+G D C G`,
     sections: parseInstructions('Intro — Prickar direkt\nVerse — Bara bass')
   },
   {
     title: 'Kung för en dag', artist: 'Magnus Uggla', key: 'C', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+C D G G (x4)
+
+[Verse]
+G C / G Em D
+G C / G Em B
+
+[Pre-Chorus]
+C Am D
+
+[Chorus]
+G C G C
+B Em C Am D
+G C G C
+B Em C D G`,
     sections: parseInstructions('Intro — Ingen bass\nVerse — Spela (obs upp på chorus)\nChorus — Spela\nM8 — Kvart upp\nChorus — Spela')
   },
   {
     title: 'Genom Eld & Vatten', artist: 'Sarek', key: 'Am', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+C G F C
+G F / G F
+C G / Em C D
+
+[Chorus]
+C G F G C
+Am G F Am G
+C G F G C
+C G F G C`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Bas direkt offbeat\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas')
   },
   {
     title: 'I\'m Gonna Be (500 Miles)', artist: 'The Proclaimers', key: 'D', keyOffset: 0,
     notes: 'Utan',
-    chordRaw: '',
+    chordRaw: `[Verse]
+E E A B E
+
+[Chorus]
+E A B E
+E A B E
+
+[Da-da]
+E A B E`,
     sections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Prickar\nChorus — Four on the floor\nVerse 3 — Spela')
   },
   {
     title: 'När vindarna viskar mitt namn', artist: 'Roger Pontare', key: 'Am', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+Gm F Gm F
+Gm F Gm F D
+
+[Pre-Chorus / Bridge]
+Gm F Bb F Eb
+Gm F D
+
+[Chorus]
+Gm F Eb F
+Gm F Eb F Gm`,
     sections: parseInstructions('Intro — Spela\nVerse — Shuffle bass')
   },
   {
     title: 'Angels', artist: 'Robbie Williams', key: 'E', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+G D/F# Em C
+G D
+
+[Pre-Chorus]
+C D G Em
+C D
+
+[Chorus]
+G Em C D
+G Em C D G`,
     sections: []
   },
   {
     title: 'What\'s Up?', artist: '4 Non Blondes', key: 'A', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+A Bm D A (x2)
+
+[Verse]
+A Bm D A
+
+[Chorus]
+A Bm D A`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
   },
   {
     title: 'Basket Case', artist: 'Green Day', key: 'Eb', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+Eb Bb C# G#
+Ab Eb Bb
+
+[Chorus]
+Ab Bb Eb
+Ab Bb Eb Db C#
+Ab Bb`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Ingen bas')
   },
   {
     title: 'Livin\' On A Prayer', artist: 'Bon Jovi', key: 'Em', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+Em C D Em
+
+[Verse]
+Em C D Em
+
+[Pre-Chorus]
+C D Em C D
+
+[Chorus]
+Em C D G C D
+
+[Key Change]
+Bb Eb F Bb Eb F`,
     sections: parseInstructions('Intro — 4x tyst\nVerse — Basfigur\nChorus — Basfigur\nM8 — Höjning efter M8\nChorus — Basfigur')
   },
   {
     title: 'Hey Baby (Uhh, ahh)', artist: 'Anton, DJ Ötzi', key: 'G', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+A F#m D E (x4)
+
+[Chorus]
+A F#m D E (x4)
+
+[Verse]
+A D A D E`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
   },
   {
     title: 'Cotton Eye Joe', artist: 'Rednex', key: 'Am', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Main]
+A A D D
+A E A`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
   },
   {
     title: 'I\'m In The Band', artist: 'The Hellacopters', key: 'A', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Intro]
+Eb Ab (x2)
+
+[Verse]
+Eb Ab C# Eb
+
+[Pre-Chorus]
+Cm Bb Ab Eb
+
+[Chorus]
+Ab Bb Cm
+Ab Bb Eb`,
     sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
   },
   {
     title: 'Stad i ljus', artist: 'Tommy Körberg', key: 'G', keyOffset: 0,
     notes: '',
-    chordRaw: '',
+    chordRaw: `[Verse]
+G D G Em D C G
+Em D G Em C D
+
+[Chorus]
+G C D Em C D B
+Em D C Am D
+
+[Bridge]
+G D G Em D G`,
     sections: []
   }
 ];
@@ -891,6 +1106,14 @@ function loadState() {
   const saved = localStorage.getItem('beybom_songs');
   if (saved) {
     try { songs = JSON.parse(saved); } catch(e) { songs = JSON.parse(JSON.stringify(DEFAULT_SONGS)); }
+    // Migrate: copy chordRaw from DEFAULT_SONGS if missing in saved state
+    songs.forEach(song => {
+      if (!song.chordRaw) {
+        const def = DEFAULT_SONGS.find(d => d.title === song.title && d.artist === song.artist);
+        if (def && def.chordRaw) song.chordRaw = def.chordRaw;
+      }
+    });
+    saveState();
   } else {
     songs = JSON.parse(JSON.stringify(DEFAULT_SONGS));
   }
@@ -977,6 +1200,32 @@ function openSong(index) {
   document.getElementById('lyrics-fetch-btn').textContent = '⬇ HÄMTA LYRICS';
 }
 
+function getChordsForSection(sectionName, chordRaw) {
+  if (!chordRaw || !sectionName) return '';
+  const name = sectionName.toLowerCase().replace(/\s+\d+$/, '').trim(); // strip trailing number: "Verse 2" → "verse"
+  const lines = chordRaw.split('\n');
+  let inSection = false;
+  let result = [];
+  const chordPattern = /^[A-Ga-g][#b]?m?(aj|min|dim|aug|sus|add|maj7|m7|7|9|11|13|6|4|2)?(\d)?(\/[A-G][#b]?)?$/;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (/^(\[.*\]|##.*)$/.test(trimmed)) {
+      const secLabel = trimmed.replace(/[\[\]#]/g,'').trim().toLowerCase();
+      inSection = secLabel === name || secLabel.startsWith(name);
+      continue;
+    }
+    if (inSection && trimmed) {
+      const words = trimmed.split(/\s+/);
+      const chordCount = words.filter(w => chordPattern.test(w)).length;
+      if (chordCount >= words.length * 0.5) {
+        result.push(trimmed);
+        if (result.length >= 2) break; // max 2 rader per block
+      }
+    }
+  }
+  return result.join(' / ');
+}
+
 function renderSections() {
   const song = songs[currentSongIndex];
   const list = document.getElementById('sections-list');
@@ -991,12 +1240,14 @@ function renderSections() {
     const altClass = si % 2 === 1 ? 'alt' : '';
     block.className = `section-block ${SEC_TYPES[sec.type]?.cls || 'sec-play'} ${altClass}`;
     block.dataset.sid = sec.id;
+    const chordHint = getChordsForSection(sec.name, songs[currentSongIndex].chordRaw);
     block.innerHTML = `
       <div class="section-color-bar"></div>
       <div class="section-body">
         <div class="section-label">${sec.name || 'SEKTION'}</div>
         <div class="section-instruction">${sec.instruction || ''}</div>
         ${sec.bars ? `<div class="section-bars">${sec.bars} takter</div>` : ''}
+        ${chordHint ? `<div class="section-chords">♩ ${chordHint}</div>` : ''}
         <div class="section-actions">
           <button class="sec-btn" title="Redigera" onclick="editSection(${si})">✏️</button>
           <button class="sec-btn del" title="Ta bort" onclick="deleteSection(${si})">✕</button>
