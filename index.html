@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEYBOM — Bass Player</title>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --green: #00e676;
+    --green-dim: #004d25;
+    --yellow: #ffd600;
+    --yellow-dim: #3d3200;
+    --red: #ff1744;
+    --red-dim: #4d0011;
+    --gray: #2a2a2a;
+    --text: #f0f0f0;
+    --text-dim: #666;
+    --accent: #00e676;
+    --font-mono: 'Space Mono', monospace;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== SETLIST VIEW ===== */
+  #setlist-view {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .top-bar h1 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: var(--green);
+  }
+
+  .top-bar-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    border-radius: 2px;
+  }
+  .btn:hover { border-color: var(--green); color: var(--green); }
+  .btn.primary { border-color: var(--green); color: var(--green); }
+  .btn.danger { border-color: var(--red); color: var(--red); }
+
+  .song-list {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .song-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: grab;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .song-row:hover { border-color: var(--green); background: var(--surface2); }
+  .song-row.sortable-ghost { opacity: 0.3; }
+  .song-row.sortable-chosen { cursor: grabbing; border-color: var(--green); }
+
+  .drag-handle {
+    color: var(--text-dim);
+    font-size: 1rem;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .song-row-info { display: flex; flex-direction: column; gap: 2px; }
+  .song-row-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); }
+  .song-row-title { font-weight: 700; font-size: 0.95rem; }
+  .song-row-artist { font-size: 0.78rem; color: var(--text-dim); }
+
+  .song-row-key {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--green);
+    min-width: 40px;
+    text-align: center;
+  }
+
+  .btn-open {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .btn-open:hover { border-color: var(--green); color: var(--green); }
+
+  /* ===== SONG VIEW ===== */
+  #song-view {
+    display: none;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .song-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .song-header-left { display: flex; flex-direction: column; gap: 4px; }
+  .song-header-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); }
+  .song-header-title { font-family: var(--font-display); font-size: 2.5rem; letter-spacing: 2px; line-height: 1; }
+  .song-header-artist { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+
+  .song-header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  .key-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 6px 12px;
+  }
+  .key-btn {
+    background: none;
+    border: none;
+    color: var(--green);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 4px;
+    font-family: var(--font-mono);
+    line-height: 1;
+  }
+  .key-btn:hover { color: #fff; }
+  .key-display {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--green);
+    min-width: 60px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  .key-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); text-align: center; margin-top: 2px; }
+
+  .song-nav { display: flex; gap: 6px; }
+
+  /* ===== SONG CONTENT ===== */
+  .song-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 900px;
+  }
+
+  /* Section blocks */
+  .sections-area { display: flex; flex-direction: column; gap: 8px; }
+  .sections-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .section-block {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-radius: 3px;
+    overflow: hidden;
+    min-height: 52px;
+  }
+
+  .section-color-bar { width: 6px; flex-shrink: 0; }
+  .section-body {
+    flex: 1;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+  .section-instruction {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    flex: 1;
+    line-height: 1.5;
+  }
+  .section-bars {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  /* Colors per type */
+  /* PLAY — even/odd alternating */
+  .sec-play        { background: #003d1a; }
+  .sec-play.alt    { background: #005224; }
+  .sec-play .section-color-bar { background: var(--green); }
+  .sec-play .section-label { color: var(--green); }
+  .sec-play .section-instruction { color: #a0f0c0; }
+
+  /* REST — even/odd alternating */
+  .sec-rest        { background: #1e1e1e; }
+  .sec-rest.alt    { background: #2a2a2a; }
+  .sec-rest .section-color-bar { background: #555; }
+  .sec-rest .section-label { color: #999; }
+  .sec-rest .section-instruction { color: #666; }
+
+  /* WARN — even/odd alternating */
+  .sec-warn        { background: #2e2600; }
+  .sec-warn.alt    { background: #3d3200; }
+  .sec-warn .section-color-bar { background: var(--yellow); }
+  .sec-warn .section-label { color: var(--yellow); }
+  .sec-warn .section-instruction { color: #e0c060; }
+
+  /* DANGER — even/odd alternating */
+  .sec-danger        { background: #2d0009; }
+  .sec-danger.alt    { background: #3f000e; }
+  .sec-danger .section-color-bar { background: var(--red); }
+  .sec-danger .section-label { color: var(--red); }
+  .sec-danger .section-instruction { color: #f08080; }
+
+  /* Edit mode */
+  .section-block.edit-mode { cursor: default; }
+  .section-block.edit-mode .section-body { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  .edit-row { display: flex; gap: 8px; width: 100%; flex-wrap: wrap; }
+  .edit-input {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 6px 10px;
+    border-radius: 2px;
+    flex: 1;
+    min-width: 120px;
+  }
+  .edit-input:focus { outline: none; border-color: var(--green); }
+  select.edit-input { cursor: pointer; }
+
+  /* Chord sheet */
+  .chord-area { display: flex; flex-direction: column; gap: 8px; }
+  .chord-area-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .chord-sheet {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 2;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .chord-sheet .chord { color: var(--green); font-weight: 700; }
+  .chord-sheet .section-marker { color: var(--yellow); font-size: 0.7rem; display: block; margin-top: 8px; }
+  .chord-sheet .warning { color: var(--red); }
+
+  .chord-raw-input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 12px;
+    border-radius: 3px;
+    min-height: 120px;
+    resize: vertical;
+    display: none;
+  }
+  .chord-raw-input:focus { outline: none; border-color: var(--green); }
+
+  /* Notes area */
+  .notes-area { display: flex; flex-direction: column; gap: 8px; }
+  .notes-area-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .notes-input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    padding: 12px;
+    border-radius: 3px;
+    min-height: 80px;
+    resize: vertical;
+  }
+  .notes-input:focus { outline: none; border-color: var(--green); }
+
+  /* Edit controls */
+  .edit-controls {
+    display: flex;
+    gap: 8px;
+    padding: 8px 24px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  /* ===== LIVE MODE ===== */
+  body.live-mode {
+    background: #000;
+  }
+  body.live-mode #song-view .song-header {
+    background: #000;
+    padding: 12px 20px;
+  }
+  body.live-mode .song-header-title { font-size: 3.5rem; }
+  body.live-mode .song-content { max-width: 100%; padding: 16px 20px; }
+  body.live-mode .section-block { min-height: 70px; }
+  body.live-mode .section-label { font-size: 1.5rem; }
+  body.live-mode .section-instruction { font-size: 1rem; }
+  body.live-mode .key-display { font-size: 2.5rem; }
+  body.live-mode .chord-sheet { font-size: 1.1rem; line-height: 2.2; }
+  body.live-mode .notes-input { font-size: 1rem; }
+
+  /* Add section button */
+  .add-section-btn {
+    border: 1px dashed var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .add-section-btn:hover { border-color: var(--green); color: var(--green); }
+
+  .section-actions {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+  }
+  .sec-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 2px 4px;
+    line-height: 1;
+    transition: color 0.1s;
+  }
+  .sec-btn:hover { color: var(--text); }
+  .sec-btn.del:hover { color: var(--red); }
+
+  /* Sortable sections */
+  .section-block { cursor: grab; }
+  .section-block.sortable-ghost { opacity: 0.2; }
+
+  /* Nav arrows */
+  .song-progress {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 8px;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--green);
+    color: #000;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 10px 16px;
+    border-radius: 2px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ===== LYRICS TAB ===== */
+  .lyrics-area { display: flex; flex-direction: column; gap: 8px; }
+
+  .lyrics-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .lyrics-tab {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.15s;
+  }
+  .lyrics-tab.active { color: var(--green); border-bottom-color: var(--green); }
+  .lyrics-tab:hover { color: var(--text); }
+
+  .lyrics-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 16px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.9;
+    max-height: 380px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #ccc;
+  }
+  .lyrics-box .lyrics-section-marker {
+    display: block;
+    color: var(--yellow);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    margin-top: 14px;
+    margin-bottom: 2px;
+  }
+  .lyrics-box .lyrics-status {
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-style: italic;
+  }
+  .lyrics-fetch-btn {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text-dim);
+    cursor: pointer;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .lyrics-fetch-btn:hover { border-color: var(--green); color: var(--green); }
+  .lyrics-fetch-btn:disabled { opacity: 0.4; cursor: default; }
+
+  body.live-mode .lyrics-box { font-size: 1.1rem; max-height: 500px; line-height: 2.2; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  @media (max-width: 600px) {
+    .top-bar h1 { font-size: 1.4rem; }
+    .song-header-title { font-size: 1.8rem; }
+    .song-content { padding: 16px; }
+    .song-list { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SETLIST VIEW ===== -->
+<div id="setlist-view">
+  <div class="top-bar">
+    <h1>BEYBOM</h1>
+    <div class="top-bar-actions">
+      <button class="btn primary" onclick="exportJSON()">⬇ EXPORT JSON</button>
+      <button class="btn" onclick="document.getElementById('import-file').click()">⬆ IMPORT JSON</button>
+      <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+      <button class="btn" onclick="toggleLiveMode()">⚡ LIVE MODE</button>
+    </div>
+  </div>
+  <div class="song-list" id="song-list"></div>
+</div>
+
+<!-- ===== SONG VIEW ===== -->
+<div id="song-view">
+  <div class="song-header">
+    <div class="song-header-left">
+      <div class="song-header-num" id="sv-num"></div>
+      <div class="song-header-title" id="sv-title"></div>
+      <div class="song-header-artist" id="sv-artist"></div>
+    </div>
+    <div class="song-header-right">
+      <div>
+        <div class="key-control">
+          <button class="key-btn" onclick="transposeKey(-1)">−</button>
+          <div>
+            <div class="key-display" id="sv-key"></div>
+            <div class="key-label">TONART</div>
+          </div>
+          <button class="key-btn" onclick="transposeKey(1)">+</button>
+        </div>
+      </div>
+      <div class="song-nav">
+        <button class="btn" onclick="navSong(-1)">◀ PREV</button>
+        <button class="btn" onclick="showSetlist()">☰ LIST</button>
+        <button class="btn" onclick="navSong(1)">NEXT ▶</button>
+      </div>
+      <button class="btn" onclick="toggleLiveMode()">⚡ LIVE</button>
+    </div>
+  </div>
+
+  <div class="song-content">
+    <!-- Sections -->
+    <div class="sections-area">
+      <div class="sections-title">LÅTFORM</div>
+      <div id="sections-list"></div>
+      <button class="add-section-btn" onclick="addSection()">+ LÄGG TILL SEKTION</button>
+    </div>
+
+    <!-- Chord Sheet -->
+    <div class="chord-area">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div class="chord-area-title">ACKORD / TEXT</div>
+        <button class="btn" onclick="toggleChordEdit()" style="font-size:0.6rem;padding:5px 10px;">REDIGERA</button>
+      </div>
+      <div class="chord-sheet" id="chord-display"></div>
+      <textarea class="chord-raw-input" id="chord-raw" placeholder="Klistra in ackord+text här (Ultimate Guitar, ChordPro, fritext)&#10;&#10;Exempel:&#10;[Verse]&#10;[Am]Here comes the [G]sun&#10;[CHORUS]&#10;[C]Let it [G]be" oninput="updateChordDisplay()"></textarea>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-area">
+      <div class="notes-title-row" style="display:flex;align-items:center;gap:12px;">
+        <div class="notes-area-title">ÖVRIGA ANTECKNINGAR</div>
+      </div>
+      <textarea class="notes-input" id="sv-notes" placeholder="Anteckningar, varningar, egna kommentarer..." oninput="saveSong()"></textarea>
+    </div>
+    <!-- Lyrics -->
+    <div class="lyrics-area">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div class="lyrics-tabs">
+          <button class="lyrics-tab active" onclick="switchLyricsTab('plain',this)">TEXT</button>
+          <button class="lyrics-tab" onclick="switchLyricsTab('synced',this)">SYNKAD</button>
+        </div>
+        <button class="lyrics-fetch-btn" id="lyrics-fetch-btn" onclick="fetchLyrics()">⬇ HÄMTA LYRICS</button>
+        <span id="lyrics-source" style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);"></span>
+      </div>
+      <div class="lyrics-box" id="lyrics-display"><span class="lyrics-status">Tryck "HÄMTA LYRICS" för att söka automatiskt via LRCLIB.</span></div>
+    </div>
+  </div>
+
+  <div class="edit-controls">
+    <button class="btn primary" onclick="saveSong(); showToast('Sparad!')">💾 SPARA</button>
+    <button class="btn" onclick="moveSongUp()">↑ FLYTTA UPP</button>
+    <button class="btn" onclick="moveSongDown()">↓ FLYTTA NER</button>
+  </div>
+  <div class="song-progress" id="song-progress"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===================== DATA =====================
+const KEYS = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const KEY_DISPLAY = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+
+// Section types
+const SEC_TYPES = {
+  play:   { label: 'SPELA',    cls: 'sec-play' },
+  rest:   { label: 'INGEN BAS', cls: 'sec-rest' },
+  warn:   { label: 'VARNING',  cls: 'sec-warn' },
+  danger: { label: 'STOPP',    cls: 'sec-danger' },
+};
+
+function makeSection(name, type, instruction, bars) {
+  return { id: Date.now() + Math.random(), name, type: type || 'play', instruction: instruction || '', bars: bars || '' };
+}
+
+// Parse raw text instructions into sections
+function parseInstructions(raw) {
+  if (!raw) return [];
+  const lines = raw.split('\n').map(l => l.trim()).filter(l => l);
+  return lines.map(line => {
+    const lower = line.toLowerCase();
+    let type = 'play';
+    if (lower.includes('ingen bas') || lower.includes('ingen bass') || lower.includes('tyst') || lower.includes('inget')) type = 'rest';
+    else if (lower.includes('obs') || lower.includes('öva') || lower.includes('varning') || lower.includes('höjning') || lower.includes('annorlunda') || lower.includes('prickar')) type = 'warn';
+    else if (lower.includes('stopp') || lower.includes('stop') || lower.includes('slut')) type = 'danger';
+    return makeSection(line, type, '', '');
+  });
+}
+
+const DEFAULT_SONGS = [
+  {
+    title: 'Händerna mot himlen', artist: 'Petra Marklund', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Verser — Ingen bas\nChorus — Pump')
+  },
+  {
+    title: 'Gimme! Gimme! Gimme!', artist: 'Molly Sandén', key: 'Am', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Off beat staccato bas\nPrechorus — Staccato\nChorus — Staccato\nM8 — Slapping på en ton (kort)')
+  },
+  {
+    title: 'Proud Mary', artist: 'Tina Turner', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Lugnt i början\nVerse — Snabb pump\nChorus — Basklättring (öva)')
+  },
+  {
+    title: 'I Love It', artist: 'Icona Pop, Charli XCX', key: 'F', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro chorus — Ingen bas\nChorus — Pump\nPre — Ingen bas\nM8 — Ingen bas')
+  },
+  {
+    title: 'Shut Up and Dance', artist: 'WALK THE MOON', key: 'A', keyOffset: 0,
+    notes: 'Utan tracks',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Pump hög oktav (en ton)\nVerse — Staccato\nPrechorus — Staccato markeringar\nChorus — Pump + markeringar\nM8 — Annorlunda ackord + Chorus + Intro (hög pumpbas) + Chorus\nSlut — Slutmarkeringar (sista 5st)')
+  },
+  {
+    title: 'Slå mig hårt i ansiktet', artist: 'Thomas Stenström', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Bas\nChorus — Bass\nStopp — Sedan vers 2\nM8 — Hög pedalton')
+  },
+  {
+    title: 'Teenage Dirtbag', artist: 'Wheatus', key: 'E', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Trumintro\nVerse — Bass staccato')
+  },
+  {
+    title: 'Sex on Fire', artist: 'Kings of Leon', key: 'E', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — 4 takter tyst\nVerse — Staccato\nPrechorus — Pump\nChorus — Pump\nM8 — Staccato')
+  },
+  {
+    title: 'Ramlar', artist: 'Håkan Hellström', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: []
+  },
+  {
+    title: 'Look Who\'s Laughing', artist: 'Benjamin Ingrosso', key: 'D', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Markeringar\nVerse — Pump\nChorus — Markeringar / Pump\nPrechorus — Markering andra toner\nM8 — Ingen bas (diffust)')
+  },
+  {
+    title: 'Let Me Entertain You', artist: 'Robbie Williams', key: 'G', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Tyst\nChorus — Spela')
+  },
+  {
+    title: 'Kan Inte Gå', artist: 'Bolaget', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: []
+  },
+  {
+    title: 'Take Me Home, Country Roads', artist: 'John Denver', key: 'G', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: []
+  },
+  {
+    title: '(Du är så) Yeah Yeah', artist: 'Martin', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Prickar direkt\nVerse — Bara bass')
+  },
+  {
+    title: 'Kung för en dag', artist: 'Magnus Uggla', key: 'C', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bass\nVerse — Spela (obs upp på chorus)\nChorus — Spela\nM8 — Kvart upp\nChorus — Spela')
+  },
+  {
+    title: 'Genom Eld & Vatten', artist: 'Sarek', key: 'Am', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas direkt offbeat\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas')
+  },
+  {
+    title: 'I\'m Gonna Be (500 Miles)', artist: 'The Proclaimers', key: 'D', keyOffset: 0,
+    notes: 'Utan',
+    chordRaw: '',
+    sections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Prickar\nChorus — Four on the floor\nVerse 3 — Spela')
+  },
+  {
+    title: 'När vindarna viskar mitt namn', artist: 'Roger Pontare', key: 'Am', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Spela\nVerse — Shuffle bass')
+  },
+  {
+    title: 'Angels', artist: 'Robbie Williams', key: 'E', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: []
+  },
+  {
+    title: 'What\'s Up?', artist: '4 Non Blondes', key: 'A', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
+  },
+  {
+    title: 'Basket Case', artist: 'Green Day', key: 'Eb', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Ingen bas')
+  },
+  {
+    title: 'Livin\' On A Prayer', artist: 'Bon Jovi', key: 'Em', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — 4x tyst\nVerse — Basfigur\nChorus — Basfigur\nM8 — Höjning efter M8\nChorus — Basfigur')
+  },
+  {
+    title: 'Hey Baby (Uhh, ahh)', artist: 'Anton, DJ Ötzi', key: 'G', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
+  },
+  {
+    title: 'Cotton Eye Joe', artist: 'Rednex', key: 'Am', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
+  },
+  {
+    title: 'I\'m In The Band', artist: 'The Hellacopters', key: 'A', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
+  },
+  {
+    title: 'Stad i ljus', artist: 'Tommy Körberg', key: 'G', keyOffset: 0,
+    notes: '',
+    chordRaw: '',
+    sections: []
+  }
+];
+
+// ===================== STATE =====================
+let songs = [];
+let currentSongIndex = -1;
+let sectionSortable = null;
+let isLiveMode = false;
+let chordEditOpen = false;
+
+function loadState() {
+  const saved = localStorage.getItem('beybom_songs');
+  if (saved) {
+    try { songs = JSON.parse(saved); } catch(e) { songs = JSON.parse(JSON.stringify(DEFAULT_SONGS)); }
+  } else {
+    songs = JSON.parse(JSON.stringify(DEFAULT_SONGS));
+  }
+  // Ensure IDs on sections
+  songs.forEach(song => {
+    if (!song.sections) song.sections = [];
+    song.sections.forEach(s => { if (!s.id) s.id = Date.now() + Math.random(); });
+  });
+}
+
+function saveState() {
+  localStorage.setItem('beybom_songs', JSON.stringify(songs));
+}
+
+// ===================== SETLIST =====================
+function renderSetlist() {
+  const list = document.getElementById('song-list');
+  list.innerHTML = '';
+  songs.forEach((song, i) => {
+    const row = document.createElement('div');
+    row.className = 'song-row';
+    row.dataset.index = i;
+    row.innerHTML = `
+      <div class="drag-handle">⠿</div>
+      <div class="song-row-info">
+        <div class="song-row-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="song-row-title">${song.title}</div>
+        <div class="song-row-artist">${song.artist}</div>
+      </div>
+      <div class="song-row-key">${getTransposedKey(song)}</div>
+      <button class="btn-open" onclick="openSong(${i})">ÖPPNA →</button>
+    `;
+    list.appendChild(row);
+  });
+
+  // Init sortable
+  if (window._setlistSortable) window._setlistSortable.destroy();
+  window._setlistSortable = Sortable.create(list, {
+    animation: 150,
+    handle: '.drag-handle',
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    onEnd: (evt) => {
+      const moved = songs.splice(evt.oldIndex, 1)[0];
+      songs.splice(evt.newIndex, 0, moved);
+      saveState();
+      renderSetlist();
+    }
+  });
+}
+
+function showSetlist() {
+  document.getElementById('setlist-view').style.display = 'flex';
+  document.getElementById('song-view').style.display = 'none';
+  currentSongIndex = -1;
+  renderSetlist();
+}
+
+// ===================== SONG VIEW =====================
+function openSong(index) {
+  currentSongIndex = index;
+  const song = songs[index];
+
+  document.getElementById('setlist-view').style.display = 'none';
+  document.getElementById('song-view').style.display = 'flex';
+
+  document.getElementById('sv-num').textContent = `${String(index+1).padStart(2,'0')} / ${songs.length}`;
+  document.getElementById('sv-title').textContent = song.title;
+  document.getElementById('sv-artist').textContent = song.artist;
+  document.getElementById('sv-key').textContent = getTransposedKey(song);
+  document.getElementById('sv-notes').value = song.notes || '';
+  document.getElementById('song-progress').textContent = `${index+1} av ${songs.length}`;
+
+  // Chord
+  document.getElementById('chord-raw').value = song.chordRaw || '';
+  chordEditOpen = false;
+  document.getElementById('chord-raw').style.display = 'none';
+  renderChordDisplay(song.chordRaw || '', song.key, song.keyOffset || 0);
+
+  renderSections();
+  renderLyricsDisplay();
+  document.getElementById('lyrics-source').textContent = song.lyricsTrackName ? `Källa: LRCLIB.net — "${song.lyricsTrackName}" av ${song.lyricsArtist}` : '';
+  document.getElementById('lyrics-fetch-btn').disabled = false;
+  document.getElementById('lyrics-fetch-btn').textContent = '⬇ HÄMTA LYRICS';
+}
+
+function renderSections() {
+  const song = songs[currentSongIndex];
+  const list = document.getElementById('sections-list');
+  list.innerHTML = '';
+
+  if (!song.sections || song.sections.length === 0) {
+    list.innerHTML = '<div style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.75rem;padding:12px;">Inga sektioner ännu. Lägg till nedan.</div>';
+  }
+
+  song.sections.forEach((sec, si) => {
+    const block = document.createElement('div');
+    const altClass = si % 2 === 1 ? 'alt' : '';
+    block.className = `section-block ${SEC_TYPES[sec.type]?.cls || 'sec-play'} ${altClass}`;
+    block.dataset.sid = sec.id;
+    block.innerHTML = `
+      <div class="section-color-bar"></div>
+      <div class="section-body">
+        <div class="section-label">${sec.name || 'SEKTION'}</div>
+        <div class="section-instruction">${sec.instruction || ''}</div>
+        ${sec.bars ? `<div class="section-bars">${sec.bars} takter</div>` : ''}
+        <div class="section-actions">
+          <button class="sec-btn" title="Redigera" onclick="editSection(${si})">✏️</button>
+          <button class="sec-btn del" title="Ta bort" onclick="deleteSection(${si})">✕</button>
+        </div>
+      </div>
+    `;
+    list.appendChild(block);
+  });
+
+  // Sortable sections
+  if (sectionSortable) sectionSortable.destroy();
+  sectionSortable = Sortable.create(list, {
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    filter: '.section-actions, .sec-btn',
+    onEnd: (evt) => {
+      const moved = song.sections.splice(evt.oldIndex, 1)[0];
+      song.sections.splice(evt.newIndex, 0, moved);
+      saveState();
+      renderSections();
+    }
+  });
+}
+
+function editSection(si) {
+  const song = songs[currentSongIndex];
+  const sec = song.sections[si];
+  const list = document.getElementById('sections-list');
+  const block = list.children[si];
+
+  block.classList.add('edit-mode');
+  block.innerHTML = `
+    <div class="section-color-bar"></div>
+    <div class="section-body">
+      <div class="edit-row">
+        <input class="edit-input" id="sec-name-${si}" value="${sec.name || ''}" placeholder="Sektionsnamn (t.ex. Chorus)">
+        <select class="edit-input" id="sec-type-${si}">
+          <option value="play" ${sec.type==='play'?'selected':''}>🟢 SPELA</option>
+          <option value="rest" ${sec.type==='rest'?'selected':''}>⬜ INGEN BAS</option>
+          <option value="warn" ${sec.type==='warn'?'selected':''}>🟡 VARNING / OBS</option>
+          <option value="danger" ${sec.type==='danger'?'selected':''}>🔴 STOPP</option>
+        </select>
+        <input class="edit-input" id="sec-bars-${si}" value="${sec.bars || ''}" placeholder="Takter" style="max-width:80px;">
+      </div>
+      <div class="edit-row">
+        <input class="edit-input" id="sec-instr-${si}" value="${sec.instruction || ''}" placeholder="Instruktion (t.ex. Pump hög oktav, Staccato markeringar...)">
+      </div>
+      <div class="edit-row">
+        <button class="btn primary" onclick="saveSection(${si})">✓ SPARA</button>
+        <button class="btn" onclick="renderSections()">✕ AVBRYT</button>
+      </div>
+    </div>
+  `;
+}
+
+function saveSection(si) {
+  const song = songs[currentSongIndex];
+  song.sections[si].name = document.getElementById(`sec-name-${si}`).value;
+  song.sections[si].type = document.getElementById(`sec-type-${si}`).value;
+  song.sections[si].instruction = document.getElementById(`sec-instr-${si}`).value;
+  song.sections[si].bars = document.getElementById(`sec-bars-${si}`).value;
+  saveState();
+  renderSections();
+}
+
+function deleteSection(si) {
+  const song = songs[currentSongIndex];
+  song.sections.splice(si, 1);
+  saveState();
+  renderSections();
+}
+
+function addSection() {
+  const song = songs[currentSongIndex];
+  if (!song.sections) song.sections = [];
+  song.sections.push(makeSection('NY SEKTION', 'play', '', ''));
+  saveState();
+  renderSections();
+  // Scroll to last & edit it
+  setTimeout(() => {
+    const list = document.getElementById('sections-list');
+    editSection(song.sections.length - 1);
+    list.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+// ===================== CHORD DISPLAY =====================
+function renderChordDisplay(raw, key, offset) {
+  const display = document.getElementById('chord-display');
+  if (!raw || raw.trim() === '') {
+    display.innerHTML = '<span style="color:var(--text-dim);font-size:0.75rem;">Ingen ackordtext ännu. Klicka REDIGERA för att lägga till.</span>';
+    return;
+  }
+
+  // Parse and highlight chords
+  const lines = raw.split('\n');
+  let html = '';
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (!trimmed) { html += '\n'; return; }
+
+    // Section markers [Verse], [CHORUS], ## Verse etc
+    if (/^(\[.*\]|##.*|===.*)$/.test(trimmed)) {
+      html += `<span class="section-marker">▸ ${trimmed.replace(/[\[\]#=]/g,'').trim().toUpperCase()}</span>\n`;
+      return;
+    }
+
+    // Detect chord lines (mostly chords, few words)
+    const words = trimmed.split(/\s+/);
+    const chordPattern = /^[A-Ga-g][#b]?m?(aj|min|dim|aug|sus|add|maj7|m7|7|9|11|13|6|4|2)?(\d)?(\/[A-G][#b]?)?$/;
+    const chordCount = words.filter(w => chordPattern.test(w)).length;
+
+    if (chordCount >= words.length * 0.6 && words.length >= 1) {
+      // Chord line — transpose if needed
+      const transposed = words.map(w => chordPattern.test(w) ? transposeChord(w, offset) : w).join('  ');
+      html += `<span class="chord">${transposed}</span>\n`;
+    } else {
+      // Lyric line — highlight inline chords like [Am]
+      const highlighted = trimmed.replace(/\[([A-Ga-g][^\]]*)\]/g, (m, c) => `<span class="chord">[${transposeChord(c.trim(), offset)}]</span>`);
+      html += highlighted + '\n';
+    }
+  });
+
+  display.innerHTML = html;
+}
+
+function transposeChord(chord, semitones) {
+  if (!semitones || semitones === 0) return chord;
+  const noteRegex = /^([A-G][#b]?)(.*)/;
+  const match = chord.match(noteRegex);
+  if (!match) return chord;
+  const note = match[1];
+  const suffix = match[2];
+  const enharmonic = { 'Db':'C#','Eb':'D#','Fb':'E','Gb':'F#','Ab':'G#','Bb':'A#','Cb':'B' };
+  const normalized = enharmonic[note] || note;
+  let idx = KEYS.indexOf(normalized);
+  if (idx === -1) return chord;
+  idx = ((idx + semitones) % 12 + 12) % 12;
+  return KEYS[idx] + suffix;
+}
+
+function toggleChordEdit() {
+  chordEditOpen = !chordEditOpen;
+  const raw = document.getElementById('chord-raw');
+  const display = document.getElementById('chord-display');
+  raw.style.display = chordEditOpen ? 'block' : 'none';
+  display.style.display = chordEditOpen ? 'none' : 'block';
+  if (!chordEditOpen) {
+    // Save and render
+    const song = songs[currentSongIndex];
+    song.chordRaw = raw.value;
+    saveState();
+    renderChordDisplay(raw.value, song.key, song.keyOffset || 0);
+  }
+}
+
+function updateChordDisplay() {
+  const song = songs[currentSongIndex];
+  song.chordRaw = document.getElementById('chord-raw').value;
+  saveState();
+}
+
+// ===================== KEY / TRANSPOSE =====================
+function getTransposedKey(song) {
+  if (!song.keyOffset || song.keyOffset === 0) return song.key || '?';
+  const enharmonic = { 'Db':'C#','Eb':'D#','Gb':'F#','Ab':'G#','Bb':'A#' };
+  const normalized = enharmonic[song.key] || song.key;
+  // Handle minor keys
+  const isMinor = normalized.endsWith('m');
+  const root = isMinor ? normalized.slice(0,-1) : normalized;
+  let idx = KEYS.indexOf(root);
+  if (idx === -1) return song.key;
+  idx = ((idx + song.keyOffset) % 12 + 12) % 12;
+  return KEYS[idx] + (isMinor ? 'm' : '');
+}
+
+function transposeKey(delta) {
+  const song = songs[currentSongIndex];
+  song.keyOffset = ((song.keyOffset || 0) + delta + 12) % 12;
+  document.getElementById('sv-key').textContent = getTransposedKey(song);
+  renderChordDisplay(song.chordRaw || '', song.key, song.keyOffset);
+  saveState();
+}
+
+// ===================== SAVE =====================
+function saveSong() {
+  const song = songs[currentSongIndex];
+  song.notes = document.getElementById('sv-notes').value;
+  saveState();
+}
+
+// ===================== NAVIGATION =====================
+function navSong(delta) {
+  saveSong();
+  const next = currentSongIndex + delta;
+  if (next >= 0 && next < songs.length) openSong(next);
+}
+
+function moveSongUp() {
+  if (currentSongIndex <= 0) return;
+  [songs[currentSongIndex], songs[currentSongIndex-1]] = [songs[currentSongIndex-1], songs[currentSongIndex]];
+  saveState();
+  currentSongIndex--;
+  openSong(currentSongIndex);
+  showToast('Låt flyttad upp');
+}
+
+function moveSongDown() {
+  if (currentSongIndex >= songs.length-1) return;
+  [songs[currentSongIndex], songs[currentSongIndex+1]] = [songs[currentSongIndex+1], songs[currentSongIndex]];
+  saveState();
+  currentSongIndex++;
+  openSong(currentSongIndex);
+  showToast('Låt flyttad ner');
+}
+
+// ===================== LIVE MODE =====================
+function toggleLiveMode() {
+  isLiveMode = !isLiveMode;
+  document.body.classList.toggle('live-mode', isLiveMode);
+  showToast(isLiveMode ? '⚡ LIVE MODE PÅ' : 'Live mode av');
+}
+
+// ===================== IMPORT / EXPORT =====================
+function exportJSON() {
+  const data = JSON.stringify(songs, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'beybom-setlist.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('JSON exporterad!');
+}
+
+function importJSON(evt) {
+  const file = evt.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported)) throw new Error('Ogiltigt format');
+      songs = imported;
+      songs.forEach(song => {
+        if (!song.sections) song.sections = [];
+        if (!song.keyOffset) song.keyOffset = 0;
+        song.sections.forEach(s => { if (!s.id) s.id = Date.now() + Math.random(); });
+      });
+      saveState();
+      showSetlist();
+      showToast('Import lyckades! ' + songs.length + ' låtar');
+    } catch(e) {
+      showToast('Import misslyckades: ' + e.message);
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value = '';
+}
+
+// ===================== TOAST =====================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ===================== LYRICS =====================
+let currentLyricsTab = 'plain';
+
+function switchLyricsTab(tab, btn) {
+  currentLyricsTab = tab;
+  document.querySelectorAll('.lyrics-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLyricsDisplay();
+}
+
+function renderLyricsDisplay() {
+  const song = songs[currentSongIndex];
+  const box = document.getElementById('lyrics-display');
+  const src = document.getElementById('lyrics-source');
+
+  if (!song.lyrics && !song.lyricsPlain) {
+    box.innerHTML = '<span class="lyrics-status">Tryck "HÄMTA LYRICS" för att söka automatiskt via LRCLIB.</span>';
+    src.textContent = '';
+    return;
+  }
+
+  const text = currentLyricsTab === 'synced' && song.lyrics ? song.lyrics : (song.lyricsPlain || song.lyrics || '');
+
+  if (!text) {
+    box.innerHTML = '<span class="lyrics-status">Inga lyrics hittade för detta format.</span>';
+    return;
+  }
+
+  // Format: highlight section markers like [Verse 1], [Chorus] etc
+  const lines = text.split('\n');
+  let html = '';
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    // Strip LRC timestamps [00:12.34]
+    const stripped = trimmed.replace(/\[\d{2}:\d{2}\.\d{2,3}\]/g, '').trim();
+    if (!stripped) { html += '\n'; return; }
+    if (/^\[.*\]$/.test(stripped)) {
+      html += `<span class="lyrics-section-marker">▸ ${stripped.replace(/[\[\]]/g,'').toUpperCase()}</span>`;
+    } else {
+      html += stripped + '\n';
+    }
+  });
+
+  box.innerHTML = html;
+  src.textContent = 'Källa: LRCLIB.net';
+}
+
+async function fetchLyrics() {
+  const song = songs[currentSongIndex];
+  const btn = document.getElementById('lyrics-fetch-btn');
+  const box = document.getElementById('lyrics-display');
+
+  // Return cached
+  if (song.lyricsPlain || song.lyrics) {
+    renderLyricsDisplay();
+    showToast('Lyrics laddade från cache');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ SÖKER...';
+  box.innerHTML = '<span class="lyrics-status">Söker på LRCLIB.net...</span>';
+
+  try {
+    // Try exact match first
+    const q = encodeURIComponent(`${song.title} ${song.artist}`);
+    const url = `https://lrclib.net/api/search?q=${q}`;
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'BEYBOM BassPlayer v1.0' }
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const results = await res.json();
+
+    if (!results || results.length === 0) {
+      // Fallback: title only
+      const q2 = encodeURIComponent(song.title);
+      const res2 = await fetch(`https://lrclib.net/api/search?q=${q2}`, {
+        headers: { 'User-Agent': 'BEYBOM BassPlayer v1.0' }
+      });
+      const results2 = await res2.json();
+      if (!results2 || results2.length === 0) {
+        box.innerHTML = '<span class="lyrics-status">⚠ Inga lyrics hittades. Kontrollera låttitel/artist.</span>';
+        btn.disabled = false;
+        btn.textContent = '⬇ HÄMTA LYRICS';
+        return;
+      }
+      processlyricsResult(results2[0], song);
+    } else {
+      processlyricsResult(results[0], song);
+    }
+
+  } catch(e) {
+    box.innerHTML = `<span class="lyrics-status">⚠ Fel: ${e.message}. Kontrollera nätverksanslutning.</span>`;
+  }
+
+  btn.disabled = false;
+  btn.textContent = '⬇ HÄMTA LYRICS';
+}
+
+function processlyricsResult(result, song) {
+  song.lyricsPlain = result.plainLyrics || '';
+  song.lyrics = result.syncedLyrics || result.plainLyrics || '';
+  song.lyricsTrackName = result.trackName;
+  song.lyricsArtist = result.artistName;
+  saveState();
+  renderLyricsDisplay();
+  showToast(`Lyrics hämtade: ${result.trackName}`);
+}
+
+// ===================== INIT =====================
+loadState();
+showSetlist();
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (currentSongIndex === -1) return;
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navSong(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navSong(-1);
+  if (e.key === 'Escape') showSetlist();
+  if (e.key === 'f' || e.key === 'F') toggleLiveMode();
+});
+</script>
+</body>
+</html>
