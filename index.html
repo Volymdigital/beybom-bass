@@ -2,726 +2,1092 @@
 <html lang="sv">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>BEYBOM — Bass Player</title>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script>/* Sortable.js 1.15.2 inline */
+/*! Sortable 1.15.2 - MIT | git://github.com/SortableJS/Sortable.git */
+!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t=t||self).Sortable=e()}(this,function(){"use strict";function e(e,t){var n,o=Object.keys(e);return Object.getOwnPropertySymbols&&(n=Object.getOwnPropertySymbols(e),t&&(n=n.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),o.push.apply(o,n)),o}function I(o){for(var t=1;t<arguments.length;t++){var i=null!=arguments[t]?arguments[t]:{};t%2?e(Object(i),!0).forEach(function(t){var e,n;e=o,t=i[n=t],n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t}):Object.getOwnPropertyDescriptors?Object.defineProperties(o,Object.getOwnPropertyDescriptors(i)):e(Object(i)).forEach(function(t){Object.defineProperty(o,t,Object.getOwnPropertyDescriptor(i,t))})}return o}function o(t){return(o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function a(){return(a=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n,o=arguments[e];for(n in o)Object.prototype.hasOwnProperty.call(o,n)&&(t[n]=o[n])}return t}).apply(this,arguments)}function i(t,e){if(null==t)return{};var n,o=function(t,e){if(null==t)return{};for(var n,o={},i=Object.keys(t),r=0;r<i.length;r++)n=i[r],0<=e.indexOf(n)||(o[n]=t[n]);return o}(t,e);if(Object.getOwnPropertySymbols)for(var i=Object.getOwnPropertySymbols(t),r=0;r<i.length;r++)n=i[r],0<=e.indexOf(n)||Object.prototype.propertyIsEnumerable.call(t,n)&&(o[n]=t[n]);return o}function r(t){return function(t){if(Array.isArray(t))return l(t)}(t)||function(t){if("undefined"!=typeof Symbol&&null!=t[Symbol.iterator]||null!=t["@@iterator"])return Array.from(t)}(t)||function(t,e){if(t){if("string"==typeof t)return l(t,e);var n=Object.prototype.toString.call(t).slice(8,-1);return"Map"===(n="Object"===n&&t.constructor?t.constructor.name:n)||"Set"===n?Array.from(t):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?l(t,e):void 0}}(t)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function l(t,e){(null==e||e>t.length)&&(e=t.length);for(var n=0,o=new Array(e);n<e;n++)o[n]=t[n];return o}function t(t){if("undefined"!=typeof window&&window.navigator)return!!navigator.userAgent.match(t)}var y=t(/(?:Trident.*rv[ :]?11\.|msie|iemobile|Windows Phone)/i),w=t(/Edge/i),s=t(/firefox/i),u=t(/safari/i)&&!t(/chrome/i)&&!t(/android/i),n=t(/iP(ad|od|hone)/i),c=t(/chrome/i)&&t(/android/i),d={capture:!1,passive:!1};function h(t,e,n){t.addEventListener(e,n,!y&&d)}function f(t,e,n){t.removeEventListener(e,n,!y&&d)}function p(t,e){if(e&&(">"===e[0]&&(e=e.substring(1)),t))try{if(t.matches)return t.matches(e);if(t.msMatchesSelector)return t.msMatchesSelector(e);if(t.webkitMatchesSelector)return t.webkitMatchesSelector(e)}catch(t){return}}function P(t,e,n,o){if(t){n=n||document;do{if(null!=e&&(">"!==e[0]||t.parentNode===n)&&p(t,e)||o&&t===n)return t}while(t!==n&&(t=(i=t).host&&i!==document&&i.host.nodeType?i.host:i.parentNode))}var i;return null}var g,m=/\s+/g;function k(t,e,n){var o;t&&e&&(t.classList?t.classList[n?"add":"remove"](e):(o=(" "+t.className+" ").replace(m," ").replace(" "+e+" "," "),t.className=(o+(n?" "+e:"")).replace(m," ")))}function R(t,e,n){var o=t&&t.style;if(o){if(void 0===n)return document.defaultView&&document.defaultView.getComputedStyle?n=document.defaultView.getComputedStyle(t,""):t.currentStyle&&(n=t.currentStyle),void 0===e?n:n[e];o[e=!(e in o||-1!==e.indexOf("webkit"))?"-webkit-"+e:e]=n+("string"==typeof n?"":"px")}}function v(t,e){var n="";if("string"==typeof t)n=t;else do{var o=R(t,"transform")}while(o&&"none"!==o&&(n=o+" "+n),!e&&(t=t.parentNode));var i=window.DOMMatrix||window.WebKitCSSMatrix||window.CSSMatrix||window.MSCSSMatrix;return i&&new i(n)}function b(t,e,n){if(t){var o=t.getElementsByTagName(e),i=0,r=o.length;if(n)for(;i<r;i++)n(o[i],i);return o}return[]}function O(){var t=document.scrollingElement;return t||document.documentElement}function X(t,e,n,o,i){if(t.getBoundingClientRect||t===window){var r,a,l,s,c,u,d=t!==window&&t.parentNode&&t!==O()?(a=(r=t.getBoundingClientRect()).top,l=r.left,s=r.bottom,c=r.right,u=r.height,r.width):(l=a=0,s=window.innerHeight,c=window.innerWidth,u=window.innerHeight,window.innerWidth);if((e||n)&&t!==window&&(i=i||t.parentNode,!y))do{if(i&&i.getBoundingClientRect&&("none"!==R(i,"transform")||n&&"static"!==R(i,"position"))){var h=i.getBoundingClientRect();a-=h.top+parseInt(R(i,"border-top-width")),l-=h.left+parseInt(R(i,"border-left-width")),s=a+r.height,c=l+r.width;break}}while(i=i.parentNode);return o&&t!==window&&(o=(e=v(i||t))&&e.a,t=e&&e.d,e&&(s=(a/=t)+(u/=t),c=(l/=o)+(d/=o))),{top:a,left:l,bottom:s,right:c,width:d,height:u}}}function Y(t,e,n){for(var o=M(t,!0),i=X(t)[e];o;){var r=X(o)[n];if(!("top"===n||"left"===n?r<=i:i<=r))return o;if(o===O())break;o=M(o,!1)}return!1}function B(t,e,n,o){for(var i=0,r=0,a=t.children;r<a.length;){if("none"!==a[r].style.display&&a[r]!==Ft.ghost&&(o||a[r]!==Ft.dragged)&&P(a[r],n.draggable,t,!1)){if(i===e)return a[r];i++}r++}return null}function F(t,e){for(var n=t.lastElementChild;n&&(n===Ft.ghost||"none"===R(n,"display")||e&&!p(n,e));)n=n.previousElementSibling;return n||null}function j(t,e){var n=0;if(!t||!t.parentNode)return-1;for(;t=t.previousElementSibling;)"TEMPLATE"===t.nodeName.toUpperCase()||t===Ft.clone||e&&!p(t,e)||n++;return n}function E(t){var e=0,n=0,o=O();if(t)do{var i=v(t),r=i.a,i=i.d}while(e+=t.scrollLeft*r,n+=t.scrollTop*i,t!==o&&(t=t.parentNode));return[e,n]}function M(t,e){if(!t||!t.getBoundingClientRect)return O();var n=t,o=!1;do{if(n.clientWidth<n.scrollWidth||n.clientHeight<n.scrollHeight){var i=R(n);if(n.clientWidth<n.scrollWidth&&("auto"==i.overflowX||"scroll"==i.overflowX)||n.clientHeight<n.scrollHeight&&("auto"==i.overflowY||"scroll"==i.overflowY)){if(!n.getBoundingClientRect||n===document.body)return O();if(o||e)return n;o=!0}}}while(n=n.parentNode);return O()}function D(t,e){return Math.round(t.top)===Math.round(e.top)&&Math.round(t.left)===Math.round(e.left)&&Math.round(t.height)===Math.round(e.height)&&Math.round(t.width)===Math.round(e.width)}function S(e,n){return function(){var t;g||(1===(t=arguments).length?e.call(this,t[0]):e.apply(this,t),g=setTimeout(function(){g=void 0},n))}}function H(t,e,n){t.scrollLeft+=e,t.scrollTop+=n}function _(t){var e=window.Polymer,n=window.jQuery||window.Zepto;return e&&e.dom?e.dom(t).cloneNode(!0):n?n(t).clone(!0)[0]:t.cloneNode(!0)}function C(t,e){R(t,"position","absolute"),R(t,"top",e.top),R(t,"left",e.left),R(t,"width",e.width),R(t,"height",e.height)}function T(t){R(t,"position",""),R(t,"top",""),R(t,"left",""),R(t,"width",""),R(t,"height","")}function L(n,o,i){var r={};return Array.from(n.children).forEach(function(t){var e;P(t,o.draggable,n,!1)&&!t.animated&&t!==i&&(e=X(t),r.left=Math.min(null!==(t=r.left)&&void 0!==t?t:1/0,e.left),r.top=Math.min(null!==(t=r.top)&&void 0!==t?t:1/0,e.top),r.right=Math.max(null!==(t=r.right)&&void 0!==t?t:-1/0,e.right),r.bottom=Math.max(null!==(t=r.bottom)&&void 0!==t?t:-1/0,e.bottom))}),r.width=r.right-r.left,r.height=r.bottom-r.top,r.x=r.left,r.y=r.top,r}var K="Sortable"+(new Date).getTime();function x(){var e,o=[];return{captureAnimationState:function(){o=[],this.options.animation&&[].slice.call(this.el.children).forEach(function(t){var e,n;"none"!==R(t,"display")&&t!==Ft.ghost&&(o.push({target:t,rect:X(t)}),e=I({},o[o.length-1].rect),!t.thisAnimationDuration||(n=v(t,!0))&&(e.top-=n.f,e.left-=n.e),t.fromRect=e)})},addAnimationState:function(t){o.push(t)},removeAnimationState:function(t){o.splice(function(t,e){for(var n in t)if(t.hasOwnProperty(n))for(var o in e)if(e.hasOwnProperty(o)&&e[o]===t[n][o])return Number(n);return-1}(o,{target:t}),1)},animateAll:function(t){var c=this;if(!this.options.animation)return clearTimeout(e),void("function"==typeof t&&t());var u=!1,d=0;o.forEach(function(t){var e=0,n=t.target,o=n.fromRect,i=X(n),r=n.prevFromRect,a=n.prevToRect,l=t.rect,s=v(n,!0);s&&(i.top-=s.f,i.left-=s.e),n.toRect=i,n.thisAnimationDuration&&D(r,i)&&!D(o,i)&&(l.top-i.top)/(l.left-i.left)==(o.top-i.top)/(o.left-i.left)&&(t=l,s=r,r=a,a=c.options,e=Math.sqrt(Math.pow(s.top-t.top,2)+Math.pow(s.left-t.left,2))/Math.sqrt(Math.pow(s.top-r.top,2)+Math.pow(s.left-r.left,2))*a.animation),D(i,o)||(n.prevFromRect=o,n.prevToRect=i,e=e||c.options.animation,c.animate(n,l,i,e)),e&&(u=!0,d=Math.max(d,e),clearTimeout(n.animationResetTimer),n.animationResetTimer=setTimeout(function(){n.animationTime=0,n.prevFromRect=null,n.fromRect=null,n.prevToRect=null,n.thisAnimationDuration=null},e),n.thisAnimationDuration=e)}),clearTimeout(e),u?e=setTimeout(function(){"function"==typeof t&&t()},d):"function"==typeof t&&t(),o=[]},animate:function(t,e,n,o){var i,r;o&&(R(t,"transition",""),R(t,"transform",""),i=(r=v(this.el))&&r.a,r=r&&r.d,i=(e.left-n.left)/(i||1),r=(e.top-n.top)/(r||1),t.animatingX=!!i,t.animatingY=!!r,R(t,"transform","translate3d("+i+"px,"+r+"px,0)"),this.forRepaintDummy=t.offsetWidth,R(t,"transition","transform "+o+"ms"+(this.options.easing?" "+this.options.easing:"")),R(t,"transform","translate3d(0,0,0)"),"number"==typeof t.animated&&clearTimeout(t.animated),t.animated=setTimeout(function(){R(t,"transition",""),R(t,"transform",""),t.animated=!1,t.animatingX=!1,t.animatingY=!1},o))}}}var A=[],N={initializeByDefault:!0},W={mount:function(e){for(var t in N)!N.hasOwnProperty(t)||t in e||(e[t]=N[t]);A.forEach(function(t){if(t.pluginName===e.pluginName)throw"Sortable: Cannot mount plugin ".concat(e.pluginName," more than once")}),A.push(e)},pluginEvent:function(e,n,o){var t=this;this.eventCanceled=!1,o.cancel=function(){t.eventCanceled=!0};var i=e+"Global";A.forEach(function(t){n[t.pluginName]&&(n[t.pluginName][i]&&n[t.pluginName][i](I({sortable:n},o)),n.options[t.pluginName]&&n[t.pluginName][e]&&n[t.pluginName][e](I({sortable:n},o)))})},initializePlugins:function(n,o,i,t){for(var e in A.forEach(function(t){var e=t.pluginName;(n.options[e]||t.initializeByDefault)&&((t=new t(n,o,n.options)).sortable=n,t.options=n.options,n[e]=t,a(i,t.defaults))}),n.options){var r;n.options.hasOwnProperty(e)&&(void 0!==(r=this.modifyOption(n,e,n.options[e]))&&(n.options[e]=r))}},getEventProperties:function(e,n){var o={};return A.forEach(function(t){"function"==typeof t.eventProperties&&a(o,t.eventProperties.call(n[t.pluginName],e))}),o},modifyOption:function(e,n,o){var i;return A.forEach(function(t){e[t.pluginName]&&t.optionListeners&&"function"==typeof t.optionListeners[n]&&(i=t.optionListeners[n].call(e[t.pluginName],o))}),i}};function z(t){var e=t.sortable,n=t.rootEl,o=t.name,i=t.targetEl,r=t.cloneEl,a=t.toEl,l=t.fromEl,s=t.oldIndex,c=t.newIndex,u=t.oldDraggableIndex,d=t.newDraggableIndex,h=t.originalEvent,f=t.putSortable,p=t.extraEventProperties;if(e=e||n&&n[K]){var g,m=e.options,t="on"+o.charAt(0).toUpperCase()+o.substr(1);!window.CustomEvent||y||w?(g=document.createEvent("Event")).initEvent(o,!0,!0):g=new CustomEvent(o,{bubbles:!0,cancelable:!0}),g.to=a||n,g.from=l||n,g.item=i||n,g.clone=r,g.oldIndex=s,g.newIndex=c,g.oldDraggableIndex=u,g.newDraggableIndex=d,g.originalEvent=h,g.pullMode=f?f.lastPutMode:void 0;var v,b=I(I({},p),W.getEventProperties(o,e));for(v in b)g[v]=b[v];n&&n.dispatchEvent(g),m[t]&&m[t].call(e,g)}}function G(t,e){var n=(o=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{}).evt,o=i(o,U);W.pluginEvent.bind(Ft)(t,e,I({dragEl:V,parentEl:Z,ghostEl:$,rootEl:Q,nextEl:J,lastDownEl:tt,cloneEl:et,cloneHidden:nt,dragStarted:gt,putSortable:st,activeSortable:Ft.active,originalEvent:n,oldIndex:ot,oldDraggableIndex:rt,newIndex:it,newDraggableIndex:at,hideGhostForTarget:Rt,unhideGhostForTarget:Xt,cloneNowHidden:function(){nt=!0},cloneNowShown:function(){nt=!1},dispatchSortableEvent:function(t){q({sortable:e,name:t,originalEvent:n})}},o))}var U=["evt"];function q(t){z(I({putSortable:st,cloneEl:et,targetEl:V,rootEl:Q,oldIndex:ot,oldDraggableIndex:rt,newIndex:it,newDraggableIndex:at},t))}var V,Z,$,Q,J,tt,et,nt,ot,it,rt,at,lt,st,ct,ut,dt,ht,ft,pt,gt,mt,vt,bt,yt,wt=!1,Et=!1,Dt=[],St=!1,_t=!1,Ct=[],Tt=!1,xt=[],Ot="undefined"!=typeof document,Mt=n,At=w||y?"cssFloat":"float",Nt=Ot&&!c&&!n&&"draggable"in document.createElement("div"),It=function(){if(Ot){if(y)return!1;var t=document.createElement("x");return t.style.cssText="pointer-events:auto","auto"===t.style.pointerEvents}}(),Pt=function(t,e){var n=R(t),o=parseInt(n.width)-parseInt(n.paddingLeft)-parseInt(n.paddingRight)-parseInt(n.borderLeftWidth)-parseInt(n.borderRightWidth),i=B(t,0,e),r=B(t,1,e),a=i&&R(i),l=r&&R(r),s=a&&parseInt(a.marginLeft)+parseInt(a.marginRight)+X(i).width,t=l&&parseInt(l.marginLeft)+parseInt(l.marginRight)+X(r).width;if("flex"===n.display)return"column"===n.flexDirection||"column-reverse"===n.flexDirection?"vertical":"horizontal";if("grid"===n.display)return n.gridTemplateColumns.split(" ").length<=1?"vertical":"horizontal";if(i&&a.float&&"none"!==a.float){e="left"===a.float?"left":"right";return!r||"both"!==l.clear&&l.clear!==e?"horizontal":"vertical"}return i&&("block"===a.display||"flex"===a.display||"table"===a.display||"grid"===a.display||o<=s&&"none"===n[At]||r&&"none"===n[At]&&o<s+t)?"vertical":"horizontal"},kt=function(t){function l(r,a){return function(t,e,n,o){var i=t.options.group.name&&e.options.group.name&&t.options.group.name===e.options.group.name;if(null==r&&(a||i))return!0;if(null==r||!1===r)return!1;if(a&&"clone"===r)return r;if("function"==typeof r)return l(r(t,e,n,o),a)(t,e,n,o);e=(a?t:e).options.group.name;return!0===r||"string"==typeof r&&r===e||r.join&&-1<r.indexOf(e)}}var e={},n=t.group;n&&"object"==o(n)||(n={name:n}),e.name=n.name,e.checkPull=l(n.pull,!0),e.checkPut=l(n.put),e.revertClone=n.revertClone,t.group=e},Rt=function(){!It&&$&&R($,"display","none")},Xt=function(){!It&&$&&R($,"display","")};Ot&&!c&&document.addEventListener("click",function(t){if(Et)return t.preventDefault(),t.stopPropagation&&t.stopPropagation(),t.stopImmediatePropagation&&t.stopImmediatePropagation(),Et=!1},!0);function Yt(t){if(V){t=t.touches?t.touches[0]:t;var e=(i=t.clientX,r=t.clientY,Dt.some(function(t){var e=t[K].options.emptyInsertThreshold;if(e&&!F(t)){var n=X(t),o=i>=n.left-e&&i<=n.right+e,e=r>=n.top-e&&r<=n.bottom+e;return o&&e?a=t:void 0}}),a);if(e){var n,o={};for(n in t)t.hasOwnProperty(n)&&(o[n]=t[n]);o.target=o.rootEl=e,o.preventDefault=void 0,o.stopPropagation=void 0,e[K]._onDragOver(o)}}var i,r,a}function Bt(t){V&&V.parentNode[K]._isOutsideThisEl(t.target)}function Ft(t,e){if(!t||!t.nodeType||1!==t.nodeType)throw"Sortable: `el` must be an HTMLElement, not ".concat({}.toString.call(t));this.el=t,this.options=e=a({},e),t[K]=this;var n,o,i={group:null,sort:!0,disabled:!1,store:null,handle:null,draggable:/^[uo]l$/i.test(t.nodeName)?">li":">*",swapThreshold:1,invertSwap:!1,invertedSwapThreshold:null,removeCloneOnHide:!0,direction:function(){return Pt(t,this.options)},ghostClass:"sortable-ghost",chosenClass:"sortable-chosen",dragClass:"sortable-drag",ignore:"a, img",filter:null,preventOnFilter:!0,animation:0,easing:null,setData:function(t,e){t.setData("Text",e.textContent)},dropBubble:!1,dragoverBubble:!1,dataIdAttr:"data-id",delay:0,delayOnTouchOnly:!1,touchStartThreshold:(Number.parseInt?Number:window).parseInt(window.devicePixelRatio,10)||1,forceFallback:!1,fallbackClass:"sortable-fallback",fallbackOnBody:!1,fallbackTolerance:0,fallbackOffset:{x:0,y:0},supportPointer:!1!==Ft.supportPointer&&"PointerEvent"in window&&!u,emptyInsertThreshold:5};for(n in W.initializePlugins(this,t,i),i)n in e||(e[n]=i[n]);for(o in kt(e),this)"_"===o.charAt(0)&&"function"==typeof this[o]&&(this[o]=this[o].bind(this));this.nativeDraggable=!e.forceFallback&&Nt,this.nativeDraggable&&(this.options.touchStartThreshold=1),e.supportPointer?h(t,"pointerdown",this._onTapStart):(h(t,"mousedown",this._onTapStart),h(t,"touchstart",this._onTapStart)),this.nativeDraggable&&(h(t,"dragover",this),h(t,"dragenter",this)),Dt.push(this.el),e.store&&e.store.get&&this.sort(e.store.get(this)||[]),a(this,x())}function jt(t,e,n,o,i,r,a,l){var s,c,u=t[K],d=u.options.onMove;return!window.CustomEvent||y||w?(s=document.createEvent("Event")).initEvent("move",!0,!0):s=new CustomEvent("move",{bubbles:!0,cancelable:!0}),s.to=e,s.from=t,s.dragged=n,s.draggedRect=o,s.related=i||e,s.relatedRect=r||X(e),s.willInsertAfter=l,s.originalEvent=a,t.dispatchEvent(s),c=d?d.call(u,s,a):c}function Ht(t){t.draggable=!1}function Lt(){Tt=!1}function Kt(t){return setTimeout(t,0)}function Wt(t){return clearTimeout(t)}Ft.prototype={constructor:Ft,_isOutsideThisEl:function(t){this.el.contains(t)||t===this.el||(mt=null)},_getDirection:function(t,e){return"function"==typeof this.options.direction?this.options.direction.call(this,t,e,V):this.options.direction},_onTapStart:function(e){if(e.cancelable){var n=this,o=this.el,t=this.options,i=t.preventOnFilter,r=e.type,a=e.touches&&e.touches[0]||e.pointerType&&"touch"===e.pointerType&&e,l=(a||e).target,s=e.target.shadowRoot&&(e.path&&e.path[0]||e.composedPath&&e.composedPath()[0])||l,c=t.filter;if(!function(t){xt.length=0;var e=t.getElementsByTagName("input"),n=e.length;for(;n--;){var o=e[n];o.checked&&xt.push(o)}}(o),!V&&!(/mousedown|pointerdown/.test(r)&&0!==e.button||t.disabled)&&!s.isContentEditable&&(this.nativeDraggable||!u||!l||"SELECT"!==l.tagName.toUpperCase())&&!((l=P(l,t.draggable,o,!1))&&l.animated||tt===l)){if(ot=j(l),rt=j(l,t.draggable),"function"==typeof c){if(c.call(this,e,l,this))return q({sortable:n,rootEl:s,name:"filter",targetEl:l,toEl:o,fromEl:o}),G("filter",n,{evt:e}),void(i&&e.cancelable&&e.preventDefault())}else if(c=c&&c.split(",").some(function(t){if(t=P(s,t.trim(),o,!1))return q({sortable:n,rootEl:t,name:"filter",targetEl:l,fromEl:o,toEl:o}),G("filter",n,{evt:e}),!0}))return void(i&&e.cancelable&&e.preventDefault());t.handle&&!P(s,t.handle,o,!1)||this._prepareDragStart(e,a,l)}}},_prepareDragStart:function(t,e,n){var o,i=this,r=i.el,a=i.options,l=r.ownerDocument;n&&!V&&n.parentNode===r&&(o=X(n),Q=r,Z=(V=n).parentNode,J=V.nextSibling,tt=n,lt=a.group,ct={target:Ft.dragged=V,clientX:(e||t).clientX,clientY:(e||t).clientY},ft=ct.clientX-o.left,pt=ct.clientY-o.top,this._lastX=(e||t).clientX,this._lastY=(e||t).clientY,V.style["will-change"]="all",o=function(){G("delayEnded",i,{evt:t}),Ft.eventCanceled?i._onDrop():(i._disableDelayedDragEvents(),!s&&i.nativeDraggable&&(V.draggable=!0),i._triggerDragStart(t,e),q({sortable:i,name:"choose",originalEvent:t}),k(V,a.chosenClass,!0))},a.ignore.split(",").forEach(function(t){b(V,t.trim(),Ht)}),h(l,"dragover",Yt),h(l,"mousemove",Yt),h(l,"touchmove",Yt),h(l,"mouseup",i._onDrop),h(l,"touchend",i._onDrop),h(l,"touchcancel",i._onDrop),s&&this.nativeDraggable&&(this.options.touchStartThreshold=4,V.draggable=!0),G("delayStart",this,{evt:t}),!a.delay||a.delayOnTouchOnly&&!e||this.nativeDraggable&&(w||y)?o():Ft.eventCanceled?this._onDrop():(h(l,"mouseup",i._disableDelayedDrag),h(l,"touchend",i._disableDelayedDrag),h(l,"touchcancel",i._disableDelayedDrag),h(l,"mousemove",i._delayedDragTouchMoveHandler),h(l,"touchmove",i._delayedDragTouchMoveHandler),a.supportPointer&&h(l,"pointermove",i._delayedDragTouchMoveHandler),i._dragStartTimer=setTimeout(o,a.delay)))},_delayedDragTouchMoveHandler:function(t){t=t.touches?t.touches[0]:t;Math.max(Math.abs(t.clientX-this._lastX),Math.abs(t.clientY-this._lastY))>=Math.floor(this.options.touchStartThreshold/(this.nativeDraggable&&window.devicePixelRatio||1))&&this._disableDelayedDrag()},_disableDelayedDrag:function(){V&&Ht(V),clearTimeout(this._dragStartTimer),this._disableDelayedDragEvents()},_disableDelayedDragEvents:function(){var t=this.el.ownerDocument;f(t,"mouseup",this._disableDelayedDrag),f(t,"touchend",this._disableDelayedDrag),f(t,"touchcancel",this._disableDelayedDrag),f(t,"mousemove",this._delayedDragTouchMoveHandler),f(t,"touchmove",this._delayedDragTouchMoveHandler),f(t,"pointermove",this._delayedDragTouchMoveHandler)},_triggerDragStart:function(t,e){e=e||"touch"==t.pointerType&&t,!this.nativeDraggable||e?this.options.supportPointer?h(document,"pointermove",this._onTouchMove):h(document,e?"touchmove":"mousemove",this._onTouchMove):(h(V,"dragend",this),h(Q,"dragstart",this._onDragStart));try{document.selection?Kt(function(){document.selection.empty()}):window.getSelection().removeAllRanges()}catch(t){}},_dragStarted:function(t,e){var n;wt=!1,Q&&V?(G("dragStarted",this,{evt:e}),this.nativeDraggable&&h(document,"dragover",Bt),n=this.options,t||k(V,n.dragClass,!1),k(V,n.ghostClass,!0),Ft.active=this,t&&this._appendGhost(),q({sortable:this,name:"start",originalEvent:e})):this._nulling()},_emulateDragOver:function(){if(ut){this._lastX=ut.clientX,this._lastY=ut.clientY,Rt();for(var t=document.elementFromPoint(ut.clientX,ut.clientY),e=t;t&&t.shadowRoot&&(t=t.shadowRoot.elementFromPoint(ut.clientX,ut.clientY))!==e;)e=t;if(V.parentNode[K]._isOutsideThisEl(t),e)do{if(e[K])if(e[K]._onDragOver({clientX:ut.clientX,clientY:ut.clientY,target:t,rootEl:e})&&!this.options.dragoverBubble)break}while(e=(t=e).parentNode);Xt()}},_onTouchMove:function(t){if(ct){var e=this.options,n=e.fallbackTolerance,o=e.fallbackOffset,i=t.touches?t.touches[0]:t,r=$&&v($,!0),a=$&&r&&r.a,l=$&&r&&r.d,e=Mt&&yt&&E(yt),a=(i.clientX-ct.clientX+o.x)/(a||1)+(e?e[0]-Ct[0]:0)/(a||1),l=(i.clientY-ct.clientY+o.y)/(l||1)+(e?e[1]-Ct[1]:0)/(l||1);if(!Ft.active&&!wt){if(n&&Math.max(Math.abs(i.clientX-this._lastX),Math.abs(i.clientY-this._lastY))<n)return;this._onDragStart(t,!0)}$&&(r?(r.e+=a-(dt||0),r.f+=l-(ht||0)):r={a:1,b:0,c:0,d:1,e:a,f:l},r="matrix(".concat(r.a,",").concat(r.b,",").concat(r.c,",").concat(r.d,",").concat(r.e,",").concat(r.f,")"),R($,"webkitTransform",r),R($,"mozTransform",r),R($,"msTransform",r),R($,"transform",r),dt=a,ht=l,ut=i),t.cancelable&&t.preventDefault()}},_appendGhost:function(){if(!$){var t=this.options.fallbackOnBody?document.body:Q,e=X(V,!0,Mt,!0,t),n=this.options;if(Mt){for(yt=t;"static"===R(yt,"position")&&"none"===R(yt,"transform")&&yt!==document;)yt=yt.parentNode;yt!==document.body&&yt!==document.documentElement?(yt===document&&(yt=O()),e.top+=yt.scrollTop,e.left+=yt.scrollLeft):yt=O(),Ct=E(yt)}k($=V.cloneNode(!0),n.ghostClass,!1),k($,n.fallbackClass,!0),k($,n.dragClass,!0),R($,"transition",""),R($,"transform",""),R($,"box-sizing","border-box"),R($,"margin",0),R($,"top",e.top),R($,"left",e.left),R($,"width",e.width),R($,"height",e.height),R($,"opacity","0.8"),R($,"position",Mt?"absolute":"fixed"),R($,"zIndex","100000"),R($,"pointerEvents","none"),Ft.ghost=$,t.appendChild($),R($,"transform-origin",ft/parseInt($.style.width)*100+"% "+pt/parseInt($.style.height)*100+"%")}},_onDragStart:function(t,e){var n=this,o=t.dataTransfer,i=n.options;G("dragStart",this,{evt:t}),Ft.eventCanceled?this._onDrop():(G("setupClone",this),Ft.eventCanceled||((et=_(V)).removeAttribute("id"),et.draggable=!1,et.style["will-change"]="",this._hideClone(),k(et,this.options.chosenClass,!1),Ft.clone=et),n.cloneId=Kt(function(){G("clone",n),Ft.eventCanceled||(n.options.removeCloneOnHide||Q.insertBefore(et,V),n._hideClone(),q({sortable:n,name:"clone"}))}),e||k(V,i.dragClass,!0),e?(Et=!0,n._loopId=setInterval(n._emulateDragOver,50)):(f(document,"mouseup",n._onDrop),f(document,"touchend",n._onDrop),f(document,"touchcancel",n._onDrop),o&&(o.effectAllowed="move",i.setData&&i.setData.call(n,o,V)),h(document,"drop",n),R(V,"transform","translateZ(0)")),wt=!0,n._dragStartId=Kt(n._dragStarted.bind(n,e,t)),h(document,"selectstart",n),gt=!0,u&&R(document.body,"user-select","none"))},_onDragOver:function(n){var o,i,r,t,e,a=this.el,l=n.target,s=this.options,c=s.group,u=Ft.active,d=lt===c,h=s.sort,f=st||u,p=this,g=!1;if(!Tt){if(void 0!==n.preventDefault&&n.cancelable&&n.preventDefault(),l=P(l,s.draggable,a,!0),O("dragOver"),Ft.eventCanceled)return g;if(V.contains(n.target)||l.animated&&l.animatingX&&l.animatingY||p._ignoreWhileAnimating===l)return A(!1);if(Et=!1,u&&!s.disabled&&(d?h||(i=Z!==Q):st===this||(this.lastPutMode=lt.checkPull(this,u,V,n))&&c.checkPut(this,u,V,n))){if(r="vertical"===this._getDirection(n,l),o=X(V),O("dragOverValid"),Ft.eventCanceled)return g;if(i)return Z=Q,M(),this._hideClone(),O("revert"),Ft.eventCanceled||(J?Q.insertBefore(V,J):Q.appendChild(V)),A(!0);var m=F(a,s.draggable);if(m&&(S=n,c=r,x=X(F((D=this).el,D.options.draggable)),D=L(D.el,D.options,$),!(c?S.clientX>D.right+10||S.clientY>x.bottom&&S.clientX>x.left:S.clientY>D.bottom+10||S.clientX>x.right&&S.clientY>x.top)||m.animated)){if(m&&(t=n,e=r,C=X(B((_=this).el,0,_.options,!0)),_=L(_.el,_.options,$),e?t.clientX<_.left-10||t.clientY<C.top&&t.clientX<C.right:t.clientY<_.top-10||t.clientY<C.bottom&&t.clientX<C.left)){var v=B(a,0,s,!0);if(v===V)return A(!1);if(E=X(l=v),!1!==jt(Q,a,V,o,l,E,n,!1))return M(),a.insertBefore(V,v),Z=a,N(),A(!0)}else if(l.parentNode===a){var b,y,w,E=X(l),D=V.parentNode!==a,S=(S=V.animated&&V.toRect||o,x=l.animated&&l.toRect||E,_=(e=r)?S.left:S.top,t=e?S.right:S.bottom,C=e?S.width:S.height,v=e?x.left:x.top,S=e?x.right:x.bottom,x=e?x.width:x.height,!(_===v||t===S||_+C/2===v+x/2)),_=r?"top":"left",C=Y(l,"top","top")||Y(V,"top","top"),v=C?C.scrollTop:void 0;if(mt!==l&&(y=E[_],St=!1,_t=!S&&s.invertSwap||D),0!==(b=function(t,e,n,o,i,r,a,l){var s=o?t.clientY:t.clientX,c=o?n.height:n.width,t=o?n.top:n.left,o=o?n.bottom:n.right,n=!1;if(!a)if(l&&bt<c*i){if(St=!St&&(1===vt?t+c*r/2<s:s<o-c*r/2)?!0:St)n=!0;else if(1===vt?s<t+bt:o-bt<s)return-vt}else if(t+c*(1-i)/2<s&&s<o-c*(1-i)/2)return function(t){return j(V)<j(t)?1:-1}(e);if((n=n||a)&&(s<t+c*r/2||o-c*r/2<s))return t+c/2<s?1:-1;return 0}(n,l,E,r,S?1:s.swapThreshold,null==s.invertedSwapThreshold?s.swapThreshold:s.invertedSwapThreshold,_t,mt===l)))for(var T=j(V);(w=Z.children[T-=b])&&("none"===R(w,"display")||w===$););if(0===b||w===l)return A(!1);vt=b;var x=(mt=l).nextElementSibling,D=!1,S=jt(Q,a,V,o,l,E,n,D=1===b);if(!1!==S)return 1!==S&&-1!==S||(D=1===S),Tt=!0,setTimeout(Lt,30),M(),D&&!x?a.appendChild(V):l.parentNode.insertBefore(V,D?x:l),C&&H(C,0,v-C.scrollTop),Z=V.parentNode,void 0===y||_t||(bt=Math.abs(y-X(l)[_])),N(),A(!0)}}else{if(m===V)return A(!1);if((l=m&&a===n.target?m:l)&&(E=X(l)),!1!==jt(Q,a,V,o,l,E,n,!!l))return M(),m&&m.nextSibling?a.insertBefore(V,m.nextSibling):a.appendChild(V),Z=a,N(),A(!0)}if(a.contains(V))return A(!1)}return!1}function O(t,e){G(t,p,I({evt:n,isOwner:d,axis:r?"vertical":"horizontal",revert:i,dragRect:o,targetRect:E,canSort:h,fromSortable:f,target:l,completed:A,onMove:function(t,e){return jt(Q,a,V,o,t,X(t),n,e)},changed:N},e))}function M(){O("dragOverAnimationCapture"),p.captureAnimationState(),p!==f&&f.captureAnimationState()}function A(t){return O("dragOverCompleted",{insertion:t}),t&&(d?u._hideClone():u._showClone(p),p!==f&&(k(V,(st||u).options.ghostClass,!1),k(V,s.ghostClass,!0)),st!==p&&p!==Ft.active?st=p:p===Ft.active&&st&&(st=null),f===p&&(p._ignoreWhileAnimating=l),p.animateAll(function(){O("dragOverAnimationComplete"),p._ignoreWhileAnimating=null}),p!==f&&(f.animateAll(),f._ignoreWhileAnimating=null)),(l===V&&!V.animated||l===a&&!l.animated)&&(mt=null),s.dragoverBubble||n.rootEl||l===document||(V.parentNode[K]._isOutsideThisEl(n.target),t||Yt(n)),!s.dragoverBubble&&n.stopPropagation&&n.stopPropagation(),g=!0}function N(){it=j(V),at=j(V,s.draggable),q({sortable:p,name:"change",toEl:a,newIndex:it,newDraggableIndex:at,originalEvent:n})}},_ignoreWhileAnimating:null,_offMoveEvents:function(){f(document,"mousemove",this._onTouchMove),f(document,"touchmove",this._onTouchMove),f(document,"pointermove",this._onTouchMove),f(document,"dragover",Yt),f(document,"mousemove",Yt),f(document,"touchmove",Yt)},_offUpEvents:function(){var t=this.el.ownerDocument;f(t,"mouseup",this._onDrop),f(t,"touchend",this._onDrop),f(t,"pointerup",this._onDrop),f(t,"touchcancel",this._onDrop),f(document,"selectstart",this)},_onDrop:function(t){var e=this.el,n=this.options;it=j(V),at=j(V,n.draggable),G("drop",this,{evt:t}),Z=V&&V.parentNode,it=j(V),at=j(V,n.draggable),Ft.eventCanceled||(St=_t=wt=!1,clearInterval(this._loopId),clearTimeout(this._dragStartTimer),Wt(this.cloneId),Wt(this._dragStartId),this.nativeDraggable&&(f(document,"drop",this),f(e,"dragstart",this._onDragStart)),this._offMoveEvents(),this._offUpEvents(),u&&R(document.body,"user-select",""),R(V,"transform",""),t&&(gt&&(t.cancelable&&t.preventDefault(),n.dropBubble||t.stopPropagation()),$&&$.parentNode&&$.parentNode.removeChild($),(Q===Z||st&&"clone"!==st.lastPutMode)&&et&&et.parentNode&&et.parentNode.removeChild(et),V&&(this.nativeDraggable&&f(V,"dragend",this),Ht(V),V.style["will-change"]="",gt&&!wt&&k(V,(st||this).options.ghostClass,!1),k(V,this.options.chosenClass,!1),q({sortable:this,name:"unchoose",toEl:Z,newIndex:null,newDraggableIndex:null,originalEvent:t}),Q!==Z?(0<=it&&(q({rootEl:Z,name:"add",toEl:Z,fromEl:Q,originalEvent:t}),q({sortable:this,name:"remove",toEl:Z,originalEvent:t}),q({rootEl:Z,name:"sort",toEl:Z,fromEl:Q,originalEvent:t}),q({sortable:this,name:"sort",toEl:Z,originalEvent:t})),st&&st.save()):it!==ot&&0<=it&&(q({sortable:this,name:"update",toEl:Z,originalEvent:t}),q({sortable:this,name:"sort",toEl:Z,originalEvent:t})),Ft.active&&(null!=it&&-1!==it||(it=ot,at=rt),q({sortable:this,name:"end",toEl:Z,originalEvent:t}),this.save())))),this._nulling()},_nulling:function(){G("nulling",this),Q=V=Z=$=J=et=tt=nt=ct=ut=gt=it=at=ot=rt=mt=vt=st=lt=Ft.dragged=Ft.ghost=Ft.clone=Ft.active=null,xt.forEach(function(t){t.checked=!0}),xt.length=dt=ht=0},handleEvent:function(t){switch(t.type){case"drop":case"dragend":this._onDrop(t);break;case"dragenter":case"dragover":V&&(this._onDragOver(t),function(t){t.dataTransfer&&(t.dataTransfer.dropEffect="move");t.cancelable&&t.preventDefault()}(t));break;case"selectstart":t.preventDefault()}},toArray:function(){for(var t,e=[],n=this.el.children,o=0,i=n.length,r=this.options;o<i;o++)P(t=n[o],r.draggable,this.el,!1)&&e.push(t.getAttribute(r.dataIdAttr)||function(t){var e=t.tagName+t.className+t.src+t.href+t.textContent,n=e.length,o=0;for(;n--;)o+=e.charCodeAt(n);return o.toString(36)}(t));return e},sort:function(t,e){var n={},o=this.el;this.toArray().forEach(function(t,e){e=o.children[e];P(e,this.options.draggable,o,!1)&&(n[t]=e)},this),e&&this.captureAnimationState(),t.forEach(function(t){n[t]&&(o.removeChild(n[t]),o.appendChild(n[t]))}),e&&this.animateAll()},save:function(){var t=this.options.store;t&&t.set&&t.set(this)},closest:function(t,e){return P(t,e||this.options.draggable,this.el,!1)},option:function(t,e){var n=this.options;if(void 0===e)return n[t];var o=W.modifyOption(this,t,e);n[t]=void 0!==o?o:e,"group"===t&&kt(n)},destroy:function(){G("destroy",this);var t=this.el;t[K]=null,f(t,"mousedown",this._onTapStart),f(t,"touchstart",this._onTapStart),f(t,"pointerdown",this._onTapStart),this.nativeDraggable&&(f(t,"dragover",this),f(t,"dragenter",this)),Array.prototype.forEach.call(t.querySelectorAll("[draggable]"),function(t){t.removeAttribute("draggable")}),this._onDrop(),this._disableDelayedDragEvents(),Dt.splice(Dt.indexOf(this.el),1),this.el=t=null},_hideClone:function(){nt||(G("hideClone",this),Ft.eventCanceled||(R(et,"display","none"),this.options.removeCloneOnHide&&et.parentNode&&et.parentNode.removeChild(et),nt=!0))},_showClone:function(t){"clone"===t.lastPutMode?nt&&(G("showClone",this),Ft.eventCanceled||(V.parentNode!=Q||this.options.group.revertClone?J?Q.insertBefore(et,J):Q.appendChild(et):Q.insertBefore(et,V),this.options.group.revertClone&&this.animate(V,et),R(et,"display",""),nt=!1)):this._hideClone()}},Ot&&h(document,"touchmove",function(t){(Ft.active||wt)&&t.cancelable&&t.preventDefault()}),Ft.utils={on:h,off:f,css:R,find:b,is:function(t,e){return!!P(t,e,t,!1)},extend:function(t,e){if(t&&e)for(var n in e)e.hasOwnProperty(n)&&(t[n]=e[n]);return t},throttle:S,closest:P,toggleClass:k,clone:_,index:j,nextTick:Kt,cancelNextTick:Wt,detectDirection:Pt,getChild:B},Ft.get=function(t){return t[K]},Ft.mount=function(){for(var t=arguments.length,e=new Array(t),n=0;n<t;n++)e[n]=arguments[n];(e=e[0].constructor===Array?e[0]:e).forEach(function(t){if(!t.prototype||!t.prototype.constructor)throw"Sortable: Mounted plugin must be a constructor function, not ".concat({}.toString.call(t));t.utils&&(Ft.utils=I(I({},Ft.utils),t.utils)),W.mount(t)})},Ft.create=function(t,e){return new Ft(t,e)};var zt,Gt,Ut,qt,Vt,Zt,$t=[],Qt=!(Ft.version="1.15.2");function Jt(){$t.forEach(function(t){clearInterval(t.pid)}),$t=[]}function te(){clearInterval(Zt)}var ee,ne=S(function(n,t,e,o){if(t.scroll){var i,r=(n.touches?n.touches[0]:n).clientX,a=(n.touches?n.touches[0]:n).clientY,l=t.scrollSensitivity,s=t.scrollSpeed,c=O(),u=!1;Gt!==e&&(Gt=e,Jt(),zt=t.scroll,i=t.scrollFn,!0===zt&&(zt=M(e,!0)));var d=0,h=zt;do{var f=h,p=X(f),g=p.top,m=p.bottom,v=p.left,b=p.right,y=p.width,w=p.height,E=void 0,D=void 0,S=f.scrollWidth,_=f.scrollHeight,C=R(f),T=f.scrollLeft,p=f.scrollTop,D=f===c?(E=y<S&&("auto"===C.overflowX||"scroll"===C.overflowX||"visible"===C.overflowX),w<_&&("auto"===C.overflowY||"scroll"===C.overflowY||"visible"===C.overflowY)):(E=y<S&&("auto"===C.overflowX||"scroll"===C.overflowX),w<_&&("auto"===C.overflowY||"scroll"===C.overflowY)),T=E&&(Math.abs(b-r)<=l&&T+y<S)-(Math.abs(v-r)<=l&&!!T),p=D&&(Math.abs(m-a)<=l&&p+w<_)-(Math.abs(g-a)<=l&&!!p);if(!$t[d])for(var x=0;x<=d;x++)$t[x]||($t[x]={});$t[d].vx==T&&$t[d].vy==p&&$t[d].el===f||($t[d].el=f,$t[d].vx=T,$t[d].vy=p,clearInterval($t[d].pid),0==T&&0==p||(u=!0,$t[d].pid=setInterval(function(){o&&0===this.layer&&Ft.active._onTouchMove(Vt);var t=$t[this.layer].vy?$t[this.layer].vy*s:0,e=$t[this.layer].vx?$t[this.layer].vx*s:0;"function"==typeof i&&"continue"!==i.call(Ft.dragged.parentNode[K],e,t,n,Vt,$t[this.layer].el)||H($t[this.layer].el,e,t)}.bind({layer:d}),24))),d++}while(t.bubbleScroll&&h!==c&&(h=M(h,!1)));Qt=u}},30),c=function(t){var e=t.originalEvent,n=t.putSortable,o=t.dragEl,i=t.activeSortable,r=t.dispatchSortableEvent,a=t.hideGhostForTarget,t=t.unhideGhostForTarget;e&&(i=n||i,a(),e=e.changedTouches&&e.changedTouches.length?e.changedTouches[0]:e,e=document.elementFromPoint(e.clientX,e.clientY),t(),i&&!i.el.contains(e)&&(r("spill"),this.onSpill({dragEl:o,putSortable:n})))};function oe(){}function ie(){}oe.prototype={startIndex:null,dragStart:function(t){t=t.oldDraggableIndex;this.startIndex=t},onSpill:function(t){var e=t.dragEl,n=t.putSortable;this.sortable.captureAnimationState(),n&&n.captureAnimationState();t=B(this.sortable.el,this.startIndex,this.options);t?this.sortable.el.insertBefore(e,t):this.sortable.el.appendChild(e),this.sortable.animateAll(),n&&n.animateAll()},drop:c},a(oe,{pluginName:"revertOnSpill"}),ie.prototype={onSpill:function(t){var e=t.dragEl,t=t.putSortable||this.sortable;t.captureAnimationState(),e.parentNode&&e.parentNode.removeChild(e),t.animateAll()},drop:c},a(ie,{pluginName:"removeOnSpill"});var re,ae,le,se,ce,ue=[],de=[],he=!1,fe=!1,pe=!1;function ge(n,o){de.forEach(function(t,e){e=o.children[t.sortableIndex+(n?Number(e):0)];e?o.insertBefore(t,e):o.appendChild(t)})}function me(){ue.forEach(function(t){t!==le&&t.parentNode&&t.parentNode.removeChild(t)})}return Ft.mount(new function(){function t(){for(var t in this.defaults={scroll:!0,forceAutoScrollFallback:!1,scrollSensitivity:30,scrollSpeed:10,bubbleScroll:!0},this)"_"===t.charAt(0)&&"function"==typeof this[t]&&(this[t]=this[t].bind(this))}return t.prototype={dragStarted:function(t){t=t.originalEvent;this.sortable.nativeDraggable?h(document,"dragover",this._handleAutoScroll):this.options.supportPointer?h(document,"pointermove",this._handleFallbackAutoScroll):t.touches?h(document,"touchmove",this._handleFallbackAutoScroll):h(document,"mousemove",this._handleFallbackAutoScroll)},dragOverCompleted:function(t){t=t.originalEvent;this.options.dragOverBubble||t.rootEl||this._handleAutoScroll(t)},drop:function(){this.sortable.nativeDraggable?f(document,"dragover",this._handleAutoScroll):(f(document,"pointermove",this._handleFallbackAutoScroll),f(document,"touchmove",this._handleFallbackAutoScroll),f(document,"mousemove",this._handleFallbackAutoScroll)),te(),Jt(),clearTimeout(g),g=void 0},nulling:function(){Vt=Gt=zt=Qt=Zt=Ut=qt=null,$t.length=0},_handleFallbackAutoScroll:function(t){this._handleAutoScroll(t,!0)},_handleAutoScroll:function(e,n){var o,i=this,r=(e.touches?e.touches[0]:e).clientX,a=(e.touches?e.touches[0]:e).clientY,t=document.elementFromPoint(r,a);Vt=e,n||this.options.forceAutoScrollFallback||w||y||u?(ne(e,this.options,t,n),o=M(t,!0),!Qt||Zt&&r===Ut&&a===qt||(Zt&&te(),Zt=setInterval(function(){var t=M(document.elementFromPoint(r,a),!0);t!==o&&(o=t,Jt()),ne(e,i.options,t,n)},10),Ut=r,qt=a)):this.options.bubbleScroll&&M(t,!0)!==O()?ne(e,this.options,M(t,!1),!1):Jt()}},a(t,{pluginName:"scroll",initializeByDefault:!0})}),Ft.mount(ie,oe),Ft.mount(new function(){function t(){this.defaults={swapClass:"sortable-swap-highlight"}}return t.prototype={dragStart:function(t){t=t.dragEl;ee=t},dragOverValid:function(t){var e=t.completed,n=t.target,o=t.onMove,i=t.activeSortable,r=t.changed,a=t.cancel;i.options.swap&&(t=this.sortable.el,i=this.options,n&&n!==t&&(t=ee,ee=!1!==o(n)?(k(n,i.swapClass,!0),n):null,t&&t!==ee&&k(t,i.swapClass,!1)),r(),e(!0),a())},drop:function(t){var e,n,o=t.activeSortable,i=t.putSortable,r=t.dragEl,a=i||this.sortable,l=this.options;ee&&k(ee,l.swapClass,!1),ee&&(l.swap||i&&i.options.swap)&&r!==ee&&(a.captureAnimationState(),a!==o&&o.captureAnimationState(),n=ee,t=(e=r).parentNode,l=n.parentNode,t&&l&&!t.isEqualNode(n)&&!l.isEqualNode(e)&&(i=j(e),r=j(n),t.isEqualNode(l)&&i<r&&r++,t.insertBefore(n,t.children[i]),l.insertBefore(e,l.children[r])),a.animateAll(),a!==o&&o.animateAll())},nulling:function(){ee=null}},a(t,{pluginName:"swap",eventProperties:function(){return{swapItem:ee}}})}),Ft.mount(new function(){function t(o){for(var t in this)"_"===t.charAt(0)&&"function"==typeof this[t]&&(this[t]=this[t].bind(this));o.options.avoidImplicitDeselect||(o.options.supportPointer?h(document,"pointerup",this._deselectMultiDrag):(h(document,"mouseup",this._deselectMultiDrag),h(document,"touchend",this._deselectMultiDrag))),h(document,"keydown",this._checkKeyDown),h(document,"keyup",this._checkKeyUp),this.defaults={selectedClass:"sortable-selected",multiDragKey:null,avoidImplicitDeselect:!1,setData:function(t,e){var n="";ue.length&&ae===o?ue.forEach(function(t,e){n+=(e?", ":"")+t.textContent}):n=e.textContent,t.setData("Text",n)}}}return t.prototype={multiDragKeyDown:!1,isMultiDrag:!1,delayStartGlobal:function(t){t=t.dragEl;le=t},delayEnded:function(){this.isMultiDrag=~ue.indexOf(le)},setupClone:function(t){var e=t.sortable,t=t.cancel;if(this.isMultiDrag){for(var n=0;n<ue.length;n++)de.push(_(ue[n])),de[n].sortableIndex=ue[n].sortableIndex,de[n].draggable=!1,de[n].style["will-change"]="",k(de[n],this.options.selectedClass,!1),ue[n]===le&&k(de[n],this.options.chosenClass,!1);e._hideClone(),t()}},clone:function(t){var e=t.sortable,n=t.rootEl,o=t.dispatchSortableEvent,t=t.cancel;this.isMultiDrag&&(this.options.removeCloneOnHide||ue.length&&ae===e&&(ge(!0,n),o("clone"),t()))},showClone:function(t){var e=t.cloneNowShown,n=t.rootEl,t=t.cancel;this.isMultiDrag&&(ge(!1,n),de.forEach(function(t){R(t,"display","")}),e(),ce=!1,t())},hideClone:function(t){var e=this,n=(t.sortable,t.cloneNowHidden),t=t.cancel;this.isMultiDrag&&(de.forEach(function(t){R(t,"display","none"),e.options.removeCloneOnHide&&t.parentNode&&t.parentNode.removeChild(t)}),n(),ce=!0,t())},dragStartGlobal:function(t){t.sortable;!this.isMultiDrag&&ae&&ae.multiDrag._deselectMultiDrag(),ue.forEach(function(t){t.sortableIndex=j(t)}),ue=ue.sort(function(t,e){return t.sortableIndex-e.sortableIndex}),pe=!0},dragStarted:function(t){var e,n=this,t=t.sortable;this.isMultiDrag&&(this.options.sort&&(t.captureAnimationState(),this.options.animation&&(ue.forEach(function(t){t!==le&&R(t,"position","absolute")}),e=X(le,!1,!0,!0),ue.forEach(function(t){t!==le&&C(t,e)}),he=fe=!0)),t.animateAll(function(){he=fe=!1,n.options.animation&&ue.forEach(function(t){T(t)}),n.options.sort&&me()}))},dragOver:function(t){var e=t.target,n=t.completed,t=t.cancel;fe&&~ue.indexOf(e)&&(n(!1),t())},revert:function(t){var n,o,e=t.fromSortable,i=t.rootEl,r=t.sortable,a=t.dragRect;1<ue.length&&(ue.forEach(function(t){r.addAnimationState({target:t,rect:fe?X(t):a}),T(t),t.fromRect=a,e.removeAnimationState(t)}),fe=!1,n=!this.options.removeCloneOnHide,o=i,ue.forEach(function(t,e){e=o.children[t.sortableIndex+(n?Number(e):0)];e?o.insertBefore(t,e):o.appendChild(t)}))},dragOverCompleted:function(t){var e,n=t.sortable,o=t.isOwner,i=t.insertion,r=t.activeSortable,a=t.parentEl,l=t.putSortable,t=this.options;i&&(o&&r._hideClone(),he=!1,t.animation&&1<ue.length&&(fe||!o&&!r.options.sort&&!l)&&(e=X(le,!1,!0,!0),ue.forEach(function(t){t!==le&&(C(t,e),a.appendChild(t))}),fe=!0),o||(fe||me(),1<ue.length?(o=ce,r._showClone(n),r.options.animation&&!ce&&o&&de.forEach(function(t){r.addAnimationState({target:t,rect:se}),t.fromRect=se,t.thisAnimationDuration=null})):r._showClone(n)))},dragOverAnimationCapture:function(t){var e=t.dragRect,n=t.isOwner,t=t.activeSortable;ue.forEach(function(t){t.thisAnimationDuration=null}),t.options.animation&&!n&&t.multiDrag.isMultiDrag&&(se=a({},e),e=v(le,!0),se.top-=e.f,se.left-=e.e)},dragOverAnimationComplete:function(){fe&&(fe=!1,me())},drop:function(t){var e=t.originalEvent,n=t.rootEl,o=t.parentEl,i=t.sortable,r=t.dispatchSortableEvent,a=t.oldIndex,l=t.putSortable,s=l||this.sortable;if(e){var c,u,d,h=this.options,f=o.children;if(!pe)if(h.multiDragKey&&!this.multiDragKeyDown&&this._deselectMultiDrag(),k(le,h.selectedClass,!~ue.indexOf(le)),~ue.indexOf(le))ue.splice(ue.indexOf(le),1),re=null,z({sortable:i,rootEl:n,name:"deselect",targetEl:le,originalEvent:e});else{if(ue.push(le),z({sortable:i,rootEl:n,name:"select",targetEl:le,originalEvent:e}),e.shiftKey&&re&&i.el.contains(re)){var p=j(re),t=j(le);if(~p&&~t&&p!==t)for(var g,m=p<t?(g=p,t):(g=t,p+1);g<m;g++)~ue.indexOf(f[g])||(k(f[g],h.selectedClass,!0),ue.push(f[g]),z({sortable:i,rootEl:n,name:"select",targetEl:f[g],originalEvent:e}))}else re=le;ae=s}pe&&this.isMultiDrag&&(fe=!1,(o[K].options.sort||o!==n)&&1<ue.length&&(c=X(le),u=j(le,":not(."+this.options.selectedClass+")"),!he&&h.animation&&(le.thisAnimationDuration=null),s.captureAnimationState(),he||(h.animation&&(le.fromRect=c,ue.forEach(function(t){var e;t.thisAnimationDuration=null,t!==le&&(e=fe?X(t):c,t.fromRect=e,s.addAnimationState({target:t,rect:e}))})),me(),ue.forEach(function(t){f[u]?o.insertBefore(t,f[u]):o.appendChild(t),u++}),a===j(le)&&(d=!1,ue.forEach(function(t){t.sortableIndex!==j(t)&&(d=!0)}),d&&(r("update"),r("sort")))),ue.forEach(function(t){T(t)}),s.animateAll()),ae=s),(n===o||l&&"clone"!==l.lastPutMode)&&de.forEach(function(t){t.parentNode&&t.parentNode.removeChild(t)})}},nullingGlobal:function(){this.isMultiDrag=pe=!1,de.length=0},destroyGlobal:function(){this._deselectMultiDrag(),f(document,"pointerup",this._deselectMultiDrag),f(document,"mouseup",this._deselectMultiDrag),f(document,"touchend",this._deselectMultiDrag),f(document,"keydown",this._checkKeyDown),f(document,"keyup",this._checkKeyUp)},_deselectMultiDrag:function(t){if(!(void 0!==pe&&pe||ae!==this.sortable||t&&P(t.target,this.options.draggable,this.sortable.el,!1)||t&&0!==t.button))for(;ue.length;){var e=ue[0];k(e,this.options.selectedClass,!1),ue.shift(),z({sortable:this.sortable,rootEl:this.sortable.el,name:"deselect",targetEl:e,originalEvent:t})}},_checkKeyDown:function(t){t.key===this.options.multiDragKey&&(this.multiDragKeyDown=!0)},_checkKeyUp:function(t){t.key===this.options.multiDragKey&&(this.multiDragKeyDown=!1)}},a(t,{pluginName:"multiDrag",utils:{select:function(t){var e=t.parentNode[K];e&&e.options.multiDrag&&!~ue.indexOf(t)&&(ae&&ae!==e&&(ae.multiDrag._deselectMultiDrag(),ae=e),k(t,e.options.selectedClass,!0),ue.push(t))},deselect:function(t){var e=t.parentNode[K],n=ue.indexOf(t);e&&e.options.multiDrag&&~n&&(k(t,e.options.selectedClass,!1),ue.splice(n,1))}},eventProperties:function(){var n=this,o=[],i=[];return ue.forEach(function(t){var e;o.push({multiDragElement:t,index:t.sortableIndex}),e=fe&&t!==le?-1:fe?j(t,":not(."+n.options.selectedClass+")"):j(t),i.push({multiDragElement:t,index:e})}),{items:r(ue),clones:[].concat(de),oldIndicies:o,newIndicies:i}},optionListeners:{multiDragKey:function(t){return"ctrl"===(t=t.toLowerCase())?t="Control":1<t.length&&(t=t.charAt(0).toUpperCase()+t.substr(1)),t}}})}),Ft});
+</script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@400;600;700&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
-  :root {
-    --bg: #0a0a0a;
-    --surface: #141414;
-    --surface2: #1e1e1e;
-    --border: #2a2a2a;
-    --green: #00e676;
-    --green-dim: #004d25;
-    --yellow: #ffd600;
-    --yellow-dim: #3d3200;
-    --red: #ff1744;
-    --red-dim: #4d0011;
-    --gray: #2a2a2a;
-    --text: #f0f0f0;
-    --text-dim: #666;
-    --accent: #00e676;
-    --font-mono: 'Space Mono', monospace;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
+:root {
+  --bg:         #0B0B0B;
+  --panel:      #121212;
+  --panel2:     #161616;
+  --border:     #242424;
+  --border2:    #2C2C2C;
+  --text:       #EDEDED;
+  --text-dim:   #B9B9B9;
+  --text-muted: #8A8A8A;
+  --accent:     #00E676;
+  --accent-dim: rgba(0,230,118,0.18);
+  --focus-ring: rgba(0,230,118,0.35);
+  --btn-bg:     #141414;
+  --btn-hover:  #1B1B1B;
+  --btn-border: #2B2B2B;
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* Semantic — content only */
+  --play:       #0B5A2A;
+  --play-alt:   #07451F;
+  --rest:       #3A3A3A;
+  --rest-alt:   #2F2F2F;
+  --marks:      #564300;
+  --marks-alt:  #433400;
+  --stop:       #3B0010;
+  --stop-alt:   #2C000B;
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  --font-mono:    'Space Mono', monospace;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
 
-  /* ===== SETLIST VIEW ===== */
-  #setlist-view {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+  --topbar-h: 52px;
+}
 
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 100;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .top-bar h1 {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    letter-spacing: 4px;
-    color: var(--green);
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-  .top-bar-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+/* ══════════════════════════════════════
+   TOPBAR — always visible
+══════════════════════════════════════ */
+#topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  z-index: 1000;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
 
-  .btn {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    color: var(--text);
-    cursor: pointer;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.15s;
-    border-radius: 2px;
-  }
-  .btn:hover { border-color: var(--green); color: var(--green); }
-  .btn.primary { border-color: var(--green); color: var(--green); }
-  .btn.danger { border-color: var(--red); color: var(--red); }
+#topbar .tb-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-right: 4px;
+}
 
-  .song-list {
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+#topbar .tb-sep {
+  width: 1px;
+  height: 28px;
+  background: var(--border2);
+  flex-shrink: 0;
+}
 
-  .song-row {
-    display: grid;
-    grid-template-columns: 32px 1fr auto auto;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    cursor: grab;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .song-row:hover { border-color: var(--green); background: var(--surface2); }
-  .song-row.sortable-ghost { opacity: 0.3; }
-  .song-row.sortable-chosen { cursor: grabbing; border-color: var(--green); }
+/* Nav group */
+.tb-nav { display: flex; gap: 4px; flex-shrink: 0; }
 
-  .drag-handle {
-    color: var(--text-dim);
-    font-size: 1rem;
-    cursor: grab;
-    user-select: none;
-  }
+/* Pill button — base */
+.pill {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--text-dim);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+  white-space: nowrap;
+  user-select: none;
+}
+.pill:hover { border-color: var(--border2); color: var(--text); background: var(--btn-hover); }
+.pill.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.pill.danger { border-color: #550010; color: #ff4070; }
+.pill.danger:hover { border-color: #ff1744; }
 
-  .song-row-info { display: flex; flex-direction: column; gap: 2px; }
-  .song-row-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); }
-  .song-row-title { font-weight: 700; font-size: 0.95rem; }
-  .song-row-artist { font-size: 0.78rem; color: var(--text-dim); }
+/* Layer pills row */
+.tb-layers { display: flex; gap: 4px; align-items: center; flex-wrap: nowrap; }
+.tb-layer-label {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  margin-right: 2px;
+}
 
-  .song-row-key {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--green);
-    min-width: 40px;
-    text-align: center;
-  }
+/* Tracks 3-state */
+.tb-tracks { display: flex; gap: 2px; }
+.tb-tracks .pill { padding: 5px 7px; }
 
-  .btn-open {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    padding: 6px 10px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-dim);
-    cursor: pointer;
-    letter-spacing: 1px;
-    border-radius: 2px;
-    transition: all 0.15s;
-  }
-  .btn-open:hover { border-color: var(--green); color: var(--green); }
+/* Song name in topbar (song view) */
+#tb-song-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: none;
+}
 
-  /* ===== SONG VIEW ===== */
-  #song-view {
-    display: none;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+/* Push remaining to right */
+.tb-spacer { flex: 1; }
 
-  .song-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 100;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+/* ══════════════════════════════════════
+   VIEWS
+══════════════════════════════════════ */
+.view {
+  padding-top: var(--topbar-h);
+  min-height: 100vh;
+}
 
-  .song-header-left { display: flex; flex-direction: column; gap: 4px; }
-  .song-header-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); }
-  .song-header-title { font-family: var(--font-display); font-size: 2.5rem; letter-spacing: 2px; line-height: 1; }
-  .song-header-artist { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+/* ══════════════════════════════════════
+   SETLIST TABS BAR
+══════════════════════════════════════ */
+.setlist-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0 16px;
+  border-bottom: 2px solid var(--border);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: var(--topbar-h);
+  z-index: 100;
+  background: var(--bg);
+  min-height: 52px;
+}
+.setlist-tabs::-webkit-scrollbar { display: none; }
+.setlist-tab {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -2px;
+}
+.setlist-tab:hover { color: var(--text); }
+.setlist-tab.active {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+.setlist-tab.drag-over {
+  border-bottom-color: #fff;
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+.setlist-tab-add {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  padding: 0 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.12s;
+  display: flex;
+  align-items: center;
+  margin-bottom: -2px;
+  white-space: nowrap;
+}
+.setlist-tab-add:hover { color: var(--accent); }
+.setlist-tab-actions {
+  display: none;
+  gap: 2px;
+  margin-left: 2px;
+}
+.setlist-tab.active .setlist-tab-actions { display: inline-flex; }
+.setlist-tab-btn {
+  background: none; border: none;
+  color: var(--text-muted); cursor: pointer;
+  font-size: 0.65rem; padding: 1px 3px; line-height: 1;
+}
+.setlist-tab-btn:hover { color: var(--text); }
+.setlist-tab-btn.del:hover { color: #ff4070; }
 
-  .song-header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+/* Song row: add-to-setlist toggle */
+.song-row-setlist-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  padding: 4px 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.song-row-setlist-toggle.in { border-color: #1a5030; color: #40c070; }
+.song-row-setlist-toggle.in:hover { border-color: #ff4070; color: #ff4070; }
+.song-row-setlist-toggle:not(.in):hover { border-color: var(--accent); color: var(--accent); }
 
-  .key-control {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 6px 12px;
-  }
-  .key-btn {
-    background: none;
-    border: none;
-    color: var(--green);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0 4px;
-    font-family: var(--font-mono);
-    line-height: 1;
-  }
-  .key-btn:hover { color: #fff; }
-  .key-display {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--green);
-    min-width: 60px;
-    text-align: center;
-    letter-spacing: 2px;
-  }
-  .key-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); text-align: center; margin-top: 2px; }
+.setlist-header {
+  padding: 20px 24px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.setlist-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  flex: 1;
+}
 
-  .song-nav { display: flex; gap: 6px; }
+.song-list { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 3px; }
 
-  /* ===== SONG CONTENT — TWO COLUMN ===== */
-  .song-content {
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    max-width: 100%;
-    flex: 1;
-    min-height: 0;
-  }
+.song-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: grab;
+  transition: border-color 0.12s, background 0.12s;
+}
+.song-row:hover { border-color: var(--border2); background: var(--panel2); }
+.song-row.sortable-ghost { opacity: 0.2; }
+.song-row.sortable-chosen { cursor: grabbing; border-color: var(--accent); }
+.drag-handle { color: var(--text-muted); font-size: 0.9rem; cursor: grab; user-select: none; }
+.song-row-info { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+.song-row-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-muted); }
+.song-row-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.song-row-artist { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.song-row-key { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); text-align: center; }
+.btn-open {
+  font-family: var(--font-mono); font-size: 0.58rem; padding: 5px 9px;
+  border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+  cursor: pointer; letter-spacing: 1px; border-radius: 2px; transition: all 0.12s;
+  white-space: nowrap;
+}
+.btn-open:hover { border-color: var(--accent); color: var(--accent); }
 
-  .song-col-left {
-    flex: 1 1 55%;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow-y: auto;
-    max-height: calc(100vh - 120px);
-    padding-right: 8px;
-  }
+/* ══════════════════════════════════════
+   SONG VIEW
+══════════════════════════════════════ */
+#song-view { display: none; flex-direction: column; }
+#setlist-view { display: flex; flex-direction: column; }
 
-  .song-col-right {
-    flex: 0 0 38%;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
+/* Song header */
+.song-header {
+  padding: 14px 24px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.sh-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sh-num { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-muted); }
+.sh-title { font-family: var(--font-display); font-size: 2.4rem; letter-spacing: 2px; line-height: 1; }
+.sh-artist { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
 
-  .song-col-right .lyrics-area {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: 100%;
-  }
+.sh-meta {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.sh-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.sh-meta-label { font-family: var(--font-mono); font-size: 0.5rem; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; }
+.sh-meta-val { font-family: 'Barlow Condensed', var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; color: var(--text-dim); line-height: 1; }
+.sh-meta-val.key-orig { color: var(--text-muted); font-size: 1.1rem; }
+.sh-meta-val.key-cur { color: var(--accent); }
 
-  .song-col-right .lyrics-box {
-    flex: 1;
-    max-height: calc(100vh - 180px);
-    overflow-y: auto;
-  }
+.key-control {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 2px; padding: 4px 8px;
+}
+.key-btn { background: none; border: none; color: var(--accent); font-size: 1.1rem; cursor: pointer; padding: 0 3px; font-family: var(--font-mono); line-height: 1; }
+.key-btn:hover { color: #fff; }
 
-  /* Tablet portrait + mobile: stack vertically */
-  @media (max-width: 900px) {
-    .song-content {
-      flex-direction: column;
-      padding: 16px;
-    }
-    .song-col-left { max-height: none; overflow-y: visible; padding-right: 0; }
-    .song-col-right { flex: none; }
-    .song-col-right .lyrics-box { max-height: 380px; }
-  }
+.sh-tracks-badge {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 1px;
+  padding: 4px 8px; border-radius: 2px; border: 1px solid var(--border);
+  color: var(--text-muted); background: var(--panel);
+  align-self: center;
+}
+.sh-tracks-badge.on { border-color: #1a6040; color: #40d090; }
+.sh-tracks-badge.off { opacity: 0.5; }
 
-  /* Section blocks */
-  .sections-area { display: flex; flex-direction: column; gap: 8px; }
-  .sections-title {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
+/* ══════════════════════════════════════
+   SONG CONTENT AREA
+══════════════════════════════════════ */
+.song-content {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
 
-  .section-block {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-    border-radius: 3px;
-    overflow: hidden;
-    min-height: 52px;
-  }
+/* ══════════════════════════════════════
+   SECTION ROW
+══════════════════════════════════════ */
+.section-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-radius: 2px;
+  overflow: visible;
+  min-height: 72px;
+  position: relative;
+}
 
-  .section-color-bar { width: 6px; flex-shrink: 0; }
-  .section-body {
-    flex: 1;
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .section-label {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    min-width: 120px;
-    flex-shrink: 0;
-  }
-  .section-instruction {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    flex: 1;
-    line-height: 1.5;
-  }
-  .section-bars {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    flex-shrink: 0;
-  }
+/* Section label — slim left column */
+.sec-label-col {
+  width: 90px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 10px 8px 12px;
+  border-radius: 2px 0 0 2px;
+  border-right: 2px solid var(--border);
+  background: var(--panel2);
+  gap: 4px;
+  cursor: pointer;
+  position: relative;
+}
+.sec-label-col:hover { background: #1e1e1e; }
+.sec-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  line-height: 1;
+  color: var(--text-dim);
+}
+.sec-label-col .sec-add-turn {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: none;
+}
+.section-row:hover .sec-label-col .sec-add-turn { display: block; }
+.sec-label-actions {
+  position: absolute;
+  top: 4px; right: 4px;
+  display: none;
+  gap: 2px;
+}
+.section-row:hover .sec-label-actions { display: flex; }
+.sec-action-btn {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 0.7rem; cursor: pointer; padding: 1px 3px; line-height: 1;
+}
+.sec-action-btn:hover { color: var(--text); }
+.sec-action-btn.del:hover { color: #ff4070; }
 
-  /* Colors per type */
-  /* PLAY — even/odd alternating */
-  .sec-play        { background: #003d1a; }
-  .sec-play.alt    { background: #005224; }
-  .sec-play .section-color-bar { background: var(--green); }
-  .sec-play .section-label { color: var(--green); }
-  .sec-play .section-instruction { color: #a0f0c0; }
+/* Turns container */
+.turns-container {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  overflow: hidden;
+  border-radius: 0 2px 2px 0;
+}
 
-  /* REST — even/odd alternating */
-  .sec-rest        { background: #1e1e1e; }
-  .sec-rest.alt    { background: #2a2a2a; }
-  .sec-rest .section-color-bar { background: #555; }
-  .sec-rest .section-label { color: #999; }
-  .sec-rest .section-instruction { color: #666; }
+/* ══════════════════════════════════════
+   TURN BLOCK
+══════════════════════════════════════ */
+.turn-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 10px;
+  background: var(--play);
+  border-radius: 2px;
+  min-width: 0;
+  position: relative;
+  transition: background 0.12s;
+  cursor: default;
+}
+.turn-block.rest { background: var(--rest); }
+.turn-block.rest.alt { background: var(--rest-alt); }
+.turn-block.play-alt { background: var(--play-alt); }
+.turn-block.warn { background: var(--marks); }
+.turn-block.warn.alt { background: var(--marks-alt); }
+.turn-block.stop { background: var(--stop); }
+.turn-block.stop.alt { background: var(--stop-alt); }
 
-  /* WARN — even/odd alternating */
-  .sec-warn        { background: #2e2600; }
-  .sec-warn.alt    { background: #3d3200; }
-  .sec-warn .section-color-bar { background: var(--yellow); }
-  .sec-warn .section-label { color: var(--yellow); }
-  .sec-warn .section-instruction { color: #e0c060; }
+/* Top row: bars label + rest-toggle */
+.turn-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.turn-bars {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+.layer-bars-off .turn-bars { display: none; }
 
-  /* DANGER — even/odd alternating */
-  .sec-danger        { background: #2d0009; }
-  .sec-danger.alt    { background: #3f000e; }
-  .sec-danger .section-color-bar { background: var(--red); }
-  .sec-danger .section-label { color: var(--red); }
-  .sec-danger .section-instruction { color: #f08080; }
+.turn-rest-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 0.65rem; line-height: 1; opacity: 0.35;
+  padding: 0; color: var(--text);
+  transition: opacity 0.12s;
+}
+.turn-rest-btn:hover { opacity: 0.8; }
+.turn-block.rest .turn-rest-btn { opacity: 0.6; color: #aaa; }
 
-  .section-chords {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--green);
-    letter-spacing: 1px;
-    opacity: 0.85;
-    flex-basis: 100%;
-    margin-top: 2px;
-    line-height: 1.6;
-  }
-  .sec-rest .section-chords { color: #666; }
-  .sec-warn .section-chords { color: #b09040; }
-  .sec-danger .section-chords { color: #a04040; }
+/* Chords: slot grid — set via JS style.gridTemplateColumns */
+.turn-chords {
+  flex: 1;
+  display: grid;
+  /* grid-template-columns set dynamically per turn */
+  align-items: stretch;
+  min-height: 44px;
+  gap: 0;
+}
+.layer-chords-off .turn-chords { display: none; }
 
-  /* Edit mode */
-  .section-block.edit-mode { cursor: default; }
-  .section-block.edit-mode .section-body { flex-direction: column; align-items: flex-start; gap: 8px; }
+/* Individual takt-slot */
+.chord-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 3px 2px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  min-width: 0;
+  position: relative;
+  transition: background 0.1s;
+}
+.chord-slot:last-child { border-right: none; }
+.chord-slot.beat1 { border-right-color: rgba(255,255,255,0.13); }
 
-  .edit-row { display: flex; gap: 8px; width: 100%; flex-wrap: wrap; }
-  .edit-input {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    padding: 6px 10px;
-    border-radius: 2px;
-    flex: 1;
-    min-width: 120px;
-  }
-  .edit-input:focus { outline: none; border-color: var(--green); }
-  select.edit-input { cursor: pointer; }
+/* In edit mode: slot clickable */
+body.edit-mode .chord-slot:hover { background: rgba(255,255,255,0.06); cursor: pointer; }
+body.edit-mode .chord-slot.editing { background: rgba(0,230,118,0.08); }
 
-  /* Chord sheet */
-  .chord-area { display: flex; flex-direction: column; gap: 8px; }
-  .chord-area-title {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .chord-sheet {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 16px;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    line-height: 2;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-  .chord-sheet .chord { color: var(--green); font-weight: 700; }
-  .chord-sheet .section-marker { color: var(--yellow); font-size: 0.7rem; display: block; margin-top: 8px; }
-  .chord-sheet .warning { color: var(--red); }
+/* Chord text inside slot */
+.chord-slot-text {
+  font-family: 'Barlow Condensed', var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+}
+.chord-slot-text .cq { /* quality suffix */
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  vertical-align: super;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0;
+}
+.chord-slot-text .cb { /* bass note */
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.45);
+}
+.chord-slot.empty .chord-slot-text { opacity: 0.12; }
+.turn-block.rest .chord-slot-text { opacity: 0.4; }
 
-  .chord-raw-input {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    padding: 12px;
-    border-radius: 3px;
-    min-height: 120px;
-    resize: vertical;
-    display: none;
-  }
-  .chord-raw-input:focus { outline: none; border-color: var(--green); }
+/* slot-num removed */
 
-  /* Notes area */
-  .notes-area { display: flex; flex-direction: column; gap: 8px; }
-  .notes-area-title {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .notes-input {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    padding: 12px;
-    border-radius: 3px;
-    min-height: 80px;
-    resize: vertical;
-  }
-  .notes-input:focus { outline: none; border-color: var(--green); }
+/* Inline chord input (edit mode) */
+.slot-input {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  color: var(--accent);
+  font-family: 'Barlow Condensed', var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 2px 4px;
+  z-index: 20;
+  outline: none;
+}
 
-  /* Edit controls */
-  .edit-controls {
-    display: flex;
-    gap: 8px;
-    padding: 8px 24px;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
+.chord-token { /* keep for chord-ref panel */
+  font-family: 'Barlow Condensed', var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: #fff;
+  white-space: nowrap;
+}
+.chord-token .chord-qual {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  vertical-align: super;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0;
+}
+.chord-token .chord-bass {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.5);
+}
+.turn-block.rest .chord-token { opacity: 0.45; }
 
-  /* ===== LIVE MODE ===== */
-  body.live-mode { background: #000; }
-  body.live-mode #song-view .song-header { background: #000; padding: 12px 20px; }
-  body.live-mode .song-header-title { font-size: 3rem; }
-  body.live-mode .song-content { padding: 12px 16px; gap: 16px; }
-  body.live-mode .song-col-left { max-height: calc(100vh - 100px); }
-  body.live-mode .song-col-right .lyrics-box { max-height: none; overflow-y: visible; }
-  body.live-mode .section-block { min-height: 70px; }
-  body.live-mode .section-label { font-size: 1.5rem; }
-  body.live-mode .section-instruction { font-size: 1rem; }
-  body.live-mode .key-display { font-size: 2.5rem; }
-  body.live-mode .chord-sheet { font-size: 1.1rem; line-height: 2.2; }
-  body.live-mode .notes-input { font-size: 1rem; }
-  body.live-mode .lyrics-box { font-size: 1.05rem; line-height: 2.1; }
+.turn-instruction {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+  margin-top: 3px;
+}
+.turn-block.rest .turn-instruction { color: rgba(255,255,255,0.3); }
 
-  /* Add section button */
-  .add-section-btn {
-    border: 1px dashed var(--border);
-    background: transparent;
-    color: var(--text-dim);
-    cursor: pointer;
-    padding: 10px;
-    width: 100%;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    border-radius: 3px;
-    transition: all 0.15s;
-    text-transform: uppercase;
-  }
-  .add-section-btn:hover { border-color: var(--green); color: var(--green); }
+/* turn-ticks removed — slot numbers replace this function */
 
-  .section-actions {
-    display: flex;
-    gap: 4px;
-    margin-left: auto;
-  }
-  .sec-btn {
-    background: none;
-    border: none;
-    color: var(--text-dim);
-    cursor: pointer;
-    font-size: 0.9rem;
-    padding: 2px 4px;
-    line-height: 1;
-    transition: color 0.1s;
-  }
-  .sec-btn:hover { color: var(--text); }
-  .sec-btn.del:hover { color: var(--red); }
+/* Turn edit overlay */
+.turn-edit-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  z-index: 10;
+}
+.turn-edit-overlay.open { display: flex; }
+.te-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.te-label { font-family: var(--font-mono); font-size: 0.52rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+.te-input {
+  background: var(--panel2); border: 1px solid var(--border2);
+  color: var(--text); font-family: var(--font-mono); font-size: 0.7rem;
+  padding: 3px 7px; border-radius: 2px; flex: 1; min-width: 60px;
+}
+.te-input:focus { outline: none; border-color: var(--accent); }
+.te-select { cursor: pointer; }
+.te-actions { display: flex; gap: 4px; margin-top: 2px; }
 
-  /* Sortable sections */
-  .section-block { cursor: grab; }
-  .section-block.sortable-ghost { opacity: 0.2; }
+/* ══════════════════════════════════════
+   CHORD REFERENCE PANEL (full chordRaw)
+══════════════════════════════════════ */
+#chord-ref-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 2;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 4px 0;
+  display: none;
+}
+.layer-chords-off #chord-ref-panel { display: none !important; }
+#chord-ref-panel .cr-chord { color: var(--accent); font-weight: 700; }
+#chord-ref-panel .cr-section { color: #ffd600; font-size: 0.65rem; display: block; margin-top: 6px; }
 
-  /* Nav arrows */
-  .song-progress {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    text-align: center;
-    padding: 8px;
-  }
+#chord-ref-edit {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 12px;
+  border-radius: 2px;
+  min-height: 100px;
+  resize: vertical;
+  display: none;
+  margin: 4px 0;
+}
+#chord-ref-edit:focus { outline: none; border-color: var(--accent); }
 
-  /* Toast */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: var(--green);
-    color: #000;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    padding: 10px 16px;
-    border-radius: 2px;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.2s;
-    pointer-events: none;
-  }
-  .toast.show { opacity: 1; transform: translateY(0); }
+.chord-ref-bar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  flex-wrap: wrap;
+}
+.chord-ref-bar.visible { display: flex; }
+.chord-ref-bar-label {
+  font-family: var(--font-mono); font-size: 0.55rem;
+  color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase;
+}
 
-  /* ===== LYRICS TAB ===== */
-  .lyrics-area { display: flex; flex-direction: column; gap: 8px; }
+/* ══════════════════════════════════════
+   NOTES + FOOTER
+══════════════════════════════════════ */
+.notes-area { padding: 12px 0; display: flex; flex-direction: column; gap: 6px; }
+.notes-label { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+.notes-input {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  padding: 10px 12px;
+  border-radius: 2px;
+  min-height: 64px;
+  resize: vertical;
+}
+.notes-input:focus { outline: none; border-color: var(--border2); }
 
-  .lyrics-tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 4px;
-  }
-  .lyrics-tab {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--text-dim);
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: all 0.15s;
-  }
-  .lyrics-tab.active { color: var(--green); border-bottom-color: var(--green); }
-  .lyrics-tab:hover { color: var(--text); }
+.song-footer {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px 20px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.song-progress { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-muted); }
 
-  .lyrics-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 16px;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    line-height: 1.9;
-    max-height: 380px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: #ccc;
-  }
-  .lyrics-box .lyrics-section-marker {
-    display: block;
-    color: var(--yellow);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    margin-top: 14px;
-    margin-bottom: 2px;
-  }
-  .lyrics-box .lyrics-status {
-    color: var(--text-dim);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-style: italic;
-  }
-  .lyrics-fetch-btn {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    padding: 7px 12px;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    color: var(--text-dim);
-    cursor: pointer;
-    letter-spacing: 1px;
-    border-radius: 2px;
-    transition: all 0.15s;
-    text-transform: uppercase;
-  }
-  .lyrics-fetch-btn:hover { border-color: var(--green); color: var(--green); }
-  .lyrics-fetch-btn:disabled { opacity: 0.4; cursor: default; }
+/* ══════════════════════════════════════
+   LYRICS PANEL (layer: FULL / CUES / OFF)
+══════════════════════════════════════ */
+#lyrics-panel {
+  border-top: 1px solid var(--border);
+  margin: 0 0 12px;
+  display: none;
+}
+#lyrics-panel.visible { display: block; }
+.lyrics-panel-header {
+  display: flex; gap: 8px; align-items: center;
+  padding: 10px 24px 6px;
+  flex-wrap: wrap;
+}
+.lyrics-panel-label { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+#lyrics-display {
+  margin: 0 24px 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.9;
+  max-height: 260px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  color: var(--text-dim);
+}
+#lyrics-display .lyrics-section-marker {
+  display: block; color: #ffd600;
+  font-family: var(--font-mono); font-size: 0.6rem;
+  letter-spacing: 2px; margin-top: 12px; margin-bottom: 2px;
+}
+#lyrics-display .lyrics-status { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.68rem; font-style: italic; }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+/* ══════════════════════════════════════
+   LIVE MODE
+══════════════════════════════════════ */
+body.live-mode { background: #000; }
+body.live-mode #topbar { background: #000; border-bottom-color: #1a1a1a; }
+body.live-mode .sh-title { font-size: 3rem; }
+body.live-mode .song-header { background: #000; }
+body.live-mode .section-row { min-height: 90px; }
+body.live-mode .sec-name { font-size: 1.3rem; }
+body.live-mode .chord-slot-text { font-size: 2rem; }
+body.live-mode .turn-chords { min-height: 60px; }
+body.live-mode .turn-instruction { font-size: 0.75rem; }
 
-  @media (max-width: 600px) {
-    .top-bar h1 { font-size: 1.4rem; }
-    .song-header-title { font-size: 1.6rem; }
-    .song-list { padding: 12px; }
-  }
+/* ══════════════════════════════════════
+   EDIT MODE
+══════════════════════════════════════ */
+body.edit-mode .sec-label-col { border-right-color: var(--border2); }
+
+/* Add-turn button — always visible at end of turns row */
+.turn-add-btn {
+  flex-shrink: 0;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.2);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.12s;
+  margin-left: 2px;
+  align-self: stretch;
+  font-family: var(--font-mono);
+}
+.turn-add-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  transition: all 0.12s;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.add-section-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Section edit row (inline) */
+.sec-edit-row {
+  display: none;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--panel2);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.sec-edit-row.open { display: flex; }
+.sec-edit-row .te-input { font-size: 0.72rem; }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--accent); color: #000;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  padding: 8px 14px; border-radius: 2px;
+  z-index: 9999; opacity: 0; transform: translateY(8px);
+  transition: all 0.18s; pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* Utility */
+.hidden { display: none !important; }
 </style>
 </head>
 <body>
 
-<!-- ===== SETLIST VIEW ===== -->
-<div id="setlist-view">
-  <div class="top-bar">
-    <h1>BEYBOM</h1>
-    <div class="top-bar-actions">
-      <button class="btn primary" onclick="exportJSON()">⬇ EXPORT JSON</button>
-      <button class="btn" onclick="document.getElementById('import-file').click()">⬆ IMPORT JSON</button>
-      <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
-      <button class="btn" onclick="toggleLiveMode()">⚡ LIVE MODE</button>
-    </div>
+<!-- ════════════════════════════════
+     TOPBAR (always visible)
+════════════════════════════════ -->
+<div id="topbar">
+  <div class="tb-brand">BEYBOM</div>
+  <div class="tb-sep"></div>
+
+  <!-- Navigation (hidden on setlist) -->
+  <div class="tb-nav" id="tb-nav-song">
+    <button class="pill" onclick="navSong(-1)">◀</button>
+    <button class="pill" onclick="showSetlist()">☰</button>
+    <button class="pill" onclick="navSong(1)">▶</button>
+  </div>
+  <div class="tb-sep" id="tb-sep-nav"></div>
+
+  <!-- Mode toggle -->
+  <button class="pill" id="tb-mode-btn" onclick="toggleMode()">EDIT</button>
+  <div class="tb-sep"></div>
+
+  <!-- Tracks 3-state (visible in song view) -->
+  <div class="tb-layer-label" id="tb-tracks-label">TRACKS</div>
+  <div class="tb-tracks" id="tb-tracks-group">
+    <button class="pill active" id="tb-tracks-off"    onclick="setTracksGlobal('off')">OFF</button>
+    <button class="pill"        id="tb-tracks-on"     onclick="setTracksGlobal('on')">ON</button>
+    <button class="pill"        id="tb-tracks-notrack" onclick="setTracksGlobal('notrack')">NO</button>
+  </div>
+  <div class="tb-sep" id="tb-sep-tracks"></div>
+
+  <!-- Layer toggles -->
+  <div class="tb-layers" id="tb-layers">
+    <div class="tb-layer-label">VISA</div>
+    <button class="pill active" id="lay-blocks"  onclick="toggleLayer('blocks')">BLOCK</button>
+    <button class="pill active" id="lay-chords"  onclick="toggleLayer('chords')">ACKORD</button>
+    <button class="pill active" id="lay-bars"    onclick="toggleLayer('bars')">TAKTER</button>
+    <button class="pill"        id="lay-lyrics"  onclick="cycleLyrics()" data-state="off">LYRICS</button>
+    <button class="pill"        id="lay-marks"   onclick="toggleLayer('marks')">MARKS</button>
+  </div>
+
+  <div class="tb-spacer"></div>
+
+  <!-- Song title in bar -->
+  <div id="tb-song-title"></div>
+
+  <!-- Setlist actions -->
+  <div id="tb-setlist-actions" style="display:flex;gap:4px;">
+    <button class="pill" onclick="exportJSON()">↓ JSON</button>
+    <button class="pill" onclick="document.getElementById('import-file').click()">↑ JSON</button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     SETLIST VIEW
+════════════════════════════════ -->
+<div id="setlist-view" class="view">
+  <!-- Setlist tabs -->
+  <div class="setlist-tabs" id="setlist-tabs"></div>
+
+  <div class="setlist-header">
+    <h2 id="setlist-title">SETLIST</h2>
+    <button class="pill" onclick="addNewSong()">+ NY LÅT</button>
   </div>
   <div class="song-list" id="song-list"></div>
 </div>
 
-<!-- ===== SONG VIEW ===== -->
-<div id="song-view">
-  <div class="song-header">
-    <div class="song-header-left">
-      <div class="song-header-num" id="sv-num"></div>
-      <div class="song-header-title" id="sv-title"></div>
-      <div class="song-header-artist" id="sv-artist"></div>
+<!-- Setlist name modal -->
+<div id="setlist-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:2000;align-items:center;justify-content:center;" onclick="closeSetlistModal()">
+  <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:260px;" onclick="event.stopPropagation()">
+    <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;" id="setlist-modal-label">NY SETLIST</div>
+    <input id="setlist-modal-input" class="te-input" placeholder="Namn på setlist..." style="font-size:0.85rem;"
+      onkeydown="if(event.key==='Enter')confirmSetlistModal();if(event.key==='Escape')closeSetlistModal()">
+    <div style="display:flex;gap:6px;">
+      <button class="pill active" style="flex:1;" onclick="confirmSetlistModal()">SPARA</button>
+      <button class="pill" onclick="closeSetlistModal()">AVBRYT</button>
     </div>
-    <div class="song-header-right">
-      <div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     SONG VIEW
+════════════════════════════════ -->
+<div id="song-view" class="view">
+  <!-- Song Header -->
+  <div class="song-header">
+    <div class="sh-left">
+      <div class="sh-num" id="sv-num"></div>
+      <div class="sh-title" id="sv-title"></div>
+      <div class="sh-artist" id="sv-artist"></div>
+    </div>
+    <div class="sh-meta">
+      <div class="sh-meta-item">
+        <div class="sh-meta-label">ORIGINALTONART</div>
+        <div class="sh-meta-val key-orig" id="sv-key-orig"></div>
+      </div>
+      <div class="sh-meta-item" style="align-items:flex-start;">
+        <div class="sh-meta-label">SPELTONART</div>
         <div class="key-control">
           <button class="key-btn" onclick="transposeKey(-1)">−</button>
-          <div>
-            <div class="key-display" id="sv-key"></div>
-            <div class="key-label">TONART</div>
-          </div>
+          <div class="sh-meta-val key-cur" id="sv-key-cur"></div>
           <button class="key-btn" onclick="transposeKey(1)">+</button>
         </div>
       </div>
-      <div class="song-nav">
-        <button class="btn" onclick="navSong(-1)">◀ PREV</button>
-        <button class="btn" onclick="showSetlist()">☰ LIST</button>
-        <button class="btn" onclick="navSong(1)">NEXT ▶</button>
+      <div class="sh-meta-item" id="sv-bpm-item">
+        <div class="sh-meta-label">BPM</div>
+        <div class="sh-meta-val" id="sv-bpm" title="Klicka för att redigera" style="cursor:pointer;min-width:40px;" onclick="editBpm()">—</div>
       </div>
-      <button class="btn" onclick="toggleLiveMode()">⚡ LIVE</button>
+      <div class="sh-tracks-badge" id="sv-tracks-badge">TRACKS: —</div>
     </div>
   </div>
 
-  <div class="song-content">
-    <!-- LEFT COLUMN -->
-    <div class="song-col-left">
-      <!-- Sections -->
-      <div class="sections-area">
-        <div class="sections-title">LÅTFORM</div>
-        <div id="sections-list"></div>
-        <button class="add-section-btn" onclick="addSection()">+ LÄGG TILL SEKTION</button>
-      </div>
+  <!-- Chord reference bar -->
+  <div class="chord-ref-bar" id="chord-ref-bar" style="padding:6px 24px 0;">
+    <div class="chord-ref-bar-label">ACKORDBLAD</div>
+    <button class="pill" onclick="toggleChordRef()">VISA</button>
+    <button class="pill" onclick="toggleChordEdit()">REDIGERA</button>
+  </div>
+  <div id="chord-ref-panel" style="margin:0 24px;"></div>
+  <textarea id="chord-ref-edit" placeholder="Klistra in ackord här...&#10;[Verse]&#10;Am G F C" oninput="onChordRawEdit()"></textarea>
 
-      <!-- Chord Sheet -->
-      <div class="chord-area">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-          <div class="chord-area-title">ACKORD / TEXT</div>
-          <button class="btn" onclick="toggleChordEdit()" style="font-size:0.6rem;padding:5px 10px;">REDIGERA</button>
-        </div>
-        <div class="chord-sheet" id="chord-display"></div>
-        <textarea class="chord-raw-input" id="chord-raw" placeholder="Klistra in ackord+text här (Ultimate Guitar, ChordPro, fritext)&#10;&#10;Exempel:&#10;[Verse]&#10;[Am]Here comes the [G]sun&#10;[CHORUS]&#10;[C]Let it [G]be" oninput="updateChordDisplay()"></textarea>
-      </div>
-
-      <!-- Notes -->
-      <div class="notes-area">
-        <div class="notes-title-row" style="display:flex;align-items:center;gap:12px;">
-          <div class="notes-area-title">ÖVRIGA ANTECKNINGAR</div>
-        </div>
-        <textarea class="notes-input" id="sv-notes" placeholder="Anteckningar, varningar, egna kommentarer..." oninput="saveSong()"></textarea>
-      </div>
+  <!-- Lyrics panel -->
+  <div id="lyrics-panel">
+    <div class="lyrics-panel-header">
+      <div class="lyrics-panel-label">LYRICS</div>
+      <button class="pill" id="lyrics-fetch-btn" onclick="fetchLyrics()">⬇ HÄMTA</button>
+      <span id="lyrics-source" style="font-family:var(--font-mono);font-size:0.55rem;color:var(--text-muted);"></span>
     </div>
+    <div id="lyrics-display"><span class="lyrics-status">Tryck HÄMTA för att söka via LRCLIB.</span></div>
+  </div>
 
-    <!-- RIGHT COLUMN: Lyrics -->
-    <div class="song-col-right">
-      <div class="lyrics-area">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-          <div class="lyrics-tabs">
-            <button class="lyrics-tab active" onclick="switchLyricsTab('plain',this)">TEXT</button>
-            <button class="lyrics-tab" onclick="switchLyricsTab('synced',this)">SYNKAD</button>
-          </div>
-          <button class="lyrics-fetch-btn" id="lyrics-fetch-btn" onclick="fetchLyrics()">⬇ HÄMTA LYRICS</button>
-          <span id="lyrics-source" style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);display:block;margin-top:4px;width:100%;"></span>
-        </div>
-        <div class="lyrics-box" id="lyrics-display"><span class="lyrics-status">Tryck "HÄMTA LYRICS" för att söka automatiskt via LRCLIB.</span></div>
-      </div>
+  <!-- Main content: section rows -->
+  <div class="song-content" id="song-content">
+    <!-- rendered by JS -->
+  </div>
+
+  <!-- Add section: + button -->
+  <div id="add-section-wrap" style="padding:4px 24px 8px;display:flex;justify-content:center;">
+    <button class="turn-add-btn" style="width:48px;height:36px;font-size:1.4rem;" onclick="openSectionPicker()" title="Lägg till sektion">+</button>
+  </div>
+
+  <!-- Section picker modal -->
+  <div id="section-picker-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:2000;align-items:center;justify-content:center;" onclick="closeSectionPicker()">
+    <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:220px;" onclick="event.stopPropagation()">
+      <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:4px;">VÄLJ SEKTION</div>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('INTRO')">INTRO</button>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('VERSE')">VERSE</button>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('PRE CHORUS')">PRE CHORUS</button>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('CHORUS')">CHORUS</button>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('BRIDGE')">BRIDGE</button>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('M8')">M8</button>
+      <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('OUTRO')">OUTRO</button>
     </div>
   </div>
 
-  <div class="edit-controls">
-    <button class="btn primary" onclick="saveSong(); showToast('Sparad!')">💾 SPARA</button>
-    <button class="btn" onclick="moveSongUp()">↑ FLYTTA UPP</button>
-    <button class="btn" onclick="moveSongDown()">↓ FLYTTA NER</button>
+  <!-- Notes -->
+  <div class="notes-area" id="notes-area" style="padding:8px 24px 0;display:none;">
+    <div class="notes-label">ANTECKNINGAR</div>
+    <textarea class="notes-input" id="sv-notes" placeholder="Egna kommentarer, varningar..." oninput="saveSong()"></textarea>
   </div>
-  <div class="song-progress" id="song-progress"></div>
+
+  <!-- Footer -->
+  <div class="song-footer">
+    <span class="song-progress" id="song-progress"></span>
+    <button class="pill" onclick="moveSongUp()">↑</button>
+    <button class="pill" onclick="moveSongDown()">↓</button>
+    <button class="pill danger" onclick="deleteSong()">TA BORT LÅT</button>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ===================== DATA =====================
+// ═══════════════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════════════
 const KEYS = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-const KEY_DISPLAY = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+// Flat → sharp mapping for normalization
+const FLAT_TO_SHARP = { 'Db':'C#', 'Eb':'D#', 'Fb':'E', 'Gb':'F#', 'Ab':'G#', 'Bb':'A#', 'Cb':'B' };
+// Preferred display: when to show flat vs sharp
+const SHARP_TO_FLAT = { 'C#':'Db', 'D#':'Eb', 'F#':'Gb', 'G#':'Ab', 'A#':'Bb' };
 
-// Section types
-const SEC_TYPES = {
-  play:   { label: 'SPELA',    cls: 'sec-play' },
-  rest:   { label: 'INGEN BAS', cls: 'sec-rest' },
-  warn:   { label: 'VARNING',  cls: 'sec-warn' },
-  danger: { label: 'STOPP',    cls: 'sec-danger' },
-};
-
-function makeSection(name, type, instruction, bars) {
-  return { id: Date.now() + Math.random(), name, type: type || 'play', instruction: instruction || '', bars: bars || '' };
+function normalizeRoot(root) {
+  return FLAT_TO_SHARP[root] || root;
 }
 
-// Parse raw text instructions into sections
+// Prefer flats for display (musician convention)
+function displayRoot(sharpRoot) {
+  return SHARP_TO_FLAT[sharpRoot] || sharpRoot;
+}
+
+// Turn type enum
+const TURN_TYPES = ['play','rest','warn','stop'];
+
+function makeTurn(chords, instruction, bars, type) {
+  const b = parseInt(bars) || 4;
+  // chords: always array of length=bars, one chord string per slot ('' = empty)
+  let slots;
+  if (Array.isArray(chords)) {
+    // Already array — pad/trim to bars length
+    slots = Array.from({length: b}, (_, i) => (chords[i] || ''));
+  } else if (typeof chords === 'string' && chords.trim()) {
+    // Migrate string → split on space, fill slots left-to-right
+    const tokens = chords.trim().split(/\s+/).filter(Boolean);
+    slots = Array.from({length: b}, (_, i) => (tokens[i] || ''));
+  } else {
+    slots = Array(b).fill('');
+  }
+  return {
+    id: Date.now() + Math.random(),
+    chords: slots,
+    instruction: instruction || '',
+    bars: b,
+    type: type || 'play'
+  };
+}
+
+// Ensure turn.chords is array aligned to turn.bars
+function normalizeTurn(turn) {
+  const b = parseInt(turn.bars) || 4;
+  if (!Array.isArray(turn.chords)) {
+    turn.chords = makeTurn(turn.chords || '', '', b, turn.type).chords;
+  }
+  // Resize array if bars changed
+  if (turn.chords.length !== b) {
+    turn.chords = Array.from({length: b}, (_, i) => (turn.chords[i] || ''));
+  }
+  turn.bars = b;
+  return turn;
+}
+
+function makeSection(name, turns) {
+  return {
+    id: Date.now() + Math.random(),
+    name: name || 'SEKTION',
+    turns: turns || []
+  };
+}
+
+// ─── Parse legacy parseInstructions format into sections with turns ───
+function parseLegacySections(rawSections, chordRaw) {
+  if (!rawSections || rawSections.length === 0) return [];
+  return rawSections.map(sec => {
+    const chords = getChordsForSectionName(sec.name, chordRaw);
+    let type = 'play';
+    if (sec.type === 'rest') type = 'rest';
+    else if (sec.type === 'warn') type = 'warn';
+    else if (sec.type === 'danger') type = 'stop';
+    const instr = sec.instruction || '';
+    return makeSection(sec.name, [makeTurn(chords, instr, 4, type)]);
+  });
+}
+
+function getChordsForSectionName(sectionName, chordRaw) {
+  if (!chordRaw || !sectionName) return '';
+  const name = sectionName.toLowerCase().replace(/\s+\d+$/, '').trim();
+  const lines = chordRaw.split('\n');
+  let inSection = false;
+  let result = [];
+  const CP = /^[A-Ga-g][#b]?m?(aj|min|dim|aug|sus|add|maj7|m7|7|9|11|13|6|4|2)?(\d)?(\/[A-G][#b]?)?$/;
+  for (const line of lines) {
+    const t = line.trim();
+    if (/^(\[.*\]|##.*)$/.test(t)) {
+      const lbl = t.replace(/[\[\]#]/g,'').trim().toLowerCase();
+      inSection = lbl === name || lbl.startsWith(name);
+      continue;
+    }
+    if (inSection && t) {
+      const words = t.split(/\s+/);
+      const cc = words.filter(w => CP.test(w)).length;
+      if (cc >= words.length * 0.5) {
+        result.push(t);
+        if (result.length >= 1) break;
+      }
+    }
+  }
+  return result.join(' ');
+}
+
+// ─── Legacy parseInstructions (for DEFAULT_SONGS) ───
 function parseInstructions(raw) {
   if (!raw) return [];
   const lines = raw.split('\n').map(l => l.trim()).filter(l => l);
@@ -731,647 +1097,243 @@ function parseInstructions(raw) {
     if (lower.includes('ingen bas') || lower.includes('ingen bass') || lower.includes('tyst') || lower.includes('inget')) type = 'rest';
     else if (lower.includes('obs') || lower.includes('öva') || lower.includes('varning') || lower.includes('höjning') || lower.includes('annorlunda') || lower.includes('prickar')) type = 'warn';
     else if (lower.includes('stopp') || lower.includes('stop') || lower.includes('slut')) type = 'danger';
-    return makeSection(line, type, '', '');
+    const parts = line.split(/—|-/);
+    const name = parts[0].trim();
+    const instr = parts.slice(1).join(' — ').trim();
+    return { id: Date.now() + Math.random(), name, type, instruction: instr, bars: '' };
   });
 }
 
+
+// ─── DEFAULT SONGS (all chordRaw preserved) ───
 const DEFAULT_SONGS = [
-  {
-    title: 'Händerna mot himlen', artist: 'Petra Marklund', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-Bb C F Gm
-Bb C Dm Gm
-
-[Chorus]
-Bb C F Bb
-Bb C F Dm`,
-    sections: parseInstructions('Verser — Ingen bas\nChorus — Pump')
-  },
-  {
-    title: 'Gimme! Gimme! Gimme!', artist: 'Molly Sandén', key: 'Am', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro/Verse]
-Am G Am G
-
-[Chorus]
-Am F C G
-Am F C G`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Off beat staccato bas\nPrechorus — Staccato\nChorus — Staccato\nM8 — Slapping på en ton (kort)')
-  },
-  {
-    title: 'Proud Mary', artist: 'Tina Turner', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-C A / C A G F / D
-
-[Verse]
-D D D D
-
-[Pre-Chorus]
-A Bm G
-
-[Chorus]
-D D D D`,
-    sections: parseInstructions('Intro — Lugnt i början\nVerse — Snabb pump\nChorus — Basklättring (öva)')
-  },
-  {
-    title: 'I Love It', artist: 'Icona Pop, Charli XCX', key: 'F', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse/Hook]
-Ab Ab Db Db
-Ab Ab Db Db
-
-[Chorus]
-Ab Db Ab Db`,
-    sections: parseInstructions('Intro chorus — Ingen bas\nChorus — Pump\nPre — Ingen bas\nM8 — Ingen bas')
-  },
-  {
-    title: 'Shut Up and Dance', artist: 'WALK THE MOON', key: 'A', keyOffset: 0,
-    notes: 'Utan tracks',
-    chordRaw: `[Verse]
-Db F# Bbm Ab
-Db F# Bbm Ab
-
-[Pre-Chorus]
-F# Bbm / F# Ab
-
-[Chorus]
-Db F# Bbm Ab`,
-    sections: parseInstructions('Intro — Pump hög oktav (en ton)\nVerse — Staccato\nPrechorus — Staccato markeringar\nChorus — Pump + markeringar\nM8 — Annorlunda ackord + Chorus + Intro (hög pumpbas) + Chorus\nSlut — Slutmarkeringar (sista 5st)')
-  },
-  {
-    title: 'Slå mig hårt i ansiktet', artist: 'Thomas Stenström', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-C# F# C# G#
-
-[Pre-Chorus / Bridge]
-F# G# C# Bbm`,
-    sections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Bas\nChorus — Bass\nStopp — Sedan vers 2\nM8 — Hög pedalton')
-  },
-  {
-    title: 'Teenage Dirtbag', artist: 'Wheatus', key: 'E', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro/Verse]
-E B E A (x2)
-
-[Pre-Chorus]
-C#m A B
-
-[Chorus]
-E A B C#m`,
-    sections: parseInstructions('Intro — Trumintro\nVerse — Bass staccato')
-  },
-  {
-    title: 'Sex on Fire', artist: 'Kings of Leon', key: 'E', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-E C#m (x4)
-
-[Verse]
-E C#m A
-
-[Pre-Chorus]
-E Emaj7 C#m A
-
-[Chorus]
-E C#m A`,
-    sections: parseInstructions('Intro — 4 takter tyst\nVerse — Staccato\nPrechorus — Pump\nChorus — Pump\nM8 — Staccato')
-  },
-  {
-    title: 'Ramlar', artist: 'Håkan Hellström', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-C Em F G (x2)
-
-[Verse]
-C Em F G
-C C/B F/A G
-
-[Chorus]
-F G F G`,
-    sections: []
-  },
-  {
-    title: 'Look Who\'s Laughing', artist: 'Benjamin Ingrosso', key: 'D', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro/Verse]
-F F Bb Bb
-F F Eb Bb
-
-[Chorus]
-F Bb Eb F
-F Bb Eb F`,
-    sections: parseInstructions('Intro — Markeringar\nVerse — Pump\nChorus — Markeringar / Pump\nPrechorus — Markering andra toner\nM8 — Ingen bas (diffust)')
-  },
-  {
-    title: 'Let Me Entertain You', artist: 'Robbie Williams', key: 'G', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro/Verse]
-F Ab Bb F
-
-[Chorus]
-F Ab Bb F`,
-    sections: parseInstructions('Intro — Tyst\nChorus — Spela')
-  },
-  {
-    title: 'Kan Inte Gå', artist: 'Bolaget', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-Bm G A D
-Bm G A D
-
-[Pre-Chorus]
-Bm G A D A Bm
-
-[Chorus]
-Bm G A D
-Bm G A D`,
-    sections: []
-  },
-  {
-    title: 'Take Me Home, Country Roads', artist: 'John Denver', key: 'G', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-G G Em D
-G G Em D G
-
-[Chorus]
-G D Em C
-G D C G`,
-    sections: []
-  },
-  {
-    title: '(Du är så) Yeah Yeah', artist: 'Martin', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro/Verse]
-C G C G
-C G C G
-
-[Chorus]
-G D Em C
-G D C G`,
-    sections: parseInstructions('Intro — Prickar direkt\nVerse — Bara bass')
-  },
-  {
-    title: 'Kung för en dag', artist: 'Magnus Uggla', key: 'C', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-C D G G (x4)
-
-[Verse]
-G C / G Em D
-G C / G Em B
-
-[Pre-Chorus]
-C Am D
-
-[Chorus]
-G C G C
-B Em C Am D
-G C G C
-B Em C D G`,
-    sections: parseInstructions('Intro — Ingen bass\nVerse — Spela (obs upp på chorus)\nChorus — Spela\nM8 — Kvart upp\nChorus — Spela')
-  },
-  {
-    title: 'Genom Eld & Vatten', artist: 'Sarek', key: 'Am', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-C G F C
-G F / G F
-C G / Em C D
-
-[Chorus]
-C G F G C
-Am G F Am G
-C G F G C
-C G F G C`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas direkt offbeat\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas')
-  },
-  {
-    title: 'I\'m Gonna Be (500 Miles)', artist: 'The Proclaimers', key: 'D', keyOffset: 0,
-    notes: 'Utan',
-    chordRaw: `[Verse]
-E E A B E
-
-[Chorus]
-E A B E
-E A B E
-
-[Da-da]
-E A B E`,
-    sections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Prickar\nChorus — Four on the floor\nVerse 3 — Spela')
-  },
-  {
-    title: 'När vindarna viskar mitt namn', artist: 'Roger Pontare', key: 'Am', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-Gm F Gm F
-Gm F Gm F D
-
-[Pre-Chorus / Bridge]
-Gm F Bb F Eb
-Gm F D
-
-[Chorus]
-Gm F Eb F
-Gm F Eb F Gm`,
-    sections: parseInstructions('Intro — Spela\nVerse — Shuffle bass')
-  },
-  {
-    title: 'Angels', artist: 'Robbie Williams', key: 'E', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-G D/F# Em C
-G D
-
-[Pre-Chorus]
-C D G Em
-C D
-
-[Chorus]
-G Em C D
-G Em C D G`,
-    sections: []
-  },
-  {
-    title: 'What\'s Up?', artist: '4 Non Blondes', key: 'A', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-A Bm D A (x2)
-
-[Verse]
-A Bm D A
-
-[Chorus]
-A Bm D A`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
-  },
-  {
-    title: 'Basket Case', artist: 'Green Day', key: 'Eb', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-Eb Bb C# G#
-Ab Eb Bb
-
-[Chorus]
-Ab Bb Eb
-Ab Bb Eb Db C#
-Ab Bb`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Ingen bas')
-  },
-  {
-    title: 'Livin\' On A Prayer', artist: 'Bon Jovi', key: 'Em', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-Em C D Em
-
-[Verse]
-Em C D Em
-
-[Pre-Chorus]
-C D Em C D
-
-[Chorus]
-Em C D G C D
-
-[Key Change]
-Bb Eb F Bb Eb F`,
-    sections: parseInstructions('Intro — 4x tyst\nVerse — Basfigur\nChorus — Basfigur\nM8 — Höjning efter M8\nChorus — Basfigur')
-  },
-  {
-    title: 'Hey Baby (Uhh, ahh)', artist: 'Anton, DJ Ötzi', key: 'G', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-A F#m D E (x4)
-
-[Chorus]
-A F#m D E (x4)
-
-[Verse]
-A D A D E`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
-  },
-  {
-    title: 'Cotton Eye Joe', artist: 'Rednex', key: 'Am', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Main]
-A A D D
-A E A`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
-  },
-  {
-    title: 'I\'m In The Band', artist: 'The Hellacopters', key: 'A', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Intro]
-Eb Ab (x2)
-
-[Verse]
-Eb Ab C# Eb
-
-[Pre-Chorus]
-Cm Bb Ab Eb
-
-[Chorus]
-Ab Bb Cm
-Ab Bb Eb`,
-    sections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas')
-  },
-  {
-    title: 'Stad i ljus', artist: 'Tommy Körberg', key: 'G', keyOffset: 0,
-    notes: '',
-    chordRaw: `[Verse]
-G D G Em D C G
-Em D G Em C D
-
-[Chorus]
-G C D Em C D B
-Em D C Am D
-
-[Bridge]
-G D G Em D G`,
-    sections: []
-  }
+  { title: 'Händerna mot himlen', artist: 'Petra Marklund', key: 'Bb', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nBb C F Gm\nBb C Dm Gm\n\n[Chorus]\nBb C F Bb\nBb C F Dm`,
+    legacySections: parseInstructions('Verser — Ingen bas\nChorus — Pump') },
+  { title: 'Gimme! Gimme! Gimme!', artist: 'Molly Sandén', key: 'Am', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro/Verse]\nAm G Am G\n\n[Chorus]\nAm F C G\nAm F C G`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Off beat staccato bas\nPrechorus — Staccato\nChorus — Staccato\nM8 — Slapping på en ton (kort)') },
+  { title: 'Proud Mary', artist: 'Tina Turner', key: 'D', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nC A / C A G F / D\n\n[Verse]\nD D D D\n\n[Pre-Chorus]\nA Bm G\n\n[Chorus]\nD D D D`,
+    legacySections: parseInstructions('Intro — Lugnt i början\nVerse — Snabb pump\nChorus — Basklättring (öva)') },
+  { title: 'I Love It', artist: 'Icona Pop, Charli XCX', key: 'Ab', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse/Hook]\nAb Ab Db Db\nAb Ab Db Db\n\n[Chorus]\nAb Db Ab Db`,
+    legacySections: parseInstructions('Intro chorus — Ingen bas\nChorus — Pump\nPre — Ingen bas\nM8 — Ingen bas') },
+  { title: 'Shut Up and Dance', artist: 'WALK THE MOON', key: 'Db', keyOffset: 0, bpm: '', notes: 'Utan tracks', tracksMode: 'auto',
+    chordRaw: `[Verse]\nDb F# Bbm Ab\nDb F# Bbm Ab\n\n[Pre-Chorus]\nF# Bbm / F# Ab\n\n[Chorus]\nDb F# Bbm Ab`,
+    legacySections: parseInstructions('Intro — Pump hög oktav (en ton)\nVerse — Staccato\nPrechorus — Staccato markeringar\nChorus — Pump + markeringar\nM8 — Annorlunda ackord + Chorus + Intro (hög pumpbas) + Chorus\nSlut — Slutmarkeringar (sista 5st)') },
+  { title: 'Slå mig hårt i ansiktet', artist: 'Thomas Stenström', key: 'C#', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nC# F# C# G#\n\n[Pre-Chorus / Bridge]\nF# G# C# Bbm`,
+    legacySections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Bas\nChorus — Bass\nStopp — Sedan vers 2\nM8 — Hög pedalton') },
+  { title: 'Teenage Dirtbag', artist: 'Wheatus', key: 'E', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro/Verse]\nE B E A\n\n[Pre-Chorus]\nC#m A B\n\n[Chorus]\nE A B C#m`,
+    legacySections: parseInstructions('Intro — Trumintro\nVerse — Bass staccato') },
+  { title: 'Sex on Fire', artist: 'Kings of Leon', key: 'E', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nE C#m\n\n[Verse]\nE C#m A\n\n[Pre-Chorus]\nE Emaj7 C#m A\n\n[Chorus]\nE C#m A`,
+    legacySections: parseInstructions('Intro — 4 takter tyst\nVerse — Staccato\nPrechorus — Pump\nChorus — Pump\nM8 — Staccato') },
+  { title: 'Ramlar', artist: 'Håkan Hellström', key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nC Em F G\n\n[Verse]\nC Em F G\nC C/B F/A G\n\n[Chorus]\nF G F G`,
+    legacySections: [] },
+  { title: "Look Who's Laughing", artist: 'Benjamin Ingrosso', key: 'F', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro/Verse]\nF F Bb Bb\nF F Eb Bb\n\n[Chorus]\nF Bb Eb F\nF Bb Eb F`,
+    legacySections: parseInstructions('Intro — Markeringar\nVerse — Pump\nChorus — Markeringar / Pump\nPrechorus — Markering andra toner\nM8 — Ingen bas (diffust)') },
+  { title: 'Let Me Entertain You', artist: 'Robbie Williams', key: 'F', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro/Verse]\nF Ab Bb F\n\n[Chorus]\nF Ab Bb F`,
+    legacySections: parseInstructions('Intro — Tyst\nChorus — Spela') },
+  { title: 'Kan Inte Gå', artist: 'Bolaget', key: 'Bm', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nBm G A D\nBm G A D\n\n[Pre-Chorus]\nBm G A D A Bm\n\n[Chorus]\nBm G A D\nBm G A D`,
+    legacySections: [] },
+  { title: 'Take Me Home, Country Roads', artist: 'John Denver', key: 'G', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nG G Em D\nG G Em D G\n\n[Chorus]\nG D Em C\nG D C G`,
+    legacySections: [] },
+  { title: '(Du är så) Yeah Yeah', artist: 'Martin', key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro/Verse]\nC G C G\nC G C G\n\n[Chorus]\nG D Em C\nG D C G`,
+    legacySections: parseInstructions('Intro — Prickar direkt\nVerse — Bara bass') },
+  { title: 'Kung för en dag', artist: 'Magnus Uggla', key: 'G', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nC D G G\n\n[Verse]\nG C / G Em D\nG C / G Em B\n\n[Pre-Chorus]\nC Am D\n\n[Chorus]\nG C G C\nB Em C Am D\nG C G C\nB Em C D G`,
+    legacySections: parseInstructions('Intro — Ingen bass\nVerse — Spela (obs upp på chorus)\nChorus — Spela\nM8 — Kvart upp\nChorus — Spela') },
+  { title: 'Genom Eld & Vatten', artist: 'Sarek', key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nC G F C\nG F / G F\nC G / Em C D\n\n[Chorus]\nC G F G C\nAm G F Am G\nC G F G C`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Bas direkt offbeat\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas\nPre — Offbeat\nChorus — Offbeat\nMellanspel — Ingen bas') },
+  { title: "I'm Gonna Be (500 Miles)", artist: 'The Proclaimers', key: 'E', keyOffset: 0, bpm: '', notes: 'Utan', tracksMode: 'auto',
+    chordRaw: `[Verse]\nE E A B E\n\n[Chorus]\nE A B E\nE A B E\n\n[Da-da]\nE A B E`,
+    legacySections: parseInstructions('Verse 1 — Ingen bas\nVerse 2 — Prickar\nChorus — Four on the floor\nVerse 3 — Spela') },
+  { title: 'När vindarna viskar mitt namn', artist: 'Roger Pontare', key: 'Gm', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nGm F Gm F\nGm F Gm F D\n\n[Pre-Chorus / Bridge]\nGm F Bb F Eb\nGm F D\n\n[Chorus]\nGm F Eb F\nGm F Eb F Gm`,
+    legacySections: parseInstructions('Intro — Spela\nVerse — Shuffle bass') },
+  { title: 'Angels', artist: 'Robbie Williams', key: 'G', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nG D/F# Em C\nG D\n\n[Pre-Chorus]\nC D G Em\nC D\n\n[Chorus]\nG Em C D\nG Em C D G`,
+    legacySections: [] },
+  { title: "What's Up?", artist: '4 Non Blondes', key: 'A', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nA Bm D A\n\n[Verse]\nA Bm D A\n\n[Chorus]\nA Bm D A`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas') },
+  { title: 'Basket Case', artist: 'Green Day', key: 'Eb', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nEb Bb C# G#\nAb Eb Bb\n\n[Chorus]\nAb Bb Eb\nAb Bb Eb Db C#\nAb Bb`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Ingen bas') },
+  { title: "Livin' On A Prayer", artist: 'Bon Jovi', key: 'Em', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nEm C D Em\n\n[Verse]\nEm C D Em\n\n[Pre-Chorus]\nC D Em C D\n\n[Chorus]\nEm C D G C D\n\n[Key Change]\nBb Eb F Bb Eb F`,
+    legacySections: parseInstructions('Intro — 4x tyst\nVerse — Basfigur\nChorus — Basfigur\nM8 — Höjning efter M8\nChorus — Basfigur') },
+  { title: 'Hey Baby (Uhh, ahh)', artist: 'Anton, DJ Ötzi', key: 'A', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nA F#m D E\n\n[Chorus]\nA F#m D E\n\n[Verse]\nA D A D E`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas') },
+  { title: 'Cotton Eye Joe', artist: 'Rednex', key: 'A', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Main]\nA A D D\nA E A`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas') },
+  { title: "I'm In The Band", artist: 'The Hellacopters', key: 'Eb', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Intro]\nEb Ab\n\n[Verse]\nEb Ab C# Eb\n\n[Pre-Chorus]\nCm Bb Ab Eb\n\n[Chorus]\nAb Bb Cm\nAb Bb Eb`,
+    legacySections: parseInstructions('Intro — Ingen bas\nVerse — Bas\nChorus — Bas') },
+  { title: 'Stad i ljus', artist: 'Tommy Körberg', key: 'G', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto',
+    chordRaw: `[Verse]\nG D G Em D C G\nEm D G Em C D\n\n[Chorus]\nG C D Em C D B\nEm D C Am D\n\n[Bridge]\nG D G Em D G`,
+    legacySections: [] },
 ];
 
-// ===================== STATE =====================
+// ─── Convert DEFAULT_SONGS to new sections format on first run ───
+function migrateSong(song) {
+  // Already in new format
+  if (song.sections && song.sections.length > 0 && song.sections[0].turns) return song;
+
+  let sections = [];
+  const legacy = song.legacySections || song._rawLegacySections || [];
+
+  if (legacy.length > 0) {
+    sections = parseLegacySections(legacy, song.chordRaw);
+  } else if (song.chordRaw) {
+    // Auto-generate sections from chordRaw headings
+    sections = parseSectionsFromChordRaw(song.chordRaw);
+  }
+
+  song.sections = sections;
+  // Normalize all turns
+  song.sections.forEach(sec => sec.turns.forEach(t => normalizeTurn(t)));
+  return song;
+}
+
+function parseSectionsFromChordRaw(chordRaw) {
+  if (!chordRaw) return [];
+  const lines = chordRaw.split('\n');
+  const CP = /^[A-Ga-g][#b]?m?(aj|min|dim|aug|sus|add|maj7|m7|7|9|11|13|6|4|2)?(\d)?(\/[A-G][#b]?)?$/;
+  const sections = [];
+  let current = null;
+
+  for (const line of lines) {
+    const t = line.trim();
+    if (/^(\[.*\]|##.*)$/.test(t)) {
+      if (current) sections.push(current);
+      const name = t.replace(/[\[\]#]/g,'').trim().toUpperCase();
+      current = { id: Date.now()+Math.random(), name, turns: [] };
+    } else if (t && current) {
+      const words = t.split(/\s+/);
+      const cc = words.filter(w => CP.test(w)).length;
+      if (cc >= words.length * 0.5) {
+        current.turns.push(makeTurn(t, '', 4, 'play'));
+      }
+    }
+  }
+  if (current) sections.push(current);
+
+  // Collapse: if section has multiple turns, keep just first as representative
+  // (user can add more later)
+  return sections.map(s => ({
+    ...s,
+    turns: s.turns.length > 0 ? [s.turns[0]] : [makeTurn('', '', 4, 'play')]
+  }));
+}
+
+
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
 let songs = [];
 let currentSongIndex = -1;
-let sectionSortable = null;
 let isLiveMode = false;
+let isEditMode = false;
+let tracksGlobal = 'off';
+
+// Setlists
+let setlists = [];
+let activeSetlistId = null;
+let _setlistModalMode = 'create';
+let _setlistModalTargetId = null;
+
+// Layer visibility state
+const layers = { blocks: true, chords: true, bars: true, lyrics: 'off', marks: false };
+
+// UI state
+let chordRefOpen = false;
 let chordEditOpen = false;
 
+// ═══════════════════════════════════════════════════
+//  PERSISTENCE
+// ═══════════════════════════════════════════════════
 function loadState() {
-  const saved = localStorage.getItem('beybom_songs');
+  const saved = localStorage.getItem('beybom_songs_v2');
   if (saved) {
-    try { songs = JSON.parse(saved); } catch(e) { songs = JSON.parse(JSON.stringify(DEFAULT_SONGS)); }
-    // Migrate: copy chordRaw from DEFAULT_SONGS if missing in saved state
-    songs.forEach(song => {
-      if (!song.chordRaw) {
-        const def = DEFAULT_SONGS.find(d => d.title === song.title && d.artist === song.artist);
-        if (def && def.chordRaw) song.chordRaw = def.chordRaw;
-      }
-    });
-    saveState();
+    try {
+      songs = JSON.parse(saved);
+      songs = songs.map(s => {
+        if (!s.chordRaw) {
+          const def = DEFAULT_SONGS.find(d => d.title === s.title && d.artist === s.artist);
+          if (def) s.chordRaw = def.chordRaw;
+        }
+        if (!s.sections || s.sections.length === 0 || (s.sections[0] && !s.sections[0].turns)) {
+          const def = DEFAULT_SONGS.find(d => d.title === s.title);
+          const legacy = s.sections || (def ? def.legacySections : []);
+          s._rawLegacySections = legacy;
+          s.sections = [];
+        }
+        return migrateSong(s);
+      });
+    } catch(e) {
+      songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
+    }
   } else {
-    songs = JSON.parse(JSON.stringify(DEFAULT_SONGS));
+    songs = DEFAULT_SONGS.map(s => migrateSong({...s, legacySections: s.legacySections}));
   }
-  // Ensure IDs on sections
-  songs.forEach(song => {
-    if (!song.sections) song.sections = [];
-    song.sections.forEach(s => { if (!s.id) s.id = Date.now() + Math.random(); });
+  songs.forEach(s => {
+    if (!s.sections) s.sections = [];
+    if (!s.id) s.id = String(Date.now() + Math.random());
   });
+
+  // Load setlists
+  const savedSL = localStorage.getItem('beybom_setlists_v1');
+  if (savedSL) {
+    try {
+      const parsed = JSON.parse(savedSL);
+      setlists = parsed.setlists || [];
+      activeSetlistId = parsed.activeSetlistId || null;
+    } catch(e) { setlists = []; activeSetlistId = null; }
+  }
 }
 
 function saveState() {
-  localStorage.setItem('beybom_songs', JSON.stringify(songs));
+  localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
+  localStorage.setItem('beybom_setlists_v1', JSON.stringify({ setlists, activeSetlistId }));
 }
 
-// ===================== SETLIST =====================
-function renderSetlist() {
-  const list = document.getElementById('song-list');
-  list.innerHTML = '';
-  songs.forEach((song, i) => {
-    const row = document.createElement('div');
-    row.className = 'song-row';
-    row.dataset.index = i;
-    row.innerHTML = `
-      <div class="drag-handle">⠿</div>
-      <div class="song-row-info">
-        <div class="song-row-num">${String(i+1).padStart(2,'0')}</div>
-        <div class="song-row-title">${song.title}</div>
-        <div class="song-row-artist">${song.artist}</div>
-      </div>
-      <div class="song-row-key">${getTransposedKey(song)}</div>
-      <button class="btn-open" onclick="openSong(${i})">ÖPPNA →</button>
-    `;
-    list.appendChild(row);
-  });
-
-  // Init sortable
-  if (window._setlistSortable) window._setlistSortable.destroy();
-  window._setlistSortable = Sortable.create(list, {
-    animation: 150,
-    handle: '.drag-handle',
-    ghostClass: 'sortable-ghost',
-    chosenClass: 'sortable-chosen',
-    onEnd: (evt) => {
-      const moved = songs.splice(evt.oldIndex, 1)[0];
-      songs.splice(evt.newIndex, 0, moved);
-      saveState();
-      renderSetlist();
-    }
-  });
-}
-
-function showSetlist() {
-  document.getElementById('setlist-view').style.display = 'flex';
-  document.getElementById('song-view').style.display = 'none';
-  currentSongIndex = -1;
-  renderSetlist();
-}
-
-// ===================== SONG VIEW =====================
-function openSong(index) {
-  currentSongIndex = index;
-  const song = songs[index];
-
-  document.getElementById('setlist-view').style.display = 'none';
-  document.getElementById('song-view').style.display = 'flex';
-
-  document.getElementById('sv-num').textContent = `${String(index+1).padStart(2,'0')} / ${songs.length}`;
-  document.getElementById('sv-title').textContent = song.title;
-  document.getElementById('sv-artist').textContent = song.artist;
-  document.getElementById('sv-key').textContent = getTransposedKey(song);
-  document.getElementById('sv-notes').value = song.notes || '';
-  document.getElementById('song-progress').textContent = `${index+1} av ${songs.length}`;
-
-  // Chord
-  document.getElementById('chord-raw').value = song.chordRaw || '';
-  chordEditOpen = false;
-  document.getElementById('chord-raw').style.display = 'none';
-  renderChordDisplay(song.chordRaw || '', song.key, song.keyOffset || 0);
-
-  renderSections();
-  renderLyricsDisplay();
-  document.getElementById('lyrics-source').textContent = song.lyricsTrackName ? `Källa: LRCLIB.net — "${song.lyricsTrackName}" av ${song.lyricsArtist}` : '';
-  document.getElementById('lyrics-fetch-btn').disabled = false;
-  document.getElementById('lyrics-fetch-btn').textContent = '⬇ HÄMTA LYRICS';
-}
-
-function getChordsForSection(sectionName, chordRaw) {
-  if (!chordRaw || !sectionName) return '';
-  const name = sectionName.toLowerCase().replace(/\s+\d+$/, '').trim(); // strip trailing number: "Verse 2" → "verse"
-  const lines = chordRaw.split('\n');
-  let inSection = false;
-  let result = [];
-  const chordPattern = /^[A-Ga-g][#b]?m?(aj|min|dim|aug|sus|add|maj7|m7|7|9|11|13|6|4|2)?(\d)?(\/[A-G][#b]?)?$/;
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (/^(\[.*\]|##.*)$/.test(trimmed)) {
-      const secLabel = trimmed.replace(/[\[\]#]/g,'').trim().toLowerCase();
-      inSection = secLabel === name || secLabel.startsWith(name);
-      continue;
-    }
-    if (inSection && trimmed) {
-      const words = trimmed.split(/\s+/);
-      const chordCount = words.filter(w => chordPattern.test(w)).length;
-      if (chordCount >= words.length * 0.5) {
-        result.push(trimmed);
-        if (result.length >= 2) break; // max 2 rader per block
-      }
-    }
-  }
-  return result.join(' / ');
-}
-
-function renderSections() {
-  const song = songs[currentSongIndex];
-  const list = document.getElementById('sections-list');
-  list.innerHTML = '';
-
-  if (!song.sections || song.sections.length === 0) {
-    list.innerHTML = '<div style="color:var(--text-dim);font-family:var(--font-mono);font-size:0.75rem;padding:12px;">Inga sektioner ännu. Lägg till nedan.</div>';
-  }
-
-  song.sections.forEach((sec, si) => {
-    const block = document.createElement('div');
-    const altClass = si % 2 === 1 ? 'alt' : '';
-    block.className = `section-block ${SEC_TYPES[sec.type]?.cls || 'sec-play'} ${altClass}`;
-    block.dataset.sid = sec.id;
-    const chordHint = getChordsForSection(sec.name, songs[currentSongIndex].chordRaw);
-    block.innerHTML = `
-      <div class="section-color-bar"></div>
-      <div class="section-body">
-        <div class="section-label">${sec.name || 'SEKTION'}</div>
-        <div class="section-instruction">${sec.instruction || ''}</div>
-        ${sec.bars ? `<div class="section-bars">${sec.bars} takter</div>` : ''}
-        ${chordHint ? `<div class="section-chords">♩ ${chordHint}</div>` : ''}
-        <div class="section-actions">
-          <button class="sec-btn" title="Redigera" onclick="editSection(${si})">✏️</button>
-          <button class="sec-btn del" title="Ta bort" onclick="deleteSection(${si})">✕</button>
-        </div>
-      </div>
-    `;
-    list.appendChild(block);
-  });
-
-  // Sortable sections
-  if (sectionSortable) sectionSortable.destroy();
-  sectionSortable = Sortable.create(list, {
-    animation: 150,
-    ghostClass: 'sortable-ghost',
-    filter: '.section-actions, .sec-btn',
-    onEnd: (evt) => {
-      const moved = song.sections.splice(evt.oldIndex, 1)[0];
-      song.sections.splice(evt.newIndex, 0, moved);
-      saveState();
-      renderSections();
-    }
-  });
-}
-
-function editSection(si) {
-  const song = songs[currentSongIndex];
-  const sec = song.sections[si];
-  const list = document.getElementById('sections-list');
-  const block = list.children[si];
-
-  block.classList.add('edit-mode');
-  block.innerHTML = `
-    <div class="section-color-bar"></div>
-    <div class="section-body">
-      <div class="edit-row">
-        <input class="edit-input" id="sec-name-${si}" value="${sec.name || ''}" placeholder="Sektionsnamn (t.ex. Chorus)">
-        <select class="edit-input" id="sec-type-${si}">
-          <option value="play" ${sec.type==='play'?'selected':''}>🟢 SPELA</option>
-          <option value="rest" ${sec.type==='rest'?'selected':''}>⬜ INGEN BAS</option>
-          <option value="warn" ${sec.type==='warn'?'selected':''}>🟡 VARNING / OBS</option>
-          <option value="danger" ${sec.type==='danger'?'selected':''}>🔴 STOPP</option>
-        </select>
-        <input class="edit-input" id="sec-bars-${si}" value="${sec.bars || ''}" placeholder="Takter" style="max-width:80px;">
-      </div>
-      <div class="edit-row">
-        <input class="edit-input" id="sec-instr-${si}" value="${sec.instruction || ''}" placeholder="Instruktion (t.ex. Pump hög oktav, Staccato markeringar...)">
-      </div>
-      <div class="edit-row">
-        <button class="btn primary" onclick="saveSection(${si})">✓ SPARA</button>
-        <button class="btn" onclick="renderSections()">✕ AVBRYT</button>
-      </div>
-    </div>
-  `;
-}
-
-function saveSection(si) {
-  const song = songs[currentSongIndex];
-  song.sections[si].name = document.getElementById(`sec-name-${si}`).value;
-  song.sections[si].type = document.getElementById(`sec-type-${si}`).value;
-  song.sections[si].instruction = document.getElementById(`sec-instr-${si}`).value;
-  song.sections[si].bars = document.getElementById(`sec-bars-${si}`).value;
+function saveSong() {
+  if (currentSongIndex < 0) return;
+  songs[currentSongIndex].notes = document.getElementById('sv-notes').value;
   saveState();
-  renderSections();
 }
 
-function deleteSection(si) {
+// ═══════════════════════════════════════════════════
+//  KEY / TRANSPOSE
+// ═══════════════════════════════════════════════════
+function getTransposedKey(song) {
+  const normalized = normalizeRoot(song.key);
+  const idx = KEYS.indexOf(normalized);
+  if (idx === -1) return song.key;
+  const newSharp = KEYS[(idx + (song.keyOffset || 0) + 12) % 12];
+  return displayRoot(newSharp);
+}
+
+function transposeKey(delta) {
+  if (currentSongIndex < 0) return;
   const song = songs[currentSongIndex];
-  song.sections.splice(si, 1);
+  song.keyOffset = ((song.keyOffset || 0) + delta + 12) % 12;
   saveState();
+  document.getElementById('sv-key-cur').textContent = getTransposedKey(song);
   renderSections();
-}
-
-function addSection() {
-  const song = songs[currentSongIndex];
-  if (!song.sections) song.sections = [];
-  song.sections.push(makeSection('NY SEKTION', 'play', '', ''));
-  saveState();
-  renderSections();
-  // Scroll to last & edit it
-  setTimeout(() => {
-    const list = document.getElementById('sections-list');
-    editSection(song.sections.length - 1);
-    list.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
-  }, 50);
-}
-
-// ===================== CHORD DISPLAY =====================
-function renderChordDisplay(raw, key, offset) {
-  const display = document.getElementById('chord-display');
-  if (!raw || raw.trim() === '') {
-    display.innerHTML = '<span style="color:var(--text-dim);font-size:0.75rem;">Ingen ackordtext ännu. Klicka REDIGERA för att lägga till.</span>';
-    return;
-  }
-
-  // Parse and highlight chords
-  const lines = raw.split('\n');
-  let html = '';
-  lines.forEach(line => {
-    const trimmed = line.trim();
-    if (!trimmed) { html += '\n'; return; }
-
-    // Section markers [Verse], [CHORUS], ## Verse etc
-    if (/^(\[.*\]|##.*|===.*)$/.test(trimmed)) {
-      html += `<span class="section-marker">▸ ${trimmed.replace(/[\[\]#=]/g,'').trim().toUpperCase()}</span>\n`;
-      return;
-    }
-
-    // Detect chord lines (mostly chords, few words)
-    const words = trimmed.split(/\s+/);
-    const chordPattern = /^[A-Ga-g][#b]?m?(aj|min|dim|aug|sus|add|maj7|m7|7|9|11|13|6|4|2)?(\d)?(\/[A-G][#b]?)?$/;
-    const chordCount = words.filter(w => chordPattern.test(w)).length;
-
-    if (chordCount >= words.length * 0.6 && words.length >= 1) {
-      // Chord line — transpose if needed
-      const transposed = words.map(w => chordPattern.test(w) ? transposeChord(w, offset) : w).join('  ');
-      html += `<span class="chord">${transposed}</span>\n`;
-    } else {
-      // Lyric line — highlight inline chords like [Am]
-      const highlighted = trimmed.replace(/\[([A-Ga-g][^\]]*)\]/g, (m, c) => `<span class="chord">[${transposeChord(c.trim(), offset)}]</span>`);
-      html += highlighted + '\n';
-    }
-  });
-
-  display.innerHTML = html;
 }
 
 function transposeChord(chord, semitones) {
@@ -1379,267 +1341,944 @@ function transposeChord(chord, semitones) {
   const noteRegex = /^([A-G][#b]?)(.*)/;
   const match = chord.match(noteRegex);
   if (!match) return chord;
-  const note = match[1];
-  const suffix = match[2];
-  const enharmonic = { 'Db':'C#','Eb':'D#','Fb':'E','Gb':'F#','Ab':'G#','Bb':'A#','Cb':'B' };
-  const normalized = enharmonic[note] || note;
-  let idx = KEYS.indexOf(normalized);
+  const rawRoot = match[1], suffix = match[2];
+  const normalized = normalizeRoot(rawRoot);
+  const idx = KEYS.indexOf(normalized);
   if (idx === -1) return chord;
-  idx = ((idx + semitones) % 12 + 12) % 12;
-  return KEYS[idx] + suffix;
+  const newSharp = KEYS[(idx + semitones + 12) % 12];
+  return displayRoot(newSharp) + suffix;
+}
+
+function parseAndTransposeChords(chordStr, offset) {
+  if (!chordStr) return [];
+  const CP = /^([A-G][#b]?)(m|maj|min|dim|aug|sus|add)?(\d+)?(\/[A-G][#b]?)?$/i;
+  return chordStr.split(/\s+/).filter(Boolean).map(tok => {
+    if (tok === '/' || tok === '|' || tok.startsWith('(')) return { raw: tok, root: tok, qual: '', bass: '', isText: true };
+    const m = tok.match(/^([A-G][#b]?)(m(?:aj)?(?:\d+)?|maj\d+|dim|aug|sus\d?|add\d?|\d+)?(\/([A-G][#b]?))?$/);
+    if (!m) return { raw: tok, root: tok, qual: '', bass: '', isText: true };
+    const root = transposeChord(m[1], offset);
+    const qual = m[2] || '';
+    const bass = m[3] ? '/' + transposeChord(m[4], offset) : '';
+    return { raw: tok, root, qual, bass, isText: false };
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  LAYERS
+// ═══════════════════════════════════════════════════
+function toggleLayer(name) {
+  if (name === 'blocks') {
+    layers.blocks = !layers.blocks;
+    document.getElementById('lay-blocks').classList.toggle('active', layers.blocks);
+    renderSections();
+  } else if (name === 'chords') {
+    layers.chords = !layers.chords;
+    document.getElementById('lay-chords').classList.toggle('active', layers.chords);
+    applyLayerClasses();
+    // chord ref bar visibility
+    document.getElementById('chord-ref-bar').classList.toggle('visible', layers.chords);
+  } else if (name === 'bars') {
+    layers.bars = !layers.bars;
+    document.getElementById('lay-bars').classList.toggle('active', layers.bars);
+    applyLayerClasses();
+  } else if (name === 'marks') {
+    layers.marks = !layers.marks;
+    document.getElementById('lay-marks').classList.toggle('active', layers.marks);
+  }
+}
+
+function cycleLyrics() {
+  const states = ['off','full','cues'];
+  const idx = states.indexOf(layers.lyrics);
+  layers.lyrics = states[(idx+1) % states.length];
+  const btn = document.getElementById('lay-lyrics');
+  const labels = { off: 'LYRICS', full: 'LYRICS:FULL', cues: 'LYRICS:CUES' };
+  btn.textContent = labels[layers.lyrics];
+  btn.classList.toggle('active', layers.lyrics !== 'off');
+  const panel = document.getElementById('lyrics-panel');
+  panel.classList.toggle('visible', layers.lyrics !== 'off');
+}
+
+function applyLayerClasses() {
+  const sc = document.getElementById('song-content');
+  if (!sc) return;
+  sc.classList.toggle('layer-chords-off', !layers.chords);
+  sc.classList.toggle('layer-bars-off', !layers.bars);
+}
+
+// ═══════════════════════════════════════════════════
+//  TRACKS
+// ═══════════════════════════════════════════════════
+function setTracksGlobal(val) {
+  tracksGlobal = val;
+  ['tb-tracks-off','tb-tracks-on','tb-tracks-notrack'].forEach(id => {
+    document.getElementById(id).classList.remove('active');
+  });
+  const map = { off:'tb-tracks-off', on:'tb-tracks-on', notrack:'tb-tracks-notrack' };
+  document.getElementById(map[val]).classList.add('active');
+  updateTracksBadge();
+}
+
+function updateTracksBadge() {
+  if (currentSongIndex < 0) return;
+  const badge = document.getElementById('sv-tracks-badge');
+  const song = songs[currentSongIndex];
+  let effective = tracksGlobal;
+  let source = 'GLOBAL';
+  if (tracksGlobal === 'off') {
+    effective = song.tracksMode || 'auto';
+    source = 'LÅT';
+  }
+  const labels = { on:'TRACKS ON', notrack:'NO TRACKS', auto:'—', off:'—' };
+  badge.textContent = (labels[effective] || '—') + (tracksGlobal !== 'off' ? ' (GLOBAL)' : '');
+  badge.className = 'sh-tracks-badge' + (effective === 'on' ? ' on' : effective === 'notrack' ? ' off' : '');
+}
+
+// ═══════════════════════════════════════════════════
+//  MODE
+// ═══════════════════════════════════════════════════
+function toggleMode() {
+  if (currentSongIndex >= 0) {
+    isEditMode = !isEditMode;
+    document.body.classList.toggle('edit-mode', isEditMode);
+    const btn = document.getElementById('tb-mode-btn');
+    btn.textContent = isEditMode ? 'LIVE' : 'EDIT';
+    btn.classList.toggle('active', isEditMode);
+    
+    document.getElementById('notes-area').style.display = isEditMode ? 'flex' : 'none';
+    renderSections();
+  } else {
+    // On setlist: toggle live mode
+    isLiveMode = !isLiveMode;
+    document.body.classList.toggle('live-mode', isLiveMode);
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  SETLIST VIEW
+// ═══════════════════════════════════════════════════
+function showSetlist() {
+  currentSongIndex = -1;
+  document.getElementById('setlist-view').style.display = 'flex';
+  document.getElementById('song-view').style.display = 'none';
+  document.getElementById('tb-nav-song').style.display = 'none';
+  document.getElementById('tb-sep-nav').style.display = 'none';
+  document.getElementById('tb-song-title').style.display = 'none';
+  document.getElementById('tb-setlist-actions').style.display = 'flex';
+  document.getElementById('tb-tracks-label').style.display = 'none';
+  document.getElementById('tb-tracks-group').style.display = 'none';
+  document.getElementById('tb-sep-tracks').style.display = 'none';
+  document.getElementById('tb-layers').style.display = 'none';
+  renderSetlistTabs();
+  renderSetlist();
+}
+
+function getActiveSetlist() {
+  if (!activeSetlistId) return null;
+  return setlists.find(sl => sl.id === activeSetlistId) || null;
+}
+
+function getVisibleSongs() {
+  const sl = getActiveSetlist();
+  if (!sl) return songs; // master = all songs
+  return sl.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
+}
+
+function renderSetlistTabs() {
+  const bar = document.getElementById('setlist-tabs');
+  if (!bar) return;
+  bar.innerHTML = '';
+
+  // Master tab
+  const masterTab = document.createElement('button');
+  masterTab.className = 'setlist-tab' + (!activeSetlistId ? ' active' : '');
+  masterTab.textContent = 'ALLA LÅTAR';
+  masterTab.onclick = () => { activeSetlistId = null; saveState(); renderSetlistTabs(); renderSetlist(); };
+  bar.appendChild(masterTab);
+
+  // Setlist tabs
+  setlists.forEach(sl => {
+    const tab = document.createElement('button');
+    tab.className = 'setlist-tab' + (activeSetlistId === sl.id ? ' active' : '');
+    tab.innerHTML = `${sl.name.toUpperCase()}<span class="setlist-tab-actions"><span class="setlist-tab-btn" data-action="rename" data-id="${sl.id}">✏</span><span class="setlist-tab-btn del" data-action="delete" data-id="${sl.id}">✕</span></span>`;
+    tab.addEventListener('click', e => {
+      const btn = e.target.closest('[data-action]');
+      if (btn) {
+        e.stopPropagation();
+        if (btn.dataset.action === 'rename') openSetlistModal('rename', btn.dataset.id);
+        else if (btn.dataset.action === 'delete') deleteSetlist(btn.dataset.id);
+        return;
+      }
+      activeSetlistId = sl.id;
+      saveState();
+      renderSetlistTabs();
+      renderSetlist();
+    });
+    tab.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+      tab.classList.add('drag-over');
+    });
+    tab.addEventListener('dragleave', () => tab.classList.remove('drag-over'));
+    tab.addEventListener('drop', e => {
+      e.preventDefault();
+      tab.classList.remove('drag-over');
+      const songId = e.dataTransfer.getData('songId');
+      if (!songId) return;
+      if (!sl.songIds.includes(songId)) {
+        sl.songIds.push(songId);
+        saveState();
+        renderSetlist();
+      }
+    });
+    bar.appendChild(tab);
+  });
+
+  // + new setlist
+  const addBtn = document.createElement('button');
+  addBtn.className = 'setlist-tab-add';
+  addBtn.title = 'Ny setlist';
+  addBtn.textContent = '+';
+  addBtn.onclick = () => openSetlistModal('create');
+  bar.appendChild(addBtn);
+
+  // Update title
+  const sl = getActiveSetlist();
+  const titleEl = document.getElementById('setlist-title');
+  if (titleEl) titleEl.textContent = sl ? sl.name.toUpperCase() : 'ALLA LÅTAR';
+}
+
+function renderSetlist() {
+  const list = document.getElementById('song-list');
+  list.innerHTML = '';
+  const sl = getActiveSetlist();
+  const visible = getVisibleSongs();
+
+  visible.forEach((song) => {
+    const globalIndex = songs.indexOf(song);
+    const inThisList = sl ? sl.songIds.includes(song.id) : true;
+    const row = document.createElement('div');
+    row.className = 'song-row';
+    row.style.cursor = 'grab';
+    row.draggable = true;
+    row.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('songId', song.id);
+      e.dataTransfer.effectAllowed = 'copy';
+      row.style.opacity = '0.5';
+    });
+    row.addEventListener('dragend', () => { row.style.opacity = ''; });
+
+    let toggleBtn = '';
+    if (sl) {
+      toggleBtn = `<button class="song-row-setlist-toggle ${inThisList ? 'in' : ''}"
+        onclick="event.stopPropagation();toggleSongInSetlist('${sl.id}','${song.id}')">
+        ${inThisList ? '✓ I LISTA' : '+ LÄGG TILL'}
+      </button>`;
+    }
+
+    row.innerHTML = `
+      <div class="song-row-info">
+        <div class="song-row-num">${String(globalIndex+1).padStart(2,'0')}</div>
+        <div class="song-row-title">${song.title}</div>
+        <div class="song-row-artist">${song.artist}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="song-row-key">${getTransposedKey(song)}</div>
+        ${toggleBtn}
+        <button class="btn-open" onclick="openSong(${globalIndex})">ÖPPNA →</button>
+      </div>
+    `;
+    list.appendChild(row);
+  });
+
+  // Sortable only on master list
+  if (window._setlistSortable) window._setlistSortable.destroy();
+  if (!sl && list) {
+    if (typeof Sortable === "undefined") return;
+    try { window._setlistSortable = Sortable.create(list, {
+      animation: 150, ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
+      filter: '.btn-open, .song-row-setlist-toggle',
+      onEnd(evt) {
+        const moved = songs.splice(evt.oldIndex, 1)[0];
+        songs.splice(evt.newIndex, 0, moved);
+        saveState(); renderSetlist();
+      }
+    }); } catch(e) { console.warn('Sortable setlist:', e); }
+  }
+}
+
+// Setlist CRUD
+function openSetlistModal(mode, id) {
+  _setlistModalMode = mode;
+  _setlistModalTargetId = id || null;
+  const label = document.getElementById('setlist-modal-label');
+  const input = document.getElementById('setlist-modal-input');
+  if (mode === 'rename') {
+    const sl = setlists.find(s => s.id === id);
+    label.textContent = 'BYTA NAMN';
+    input.value = sl ? sl.name : '';
+  } else {
+    label.textContent = 'NY SETLIST';
+    input.value = '';
+  }
+  document.getElementById('setlist-modal-backdrop').style.display = 'flex';
+  setTimeout(() => input.focus(), 50);
+}
+
+function closeSetlistModal() {
+  document.getElementById('setlist-modal-backdrop').style.display = 'none';
+}
+
+function confirmSetlistModal() {
+  const name = document.getElementById('setlist-modal-input').value.trim();
+  if (!name) return;
+  if (_setlistModalMode === 'create') {
+    const id = 'sl_' + Date.now();
+    setlists.push({ id, name, songIds: [] });
+    activeSetlistId = id;
+  } else {
+    const sl = setlists.find(s => s.id === _setlistModalTargetId);
+    if (sl) sl.name = name;
+  }
+  saveState();
+  closeSetlistModal();
+  renderSetlistTabs();
+  renderSetlist();
+}
+
+function deleteSetlist(id) {
+  setlists = setlists.filter(sl => sl.id !== id);
+  if (activeSetlistId === id) activeSetlistId = null;
+  saveState();
+  renderSetlistTabs();
+  renderSetlist();
+}
+
+function toggleSongInSetlist(slId, songId) {
+  const sl = setlists.find(s => s.id === slId);
+  if (!sl) return;
+  const idx = sl.songIds.indexOf(songId);
+  if (idx === -1) sl.songIds.push(songId);
+  else sl.songIds.splice(idx, 1);
+  saveState();
+  renderSetlist();
+}
+
+// ═══════════════════════════════════════════════════
+//  SONG VIEW
+// ═══════════════════════════════════════════════════
+function openSong(index) {
+  currentSongIndex = index;
+  const song = songs[index];
+
+  document.getElementById('setlist-view').style.display = 'none';
+  document.getElementById('song-view').style.display = 'flex';
+  document.getElementById('song-view').style.flexDirection = 'column';
+
+  // Topbar
+  document.getElementById('tb-nav-song').style.display = 'flex';
+  document.getElementById('tb-sep-nav').style.display = 'block';
+  document.getElementById('tb-song-title').style.display = 'block';
+  document.getElementById('tb-song-title').textContent = song.title;
+  document.getElementById('tb-setlist-actions').style.display = 'none';
+  document.getElementById('tb-tracks-label').style.display = 'block';
+  document.getElementById('tb-tracks-group').style.display = 'flex';
+  document.getElementById('tb-sep-tracks').style.display = 'block';
+  document.getElementById('tb-layers').style.display = 'flex';
+
+  // Song header
+  document.getElementById('sv-num').textContent = `${String(index+1).padStart(2,'0')} / ${songs.length}`;
+  document.getElementById('sv-title').textContent = song.title;
+  document.getElementById('sv-artist').textContent = song.artist;
+  document.getElementById('sv-key-orig').textContent = song.key;
+  document.getElementById('sv-key-cur').textContent = getTransposedKey(song);
+  document.getElementById('sv-notes').value = song.notes || '';
+  document.getElementById('song-progress').textContent = `${index+1} av ${songs.length}`;
+
+  document.getElementById('sv-bpm').textContent = song.bpm || '—';
+
+  updateTracksBadge();
+
+  // Chord ref
+  document.getElementById('chord-ref-edit').value = song.chordRaw || '';
+  chordRefOpen = false;
+  chordEditOpen = false;
+  document.getElementById('chord-ref-panel').style.display = 'none';
+  document.getElementById('chord-ref-edit').style.display = 'none';
+  document.getElementById('chord-ref-bar').classList.toggle('visible', layers.chords);
+  renderChordRef();
+
+  // Edit mode UI
+  
+  document.getElementById('notes-area').style.display = isEditMode ? 'flex' : 'none';
+
+  // Lyrics
+  renderLyricsDisplay(song);
+
+  renderSections();
+  applyLayerClasses();
+}
+
+// ═══════════════════════════════════════════════════
+//  CHORD REF PANEL
+// ═══════════════════════════════════════════════════
+function renderChordRef() {
+  if (currentSongIndex < 0) return;
+  const song = songs[currentSongIndex];
+  const raw = song.chordRaw || '';
+  const panel = document.getElementById('chord-ref-panel');
+  if (!raw) { panel.innerHTML = '<span style="color:var(--text-muted);font-size:0.7rem;">Ingen ackordtext.</span>'; return; }
+  const offset = song.keyOffset || 0;
+  const CP = /^([A-G][#b]?)(m(?:aj)?(?:\d+)?|maj\d+|dim|aug|sus\d?|add\d?|\d+)?(\/([A-G][#b]?))?$/;
+  const lines = raw.split('\n');
+  let html = '';
+  lines.forEach(line => {
+    const t = line.trim();
+    if (!t) { html += '\n'; return; }
+    if (/^(\[.*\]|##.*)$/.test(t)) {
+      html += `<span class="cr-section">▸ ${t.replace(/[\[\]#]/g,'').trim().toUpperCase()}</span>\n`;
+      return;
+    }
+    const words = t.split(/\s+/);
+    const CC = words.filter(w => w.match(CP)).length;
+    if (CC >= words.length * 0.5) {
+      const transposed = words.map(w => {
+        if (w.match(CP)) return `<span class="cr-chord">${transposeChord(w.split('/')[0], offset)}${w.includes('/')? '/'+transposeChord(w.split('/')[1],offset):''}</span>`;
+        return w;
+      }).join('  ');
+      html += transposed + '\n';
+    } else {
+      html += t + '\n';
+    }
+  });
+  panel.innerHTML = html;
+}
+
+function toggleChordRef() {
+  chordRefOpen = !chordRefOpen;
+  document.getElementById('chord-ref-panel').style.display = chordRefOpen ? 'block' : 'none';
+  if (chordEditOpen && chordRefOpen) { chordEditOpen = false; document.getElementById('chord-ref-edit').style.display = 'none'; }
 }
 
 function toggleChordEdit() {
   chordEditOpen = !chordEditOpen;
-  const raw = document.getElementById('chord-raw');
-  const display = document.getElementById('chord-display');
-  raw.style.display = chordEditOpen ? 'block' : 'none';
-  display.style.display = chordEditOpen ? 'none' : 'block';
-  if (!chordEditOpen) {
-    // Save and render
+  document.getElementById('chord-ref-edit').style.display = chordEditOpen ? 'block' : 'none';
+  if (chordRefOpen && chordEditOpen) { chordRefOpen = false; document.getElementById('chord-ref-panel').style.display = 'none'; }
+}
+
+function onChordRawEdit() {
+  if (currentSongIndex < 0) return;
+  songs[currentSongIndex].chordRaw = document.getElementById('chord-ref-edit').value;
+  saveState();
+}
+
+// Parse + transpose single chord token → { root, qual, bass, display }
+function parseChordToken(raw, offset) {
+  if (!raw || !raw.trim()) return { root: '', qual: '', bass: '', display: '' };
+  const m = raw.trim().match(/^([A-G][#b]?)(m(?:aj)?(?:\d+)?|maj\d+|dim|aug|sus\d?|add\d?|\d+)?(\/([A-G][#b]?))?$/);
+  if (!m) return { root: raw, qual: '', bass: '', display: raw };
+  const root = transposeChord(m[1], offset);
+  const qual = m[2] || '';
+  const bassNote = m[4] ? transposeChord(m[4], offset) : '';
+  const bass = bassNote ? '/' + bassNote : '';
+  return { root, qual, bass, display: root + qual + bass };
+}
+
+// S6: Inline slot editor
+let _activeSlotInput = null;
+
+function openSlotEdit(slotEl, si, ti, b) {
+  // Close any open slot editor first
+  if (_activeSlotInput) closeSlotEdit(false);
+
+  const song = songs[currentSongIndex];
+  const raw = song.sections[si].turns[ti].chords[b] || '';
+
+  const input = document.createElement('input');
+  input.className = 'slot-input';
+  input.value = raw;
+  input.placeholder = '—';
+  input.maxLength = 8;
+  slotEl.classList.add('editing');
+  slotEl.appendChild(input);
+  input.focus();
+  input.select();
+  _activeSlotInput = { input, slotEl, si, ti, b };
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); closeSlotEdit(true); }
+    if (e.key === 'Escape') closeSlotEdit(false);
+  });
+  input.addEventListener('blur', () => { setTimeout(() => closeSlotEdit(true), 80); });
+}
+
+function closeSlotEdit(save) {
+  if (!_activeSlotInput) return;
+  const { input, slotEl, si, ti, b } = _activeSlotInput;
+  _activeSlotInput = null;
+  if (save) {
+    const val = input.value.trim();
     const song = songs[currentSongIndex];
-    song.chordRaw = raw.value;
+    song.sections[si].turns[ti].chords[b] = val;
     saveState();
-    renderChordDisplay(raw.value, song.key, song.keyOffset || 0);
+  }
+  slotEl.classList.remove('editing');
+  if (input.parentNode) input.parentNode.removeChild(input);
+  renderSections();
+}
+
+// ═══════════════════════════════════════════════════
+let _sectionSortable = null;
+
+function renderSections() {
+  if (currentSongIndex < 0) return;
+  const song = songs[currentSongIndex];
+  const container = document.getElementById('song-content');
+  container.innerHTML = '';
+
+  (song.sections || []).forEach((sec, si) => {
+    container.appendChild(buildSectionRow(sec, si, song));
+  });
+
+  applyLayerClasses();
+
+  if (isEditMode) {
+    if (_sectionSortable) _sectionSortable.destroy();
+    if (typeof Sortable === "undefined" || !container) return;
+    try { _sectionSortable = Sortable.create(container, {
+      animation: 150, ghostClass: 'sortable-ghost',
+      filter: '.turn-block, .sec-label-col button, .turn-edit-overlay',
+      onEnd(evt) {
+        const song = songs[currentSongIndex];
+        const moved = song.sections.splice(evt.oldIndex, 1)[0];
+        song.sections.splice(evt.newIndex, 0, moved);
+        saveState(); renderSections();
+      }
+    }); } catch(e) { console.warn('Sortable:', e); }
   }
 }
 
-function updateChordDisplay() {
+function buildSectionRow(sec, si, song) {
+  const offset = song.keyOffset || 0;
+  const row = document.createElement('div');
+  row.className = 'section-row';
+
+  // Label col
+  const labelCol = document.createElement('div');
+  labelCol.className = 'sec-label-col';
+  labelCol.innerHTML = `
+    <div class="sec-name">${sec.name}</div>
+    ${isEditMode ? `
+      <div class="sec-label-actions">
+        <button class="sec-action-btn" onclick="editSectionName(${si})" title="Byt namn">✏</button>
+        <button class="sec-action-btn del" onclick="deleteSection(${si})" title="Ta bort">✕</button>
+      </div>
+    ` : ''}
+  `;
+  row.appendChild(labelCol);
+
+  // Turns container
+  const turnsEl = document.createElement('div');
+  turnsEl.className = 'turns-container';
+
+  (sec.turns || []).forEach((turn, ti) => {
+    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song));
+  });
+
+  if (sec.turns.length === 0) {
+    const empty = document.createElement('div');
+    empty.style.cssText = 'flex:1;background:var(--panel2);border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;';
+    empty.innerHTML = `<span style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);">+ BLOCK</span>`;
+    empty.onclick = () => addTurn(si);
+    turnsEl.appendChild(empty);
+  }
+
+  // + block button — always visible at end of row
+  const addBtn = document.createElement('button');
+  addBtn.className = 'turn-add-btn';
+  addBtn.title = 'Lägg till block';
+  addBtn.textContent = '+';
+  addBtn.onclick = (e) => { e.stopPropagation(); addTurn(si); };
+  turnsEl.appendChild(addBtn);
+
+  row.appendChild(turnsEl);
+  return row;
+}
+
+function buildTurnBlock(turn, si, ti, offset, song) {
+  normalizeTurn(turn);
+  const typeClass = turn.type === 'rest' ? 'rest' : turn.type === 'warn' ? 'warn' : turn.type === 'stop' ? 'stop' : '';
+  const altClass = ti % 2 === 1 ? (turn.type === 'play' ? 'play-alt' : 'alt') : '';
+  const block = document.createElement('div');
+  block.className = `turn-block ${typeClass} ${altClass}`;
+  if (!layers.blocks) block.style.background = 'var(--panel2)';
+
+  const bars = turn.bars;
+  const restIcon = turn.type === 'rest' ? '◼' : '◻';
+
+  // Top row
+  const topEl = document.createElement('div');
+  topEl.className = 'turn-top';
+  topEl.innerHTML = `
+    <div class="turn-bars">${bars} TAKT${bars !== 1 ? 'ER' : ''}</div>
+    <button class="turn-rest-btn" title="${turn.type==='rest'?'INGEN BAS':'SPELA'}" onclick="toggleTurnRest(${si},${ti})">${restIcon}</button>
+  `;
+  block.appendChild(topEl);
+
+  // Chord slots grid
+  const chordsEl = document.createElement('div');
+  chordsEl.className = 'turn-chords';
+  chordsEl.style.gridTemplateColumns = `repeat(${bars}, 1fr)`;
+
+  for (let b = 0; b < bars; b++) {
+    const rawChord = turn.chords[b] || '';
+    const slot = document.createElement('div');
+    const isEmpty = !rawChord.trim();
+    slot.className = `chord-slot${b === 0 ? ' beat1' : ''}${isEmpty ? ' empty' : ''}`;
+    slot.dataset.si = si; slot.dataset.ti = ti; slot.dataset.b = b;
+
+    // Parse + transpose
+    const { display, root, qual, bass } = parseChordToken(rawChord, offset);
+
+    slot.innerHTML = `
+      <div class="chord-slot-text">${isEmpty ? '–' : `${root}<span class="cq">${qual}</span><span class="cb">${bass}</span>`}</div>
+    `;
+
+    // Slot always clickable for chord edit
+    slot.style.cursor = 'pointer';
+    slot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openSlotEdit(slot, si, ti, b);
+    });
+    chordsEl.appendChild(slot);
+  }
+  block.appendChild(chordsEl);
+
+  // Instruction
+  if (turn.instruction) {
+    const instrEl = document.createElement('div');
+    instrEl.className = 'turn-instruction';
+    instrEl.textContent = turn.instruction;
+    block.appendChild(instrEl);
+  }
+
+  // (ticks removed — slot numbers serve this purpose)
+
+  // Edit mode: turn-level controls (instruction, type, bars, delete)
+  if (isEditMode) {
+    const ctrlEl = document.createElement('div');
+    ctrlEl.style.cssText = 'display:flex;gap:4px;align-items:center;flex-wrap:wrap;padding-top:4px;border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;';
+    ctrlEl.innerHTML = `
+      <input class="te-input" style="flex:1;min-width:80px;font-size:0.65rem;" 
+        value="${(turn.instruction||'').replace(/"/g,'&quot;')}" placeholder="Instruktion..."
+        oninput="updateTurnInstruction(${si},${ti},this.value)">
+      <button class="pill" style="padding:3px 6px;font-size:0.52rem;" onclick="changeTurnBars(${si},${ti},-1)">−</button>
+      <span style="font-family:var(--font-mono);font-size:0.58rem;color:var(--text-dim);">${bars}T</span>
+      <button class="pill" style="padding:3px 6px;font-size:0.52rem;" onclick="changeTurnBars(${si},${ti},1)">+</button>
+      <select class="te-input te-select" style="max-width:72px;font-size:0.6rem;" onchange="updateTurnType(${si},${ti},this.value)">
+        ${['play','rest','warn','stop'].map(t=>`<option value="${t}"${turn.type===t?' selected':''}>${t.toUpperCase()}</option>`).join('')}
+      </select>
+      <button class="pill danger" style="padding:3px 6px;font-size:0.52rem;" onclick="deleteTurn(${si},${ti})">✕</button>
+    `;
+    block.appendChild(ctrlEl);
+  }
+
+  return block;
+}
+
+// ═══════════════════════════════════════════════════
+//  TURN EDITING
+// ═══════════════════════════════════════════════════
+function toggleTurnRest(si, ti) {
   const song = songs[currentSongIndex];
-  song.chordRaw = document.getElementById('chord-raw').value;
+  const turn = song.sections[si].turns[ti];
+  turn.type = turn.type === 'rest' ? 'play' : 'rest';
+  saveState();
+  renderSections();
+}
+
+function updateTurnInstruction(si, ti, value) {
+  songs[currentSongIndex].sections[si].turns[ti].instruction = value;
   saveState();
 }
 
-// ===================== KEY / TRANSPOSE =====================
-function getTransposedKey(song) {
-  if (!song.keyOffset || song.keyOffset === 0) return song.key || '?';
-  const enharmonic = { 'Db':'C#','Eb':'D#','Gb':'F#','Ab':'G#','Bb':'A#' };
-  const normalized = enharmonic[song.key] || song.key;
-  // Handle minor keys
-  const isMinor = normalized.endsWith('m');
-  const root = isMinor ? normalized.slice(0,-1) : normalized;
-  let idx = KEYS.indexOf(root);
-  if (idx === -1) return song.key;
-  idx = ((idx + song.keyOffset) % 12 + 12) % 12;
-  return KEYS[idx] + (isMinor ? 'm' : '');
-}
-
-function transposeKey(delta) {
-  const song = songs[currentSongIndex];
-  song.keyOffset = ((song.keyOffset || 0) + delta + 12) % 12;
-  document.getElementById('sv-key').textContent = getTransposedKey(song);
-  renderChordDisplay(song.chordRaw || '', song.key, song.keyOffset);
+function updateTurnType(si, ti, value) {
+  songs[currentSongIndex].sections[si].turns[ti].type = value;
   saveState();
+  renderSections();
 }
 
-// ===================== SAVE =====================
-function saveSong() {
+// S7: Add/remove bars — resizes chords array
+function changeTurnBars(si, ti, delta) {
   const song = songs[currentSongIndex];
-  song.notes = document.getElementById('sv-notes').value;
+  const turn = song.sections[si].turns[ti];
+  const newBars = Math.max(1, Math.min(16, (turn.bars || 4) + delta));
+  // Resize chords array
+  if (newBars > turn.chords.length) {
+    while (turn.chords.length < newBars) turn.chords.push('');
+  } else {
+    turn.chords = turn.chords.slice(0, newBars);
+  }
+  turn.bars = newBars;
   saveState();
+  renderSections();
 }
 
-// ===================== NAVIGATION =====================
+function deleteTurn(si, ti) {
+  const song = songs[currentSongIndex];
+  song.sections[si].turns.splice(ti, 1);
+  saveState();
+  renderSections();
+}
+
+function addTurn(si) {
+  const song = songs[currentSongIndex];
+  const turns = song.sections[si].turns;
+  let newTurn;
+  if (turns.length > 0) {
+    const prev = turns[turns.length - 1];
+    // Deep copy prev turn, new id
+    newTurn = JSON.parse(JSON.stringify(prev));
+    newTurn.id = Date.now() + Math.random();
+  } else {
+    newTurn = makeTurn('', '', 4, 'play');
+  }
+  turns.push(newTurn);
+  saveState();
+  renderSections();
+}
+
+// ═══════════════════════════════════════════════════
+//  SECTION EDITING
+// ═══════════════════════════════════════════════════
+function openSectionPicker() {
+  const el = document.getElementById('section-picker-backdrop');
+  el.style.display = 'flex';
+}
+
+function closeSectionPicker() {
+  document.getElementById('section-picker-backdrop').style.display = 'none';
+}
+
+function confirmAddSection(name) {
+  if (currentSongIndex < 0) return;
+  if (!name) return;
+  songs[currentSongIndex].sections.push(makeSection(name, [makeTurn('','',4,'play')]));
+  saveState();
+  closeSectionPicker();
+  renderSections();
+  setTimeout(() => {
+    const rows = document.querySelectorAll('.section-row');
+    if (rows.length) rows[rows.length-1].scrollIntoView({behavior:'smooth', block:'nearest'});
+  }, 50);
+}
+
+function addSection() { openSectionPicker(); }
+
+function deleteSection(si) {
+  if (!confirm('Ta bort sektion?')) return;
+  songs[currentSongIndex].sections.splice(si, 1);
+  saveState();
+  renderSections();
+}
+
+function editBpm() {
+  if (currentSongIndex < 0) return;
+  const song = songs[currentSongIndex];
+  const el = document.getElementById('sv-bpm');
+  const cur = song.bpm || '';
+  el.contentEditable = 'true';
+  el.textContent = cur;
+  el.focus();
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  el.onblur = () => {
+    const val = el.textContent.trim().replace(/[^\d]/g, '');
+    song.bpm = val;
+    el.textContent = val || '—';
+    el.contentEditable = 'false';
+    saveState();
+  };
+  el.onkeydown = (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+    if (e.key === 'Escape') { el.textContent = cur || '—'; el.contentEditable = 'false'; }
+  };
+}
+
+
+function editSectionName(si) {
+  const song = songs[currentSongIndex];
+  const nameEl = document.querySelectorAll('.sec-name')[si];
+  if (!nameEl) return;
+  const cur = song.sections[si].name;
+  nameEl.contentEditable = 'true';
+  nameEl.focus();
+  // Select all
+  const range = document.createRange();
+  range.selectNodeContents(nameEl);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  nameEl.onblur = () => {
+    const val = nameEl.textContent.trim().toUpperCase();
+    song.sections[si].name = val || cur;
+    nameEl.contentEditable = 'false';
+    saveState();
+    renderSections();
+  };
+  nameEl.onkeydown = (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); nameEl.blur(); }
+    if (e.key === 'Escape') { nameEl.textContent = cur; nameEl.blur(); }
+  };
+}
+
+// ═══════════════════════════════════════════════════
+//  SONG MANAGEMENT
+// ═══════════════════════════════════════════════════
 function navSong(delta) {
-  saveSong();
   const next = currentSongIndex + delta;
   if (next >= 0 && next < songs.length) openSong(next);
 }
 
 function moveSongUp() {
   if (currentSongIndex <= 0) return;
-  [songs[currentSongIndex], songs[currentSongIndex-1]] = [songs[currentSongIndex-1], songs[currentSongIndex]];
-  saveState();
+  const s = songs.splice(currentSongIndex, 1)[0];
+  songs.splice(currentSongIndex - 1, 0, s);
   currentSongIndex--;
-  openSong(currentSongIndex);
-  showToast('Låt flyttad upp');
+  saveState();
+  document.getElementById('sv-num').textContent = `${String(currentSongIndex+1).padStart(2,'0')} / ${songs.length}`;
+  document.getElementById('song-progress').textContent = `${currentSongIndex+1} av ${songs.length}`;
+  showToast('Flytt upp ✓');
 }
 
 function moveSongDown() {
-  if (currentSongIndex >= songs.length-1) return;
-  [songs[currentSongIndex], songs[currentSongIndex+1]] = [songs[currentSongIndex+1], songs[currentSongIndex]];
-  saveState();
+  if (currentSongIndex >= songs.length - 1) return;
+  const s = songs.splice(currentSongIndex, 1)[0];
+  songs.splice(currentSongIndex + 1, 0, s);
   currentSongIndex++;
-  openSong(currentSongIndex);
-  showToast('Låt flyttad ner');
+  saveState();
+  document.getElementById('sv-num').textContent = `${String(currentSongIndex+1).padStart(2,'0')} / ${songs.length}`;
+  document.getElementById('song-progress').textContent = `${currentSongIndex+1} av ${songs.length}`;
+  showToast('Flytt ner ✓');
 }
 
-// ===================== LIVE MODE =====================
-function toggleLiveMode() {
-  isLiveMode = !isLiveMode;
-  document.body.classList.toggle('live-mode', isLiveMode);
-  showToast(isLiveMode ? '⚡ LIVE MODE PÅ' : 'Live mode av');
+function deleteSong() {
+  if (!confirm(`Ta bort "${songs[currentSongIndex].title}"?`)) return;
+  songs.splice(currentSongIndex, 1);
+  saveState();
+  showSetlist();
 }
 
-// ===================== IMPORT / EXPORT =====================
+function addNewSong() {
+  const title = prompt('Låttitel:');
+  if (!title) return;
+  const artist = prompt('Artist:') || '';
+  songs.push(migrateSong({ title, artist, key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto', chordRaw: '', legacySections: [], sections: [makeSection('VERSE', [makeTurn('','',4,'play')])] }));
+  saveState();
+  openSong(songs.length - 1);
+}
+
+// ═══════════════════════════════════════════════════
+//  EXPORT / IMPORT
+// ═══════════════════════════════════════════════════
 function exportJSON() {
-  const data = JSON.stringify(songs, null, 2);
-  const blob = new Blob([data], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
+  const blob = new Blob([JSON.stringify(songs, null, 2)], {type:'application/json'});
   const a = document.createElement('a');
-  a.href = url;
+  a.href = URL.createObjectURL(blob);
   a.download = 'beybom-setlist.json';
   a.click();
-  URL.revokeObjectURL(url);
-  showToast('JSON exporterad!');
 }
 
-function importJSON(evt) {
-  const file = evt.target.files[0];
+function importJSON(e) {
+  const file = e.target.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = (e) => {
+  reader.onload = ev => {
     try {
-      const imported = JSON.parse(e.target.result);
-      if (!Array.isArray(imported)) throw new Error('Ogiltigt format');
-      songs = imported;
-      songs.forEach(song => {
-        if (!song.sections) song.sections = [];
-        if (!song.keyOffset) song.keyOffset = 0;
-        song.sections.forEach(s => { if (!s.id) s.id = Date.now() + Math.random(); });
-      });
+      songs = JSON.parse(ev.target.result).map(s => migrateSong(s));
       saveState();
       showSetlist();
-      showToast('Import lyckades! ' + songs.length + ' låtar');
-    } catch(e) {
-      showToast('Import misslyckades: ' + e.message);
-    }
+      showToast('Import klar!');
+    } catch { showToast('Fel vid import'); }
   };
   reader.readAsText(file);
-  evt.target.value = '';
+  e.target.value = '';
 }
 
-// ===================== TOAST =====================
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
-}
-
-// ===================== LYRICS =====================
+// ═══════════════════════════════════════════════════
+//  LYRICS
+// ═══════════════════════════════════════════════════
 let currentLyricsTab = 'plain';
 
-function switchLyricsTab(tab, btn) {
-  currentLyricsTab = tab;
-  document.querySelectorAll('.lyrics-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderLyricsDisplay();
-}
-
-function renderLyricsDisplay() {
-  const song = songs[currentSongIndex];
+function renderLyricsDisplay(song) {
+  song = song || songs[currentSongIndex];
   const box = document.getElementById('lyrics-display');
   const src = document.getElementById('lyrics-source');
-
-  if (!song.lyrics && !song.lyricsPlain) {
-    box.innerHTML = '<span class="lyrics-status">Tryck "HÄMTA LYRICS" för att söka automatiskt via LRCLIB.</span>';
-    src.textContent = '';
-    return;
-  }
-
-  const text = currentLyricsTab === 'synced' && song.lyrics ? song.lyrics : (song.lyricsPlain || song.lyrics || '');
-
-  if (!text) {
-    box.innerHTML = '<span class="lyrics-status">Inga lyrics hittade för detta format.</span>';
-    return;
-  }
-
-  // Format: highlight section markers like [Verse 1], [Chorus] etc
-  const lines = text.split('\n');
+  const lyr = currentLyricsTab === 'synced' ? (song.lyrics || song.lyricsPlain || '') : (song.lyricsPlain || song.lyrics || '');
+  if (!lyr) { box.innerHTML = '<span class="lyrics-status">Tryck HÄMTA för att söka via LRCLIB.</span>'; src.textContent = ''; return; }
+  src.textContent = song.lyricsTrackName ? `Källa: LRCLIB — "${song.lyricsTrackName}"` : '';
+  const lines = lyr.split('\n');
   let html = '';
   lines.forEach(line => {
-    const trimmed = line.trim();
-    // Strip LRC timestamps [00:12.34]
-    const stripped = trimmed.replace(/\[\d{2}:\d{2}\.\d{2,3}\]/g, '').trim();
-    if (!stripped) { html += '\n'; return; }
-    if (/^\[.*\]$/.test(stripped)) {
-      html += `<span class="lyrics-section-marker">▸ ${stripped.replace(/[\[\]]/g,'').toUpperCase()}</span>`;
-    } else {
-      html += stripped + '\n';
-    }
+    if (/^\[.+\]$/.test(line.trim())) html += `<span class="lyrics-section-marker">${line.trim()}</span>`;
+    else html += line + '\n';
   });
-
   box.innerHTML = html;
-  src.textContent = 'Källa: LRCLIB.net';
 }
 
 async function fetchLyrics() {
+  if (currentSongIndex < 0) return;
   const song = songs[currentSongIndex];
   const btn = document.getElementById('lyrics-fetch-btn');
   const box = document.getElementById('lyrics-display');
-
-  // Return cached
-  if (song.lyricsPlain || song.lyrics) {
-    renderLyricsDisplay();
-    showToast('Lyrics laddade från cache');
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = '⏳ SÖKER...';
-  box.innerHTML = '<span class="lyrics-status">Söker på LRCLIB.net...</span>';
-
+  btn.disabled = true; btn.textContent = '...';
+  box.innerHTML = '<span class="lyrics-status">Söker...</span>';
   try {
-    // Try exact match first
     const q = encodeURIComponent(`${song.title} ${song.artist}`);
-    const url = `https://lrclib.net/api/search?q=${q}`;
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'BEYBOM BassPlayer v1.0' }
-    });
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetch(`https://lrclib.net/api/search?q=${q}`, { headers: {'User-Agent':'BEYBOM BassPlayer v2'} });
     const results = await res.json();
-
-    if (!results || results.length === 0) {
-      // Fallback: title only
-      const q2 = encodeURIComponent(song.title);
-      const res2 = await fetch(`https://lrclib.net/api/search?q=${q2}`, {
-        headers: { 'User-Agent': 'BEYBOM BassPlayer v1.0' }
-      });
-      const results2 = await res2.json();
-      if (!results2 || results2.length === 0) {
-        box.innerHTML = '<span class="lyrics-status">⚠ Inga lyrics hittades. Kontrollera låttitel/artist.</span>';
-        btn.disabled = false;
-        btn.textContent = '⬇ HÄMTA LYRICS';
-        return;
-      }
-      processlyricsResult(results2[0], song);
-    } else {
-      processlyricsResult(results[0], song);
-    }
-
+    if (!results || results.length === 0) { box.innerHTML = '<span class="lyrics-status">⚠ Inga lyrics hittades.</span>'; return; }
+    const r = results[0];
+    song.lyricsPlain = r.plainLyrics || '';
+    song.lyrics = r.syncedLyrics || r.plainLyrics || '';
+    song.lyricsTrackName = r.trackName;
+    song.lyricsArtist = r.artistName;
+    saveState();
+    renderLyricsDisplay(song);
+    showToast('Lyrics hämtade ✓');
   } catch(e) {
-    box.innerHTML = `<span class="lyrics-status">⚠ Fel: ${e.message}. Kontrollera nätverksanslutning.</span>`;
+    box.innerHTML = `<span class="lyrics-status">⚠ Fel: ${e.message}</span>`;
   }
-
-  btn.disabled = false;
-  btn.textContent = '⬇ HÄMTA LYRICS';
+  btn.disabled = false; btn.textContent = '⬇ HÄMTA';
 }
 
-function processlyricsResult(result, song) {
-  song.lyricsPlain = result.plainLyrics || '';
-  song.lyrics = result.syncedLyrics || result.plainLyrics || '';
-  song.lyricsTrackName = result.trackName;
-  song.lyricsArtist = result.artistName;
-  saveState();
-  renderLyricsDisplay();
-  showToast(`Lyrics hämtade: ${result.trackName}`);
+// ═══════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-// ===================== INIT =====================
-loadState();
-showSetlist();
-
-// Keyboard shortcuts
-document.addEventListener('keydown', (e) => {
+// ═══════════════════════════════════════════════════
+//  KEYBOARD
+// ═══════════════════════════════════════════════════
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
   if (currentSongIndex === -1) return;
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navSong(1);
   if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navSong(-1);
   if (e.key === 'Escape') showSetlist();
-  if (e.key === 'f' || e.key === 'F') toggleLiveMode();
+  if (e.key === 'e' || e.key === 'E') toggleMode();
 });
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+loadState();
+showSetlist();
 </script>
 </body>
 </html>
