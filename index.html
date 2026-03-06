@@ -1296,45 +1296,37 @@ let chordEditOpen = false;
 //  PERSISTENCE
 // ═══════════════════════════════════════════════════
 async function loadState() {
-  const saved = localStorage.getItem('beybom_songs_v2');
-  if (saved) {
-    try {
-      songs = JSON.parse(saved);
-      songs = songs.map(s => {
-        if (!s.chordRaw) {
-          const def = DEFAULT_SONGS.find(d => d.title === s.title && d.artist === s.artist);
-          if (def) s.chordRaw = def.chordRaw;
-        }
-        if (!s.sections || s.sections.length === 0 || (s.sections[0] && !s.sections[0].turns)) {
-          const def = DEFAULT_SONGS.find(d => d.title === s.title);
-          const legacy = s.sections || (def ? def.legacySections : []);
-          s._rawLegacySections = legacy;
-          s.sections = [];
-        }
-        return migrateSong(s);
-      });
-    } catch(e) {
-      songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
+  // SSoT: always try to load from beybom-setlist.json first
+  try {
+    const resp = await fetch('beybom-setlist.json');
+    if (resp.ok) {
+      const imported = await resp.json();
+      songs = imported.map(s => migrateSong(s));
+      console.log('Loaded', songs.length, 'songs from beybom-setlist.json');
+    } else {
+      throw new Error('fetch failed');
     }
-  } else {
-    // Try to load from exported JSON file first
-    try {
-      const resp = await fetch('beybom-setlist.json');
-      if (resp.ok) {
-        const imported = await resp.json();
-        songs = imported.map(s => migrateSong(s));
-        console.log('Loaded', songs.length, 'songs from beybom-setlist.json');
-      } else {
-        throw new Error('fetch failed');
+  } catch(e) {
+    // Fallback: localStorage (offline / file missing)
+    const saved = localStorage.getItem('beybom_songs_v2');
+    if (saved) {
+      try {
+        songs = JSON.parse(saved).map(s => migrateSong(s));
+        console.log('Loaded from localStorage (file fetch failed)');
+      } catch(e2) {
+        songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
       }
-    } catch(e) {
-      songs = DEFAULT_SONGS.map(s => migrateSong({...s, legacySections: s.legacySections}));
+    } else {
+      songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
     }
   }
   songs.forEach(s => {
     if (!s.sections) s.sections = [];
     if (!s.id) s.id = String(Date.now() + Math.random());
   });
+
+  // Sync to localStorage as session cache
+  localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
 
   // Load setlists
   const savedSL = localStorage.getItem('beybom_setlists_v1');
