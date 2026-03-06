@@ -1043,10 +1043,8 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
 
   <!-- Footer -->
   <div class="song-footer">
-    <span class="song-progress" id="song-progress"></span>
     <button class="pill" onclick="moveSongUp()">↑</button>
     <button class="pill" onclick="moveSongDown()">↓</button>
-    <button class="pill danger" onclick="deleteSong()">TA BORT LÅT</button>
   </div>
 </div>
 
@@ -1977,13 +1975,20 @@ function buildSectionRow(sec, si, song) {
     turnsEl.appendChild(empty);
   }
 
-  // + block button — always visible at end of row
+  // + block button and ⧉ duplicate section — always visible at end of row
   const addBtn = document.createElement('button');
   addBtn.className = 'turn-add-btn';
   addBtn.title = 'Lägg till block';
   addBtn.textContent = '+';
   addBtn.onclick = (e) => { e.stopPropagation(); addTurn(si); };
   turnsEl.appendChild(addBtn);
+
+  const dupBtn = document.createElement('button');
+  dupBtn.className = 'turn-add-btn';
+  dupBtn.title = 'Duplicera rad';
+  dupBtn.textContent = '⧉';
+  dupBtn.onclick = (e) => { e.stopPropagation(); duplicateSection(si); };
+  turnsEl.appendChild(dupBtn);
 
   row.appendChild(turnsEl);
   return row;
@@ -2063,7 +2068,6 @@ function buildTurnBlock(turn, si, ti, offset, song) {
         ${['play','rest','warn','stop'].map(t=>`<option value="${t}"${turn.type===t?' selected':''}>${t.toUpperCase()}</option>`).join('')}
       </select>
       <button class="pill danger" style="padding:3px 6px;font-size:0.52rem;" onclick="deleteTurn(${si},${ti})">✕</button>
-      <button class="pill" style="padding:3px 6px;font-size:0.52rem;" title="Duplicera block" onclick="duplicateTurn(${si},${ti})">⧉</button>
     `;
     block.appendChild(ctrlEl);
   }
@@ -2248,14 +2252,15 @@ function moveSongDown() {
   showToast('Flytt ner ✓');
 }
 
-function duplicateTurn(si, ti) {
+function duplicateSection(si) {
   const song = songs[currentSongIndex];
-  const copy = JSON.parse(JSON.stringify(song.sections[si].turns[ti]));
+  const copy = JSON.parse(JSON.stringify(song.sections[si]));
   copy.id = Date.now() + Math.random();
-  song.sections[si].turns.splice(ti + 1, 0, copy);
+  (copy.turns || []).forEach(t => { t.id = Date.now() + Math.random(); });
+  song.sections.splice(si + 1, 0, copy);
   saveState();
   openSong(currentSongIndex);
-  showToast('Block duplicerat ⧉');
+  showToast('Rad duplicerad ⧉');
 }
 
 function deleteSong() {
