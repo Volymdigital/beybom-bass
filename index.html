@@ -2617,13 +2617,20 @@ async function loadFromFile() {
   }
 }
 
-// Debounced file save — 2s after last change
+// Debounced file save — 2s after last change, only after startup
+let _startupComplete = false;
+let _isSaving = false;
+
 function scheduleFileSave() {
+  if (!_startupComplete) return; // never write during startup
   if (_fileSaveTimer) clearTimeout(_fileSaveTimer);
   _fileSaveTimer = setTimeout(async () => {
+    if (_isSaving) return;
     if (_fileHandle && songs.length > 0) {
+      _isSaving = true;
       await saveVersion(songs);
       await writeToFile(songs);
+      _isSaving = false;
     } else if (songs.length > 0) {
       await saveVersion(songs);
     }
@@ -2711,12 +2718,13 @@ loadState().then(async () => {
         if (!s.sections) s.sections = [];
         if (!s.id) s.id = String(Date.now() + Math.random());
       });
-      // Sync localStorage with file data
+      // Sync localStorage — direct write, NOT via saveState, to avoid file write loop
       localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
-      showToast('Laddades från bunden fil ✓');
     }
   }
   showSetlist();
+  _startupComplete = true; // only now allow file writes
+  if (restored) showToast('Laddades från bunden fil ✓');
 });
 </script>
 </body>
