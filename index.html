@@ -806,6 +806,64 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
 
 /* Utility */
 .hidden { display: none !important; }
+
+/* Save indicator */
+.save-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  display: flex; align-items: center; gap: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+.save-indicator.bound { color: var(--accent); }
+.save-indicator.unbound { color: var(--text-muted); border-color: var(--border2); }
+.save-indicator.saving { color: #FFD54F; }
+.save-indicator .save-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.save-indicator.bound .save-dot { background: var(--accent); }
+.save-indicator.unbound .save-dot { background: var(--text-muted); }
+.save-indicator.saving .save-dot { background: #FFD54F; animation: pulse-dot 0.6s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* Rollback modal */
+.rollback-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.78); z-index: 3000;
+  align-items: center; justify-content: center;
+}
+.rollback-modal {
+  background: var(--panel); border: 1px solid var(--border2);
+  border-radius: 4px; padding: 20px; min-width: 300px; max-width: 420px;
+  max-height: 70vh; display: flex; flex-direction: column; gap: 10px;
+}
+.rollback-title {
+  font-family: var(--font-mono); font-size: 0.6rem;
+  color: var(--text-muted); letter-spacing: 2px;
+}
+.rollback-list {
+  display: flex; flex-direction: column; gap: 4px;
+  overflow-y: auto; max-height: 50vh;
+}
+.rollback-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 10px; background: var(--panel2);
+  border: 1px solid var(--border); border-radius: 2px;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  color: var(--text-dim); cursor: pointer; transition: all 0.12s;
+}
+.rollback-item:hover { border-color: var(--accent); color: var(--text); }
+.rollback-item .rb-time { color: var(--text); }
+.rollback-item .rb-songs { color: var(--text-muted); font-size: 0.6rem; }
+.rollback-empty {
+  color: var(--text-muted); font-family: var(--font-mono);
+  font-size: 0.7rem; padding: 16px; text-align: center;
+}
 </style>
 </head>
 <body>
@@ -859,6 +917,10 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     <button class="pill" onclick="document.getElementById('import-file').click()">↑ JSON</button>
     <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
   </div>
+  <div class="save-indicator unbound" id="save-indicator" onclick="onSaveIndicatorClick()" title="Klicka för att binda fil">
+    <span class="save-dot"></span>
+    <span id="save-indicator-text">OBUNDEN</span>
+  </div>
 </div>
 
 <!-- ════════════════════════════════
@@ -884,6 +946,17 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     <div style="display:flex;gap:6px;">
       <button class="pill active" style="flex:1;" onclick="confirmSetlistModal()">SPARA</button>
       <button class="pill" onclick="closeSetlistModal()">AVBRYT</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rollback modal -->
+<div class="rollback-backdrop" id="rollback-backdrop" onclick="closeRollbackModal()">
+  <div class="rollback-modal" onclick="event.stopPropagation()">
+    <div class="rollback-title">⟲ VERSIONSHISTORIK</div>
+    <div class="rollback-list" id="rollback-list"></div>
+    <div style="display:flex;gap:6px;">
+      <button class="pill" onclick="closeRollbackModal()">STÄNG</button>
     </div>
   </div>
 </div>
@@ -974,6 +1047,7 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     <span class="song-progress" id="song-progress"></span>
     <button class="pill" onclick="moveSongUp()">↑</button>
     <button class="pill" onclick="moveSongDown()">↓</button>
+    <button class="pill" onclick="duplicateSong()">⧉ DUPLICERA</button>
     <button class="pill danger" onclick="deleteSong()">TA BORT LÅT</button>
   </div>
 </div>
@@ -2175,6 +2249,22 @@ function moveSongDown() {
   showToast('Flytt ner ✓');
 }
 
+function duplicateSong() {
+  if (currentSongIndex < 0) return;
+  const copy = JSON.parse(JSON.stringify(songs[currentSongIndex]));
+  copy.id = String(Date.now() + Math.random());
+  copy.title = copy.title + ' (kopia)';
+  // Give new IDs to sections and turns
+  (copy.sections || []).forEach(sec => {
+    sec.id = Date.now() + Math.random();
+    (sec.turns || []).forEach(t => { t.id = Date.now() + Math.random(); });
+  });
+  songs.splice(currentSongIndex + 1, 0, copy);
+  saveState();
+  openSong(currentSongIndex + 1);
+  showToast('Låt duplicerad!');
+}
+
 function deleteSong() {
   if (!confirm(`Ta bort "${songs[currentSongIndex].title}"?`)) return;
   songs.splice(currentSongIndex, 1);
@@ -2287,9 +2377,252 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════════
+//  PERSISTENCE LAYER — IndexedDB + File System Access
+// ═══════════════════════════════════════════════════
+const VERSION_DB_NAME = 'beybom_versions';
+const VERSION_STORE = 'snapshots';
+const MAX_VERSIONS = 20;
+let _fileHandle = null;
+let _fileSaveTimer = null;
+let _lastSaveTime = 0;
+
+// ─── IndexedDB version store ───
+function openVersionDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(VERSION_DB_NAME, 1);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains(VERSION_STORE)) {
+        db.createObjectStore(VERSION_STORE, { keyPath: 'timestamp' });
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function saveVersion(data) {
+  try {
+    const db = await openVersionDB();
+    const tx = db.transaction(VERSION_STORE, 'readwrite');
+    const store = tx.objectStore(VERSION_STORE);
+    const snapshot = {
+      timestamp: Date.now(),
+      songCount: data.length,
+      data: JSON.stringify(data)
+    };
+    store.put(snapshot);
+
+    // Prune old versions
+    const getAll = store.getAll();
+    getAll.onsuccess = () => {
+      const all = getAll.result.sort((a, b) => b.timestamp - a.timestamp);
+      const toDelete = all.slice(MAX_VERSIONS);
+      toDelete.forEach(v => store.delete(v.timestamp));
+    };
+    await new Promise((resolve, reject) => {
+      tx.oncomplete = resolve;
+      tx.onerror = reject;
+    });
+  } catch (e) {
+    console.warn('Version save failed:', e);
+  }
+}
+
+async function getVersions() {
+  try {
+    const db = await openVersionDB();
+    const tx = db.transaction(VERSION_STORE, 'readonly');
+    const store = tx.objectStore(VERSION_STORE);
+    return new Promise((resolve) => {
+      const req = store.getAll();
+      req.onsuccess = () => {
+        const all = req.result.sort((a, b) => b.timestamp - a.timestamp);
+        resolve(all);
+      };
+      req.onerror = () => resolve([]);
+    });
+  } catch (e) {
+    return [];
+  }
+}
+
+async function restoreVersion(timestamp) {
+  try {
+    const db = await openVersionDB();
+    const tx = db.transaction(VERSION_STORE, 'readonly');
+    const store = tx.objectStore(VERSION_STORE);
+    return new Promise((resolve) => {
+      const req = store.get(timestamp);
+      req.onsuccess = () => {
+        if (req.result) {
+          resolve(JSON.parse(req.result.data));
+        } else {
+          resolve(null);
+        }
+      };
+      req.onerror = () => resolve(null);
+    });
+  } catch (e) {
+    return null;
+  }
+}
+
+// ─── File System Access API ───
+const _fsSupported = ('showSaveFilePicker' in window);
+
+async function bindFile() {
+  if (!_fsSupported) {
+    showToast('Din webbläsare stöder inte filbindning (kräver Chrome/Edge)');
+    return false;
+  }
+  try {
+    const handle = await window.showSaveFilePicker({
+      suggestedName: 'beybom-setlist.json',
+      types: [{
+        description: 'JSON-filer',
+        accept: { 'application/json': ['.json'] }
+      }]
+    });
+    _fileHandle = handle;
+    updateSaveIndicator('bound');
+    // Write current state immediately
+    await writeToFile(songs);
+    showToast('Fil bunden ✓ — autospar aktivt');
+    return true;
+  } catch (e) {
+    if (e.name !== 'AbortError') {
+      console.warn('File bind failed:', e);
+      showToast('Filbindning avbruten');
+    }
+    return false;
+  }
+}
+
+async function writeToFile(data) {
+  if (!_fileHandle) return;
+  try {
+    updateSaveIndicator('saving');
+    const writable = await _fileHandle.createWritable();
+    await writable.write(JSON.stringify(data, null, 2));
+    await writable.close();
+    _lastSaveTime = Date.now();
+    updateSaveIndicator('bound');
+  } catch (e) {
+    console.warn('File write failed:', e);
+    _fileHandle = null;
+    updateSaveIndicator('unbound');
+    showToast('Filskrivning misslyckades — bindning borttagen');
+  }
+}
+
+async function loadFromFile() {
+  if (!_fileHandle) return null;
+  try {
+    const file = await _fileHandle.getFile();
+    const text = await file.text();
+    return JSON.parse(text);
+  } catch (e) {
+    console.warn('File read failed:', e);
+    return null;
+  }
+}
+
+// Debounced file save — 2s after last change
+function scheduleFileSave() {
+  if (_fileSaveTimer) clearTimeout(_fileSaveTimer);
+  _fileSaveTimer = setTimeout(async () => {
+    if (_fileHandle && songs.length > 0) {
+      await saveVersion(songs);
+      await writeToFile(songs);
+    } else if (songs.length > 0) {
+      await saveVersion(songs);
+    }
+  }, 2000);
+}
+
+// ─── Save indicator UI ───
+function updateSaveIndicator(state) {
+  const el = document.getElementById('save-indicator');
+  const txt = document.getElementById('save-indicator-text');
+  if (!el || !txt) return;
+  el.className = 'save-indicator ' + state;
+  if (state === 'bound') txt.textContent = 'SPARAD ✓';
+  else if (state === 'saving') txt.textContent = 'SPARAR...';
+  else txt.textContent = 'OBUNDEN';
+}
+
+function onSaveIndicatorClick() {
+  if (_fileHandle) {
+    openRollbackModal();
+  } else {
+    bindFile();
+  }
+}
+
+// ─── Rollback modal ───
+async function openRollbackModal() {
+  const versions = await getVersions();
+  const list = document.getElementById('rollback-list');
+  list.innerHTML = '';
+  if (versions.length === 0) {
+    list.innerHTML = '<div class="rollback-empty">Inga versioner sparade ännu.</div>';
+  } else {
+    versions.forEach(v => {
+      const d = new Date(v.timestamp);
+      const timeStr = d.toLocaleDateString('sv-SE') + ' ' + d.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const item = document.createElement('div');
+      item.className = 'rollback-item';
+      item.innerHTML = `<span class="rb-time">${timeStr}</span><span class="rb-songs">${v.songCount} låtar</span>`;
+      item.onclick = () => confirmRestore(v.timestamp, timeStr);
+      list.appendChild(item);
+    });
+  }
+  document.getElementById('rollback-backdrop').style.display = 'flex';
+}
+
+function closeRollbackModal() {
+  document.getElementById('rollback-backdrop').style.display = 'none';
+}
+
+async function confirmRestore(timestamp, label) {
+  if (!confirm(`Återställ till version från ${label}?`)) return;
+  const data = await restoreVersion(timestamp);
+  if (!data) { showToast('Kunde inte läsa version'); return; }
+  songs = data.map(s => migrateSong(s));
+  songs.forEach(s => {
+    if (!s.sections) s.sections = [];
+    if (!s.id) s.id = String(Date.now() + Math.random());
+  });
+  saveState();
+  closeRollbackModal();
+  showSetlist();
+  showToast('Återställd ✓');
+}
+
+// ─── Patch saveState to trigger persistence ───
+const _origSaveState = saveState;
+saveState = function() {
+  _origSaveState();
+  scheduleFileSave();
+};
+
+// ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-loadState().then(() => showSetlist());
+loadState().then(async () => {
+  showSetlist();
+  // Auto-prompt for file binding if not bound and API supported
+  if (_fsSupported && !_fileHandle) {
+    // Small delay so user sees the app first
+    setTimeout(() => {
+      if (!_fileHandle) {
+        const shouldBind = confirm('Vill du binda en lokal fil för autospar?\n\nDetta gör att din data sparas på disk och överlever browser-rensning.');
+        if (shouldBind) bindFile();
+      }
+    }, 1500);
+  }
+});
 </script>
 </body>
 </html>
