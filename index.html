@@ -2469,7 +2469,7 @@ async function restoreVersion(timestamp) {
 }
 
 // ─── File System Access API ───
-const _fsSupported = ('showSaveFilePicker' in window);
+const _fsSupported = ('showOpenFilePicker' in window);
 const _HANDLE_DB = 'beybom_filehandle';
 const _HANDLE_STORE = 'handles';
 
@@ -2546,13 +2546,15 @@ async function bindFile() {
     return false;
   }
   try {
-    const handle = await window.showSaveFilePicker({
-      suggestedName: 'beybom-setlist.json',
+    const [handle] = await window.showOpenFilePicker({
+      multiple: false,
       types: [{
         description: 'JSON-filer',
         accept: { 'application/json': ['.json'] }
       }]
     });
+    // Re-request with write access
+    await handle.requestPermission({ mode: 'readwrite' });
     _fileHandle = handle;
     await saveHandleToDB(handle);
     updateSaveIndicator('bound');
