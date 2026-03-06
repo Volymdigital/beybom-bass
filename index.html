@@ -681,6 +681,34 @@ body.edit-mode .chord-slot.editing { background: rgba(0,230,118,0.08); }
 }
 .song-progress { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-muted); }
 
+/* Floating nav arrows at bottom of song view */
+.song-nav-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
+  z-index: 900;
+}
+.nav-float-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: rgba(18,18,18,0.85);
+  color: var(--accent);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.nav-float-btn:hover { background: rgba(30,30,30,0.95); transform: scale(1.08); }
+.nav-float-btn:active { transform: scale(0.95); }
+
 /* ══════════════════════════════════════
    LYRICS PANEL (layer: FULL / CUES / OFF)
 ══════════════════════════════════════ */
@@ -1020,6 +1048,12 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     <span class="song-progress" id="song-progress"></span>
     <button class="pill" onclick="moveSongUp()">↑</button>
     <button class="pill" onclick="moveSongDown()">↓</button>
+  </div>
+
+  <!-- Bottom nav arrows (large, fixed) -->
+  <div class="song-nav-float" id="song-nav-float">
+    <button class="nav-float-btn" id="nav-prev-btn" onclick="navSong(-1)" title="Föregående låt">◀</button>
+    <button class="nav-float-btn" id="nav-next-btn" onclick="navSong(1)" title="Nästa låt">▶</button>
   </div>
 </div>
 
@@ -1592,13 +1626,14 @@ function renderSetlist() {
   const sl = getActiveSetlist();
   const visible = getVisibleSongs();
 
-  visible.forEach((song) => {
+  visible.forEach((song, visibleIndex) => {
     const globalIndex = songs.indexOf(song);
-    const inThisList = sl ? sl.songIds.includes(song.id) : true;
+    const displayNum = sl ? visibleIndex + 1 : globalIndex + 1;
     const row = document.createElement('div');
     row.className = 'song-row';
     row.style.cursor = 'grab';
     row.draggable = true;
+    row.setAttribute('data-song-id', song.id);
     row.addEventListener('dragstart', e => {
       e.dataTransfer.setData('songId', song.id);
       e.dataTransfer.effectAllowed = 'copy';
@@ -1608,15 +1643,15 @@ function renderSetlist() {
 
     let toggleBtn = '';
     if (sl) {
-      toggleBtn = `<button class="song-row-setlist-toggle ${inThisList ? 'in' : ''}"
+      toggleBtn = `<button class="song-row-setlist-toggle in"
         onclick="event.stopPropagation();toggleSongInSetlist('${sl.id}','${song.id}')">
-        ${inThisList ? '✓ I LISTA' : '+ LÄGG TILL'}
+        ✓ I LISTA
       </button>`;
     }
 
     row.innerHTML = `
       <div class="song-row-info">
-        <div class="song-row-num">${String(globalIndex+1).padStart(2,'0')}</div>
+        <div class="song-row-num">${String(displayNum).padStart(2,'0')}</div>
         <div class="song-row-title">${song.title}</div>
         <div class="song-row-artist">${song.artist}</div>
       </div>
@@ -1629,16 +1664,22 @@ function renderSetlist() {
     list.appendChild(row);
   });
 
-  // Sortable only on master list
+  // Sortable — works on both master list and setlists
   if (window._setlistSortable) window._setlistSortable.destroy();
-  if (!sl && list) {
-    if (typeof Sortable === "undefined") return;
+  if (list && typeof Sortable !== 'undefined') {
     try { window._setlistSortable = Sortable.create(list, {
       animation: 150, ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
       filter: '.btn-open, .song-row-setlist-toggle',
       onEnd(evt) {
-        const moved = songs.splice(evt.oldIndex, 1)[0];
-        songs.splice(evt.newIndex, 0, moved);
+        if (sl) {
+          // Reorder within setlist
+          const moved = sl.songIds.splice(evt.oldIndex, 1)[0];
+          sl.songIds.splice(evt.newIndex, 0, moved);
+        } else {
+          // Reorder master list
+          const moved = songs.splice(evt.oldIndex, 1)[0];
+          songs.splice(evt.newIndex, 0, moved);
+        }
         saveState(); renderSetlist();
       }
     }); } catch(e) { console.warn('Sortable setlist:', e); }
@@ -1724,14 +1765,24 @@ function openSong(index) {
   document.getElementById('tb-sep-tracks').style.display = 'block';
   document.getElementById('tb-layers').style.display = 'flex';
 
-  // Song header
-  document.getElementById('sv-num').textContent = `${String(index+1).padStart(2,'0')} / ${songs.length}`;
+  // Song header — show setlist-local position if in a setlist
+  const sl = getActiveSetlist();
+  const navList = sl ? sl.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean) : songs;
+  const navIndex = navList.indexOf(song);
+  const navTotal = navList.length;
+  document.getElementById('sv-num').textContent = `${String(navIndex+1).padStart(2,'0')} / ${navTotal}`;
   document.getElementById('sv-title').textContent = song.title;
   document.getElementById('sv-artist').textContent = song.artist;
   document.getElementById('sv-key-orig').textContent = song.key;
   document.getElementById('sv-key-cur').textContent = getTransposedKey(song);
   document.getElementById('sv-notes').value = song.notes || '';
-  document.getElementById('song-progress').textContent = `${index+1} av ${songs.length}`;
+  document.getElementById('song-progress').textContent = `${navIndex+1} av ${navTotal}`;
+
+  // Update bottom nav arrow visibility
+  const prevBtn = document.getElementById('nav-prev-btn');
+  const nextBtn = document.getElementById('nav-next-btn');
+  if (prevBtn) prevBtn.style.visibility = navIndex <= 0 ? 'hidden' : 'visible';
+  if (nextBtn) nextBtn.style.visibility = navIndex >= navTotal - 1 ? 'hidden' : 'visible';
 
   document.getElementById('sv-bpm').textContent = song.bpm || '—';
 
@@ -2182,9 +2233,39 @@ function editSectionName(si) {
 //  SONG MANAGEMENT
 // ═══════════════════════════════════════════════════
 function navSong(delta) {
-  const next = currentSongIndex + delta;
-  if (next >= 0 && next < songs.length) openSong(next);
+  const sl = getActiveSetlist();
+  if (sl) {
+    // Navigate within setlist only
+    const navList = sl.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
+    const curSong = songs[currentSongIndex];
+    const curNavIdx = navList.indexOf(curSong);
+    const nextNavIdx = curNavIdx + delta;
+    if (nextNavIdx >= 0 && nextNavIdx < navList.length) {
+      openSong(songs.indexOf(navList[nextNavIdx]));
+    }
+  } else {
+    const next = currentSongIndex + delta;
+    if (next >= 0 && next < songs.length) openSong(next);
+  }
 }
+
+// Swipe support for iPad/touch
+let _swipeStartX = 0;
+let _swipeStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  if (!document.getElementById('song-view') || document.getElementById('song-view').style.display === 'none') return;
+  _swipeStartX = e.touches[0].clientX;
+  _swipeStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  if (!document.getElementById('song-view') || document.getElementById('song-view').style.display === 'none') return;
+  const dx = e.changedTouches[0].clientX - _swipeStartX;
+  const dy = e.changedTouches[0].clientY - _swipeStartY;
+  if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    if (dx < 0) navSong(1);  // swipe left = next
+    else navSong(-1);         // swipe right = prev
+  }
+}, { passive: true });
 
 function moveSongUp() {
   if (currentSongIndex <= 0) return;
