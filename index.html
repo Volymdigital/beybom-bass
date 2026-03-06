@@ -1082,7 +1082,7 @@ const KEYS = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 // Flat → sharp mapping for normalization
 const FLAT_TO_SHARP = { 'Db':'C#', 'Eb':'D#', 'Fb':'E', 'Gb':'F#', 'Ab':'G#', 'Bb':'A#', 'Cb':'B' };
 // Preferred display: when to show flat vs sharp
-const SHARP_TO_FLAT = { 'C#':'Db', 'D#':'Eb', 'F#':'Gb', 'G#':'Ab', 'A#':'Bb' };
+const SHARP_TO_FLAT = { 'C#':'Db', 'D#':'Eb', 'G#':'Ab', 'A#':'Bb' };
 
 function normalizeRoot(root) {
   return FLAT_TO_SHARP[root] || root;
