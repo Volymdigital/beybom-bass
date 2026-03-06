@@ -2501,18 +2501,36 @@ async function bindFile() {
 
 async function writeToFile(data) {
   if (!_fileHandle) return;
-  try {
-    updateSaveIndicator('saving');
+  const attempt = async () => {
     const writable = await _fileHandle.createWritable();
     await writable.write(JSON.stringify(data, null, 2));
     await writable.close();
+  };
+  try {
+    updateSaveIndicator('saving');
+    await attempt();
     _lastSaveTime = Date.now();
     updateSaveIndicator('bound');
   } catch (e) {
-    console.warn('File write failed:', e);
-    _fileHandle = null;
-    updateSaveIndicator('unbound');
-    showToast('Filskrivning misslyckades — bindning borttagen');
+    // Retry once after a short delay (handles transient locks from live-server etc.)
+    console.warn('File write failed (retrying):', e.name, e.message);
+    if (e.name === 'NotAllowedError') {
+      // Permission revoked — give up cleanly but keep handle so user can rebind by clicking
+      updateSaveIndicator('unbound');
+      showToast('Filrättigheter borttagna — klicka på indikatorn för att binda igen');
+      return;
+    }
+    try {
+      await new Promise(r => setTimeout(r, 1000));
+      await attempt();
+      _lastSaveTime = Date.now();
+      updateSaveIndicator('bound');
+    } catch (e2) {
+      console.warn('File write retry failed:', e2.name, e2.message);
+      updateSaveIndicator('unbound');
+      showToast('Filskrivning misslyckades — klicka på indikatorn för att binda igen');
+      // Don't null the handle — user can try rebinding by clicking the indicator
+    }
   }
 }
 
@@ -2610,19 +2628,7 @@ saveState = function() {
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-loadState().then(async () => {
-  showSetlist();
-  // Auto-prompt for file binding if not bound and API supported
-  if (_fsSupported && !_fileHandle) {
-    // Small delay so user sees the app first
-    setTimeout(() => {
-      if (!_fileHandle) {
-        const shouldBind = confirm('Vill du binda en lokal fil för autospar?\n\nDetta gör att din data sparas på disk och överlever browser-rensning.');
-        if (shouldBind) bindFile();
-      }
-    }, 1500);
-  }
-});
+loadState().then(() => showSetlist());
 </script>
 </body>
 </html>
