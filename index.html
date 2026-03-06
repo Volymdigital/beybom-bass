@@ -917,6 +917,21 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   </div>
 </div>
 
+<!-- NY LÅT modal -->
+<div id="newsong-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:2000;align-items:center;justify-content:center;" onclick="closeNewSongModal()">
+  <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:280px;" onclick="event.stopPropagation()">
+    <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;">NY LÅT</div>
+    <input id="newsong-title" class="te-input" placeholder="Låttitel..." style="font-size:0.85rem;"
+      onkeydown="if(event.key==='Enter')document.getElementById('newsong-artist').focus();if(event.key==='Escape')closeNewSongModal()">
+    <input id="newsong-artist" class="te-input" placeholder="Artist..." style="font-size:0.85rem;"
+      onkeydown="if(event.key==='Enter')confirmNewSongModal();if(event.key==='Escape')closeNewSongModal()">
+    <div style="display:flex;gap:6px;">
+      <button class="pill active" style="flex:1;" onclick="confirmNewSongModal()">SKAPA</button>
+      <button class="pill" onclick="closeNewSongModal()">AVBRYT</button>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- ════════════════════════════════
@@ -1293,10 +1308,10 @@ let chordRefOpen = false;
 let chordEditOpen = false;
 
 // ═══════════════════════════════════════════════════
-//  PERSISTENCE
+//  PERSISTENCE — beybom-setlist.json is the ONLY SSoT
+//  No localStorage. Changes live in memory until SPARA.
 // ═══════════════════════════════════════════════════
 async function loadState() {
-  // SSoT: always try to load from beybom-setlist.json first
   try {
     const resp = await fetch('beybom-setlist.json');
     if (resp.ok) {
@@ -1307,41 +1322,17 @@ async function loadState() {
       throw new Error('fetch failed');
     }
   } catch(e) {
-    // Fallback: localStorage (offline / file missing)
-    const saved = localStorage.getItem('beybom_songs_v2');
-    if (saved) {
-      try {
-        songs = JSON.parse(saved).map(s => migrateSong(s));
-        console.log('Loaded from localStorage (file fetch failed)');
-      } catch(e2) {
-        songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
-      }
-    } else {
-      songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
-    }
+    console.warn('Failed to fetch beybom-setlist.json, using defaults');
+    songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
   }
   songs.forEach(s => {
     if (!s.sections) s.sections = [];
     if (!s.id) s.id = String(Date.now() + Math.random());
   });
-
-  // Sync to localStorage as session cache
-  localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
-
-  // Load setlists
-  const savedSL = localStorage.getItem('beybom_setlists_v1');
-  if (savedSL) {
-    try {
-      const parsed = JSON.parse(savedSL);
-      setlists = parsed.setlists || [];
-      activeSetlistId = parsed.activeSetlistId || null;
-    } catch(e) { setlists = []; activeSetlistId = null; }
-  }
 }
 
 function saveState() {
-  localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
-  localStorage.setItem('beybom_setlists_v1', JSON.stringify({ setlists, activeSetlistId }));
+  // In-memory only. Data persists via SPARA → File System API.
 }
 
 function saveSong() {
@@ -2223,14 +2214,26 @@ function deleteSong() {
 }
 
 function addNewSong() {
-  const title = prompt('Låttitel:');
-  if (!title) return;
-  const artist = prompt('Artist:') || '';
+  const backdrop = document.getElementById('newsong-modal-backdrop');
+  backdrop.style.display = 'flex';
+  const inp = document.getElementById('newsong-title');
+  inp.value = '';
+  document.getElementById('newsong-artist').value = '';
+  setTimeout(() => inp.focus(), 60);
+}
+
+function closeNewSongModal() {
+  document.getElementById('newsong-modal-backdrop').style.display = 'none';
+}
+
+function confirmNewSongModal() {
+  const title = document.getElementById('newsong-title').value.trim();
+  if (!title) { document.getElementById('newsong-title').focus(); return; }
+  const artist = document.getElementById('newsong-artist').value.trim();
+  closeNewSongModal();
+
   const newSong = migrateSong({ title, artist, key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto', chordRaw: '', legacySections: [], sections: [makeSection('VERSE', [makeTurn('','',4,'play')])] });
-
-  // Ensure unique string ID (migrateSong does not generate one)
   newSong.id = String(Date.now() + Math.random());
-
   songs.push(newSong);
 
   // If viewing a setlist, add the new song to it
@@ -2384,7 +2387,7 @@ async function manualSave() {
   }
   const btn = document.getElementById('btn-manual-save');
   if (btn) btn.textContent = 'SPARAR...';
-  saveState(); // sync localStorage
+  // songs[] already updated in memory
   await writeToFile(songs);
   if (btn) btn.textContent = 'SPARA';
   showToast('Sparad ✓');
