@@ -2227,6 +2227,10 @@ function addNewSong() {
   if (!title) return;
   const artist = prompt('Artist:') || '';
   const newSong = migrateSong({ title, artist, key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto', chordRaw: '', legacySections: [], sections: [makeSection('VERSE', [makeTurn('','',4,'play')])] });
+
+  // Ensure unique string ID (migrateSong does not generate one)
+  newSong.id = String(Date.now() + Math.random());
+
   songs.push(newSong);
 
   // If viewing a setlist, add the new song to it
