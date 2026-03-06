@@ -2688,10 +2688,12 @@ async function confirmRestore(timestamp, label) {
 //  INIT
 // ═══════════════════════════════════════════════════
 loadState().then(async () => {
-  // Try to restore previously bound file handle
-  const restored = await tryRestoreFileHandle();
-  if (restored) {
-    // Load data from file (overrides localStorage — file is the source of truth)
+  // Restore file handle for SPARA button (never overwrites data)
+  const handleRestored = await tryRestoreFileHandle();
+
+  // ONLY use file as recovery if localStorage was completely empty
+  const hadLocalData = !!localStorage.getItem('beybom_songs_v2');
+  if (handleRestored && !hadLocalData) {
     const fileData = await loadFromFile();
     if (fileData && Array.isArray(fileData) && fileData.length > 0) {
       songs = fileData.map(s => migrateSong(s));
@@ -2699,13 +2701,13 @@ loadState().then(async () => {
         if (!s.sections) s.sections = [];
         if (!s.id) s.id = String(Date.now() + Math.random());
       });
-      // Sync localStorage — direct write, NOT via saveState, to avoid file write loop
       localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
+      showToast('Återställd från bunden fil ✓');
     }
   }
+
   showSetlist();
-  _startupComplete = true; // only now allow file writes
-  if (restored) showToast('Laddades från bunden fil ✓');
+  if (handleRestored && hadLocalData) showToast('Fil bunden — klicka SPARA för att skriva');
 });
 </script>
 </body>
