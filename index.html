@@ -2548,13 +2548,12 @@ async function bindFile() {
   try {
     const [handle] = await window.showOpenFilePicker({
       multiple: false,
+      mode: 'readwrite',
       types: [{
         description: 'JSON-filer',
         accept: { 'application/json': ['.json'] }
       }]
     });
-    // Re-request with write access
-    await handle.requestPermission({ mode: 'readwrite' });
     _fileHandle = handle;
     await saveHandleToDB(handle);
     updateSaveIndicator('bound');
