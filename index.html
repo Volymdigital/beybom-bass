@@ -2226,7 +2226,15 @@ function addNewSong() {
   const title = prompt('Låttitel:');
   if (!title) return;
   const artist = prompt('Artist:') || '';
-  songs.push(migrateSong({ title, artist, key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto', chordRaw: '', legacySections: [], sections: [makeSection('VERSE', [makeTurn('','',4,'play')])] }));
+  const newSong = migrateSong({ title, artist, key: 'C', keyOffset: 0, bpm: '', notes: '', tracksMode: 'auto', chordRaw: '', legacySections: [], sections: [makeSection('VERSE', [makeTurn('','',4,'play')])] });
+  songs.push(newSong);
+
+  // If viewing a setlist, add the new song to it
+  const sl = getActiveSetlist();
+  if (sl) {
+    sl.songIds.push(newSong.id);
+  }
+
   saveState();
   openSong(songs.length - 1);
 }
