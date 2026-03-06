@@ -8450,6 +8450,436 @@
         }
       ],
       "id": "1772796812.1837544"
+    },
+    {
+      "title": "Satellit - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "Gm",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro med alla. Triolbaserat riff.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nGm Dm7 Gm7 Dm7\nGm Dm7 Gm7 Dm7",
+      "sections": [
+        {
+          "id": 1720001001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720001002,
+              "bars": 4,
+              "chords": [
+                "Gm",
+                "Dm7",
+                "Gm7",
+                "Dm7"
+              ],
+              "type": "play",
+              "instruction": "Med alla. Trioler. Räkna in 3, 4."
+            },
+            {
+              "id": 1720001003,
+              "bars": 4,
+              "chords": [
+                "Gm",
+                "Dm7",
+                "Gm7",
+                "Dm7"
+              ],
+              "type": "play",
+              "instruction": "Repris"
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.6139245"
+    },
+    {
+      "title": "Back in Black - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "E",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro med alla. Räkna in 3, 4.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nE D A/C#",
+      "sections": [
+        {
+          "id": 1720002001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720002002,
+              "bars": 3,
+              "chords": [
+                "E",
+                "D",
+                "A/C#"
+              ],
+              "type": "play",
+              "instruction": "Med alla. Räkna in 3, 4."
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.5466266"
+    },
+    {
+      "title": "Girls Got Rhythm - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "D",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro fullt ställ.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nD C Am7 D/A C/A",
+      "sections": [
+        {
+          "id": 1720003001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720003002,
+              "bars": 2,
+              "chords": [
+                "D",
+                "C"
+              ],
+              "type": "play",
+              "instruction": "Intro fullt ställ"
+            },
+            {
+              "id": 1720003003,
+              "bars": 3,
+              "chords": [
+                "Am7",
+                "D/A",
+                "C/A"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.6131845"
+    },
+    {
+      "title": "Clamour for Glamour - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "Am",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro fullt ställ. Räkna in 1, 2, 3.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nAm",
+      "sections": [
+        {
+          "id": 1720004001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720004002,
+              "bars": 2,
+              "chords": [
+                "Am",
+                "Am"
+              ],
+              "type": "play",
+              "instruction": "Intro fullt ställ. Räkna in 1, 2, 3."
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.3283963"
+    },
+    {
+      "title": "Viva la Vida - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "Em",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro + drums. Räkna in 3, 4.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nEm C D",
+      "sections": [
+        {
+          "id": 1720005001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720005002,
+              "bars": 4,
+              "chords": [
+                "Em",
+                "C",
+                "D",
+                ""
+              ],
+              "type": "rest",
+              "instruction": "Drums only först"
+            },
+            {
+              "id": 1720005003,
+              "bars": 4,
+              "chords": [
+                "Em",
+                "C",
+                "D",
+                ""
+              ],
+              "type": "play",
+              "instruction": "Alla in"
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.7833133"
+    },
+    {
+      "title": "Does Your Mother Know - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "G",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Trad. Git riff intro. Räkna in 3, 4.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nG G G G",
+      "sections": [
+        {
+          "id": 1720006001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720006002,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Intro alla. Git riff. Räkna in 3, 4."
+            }
+          ]
+        }
+      ],
+      "id": "1772796937.904494"
+    },
+    {
+      "title": "Clocks - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "Eb",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Piano picking intro fullt ställ. Räkna in 3, 4.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nEb Bbm Bbm Fm",
+      "sections": [
+        {
+          "id": 1720007001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720007002,
+              "bars": 4,
+              "chords": [
+                "Eb",
+                "Bbm",
+                "Bbm",
+                "Fm"
+              ],
+              "type": "play",
+              "instruction": "Piano picking. Fullt ställ. Räkna in 3, 4."
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.390684"
+    },
+    {
+      "title": "Från och med du - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "F",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro. Fermater på slag 2, 3, 4.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nF Am7 Gm7 C11",
+      "sections": [
+        {
+          "id": 1720008001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720008002,
+              "bars": 4,
+              "chords": [
+                "F",
+                "Am7",
+                "Gm7",
+                "C11"
+              ],
+              "type": "warn",
+              "instruction": "Fermater på slag 2, 3, 4. Vänta på cue."
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.3365233"
+    },
+    {
+      "title": "I Believe in a Thing Called Love - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "F#",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro med alla. Räkna in 3, 4. Riffsekvens: A C A B C.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nF# A B E B A",
+      "sections": [
+        {
+          "id": 1720009001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720009002,
+              "bars": 4,
+              "chords": [
+                "F#",
+                "A",
+                "B",
+                "E"
+              ],
+              "type": "play",
+              "instruction": "Med alla. Räkna in 3, 4. Riff: A C A B C."
+            },
+            {
+              "id": 1720009003,
+              "bars": 2,
+              "chords": [
+                "B",
+                "A"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.2711422"
+    },
+    {
+      "title": "En jävel på kärlek - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "A",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro. Räkna in 1, 2.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nA C D/F# D",
+      "sections": [
+        {
+          "id": 1720010001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720010002,
+              "bars": 4,
+              "chords": [
+                "A",
+                "C",
+                "D/F#",
+                "D"
+              ],
+              "type": "play",
+              "instruction": "Räkna in 1, 2."
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.6489449"
+    },
+    {
+      "title": "I'm So Excited - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "Gm",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Intro. Räkna in 1, 2.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nGm Cm7\nEb Bb Bb/A",
+      "sections": [
+        {
+          "id": 1720011001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720011002,
+              "bars": 2,
+              "chords": [
+                "Gm",
+                "Cm7"
+              ],
+              "type": "play",
+              "instruction": "Räkna in 1, 2."
+            },
+            {
+              "id": 1720011003,
+              "bars": 3,
+              "chords": [
+                "Eb",
+                "Bb",
+                "Bb/A"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        }
+      ],
+      "id": "1772796937.8886886"
+    },
+    {
+      "title": "Money for Nothing - Jingel",
+      "artist": "BEYBOM Vara",
+      "key": "Gm",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "Guitar party intro med alla. Räkna in 3, 4. 1:a volta Gm, 2:a volta vidare.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nGm Bb C F Gm",
+      "sections": [
+        {
+          "id": 1720012001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1720012002,
+              "bars": 4,
+              "chords": [
+                "Gm",
+                "Bb",
+                "C",
+                "F"
+              ],
+              "type": "play",
+              "instruction": "Guitar party. Med alla. Räkna in 3, 4."
+            },
+            {
+              "id": 1720012003,
+              "bars": 1,
+              "chords": [
+                "Gm"
+              ],
+              "type": "play",
+              "instruction": "1:a volta tillbaka, 2:a volta vidare"
+            }
+          ]
+        }
+      ],
+      "id": "1772796938.3629527"
     }
   ],
   "setlists": [
@@ -8477,7 +8907,19 @@
         "1772796811.907714",
         "1772796812.1639504",
         "1772796812.1991997",
-        "1772796812.1837544"
+        "1772796812.1837544",
+        "1772796938.6139245",
+        "1772796938.5466266",
+        "1772796938.6131845",
+        "1772796938.3283963",
+        "1772796938.7833133",
+        "1772796937.904494",
+        "1772796938.390684",
+        "1772796938.3365233",
+        "1772796938.2711422",
+        "1772796938.6489449",
+        "1772796937.8886886",
+        "1772796938.3629527"
       ]
     }
   ],
