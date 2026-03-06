@@ -27,7 +27,7 @@
   --btn-hover:  #1B1B1B;
   --btn-border: #2B2B2B;
 
-  /* Semantic — content only */
+  /* Semantic — block type indicators */
   --play:       #0B5A2A;
   --play-alt:   #07451F;
   --rest:       #3A3A3A;
@@ -36,6 +36,16 @@
   --marks-alt:  #433400;
   --stop:       #3B0010;
   --stop-alt:   #2C000B;
+
+  /* Section color families */
+  --sec-slate:       #2D3748; --sec-slate-alt:       #232D3B;
+  --sec-teal:        #1A4D4D; --sec-teal-alt:        #143D3D;
+  --sec-indigo:      #2D2B55; --sec-indigo-alt:      #232145;
+  --sec-chorus:      #4A1942; --sec-chorus-alt:      #3A1035;
+  --sec-bridge:      #3D2B1A; --sec-bridge-alt:      #2E2014;
+  --sec-orange:      #4A2E0A; --sec-orange-alt:      #3A2308;
+  --sec-dark-slate:  #2A2D32; --sec-dark-slate-alt:  #1F2226;
+  --sec-end:         #1A2A1A; --sec-end-alt:         #132013;
 
   --font-mono:    'Space Mono', monospace;
   --font-display: 'Bebas Neue', sans-serif;
@@ -375,6 +385,7 @@ body {
   padding: 8px 10px 8px 12px;
   border-radius: 2px 0 0 2px;
   border-right: 2px solid var(--border);
+  border-left: 3px solid transparent;
   background: var(--panel2);
   gap: 4px;
   cursor: pointer;
@@ -436,6 +447,10 @@ body {
   transition: background 0.12s;
   cursor: default;
 }
+/* Block type indicators — border-left, not background replacement */
+.turn-block.type-rest { border-left: 3px solid #666; }
+.turn-block.type-warn { border-left: 3px solid #D4A017; }
+.turn-block.type-stop { border-left: 3px solid #E53E3E; }
 .turn-block.rest { background: var(--rest); }
 .turn-block.rest.alt { background: var(--rest-alt); }
 .turn-block.play-alt { background: var(--play-alt); }
@@ -1919,14 +1934,45 @@ function closeSlotEdit(save) {
 // ═══════════════════════════════════════════════════
 let _sectionSortable = null;
 
+// Section → color family mapping
+const SECTION_FAMILIES = {
+  'intro': 'slate', 'INTRO': 'slate',
+  'vers': 'teal', 'verse': 'teal', 'VERS': 'teal', 'VERSE': 'teal',
+  'pre': 'indigo', 'PRE': 'indigo', 'prechorus': 'indigo', 'PRE-CHORUS': 'indigo',
+  'ref': 'chorus', 'REF': 'chorus', 'chorus': 'chorus', 'CHORUS': 'chorus', 'refräng': 'chorus', 'REFRÄNG': 'chorus',
+  'bridge': 'bridge', 'BRIDGE': 'bridge', 'm8': 'bridge', 'M8': 'bridge',
+  'solo': 'orange', 'SOLO': 'orange',
+  'outro': 'dark-slate', 'OUTRO': 'dark-slate',
+  'tag': 'end', 'TAG': 'end', 'end': 'end', 'END': 'end', 'ending': 'end', 'ENDING': 'end',
+};
+function getSectionFamily(name) {
+  if (!name) return 'slate';
+  // Try exact match first
+  if (SECTION_FAMILIES[name]) return SECTION_FAMILIES[name];
+  // Try case-insensitive prefix match
+  const lower = name.toLowerCase().replace(/\s*\d+$/, '').trim();
+  return SECTION_FAMILIES[lower] || 'slate';
+}
+
 function renderSections() {
   if (currentSongIndex < 0) return;
   const song = songs[currentSongIndex];
   const container = document.getElementById('song-content');
   container.innerHTML = '';
 
+  // Track consecutive same-family for alternation
+  let lastFamily = null;
+  let familyAlt = false;
+
   (song.sections || []).forEach((sec, si) => {
-    container.appendChild(buildSectionRow(sec, si, song));
+    const family = getSectionFamily(sec.name);
+    if (family === lastFamily) {
+      familyAlt = !familyAlt;
+    } else {
+      familyAlt = false;
+    }
+    lastFamily = family;
+    container.appendChild(buildSectionRow(sec, si, song, family, familyAlt));
   });
 
   applyLayerClasses();
@@ -1947,14 +1993,19 @@ function renderSections() {
   }
 }
 
-function buildSectionRow(sec, si, song) {
+function buildSectionRow(sec, si, song, family, familyAlt) {
   const offset = song.keyOffset || 0;
   const row = document.createElement('div');
   row.className = 'section-row';
 
+  // Color family CSS variable
+  const familyCssVar = familyAlt ? `var(--sec-${family}-alt)` : `var(--sec-${family})`;
+  const familyBorderColor = familyAlt ? `var(--sec-${family}-alt)` : `var(--sec-${family})`;
+
   // Label col
   const labelCol = document.createElement('div');
   labelCol.className = 'sec-label-col';
+  labelCol.style.borderLeftColor = familyBorderColor;
   labelCol.innerHTML = `
     <div class="sec-name">${sec.name}</div>
     ${isEditMode ? `
@@ -1971,7 +2022,7 @@ function buildSectionRow(sec, si, song) {
   turnsEl.className = 'turns-container';
 
   (sec.turns || []).forEach((turn, ti) => {
-    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song));
+    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt));
   });
 
   if (sec.turns.length === 0) {
@@ -2001,12 +2052,18 @@ function buildSectionRow(sec, si, song) {
   return row;
 }
 
-function buildTurnBlock(turn, si, ti, offset, song) {
+function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   normalizeTurn(turn);
-  const typeClass = turn.type === 'rest' ? 'rest' : turn.type === 'warn' ? 'warn' : turn.type === 'stop' ? 'stop' : '';
-  const altClass = ti % 2 === 1 ? (turn.type === 'play' ? 'play-alt' : 'alt') : '';
+
+  // Section color as primary background
+  const secColor = familyAlt ? `var(--sec-${family}-alt)` : `var(--sec-${family})`;
+
+  // Block type classes for secondary indicators
+  const typeClass = turn.type === 'rest' ? 'type-rest' : turn.type === 'warn' ? 'type-warn' : turn.type === 'stop' ? 'type-stop' : '';
+  const restClass = turn.type === 'rest' ? 'rest' : '';
   const block = document.createElement('div');
-  block.className = `turn-block ${typeClass} ${altClass}`;
+  block.className = `turn-block ${typeClass} ${restClass}`;
+  block.style.background = secColor;
   if (!layers.blocks) block.style.background = 'var(--panel2)';
 
   const bars = turn.bars;
