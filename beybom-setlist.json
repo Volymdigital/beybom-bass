@@ -200,7 +200,7 @@
     {
       "title": "Gimme! Gimme! Gimme!",
       "artist": "Molly Sandén",
-      "key": "Am",
+      "key": "Dbm",
       "keyOffset": 0,
       "bpm": "",
       "notes": "",
@@ -3291,7 +3291,7 @@
     {
       "title": "Eloise",
       "artist": "BRUNOZ",
-      "key": "E",
+      "key": "G",
       "keyOffset": 0,
       "bpm": 135,
       "notes": "Arr: Jocke Niehoff. Original G-dur, denna version E-dur. Brygga har modulerande ackord (C, G/B, Am7, C/G).",
@@ -3805,7 +3805,7 @@
     {
       "title": "Go Your Own Way",
       "artist": "BRUNOZ",
-      "key": "Db",
+      "key": "F",
       "keyOffset": 0,
       "bpm": 136,
       "notes": "Arr: Jocke Niehoff.",
@@ -4152,7 +4152,7 @@
     {
       "title": "I Want It All",
       "artist": "BRUNOZ",
-      "key": "Bbm",
+      "key": "D",
       "keyOffset": 0,
       "bpm": 94,
       "notes": "Arr: Jocke Niehoff (skiss). Vocals only intro. Punkterade rytmer i vers. Publik-sektion mot slutet.",
@@ -4540,7 +4540,7 @@
     {
       "title": "I Want to Break Free",
       "artist": "BRUNOZ",
-      "key": "Db",
+      "key": "E",
       "keyOffset": 0,
       "bpm": 82,
       "notes": "Arr: Jocke Niehoff. Börjar med We Will Rock You-trumbreak. Brygga har dubbelstoppsfigur.",
@@ -4853,7 +4853,7 @@
     {
       "title": "Inget Stoppar Oss Nu",
       "artist": "BRUNOZ",
-      "key": "G",
+      "key": "Dm",
       "keyOffset": 0,
       "bpm": 153,
       "notes": "Arr: Jocke Niehoff. Update 2. Original F-dur, denna i G. Modulerar till Ab efter mellanspel, sedan till A i sista refrängerna. Sax-solo. Allsång-sektion.",

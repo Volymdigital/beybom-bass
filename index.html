@@ -1403,15 +1403,17 @@ function saveSong() {
   saveState();
 }
 
-// ═══════════════════════════════════════════════════
-//  KEY / TRANSPOSE
-// ═══════════════════════════════════════════════════
 function getTransposedKey(song) {
-  const normalized = normalizeRoot(song.key);
+  // Parse root and quality suffix (e.g. "Dbm" → root="Db", suffix="m")
+  const match = song.key.match(/^([A-G][b#]?)(.*)/);
+  if (!match) return song.key;
+  const root = match[1];
+  const suffix = match[2] || '';
+  const normalized = normalizeRoot(root);
   const idx = KEYS.indexOf(normalized);
   if (idx === -1) return song.key;
   const newSharp = KEYS[(idx + (song.keyOffset || 0) + 12) % 12];
-  return displayRoot(newSharp);
+  return displayRoot(newSharp) + suffix;
 }
 
 function transposeKey(delta) {
