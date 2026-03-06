@@ -1316,7 +1316,14 @@ async function loadState() {
     const resp = await fetch('beybom-setlist.json');
     if (resp.ok) {
       const imported = await resp.json();
-      songs = imported.map(s => migrateSong(s));
+      // Support both old (array) and new (object) format
+      if (Array.isArray(imported)) {
+        songs = imported.map(s => migrateSong(s));
+      } else {
+        songs = (imported.songs || []).map(s => migrateSong(s));
+        setlists = imported.setlists || [];
+        activeSetlistId = imported.activeSetlistId || null;
+      }
       console.log('Loaded', songs.length, 'songs from beybom-setlist.json');
     } else {
       throw new Error('fetch failed');
@@ -1329,6 +1336,10 @@ async function loadState() {
     if (!s.sections) s.sections = [];
     if (!s.id) s.id = String(Date.now() + Math.random());
   });
+}
+
+function getFullState() {
+  return { songs, setlists, activeSetlistId };
 }
 
 function saveState() {
@@ -2367,7 +2378,7 @@ async function manualSave() {
   if (!_fileHandle) {
     if (!('showSaveFilePicker' in window)) {
       // Fallback: download the file
-      const blob = new Blob([JSON.stringify(songs, null, 2)], { type: 'application/json' });
+      const blob = new Blob([JSON.stringify(getFullState(), null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'beybom-setlist.json';
@@ -2388,7 +2399,7 @@ async function manualSave() {
   const btn = document.getElementById('btn-manual-save');
   if (btn) btn.textContent = 'SPARAR...';
   // songs[] already updated in memory
-  await writeToFile(songs);
+  await writeToFile(getFullState());
   if (btn) btn.textContent = 'SPARA';
   showToast('Sparad ✓');
 }
