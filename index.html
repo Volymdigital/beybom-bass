@@ -1265,7 +1265,7 @@ let chordEditOpen = false;
 // ═══════════════════════════════════════════════════
 //  PERSISTENCE
 // ═══════════════════════════════════════════════════
-function loadState() {
+async function loadState() {
   const saved = localStorage.getItem('beybom_songs_v2');
   if (saved) {
     try {
@@ -1287,7 +1287,19 @@ function loadState() {
       songs = DEFAULT_SONGS.map(s => migrateSong({...s}));
     }
   } else {
-    songs = DEFAULT_SONGS.map(s => migrateSong({...s, legacySections: s.legacySections}));
+    // Try to load from exported JSON file first
+    try {
+      const resp = await fetch('beybom-setlist.json');
+      if (resp.ok) {
+        const imported = await resp.json();
+        songs = imported.map(s => migrateSong(s));
+        console.log('Loaded', songs.length, 'songs from beybom-setlist.json');
+      } else {
+        throw new Error('fetch failed');
+      }
+    } catch(e) {
+      songs = DEFAULT_SONGS.map(s => migrateSong({...s, legacySections: s.legacySections}));
+    }
   }
   songs.forEach(s => {
     if (!s.sections) s.sections = [];
@@ -2277,8 +2289,7 @@ document.addEventListener('keydown', e => {
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-loadState();
-showSetlist();
+loadState().then(() => showSetlist());
 </script>
 </body>
 </html>

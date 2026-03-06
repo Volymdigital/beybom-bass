@@ -1,0 +1,2706 @@
+[
+  {
+    "title": "Händerna mot himlen",
+    "artist": "Petra Marklund",
+    "key": "Bb",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nBb C F Gm\nBb C Dm Gm\n\n[Chorus]\nBb C F Bb\nBb C F Dm",
+    "legacySections": [
+      {
+        "id": 1771805360212.9868,
+        "name": "Verser",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.5876,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Pump",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.746,
+        "name": "VERSER",
+        "turns": [
+          {
+            "id": 1771805360213.2268,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          },
+          {
+            "id": 1771805551009.4053,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.44,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.4724,
+            "chords": [
+              "Bb",
+              "C",
+              "F",
+              "Bb"
+            ],
+            "instruction": "Pump",
+            "bars": 4,
+            "type": "play"
+          },
+          {
+            "id": 1771805668495.9895,
+            "chords": [
+              "Bb",
+              "C",
+              "F",
+              "Bb"
+            ],
+            "instruction": "Pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.5474"
+  },
+  {
+    "title": "Gimme! Gimme! Gimme!",
+    "artist": "Molly Sandén",
+    "key": "Am",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro/Verse]\nAm G Am G\n\n[Chorus]\nAm F C G\nAm F C G",
+    "legacySections": [
+      {
+        "id": 1771805360212.3909,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.6826,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Off beat staccato bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.9275,
+        "name": "Prechorus",
+        "type": "play",
+        "instruction": "Staccato",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.1287,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Staccato",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.0696,
+        "name": "M8",
+        "type": "play",
+        "instruction": "Slapping på en ton (kort)",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.7502,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.4385,
+            "chords": [
+              "Am",
+              "G",
+              "Am",
+              "G"
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.0662,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.0042,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Off beat staccato bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.9922,
+        "name": "Prechorus",
+        "turns": [
+          {
+            "id": 1771805360213.5027,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Staccato",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.4802,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.9382,
+            "chords": [
+              "Am",
+              "F",
+              "C",
+              "G"
+            ],
+            "instruction": "Staccato",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.6138,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.733,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Slapping på en ton (kort)",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.5605"
+  },
+  {
+    "title": "Proud Mary",
+    "artist": "Tina Turner",
+    "key": "D",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nC A / C A G F / D\n\n[Verse]\nD D D D\n\n[Pre-Chorus]\nA Bm G\n\n[Chorus]\nD D D D",
+    "legacySections": [
+      {
+        "id": 1771805360212.9324,
+        "name": "Intro",
+        "type": "play",
+        "instruction": "Lugnt i början",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.2673,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Snabb pump",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.4307,
+        "name": "Chorus",
+        "type": "warn",
+        "instruction": "Basklättring (öva)",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.031,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.3806,
+            "chords": [
+              "C",
+              "A",
+              "/",
+              "C"
+            ],
+            "instruction": "Lugnt i början",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.6392,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.6985,
+            "chords": [
+              "D",
+              "D",
+              "D",
+              "D"
+            ],
+            "instruction": "Snabb pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.6636,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.8801,
+            "chords": [
+              "D",
+              "D",
+              "D",
+              "D"
+            ],
+            "instruction": "Basklättring (öva)",
+            "bars": 4,
+            "type": "warn"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.522"
+  },
+  {
+    "title": "I Love It",
+    "artist": "Icona Pop, Charli XCX",
+    "key": "Ab",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse/Hook]\nAb Ab Db Db\nAb Ab Db Db\n\n[Chorus]\nAb Db Ab Db",
+    "legacySections": [
+      {
+        "id": 1771805360212.118,
+        "name": "Intro chorus",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.1729,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Pump",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.7273,
+        "name": "Pre",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3577,
+        "name": "M8",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.0608,
+        "name": "Intro chorus",
+        "turns": [
+          {
+            "id": 1771805360213.001,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.361,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.6394,
+            "chords": [
+              "Ab",
+              "Db",
+              "Ab",
+              "Db"
+            ],
+            "instruction": "Pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.3105,
+        "name": "Pre",
+        "turns": [
+          {
+            "id": 1771805360213.8896,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.019,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.9038,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.8184"
+  },
+  {
+    "title": "Shut Up and Dance",
+    "artist": "WALK THE MOON",
+    "key": "Db",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "Utan tracks",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nDb F# Bbm Ab\nDb F# Bbm Ab\n\n[Pre-Chorus]\nF# Bbm / F# Ab\n\n[Chorus]\nDb F# Bbm Ab",
+    "legacySections": [
+      {
+        "id": 1771805360212.7473,
+        "name": "Intro",
+        "type": "play",
+        "instruction": "Pump hög oktav (en ton)",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3752,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Staccato",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.9016,
+        "name": "Prechorus",
+        "type": "play",
+        "instruction": "Staccato markeringar",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.1968,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Pump + markeringar",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.7632,
+        "name": "M8",
+        "type": "warn",
+        "instruction": "Annorlunda ackord + Chorus + Intro (hög pumpbas) + Chorus",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.684,
+        "name": "Slut",
+        "type": "danger",
+        "instruction": "Slutmarkeringar (sista 5st)",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.1538,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.0166,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Pump hög oktav (en ton)",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.6292,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.5596,
+            "chords": [
+              "Db",
+              "F#",
+              "Bbm",
+              "Ab"
+            ],
+            "instruction": "Staccato",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.123,
+        "name": "Prechorus",
+        "turns": [
+          {
+            "id": 1771805360213.4985,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Staccato markeringar",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.371,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.2278,
+            "chords": [
+              "Db",
+              "F#",
+              "Bbm",
+              "Ab"
+            ],
+            "instruction": "Pump + markeringar",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.1606,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.0422,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Annorlunda ackord + Chorus + Intro (hög pumpbas) + Chorus",
+            "bars": 4,
+            "type": "warn"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.4675,
+        "name": "Slut",
+        "turns": [
+          {
+            "id": 1771805360213.9734,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Slutmarkeringar (sista 5st)",
+            "bars": 4,
+            "type": "stop"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.818"
+  },
+  {
+    "title": "Slå mig hårt i ansiktet",
+    "artist": "Thomas Stenström",
+    "key": "C#",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nC# F# C# G#\n\n[Pre-Chorus / Bridge]\nF# G# C# Bbm",
+    "legacySections": [
+      {
+        "id": 1771805360212.7393,
+        "name": "Verse 1",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3833,
+        "name": "Verse 2",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.852,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Bass",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.6223,
+        "name": "Stopp",
+        "type": "danger",
+        "instruction": "Sedan vers 2",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3313,
+        "name": "M8",
+        "type": "play",
+        "instruction": "Hög pedalton",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.778,
+        "name": "Verse 1",
+        "turns": [
+          {
+            "id": 1771805360213.5205,
+            "chords": [
+              "C#",
+              "F#",
+              "C#",
+              "G#"
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.468,
+        "name": "Verse 2",
+        "turns": [
+          {
+            "id": 1771805360213.8923,
+            "chords": [
+              "C#",
+              "F#",
+              "C#",
+              "G#"
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.1482,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.7725,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Bass",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.0515,
+        "name": "Stopp",
+        "turns": [
+          {
+            "id": 1771805360213.557,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Sedan vers 2",
+            "bars": 4,
+            "type": "stop"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.5908,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.5825,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Hög pedalton",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.798"
+  },
+  {
+    "title": "Teenage Dirtbag",
+    "artist": "Wheatus",
+    "key": "E",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro/Verse]\nE B E A\n\n[Pre-Chorus]\nC#m A B\n\n[Chorus]\nE A B C#m",
+    "legacySections": [
+      {
+        "id": 1771805360212.6428,
+        "name": "Intro",
+        "type": "play",
+        "instruction": "Trumintro",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.31,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bass staccato",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.4597,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.8113,
+            "chords": [
+              "E",
+              "B",
+              "E",
+              "A"
+            ],
+            "instruction": "Trumintro",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.4531,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.4683,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Bass staccato",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.242"
+  },
+  {
+    "title": "Sex on Fire",
+    "artist": "Kings of Leon",
+    "key": "E",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nE C#m\n\n[Verse]\nE C#m A\n\n[Pre-Chorus]\nE Emaj7 C#m A\n\n[Chorus]\nE C#m A",
+    "legacySections": [
+      {
+        "id": 1771805360212.9495,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "4 takter tyst",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.393,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Staccato",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.2466,
+        "name": "Prechorus",
+        "type": "play",
+        "instruction": "Pump",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.5974,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Pump",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3762,
+        "name": "M8",
+        "type": "play",
+        "instruction": "Staccato",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.36,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.563,
+            "chords": [
+              "E",
+              "C#m",
+              "",
+              ""
+            ],
+            "instruction": "4 takter tyst",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.037,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.9102,
+            "chords": [
+              "E",
+              "C#m",
+              "A",
+              ""
+            ],
+            "instruction": "Staccato",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.2388,
+        "name": "Prechorus",
+        "turns": [
+          {
+            "id": 1771805360213.1824,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.1553,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.137,
+            "chords": [
+              "E",
+              "C#m",
+              "A",
+              ""
+            ],
+            "instruction": "Pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.813,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.654,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Staccato",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.9834"
+  },
+  {
+    "title": "Ramlar",
+    "artist": "Håkan Hellström",
+    "key": "C",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nC Em F G\n\n[Verse]\nC Em F G\nC C/B F/A G\n\n[Chorus]\nF G F G",
+    "legacySections": [],
+    "sections": [
+      {
+        "id": 1771805360213.3008,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1771805360213.8433,
+            "chords": [
+              "C",
+              "Em",
+              "F",
+              "G"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.3813,
+        "name": "VERSE",
+        "turns": [
+          {
+            "id": 1771805360213.0364,
+            "chords": [
+              "C",
+              "Em",
+              "F",
+              "G"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.5024,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.158,
+            "chords": [
+              "F",
+              "G",
+              "F",
+              "G"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.395"
+  },
+  {
+    "title": "Look Who's Laughing",
+    "artist": "Benjamin Ingrosso",
+    "key": "F",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro/Verse]\nF F Bb Bb\nF F Eb Bb\n\n[Chorus]\nF Bb Eb F\nF Bb Eb F",
+    "legacySections": [
+      {
+        "id": 1771805360212.3953,
+        "name": "Intro",
+        "type": "play",
+        "instruction": "Markeringar",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.5815,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Pump",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.884,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Markeringar / Pump",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.9822,
+        "name": "Prechorus",
+        "type": "play",
+        "instruction": "Markering andra toner",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.0999,
+        "name": "M8",
+        "type": "rest",
+        "instruction": "Ingen bas (diffust)",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.0547,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.622,
+            "chords": [
+              "F",
+              "F",
+              "Bb",
+              "Bb"
+            ],
+            "instruction": "Markeringar",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.4893,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.8013,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.575,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.6353,
+            "chords": [
+              "F",
+              "Bb",
+              "Eb",
+              "F"
+            ],
+            "instruction": "Markeringar / Pump",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.207,
+        "name": "Prechorus",
+        "turns": [
+          {
+            "id": 1771805360213.46,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Markering andra toner",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.271,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.8215,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas (diffust)",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1772754318636.297,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1772754318636.1213,
+            "chords": [
+              "F",
+              "Bb",
+              "Eb",
+              "F"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1772754370647.6082,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1772754370647.258,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.8992"
+  },
+  {
+    "title": "Let Me Entertain You",
+    "artist": "Robbie Williams",
+    "key": "F",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro/Verse]\nF Ab Bb F\n\n[Chorus]\nF Ab Bb F",
+    "legacySections": [
+      {
+        "id": 1771805360212.697,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Tyst",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.1665,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Spela",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.6445,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.7085,
+            "chords": [
+              "F",
+              "Ab",
+              "Bb",
+              "F"
+            ],
+            "instruction": "Tyst",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.4875,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.2473,
+            "chords": [
+              "F",
+              "Ab",
+              "Bb",
+              "F"
+            ],
+            "instruction": "Spela",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.5051"
+  },
+  {
+    "title": "Kan Inte Gå",
+    "artist": "Bolaget",
+    "key": "Bm",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nBm G A D\nBm G A D\n\n[Pre-Chorus]\nBm G A D A Bm\n\n[Chorus]\nBm G A D\nBm G A D",
+    "legacySections": [],
+    "sections": [
+      {
+        "id": 1771805360213.9973,
+        "name": "VERSE",
+        "turns": [
+          {
+            "id": 1771805360213.246,
+            "chords": [
+              "Bm",
+              "G",
+              "A",
+              "D"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.5017,
+        "name": "PRE-CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.5999,
+            "chords": [
+              "Bm",
+              "G",
+              "A",
+              "D"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.8552,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.1155,
+            "chords": [
+              "Bm",
+              "G",
+              "A",
+              "D"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.4153"
+  },
+  {
+    "title": "Take Me Home, Country Roads",
+    "artist": "John Denver",
+    "key": "G",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nG G Em D\nG G Em D G\n\n[Chorus]\nG D Em C\nG D C G",
+    "legacySections": [],
+    "sections": [
+      {
+        "id": 1771805360213.4343,
+        "name": "VERSE",
+        "turns": [
+          {
+            "id": 1771805360213.3533,
+            "chords": [
+              "G",
+              "G",
+              "Em",
+              "D"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.7622,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.5723,
+            "chords": [
+              "G",
+              "D",
+              "Em",
+              "C"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.4548"
+  },
+  {
+    "title": "(Du är så) Yeah Yeah",
+    "artist": "Martin",
+    "key": "C",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro/Verse]\nC G C G\nC G C G\n\n[Chorus]\nG D Em C\nG D C G",
+    "legacySections": [
+      {
+        "id": 1771805360212.5676,
+        "name": "Intro",
+        "type": "warn",
+        "instruction": "Prickar direkt",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.1912,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bara bass",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.952,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.8833,
+            "chords": [
+              "C",
+              "G",
+              "C",
+              "G"
+            ],
+            "instruction": "Prickar direkt",
+            "bars": 4,
+            "type": "warn"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.2607,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.742,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Bara bass",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.2747"
+  },
+  {
+    "title": "Kung för en dag",
+    "artist": "Magnus Uggla",
+    "key": "G",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nC D G G\n\n[Verse]\nG C / G Em D\nG C / G Em B\n\n[Pre-Chorus]\nC Am D\n\n[Chorus]\nG C G C\nB Em C Am D\nG C G C\nB Em C D G",
+    "legacySections": [
+      {
+        "id": 1771805360212.9812,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bass",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.2854,
+        "name": "Verse",
+        "type": "warn",
+        "instruction": "Spela (obs upp på chorus)",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3643,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Spela",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.7588,
+        "name": "M8",
+        "type": "play",
+        "instruction": "Kvart upp",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.37,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Spela",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.9421,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.6436,
+            "chords": [
+              "C",
+              "D",
+              "G",
+              "G"
+            ],
+            "instruction": "Ingen bass",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.2688,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.9832,
+            "chords": [
+              "G",
+              "C",
+              "/",
+              "G"
+            ],
+            "instruction": "Spela (obs upp på chorus)",
+            "bars": 4,
+            "type": "warn"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.385,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.1858,
+            "chords": [
+              "G",
+              "C",
+              "G",
+              "C"
+            ],
+            "instruction": "Spela",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.9175,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.2168,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Kvart upp",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.3992,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.8606,
+            "chords": [
+              "G",
+              "C",
+              "G",
+              "C"
+            ],
+            "instruction": "Spela",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.7341"
+  },
+  {
+    "title": "Genom Eld & Vatten",
+    "artist": "Sarek",
+    "key": "C",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nC G F C\nG F / G F\nC G / Em C D\n\n[Chorus]\nC G F G C\nAm G F Am G\nC G F G C",
+    "legacySections": [
+      {
+        "id": 1771805360212.5266,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.5159,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bas direkt offbeat",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.8772,
+        "name": "Pre",
+        "type": "play",
+        "instruction": "Offbeat",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.2615,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Offbeat",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.8303,
+        "name": "Mellanspel",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.9995,
+        "name": "Pre",
+        "type": "play",
+        "instruction": "Offbeat",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.9873,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Offbeat",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.8274,
+        "name": "Mellanspel",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.4316,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.0027,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.368,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.7007,
+            "chords": [
+              "C",
+              "G",
+              "F",
+              "C"
+            ],
+            "instruction": "Bas direkt offbeat",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.895,
+        "name": "Pre",
+        "turns": [
+          {
+            "id": 1771805360213.6887,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Offbeat",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.86,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.8347,
+            "chords": [
+              "C",
+              "G",
+              "F",
+              "G"
+            ],
+            "instruction": "Offbeat",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.8523,
+        "name": "Mellanspel",
+        "turns": [
+          {
+            "id": 1771805360213.3787,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.2488,
+        "name": "Pre",
+        "turns": [
+          {
+            "id": 1771805360213.471,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Offbeat",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.7747,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.8916,
+            "chords": [
+              "C",
+              "G",
+              "F",
+              "G"
+            ],
+            "instruction": "Offbeat",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.0479,
+        "name": "Mellanspel",
+        "turns": [
+          {
+            "id": 1771805360213.3948,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.7017"
+  },
+  {
+    "title": "I'm Gonna Be (500 Miles)",
+    "artist": "The Proclaimers",
+    "key": "E",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "Utan",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nE E A B E\n\n[Chorus]\nE A B E\nE A B E\n\n[Da-da]\nE A B E",
+    "legacySections": [
+      {
+        "id": 1771805360212.2622,
+        "name": "Verse 1",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3835,
+        "name": "Verse 2",
+        "type": "warn",
+        "instruction": "Prickar",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.6223,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Four on the floor",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.098,
+        "name": "Verse 3",
+        "type": "play",
+        "instruction": "Spela",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.7783,
+        "name": "Verse 1",
+        "turns": [
+          {
+            "id": 1771805360213.8545,
+            "chords": [
+              "E",
+              "E",
+              "A",
+              "B"
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.6746,
+        "name": "Verse 2",
+        "turns": [
+          {
+            "id": 1771805360213.4016,
+            "chords": [
+              "E",
+              "E",
+              "A",
+              "B"
+            ],
+            "instruction": "Prickar",
+            "bars": 4,
+            "type": "warn"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.9963,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.4475,
+            "chords": [
+              "E",
+              "A",
+              "B",
+              "E"
+            ],
+            "instruction": "Four on the floor",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.2847,
+        "name": "Verse 3",
+        "turns": [
+          {
+            "id": 1771805360213.5208,
+            "chords": [
+              "E",
+              "E",
+              "A",
+              "B"
+            ],
+            "instruction": "Spela",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.9062"
+  },
+  {
+    "title": "När vindarna viskar mitt namn",
+    "artist": "Roger Pontare",
+    "key": "Gm",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nGm F Gm F\nGm F Gm F D\n\n[Pre-Chorus / Bridge]\nGm F Bb F Eb\nGm F D\n\n[Chorus]\nGm F Eb F\nGm F Eb F Gm",
+    "legacySections": [
+      {
+        "id": 1771805360212.9524,
+        "name": "Intro",
+        "type": "play",
+        "instruction": "Spela",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.596,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Shuffle bass",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.4214,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.0422,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Spela",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.7273,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.8643,
+            "chords": [
+              "Gm",
+              "F",
+              "Gm",
+              "F"
+            ],
+            "instruction": "Shuffle bass",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.414"
+  },
+  {
+    "title": "Angels",
+    "artist": "Robbie Williams",
+    "key": "G",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nG D/F# Em C\nG D\n\n[Pre-Chorus]\nC D G Em\nC D\n\n[Chorus]\nG Em C D\nG Em C D G",
+    "legacySections": [],
+    "sections": [
+      {
+        "id": 1771805360213.2268,
+        "name": "VERSE",
+        "turns": [
+          {
+            "id": 1771805360213.04,
+            "chords": [
+              "G",
+              "D/F#",
+              "Em",
+              "C"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.3047,
+        "name": "PRE-CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.3965,
+            "chords": [
+              "C",
+              "D",
+              "G",
+              "Em"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.8586,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.762,
+            "chords": [
+              "G",
+              "Em",
+              "C",
+              "D"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.7773"
+  },
+  {
+    "title": "What's Up?",
+    "artist": "4 Non Blondes",
+    "key": "A",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nA Bm D A\n\n[Verse]\nA Bm D A\n\n[Chorus]\nA Bm D A",
+    "legacySections": [
+      {
+        "id": 1771805360212.1133,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.5159,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.0542,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.259,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.7075,
+            "chords": [
+              "A",
+              "Bm",
+              "D",
+              "A"
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.7576,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.5723,
+            "chords": [
+              "A",
+              "Bm",
+              "D",
+              "A"
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.5417,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.745,
+            "chords": [
+              "A",
+              "Bm",
+              "D",
+              "A"
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.0386"
+  },
+  {
+    "title": "Basket Case",
+    "artist": "Green Day",
+    "key": "Eb",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nEb Bb C# G#\nAb Eb Bb\n\n[Chorus]\nAb Bb Eb\nAb Bb Eb Db C#\nAb Bb",
+    "legacySections": [
+      {
+        "id": 1771805360212.622,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.434,
+        "name": "Verse",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.2327,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.5579,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.3635,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.811,
+            "chords": [
+              "Eb",
+              "Bb",
+              "C#",
+              "G#"
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.5032"
+  },
+  {
+    "title": "Livin' On A Prayer",
+    "artist": "Bon Jovi",
+    "key": "Em",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nEm C D Em\n\n[Verse]\nEm C D Em\n\n[Pre-Chorus]\nC D Em C D\n\n[Chorus]\nEm C D G C D\n\n[Key Change]\nBb Eb F Bb Eb F",
+    "legacySections": [
+      {
+        "id": 1771805360212.0796,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "4x tyst",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.925,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Basfigur",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.7893,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Basfigur",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.2546,
+        "name": "M8",
+        "type": "warn",
+        "instruction": "Höjning efter M8",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.6924,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Basfigur",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.6575,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.5537,
+            "chords": [
+              "Em",
+              "C",
+              "D",
+              "Em"
+            ],
+            "instruction": "4x tyst",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.0564,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.7178,
+            "chords": [
+              "Em",
+              "C",
+              "D",
+              "Em"
+            ],
+            "instruction": "Basfigur",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.018,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.3188,
+            "chords": [
+              "Em",
+              "C",
+              "D",
+              "G"
+            ],
+            "instruction": "Basfigur",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.302,
+        "name": "M8",
+        "turns": [
+          {
+            "id": 1771805360213.3975,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Höjning efter M8",
+            "bars": 4,
+            "type": "warn"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.5347,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.071,
+            "chords": [
+              "Em",
+              "C",
+              "D",
+              "G"
+            ],
+            "instruction": "Basfigur",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.4233"
+  },
+  {
+    "title": "Hey Baby (Uhh, ahh)",
+    "artist": "Anton, DJ Ötzi",
+    "key": "A",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nA F#m D E\n\n[Chorus]\nA F#m D E\n\n[Verse]\nA D A D E",
+    "legacySections": [
+      {
+        "id": 1771805360212.632,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.1082,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.3809,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.145,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.2212,
+            "chords": [
+              "A",
+              "F#m",
+              "D",
+              "E"
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.1375,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.817,
+            "chords": [
+              "A",
+              "D",
+              "A",
+              "D"
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.3552,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.061,
+            "chords": [
+              "A",
+              "F#m",
+              "D",
+              "E"
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.3657"
+  },
+  {
+    "title": "Cotton Eye Joe",
+    "artist": "Rednex",
+    "key": "A",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Main]\nA A D D\nA E A",
+    "legacySections": [
+      {
+        "id": 1771805360212.389,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.944,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.4185,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.72,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.8179,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.308,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.8628,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.211,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.0347,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.9143"
+  },
+  {
+    "title": "I'm In The Band",
+    "artist": "The Hellacopters",
+    "key": "Eb",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nEb Ab\n\n[Verse]\nEb Ab C# Eb\n\n[Pre-Chorus]\nCm Bb Ab Eb\n\n[Chorus]\nAb Bb Cm\nAb Bb Eb",
+    "legacySections": [
+      {
+        "id": 1771805360212.204,
+        "name": "Intro",
+        "type": "rest",
+        "instruction": "Ingen bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.375,
+        "name": "Verse",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      },
+      {
+        "id": 1771805360212.5808,
+        "name": "Chorus",
+        "type": "play",
+        "instruction": "Bas",
+        "bars": ""
+      }
+    ],
+    "sections": [
+      {
+        "id": 1771805360213.8064,
+        "name": "Intro",
+        "turns": [
+          {
+            "id": 1771805360213.3262,
+            "chords": [
+              "Eb",
+              "Ab",
+              "",
+              ""
+            ],
+            "instruction": "Ingen bas",
+            "bars": 4,
+            "type": "rest"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.5706,
+        "name": "Verse",
+        "turns": [
+          {
+            "id": 1771805360213.0396,
+            "chords": [
+              "Eb",
+              "Ab",
+              "C#",
+              "Eb"
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.1409,
+        "name": "Chorus",
+        "turns": [
+          {
+            "id": 1771805360213.3474,
+            "chords": [
+              "Ab",
+              "Bb",
+              "Cm",
+              ""
+            ],
+            "instruction": "Bas",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.4602"
+  },
+  {
+    "title": "Stad i ljus",
+    "artist": "Tommy Körberg",
+    "key": "G",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Verse]\nG D G Em D C G\nEm D G Em C D\n\n[Chorus]\nG C D Em C D B\nEm D C Am D\n\n[Bridge]\nG D G Em D G",
+    "legacySections": [],
+    "sections": [
+      {
+        "id": 1771805360213.0994,
+        "name": "VERSE",
+        "turns": [
+          {
+            "id": 1771805360213.4465,
+            "chords": [
+              "G",
+              "D",
+              "G",
+              "Em"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.8748,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1771805360213.9724,
+            "chords": [
+              "G",
+              "C",
+              "D",
+              "Em"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      },
+      {
+        "id": 1771805360213.6042,
+        "name": "BRIDGE",
+        "turns": [
+          {
+            "id": 1771805360213.8032,
+            "chords": [
+              "G",
+              "D",
+              "G",
+              "Em"
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1771805360214.187"
+  },
+  {
+    "title": "Free Fallin",
+    "artist": "Tom Petty",
+    "key": "C",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "",
+    "legacySections": [],
+    "sections": [
+      {
+        "id": 1772754088530.2942,
+        "name": "VERSE",
+        "turns": [
+          {
+            "id": 1772754088530.0413,
+            "chords": [
+              "",
+              "",
+              "",
+              ""
+            ],
+            "instruction": "",
+            "bars": 4,
+            "type": "play"
+          }
+        ]
+      }
+    ],
+    "id": "1772758510935.3237"
+  }
+]
