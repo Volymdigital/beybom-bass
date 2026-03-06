@@ -2556,9 +2556,7 @@ async function bindFile() {
     _fileHandle = handle;
     await saveHandleToDB(handle);
     updateSaveIndicator('bound');
-    // Write current state immediately
-    await writeToFile(songs);
-    showToast('Fil bunden ✓ — autospar aktivt');
+    showToast('Fil bunden ✓ — klicka SPARA för att skriva');
     return true;
   } catch (e) {
     if (e.name !== 'AbortError') {
