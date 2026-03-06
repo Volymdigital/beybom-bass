@@ -1046,7 +1046,6 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     <span class="song-progress" id="song-progress"></span>
     <button class="pill" onclick="moveSongUp()">↑</button>
     <button class="pill" onclick="moveSongDown()">↓</button>
-    <button class="pill" onclick="duplicateSong()">⧉ DUPLICERA</button>
     <button class="pill danger" onclick="deleteSong()">TA BORT LÅT</button>
   </div>
 </div>
@@ -2064,6 +2063,7 @@ function buildTurnBlock(turn, si, ti, offset, song) {
         ${['play','rest','warn','stop'].map(t=>`<option value="${t}"${turn.type===t?' selected':''}>${t.toUpperCase()}</option>`).join('')}
       </select>
       <button class="pill danger" style="padding:3px 6px;font-size:0.52rem;" onclick="deleteTurn(${si},${ti})">✕</button>
+      <button class="pill" style="padding:3px 6px;font-size:0.52rem;" title="Duplicera block" onclick="duplicateTurn(${si},${ti})">⧉</button>
     `;
     block.appendChild(ctrlEl);
   }
@@ -2248,20 +2248,14 @@ function moveSongDown() {
   showToast('Flytt ner ✓');
 }
 
-function duplicateSong() {
-  if (currentSongIndex < 0) return;
-  const copy = JSON.parse(JSON.stringify(songs[currentSongIndex]));
-  copy.id = String(Date.now() + Math.random());
-  copy.title = copy.title + ' (kopia)';
-  // Give new IDs to sections and turns
-  (copy.sections || []).forEach(sec => {
-    sec.id = Date.now() + Math.random();
-    (sec.turns || []).forEach(t => { t.id = Date.now() + Math.random(); });
-  });
-  songs.splice(currentSongIndex + 1, 0, copy);
+function duplicateTurn(si, ti) {
+  const song = songs[currentSongIndex];
+  const copy = JSON.parse(JSON.stringify(song.sections[si].turns[ti]));
+  copy.id = Date.now() + Math.random();
+  song.sections[si].turns.splice(ti + 1, 0, copy);
   saveState();
-  openSong(currentSongIndex + 1);
-  showToast('Låt duplicerad!');
+  openSong(currentSongIndex);
+  showToast('Block duplicerat ⧉');
 }
 
 function deleteSong() {
