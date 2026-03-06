@@ -912,14 +912,13 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   <div id="tb-song-title"></div>
 
   <!-- Setlist actions -->
-  <div id="tb-setlist-actions" style="display:flex;gap:4px;">
+  <div id="tb-setlist-actions" style="display:flex;gap:4px;align-items:center;">
     <button class="pill" onclick="exportJSON()">↓ JSON</button>
     <button class="pill" onclick="document.getElementById('import-file').click()">↑ JSON</button>
     <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
-  </div>
-  <div class="save-indicator unbound" id="save-indicator" onclick="onSaveIndicatorClick()" title="Klicka för att binda fil">
-    <span class="save-dot"></span>
-    <span id="save-indicator-text">OBUNDEN</span>
+    <button class="pill" id="btn-bind-file" onclick="bindFile()" title="Binda en JSON-fil för att kunna spara">BIND FIL</button>
+    <button class="pill active" id="btn-manual-save" onclick="manualSave()" style="display:none">SPARA</button>
+    <button class="pill" id="btn-versions" onclick="openRollbackModal()" style="display:none">↺</button>
   </div>
 </div>
 
@@ -2617,44 +2616,33 @@ async function loadFromFile() {
   }
 }
 
-// Debounced file save — 2s after last change, only after startup
-let _startupComplete = false;
-let _isSaving = false;
-
-function scheduleFileSave() {
-  if (!_startupComplete) return; // never write during startup
-  if (_fileSaveTimer) clearTimeout(_fileSaveTimer);
-  _fileSaveTimer = setTimeout(async () => {
-    if (_isSaving) return;
-    if (_fileHandle && songs.length > 0) {
-      _isSaving = true;
-      await saveVersion(songs);
-      await writeToFile(songs);
-      _isSaving = false;
-    } else if (songs.length > 0) {
-      await saveVersion(songs);
-    }
-  }, 2000);
+// ─── Manual save ───
+async function manualSave() {
+  if (!_fileHandle) { showToast('Ingen fil bunden'); return; }
+  await saveVersion(songs);
+  await writeToFile(songs);
 }
 
 // ─── Save indicator UI ───
 function updateSaveIndicator(state) {
-  const el = document.getElementById('save-indicator');
-  const txt = document.getElementById('save-indicator-text');
-  if (!el || !txt) return;
-  el.className = 'save-indicator ' + state;
-  if (state === 'bound') txt.textContent = 'SPARAD ✓';
-  else if (state === 'saving') txt.textContent = 'SPARAR...';
-  else txt.textContent = 'OBUNDEN';
-}
-
-function onSaveIndicatorClick() {
-  if (_fileHandle) {
-    openRollbackModal();
+  const bind = document.getElementById('btn-bind-file');
+  const save = document.getElementById('btn-manual-save');
+  const ver  = document.getElementById('btn-versions');
+  if (!bind) return;
+  if (state === 'bound' || state === 'saving') {
+    bind.style.display = 'none';
+    if (save) save.style.display = '';
+    if (ver)  ver.style.display  = '';
+    if (save && state === 'saving') save.textContent = 'SPARAR...';
+    if (save && state === 'bound')  save.textContent = 'SPARA';
   } else {
-    bindFile();
+    bind.style.display = '';
+    if (save) save.style.display = 'none';
+    if (ver)  ver.style.display  = 'none';
   }
 }
+
+
 
 // ─── Rollback modal ───
 async function openRollbackModal() {
@@ -2696,12 +2684,7 @@ async function confirmRestore(timestamp, label) {
   showToast('Återställd ✓');
 }
 
-// ─── Patch saveState to trigger persistence ───
-const _origSaveState = saveState;
-saveState = function() {
-  _origSaveState();
-  scheduleFileSave();
-};
+
 
 // ═══════════════════════════════════════════════════
 //  INIT
