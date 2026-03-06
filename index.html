@@ -919,9 +919,8 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   </div>
   <!-- Persistence actions (always visible) -->
   <div id="tb-persist-actions" style="display:flex;gap:4px;align-items:center;">
-    <button class="pill" id="btn-bind-file" onclick="bindFile()" title="Binda en JSON-fil för att kunna spara">BIND FIL</button>
-    <button class="pill active" id="btn-manual-save" onclick="manualSave()" style="display:none">SPARA</button>
-    <button class="pill" id="btn-versions" onclick="openRollbackModal()" style="display:none">↺</button>
+    <button class="pill active" id="btn-manual-save" onclick="manualSave()">SPARA</button>
+    <button class="pill" id="btn-versions" onclick="openRollbackModal()">↺</button>
   </div>
 </div>
 
@@ -2533,7 +2532,7 @@ async function tryRestoreFileHandle() {
       return false;
     }
     _fileHandle = handle;
-    updateSaveIndicator('bound');
+
     return true;
   } catch (e) {
     console.warn('Handle restore failed:', e);
@@ -2558,7 +2557,7 @@ async function bindFile() {
     });
     _fileHandle = handle;
     await saveHandleToDB(handle);
-    updateSaveIndicator('bound');
+
     showToast('Fil bunden ✓ — klicka SPARA för att skriva');
     return true;
   } catch (e) {
@@ -2578,29 +2577,23 @@ async function writeToFile(data) {
     await writable.close();
   };
   try {
-    updateSaveIndicator('saving');
     await attempt();
     _lastSaveTime = Date.now();
-    updateSaveIndicator('bound');
   } catch (e) {
-    // Retry once after a short delay (handles transient locks from live-server etc.)
     console.warn('File write failed (retrying):', e.name, e.message);
     if (e.name === 'NotAllowedError') {
-      // Permission revoked — give up cleanly but keep handle so user can rebind by clicking
-      updateSaveIndicator('unbound');
-      showToast('Filrättigheter borttagna — klicka på indikatorn för att binda igen');
+      _fileHandle = null;
+      showToast('Filrättigheter borttagna — klicka SPARA igen');
       return;
     }
     try {
       await new Promise(r => setTimeout(r, 1000));
       await attempt();
       _lastSaveTime = Date.now();
-      updateSaveIndicator('bound');
     } catch (e2) {
       console.warn('File write retry failed:', e2.name, e2.message);
-      updateSaveIndicator('unbound');
-      showToast('Filskrivning misslyckades — klicka på indikatorn för att binda igen');
-      // Don't null the handle — user can try rebinding by clicking the indicator
+      _fileHandle = null;
+      showToast('Filskrivning misslyckades — klicka SPARA igen');
     }
   }
 }
@@ -2619,31 +2612,20 @@ async function loadFromFile() {
 
 // ─── Manual save ───
 async function manualSave() {
-  if (!_fileHandle) { showToast('Ingen fil bunden'); return; }
+  // If not bound, prompt user to pick a file first
+  if (!_fileHandle) {
+    const bound = await bindFile();
+    if (!bound) return; // user cancelled
+  }
+  const btn = document.getElementById('btn-manual-save');
+  if (btn) btn.textContent = 'SPARAR...';
   await saveVersion(songs);
   await writeToFile(songs);
+  if (btn) btn.textContent = 'SPARA';
+  showToast('Sparad ✓');
 }
 
-// ─── Save indicator UI ───
-function updateSaveIndicator(state) {
-  const bind = document.getElementById('btn-bind-file');
-  const save = document.getElementById('btn-manual-save');
-  const ver  = document.getElementById('btn-versions');
-  if (!bind) return;
-  if (state === 'bound' || state === 'saving') {
-    bind.style.display = 'none';
-    if (save) save.style.display = '';
-    if (ver)  ver.style.display  = '';
-    if (save && state === 'saving') save.textContent = 'SPARAR...';
-    if (save && state === 'bound')  save.textContent = 'SPARA';
-  } else {
-    bind.style.display = '';
-    if (save) save.style.display = 'none';
-    if (ver)  ver.style.display  = 'none';
-  }
-}
-
-
+// (saveIndicator removed — SPARA button always visible)
 
 // ─── Rollback modal ───
 async function openRollbackModal() {
