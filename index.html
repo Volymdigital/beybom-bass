@@ -1290,6 +1290,7 @@ function parseSectionsFromChordRaw(chordRaw) {
 // ═══════════════════════════════════════════════════
 let songs = [];
 let currentSongIndex = -1;
+let _dirty = false;
 let isLiveMode = false;
 let isEditMode = false;
 let tracksGlobal = 'off';
@@ -1344,6 +1345,7 @@ function getFullState() {
 
 function saveState() {
   // In-memory only. Data persists via SPARA → File System API.
+  _dirty = true;
 }
 
 function saveSong() {
@@ -2402,6 +2404,7 @@ async function manualSave() {
   await writeToFile(getFullState());
   if (btn) btn.textContent = 'SPARA';
   showToast('Sparad ✓');
+  _dirty = false;
 }
 
 
@@ -2410,6 +2413,13 @@ async function manualSave() {
 // ═══════════════════════════════════════════════════
 loadState().then(() => {
   showSetlist();
+});
+
+window.addEventListener('beforeunload', (e) => {
+  if (_dirty) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
 });
 </script>
 </body>
