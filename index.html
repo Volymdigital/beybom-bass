@@ -911,11 +911,14 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   <!-- Song title in bar -->
   <div id="tb-song-title"></div>
 
-  <!-- Setlist actions -->
+  <!-- Setlist actions (hidden in song view) -->
   <div id="tb-setlist-actions" style="display:flex;gap:4px;align-items:center;">
     <button class="pill" onclick="exportJSON()">↓ JSON</button>
     <button class="pill" onclick="document.getElementById('import-file').click()">↑ JSON</button>
     <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+  </div>
+  <!-- Persistence actions (always visible) -->
+  <div id="tb-persist-actions" style="display:flex;gap:4px;align-items:center;">
     <button class="pill" id="btn-bind-file" onclick="bindFile()" title="Binda en JSON-fil för att kunna spara">BIND FIL</button>
     <button class="pill active" id="btn-manual-save" onclick="manualSave()" style="display:none">SPARA</button>
     <button class="pill" id="btn-versions" onclick="openRollbackModal()" style="display:none">↺</button>
