@@ -1,0 +1,154 @@
+{
+  "_instructions": {
+    "purpose": "Denna fil är en mall för att importera AI-analyserade låtar till BEYBOM Bass Player-appen.",
+    "how_to_use": [
+      "1. Ge en AI-modell (t.ex. ChatGPT, Claude) denna fil + låtinformation (titel, artist, tonart, ackordschema).",
+      "2. Be AI:n fylla i fälten enligt schemat nedan.",
+      "3. Kopiera den färdiga JSON-arrayen och importera den via ↑ JSON-knappen i appen.",
+      "4. Appen accepterar en array med ett eller flera låtobjekt."
+    ],
+    "prompt_template": "Analysera följande låt och returnera ett JSON-objekt som matchar BEYBOM-schemat:\n\nLåt: [TITEL]\nArtist: [ARTIST]\nTonart: [t.ex. Am, Bb, F#]\nBPM: [om känd]\nAckordschema: [t.ex. verse: Am G C G, chorus: F C G Am]\n\nReturnera exakt en JSON-array med ett objekt. Följ schemat i ai-song-template.json exakt.",
+    "chord_format": {
+      "standard": "Ackord på ett slag: 'Am', 'G', 'Bb', 'C#m', 'F/A'",
+      "slash_chords": "Bastone efter slash: 'G/B' = G med B i basen",
+      "empty_slot": "Tom takt/slag: '' (tom sträng)",
+      "per_bar": "Varje slot i 'chords'-arrayen = ett TAKTSLAG (inte ett ackord per takt)"
+    },
+    "section_types": {
+      "intro": "INTRO",
+      "verse": "VERS",
+      "pre_chorus": "PRECHORUS",
+      "chorus": "CHORUS",
+      "bridge": "BRIDGE",
+      "outro": "OUTRO",
+      "solo": "SOLO",
+      "custom": "Valfritt namn med versaler"
+    },
+    "turn_types": {
+      "play": "Normal bass — spela ackordet",
+      "rest": "Ingen bas — pianist/gitarrist spelar men bas tyst",
+      "warn": "OBS-markering — svårt parti, öva extra",
+      "stop": "Stopp/slut — fullständigt stopp i låten"
+    }
+  },
+
+  "_schema": {
+    "title": "string — låttitel",
+    "artist": "string — artist/band",
+    "key": "string — grundtonart i standardnotation: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B, Am, etc.",
+    "keyOffset": "integer — halvstegstransponering från grundtonart (0 = ingen transponering)",
+    "bpm": "string eller integer — tempo (lämna '' om okänt)",
+    "notes": "string — fritext för spelanteckningar (lämna '' om inga)",
+    "tracksMode": "'auto' (standard) | 'on' | 'off'",
+    "chordRaw": "string — råtext med ackord, används för referenspanelen. Formatera med sektionsrubriker: [Intro], [Verse], [Chorus] etc. på egna rader. Enkla ackord per rad separerade med mellanslag.",
+    "sections": [
+      {
+        "id": "number — unikt ID, använd Date.now() + index",
+        "name": "string — sektionsnamn med VERSALER: 'INTRO', 'VERS', 'CHORUS', etc.",
+        "turns": [
+          {
+            "id": "number — unikt ID, använd Date.now() + index",
+            "bars": "integer — antal takter i detta block (vanligen 2 eller 4)",
+            "chords": ["array av strängar — en sträng per takt, ackord eller '' om tom"],
+            "type": "'play' | 'rest' | 'warn' | 'stop'",
+            "instruction": "string — fritext spelinstruktion (lämna '' om ingen)"
+          }
+        ]
+      }
+    ]
+  },
+
+  "_example": [
+    {
+      "title": "Händerna mot himlen",
+      "artist": "Petra Marklund",
+      "key": "Bb",
+      "keyOffset": 0,
+      "bpm": 128,
+      "notes": "",
+      "tracksMode": "auto",
+      "chordRaw": "[Verse]\nBb C F Gm\nBb C Dm Gm\n\n[Chorus]\nBb C F Bb\nBb C F Dm",
+      "sections": [
+        {
+          "id": 1000001,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1000010,
+              "bars": 4,
+              "chords": ["Bb", "C", "F", "Gm"],
+              "type": "rest",
+              "instruction": "Ingen bas första varvet"
+            }
+          ]
+        },
+        {
+          "id": 1000002,
+          "name": "VERS",
+          "turns": [
+            {
+              "id": 1000020,
+              "bars": 4,
+              "chords": ["Bb", "C", "F", "Gm"],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1000021,
+              "bars": 4,
+              "chords": ["Bb", "C", "Dm", "Gm"],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1000003,
+          "name": "CHORUS",
+          "turns": [
+            {
+              "id": 1000030,
+              "bars": 4,
+              "chords": ["Bb", "C", "F", "Bb"],
+              "type": "play",
+              "instruction": "Pump"
+            },
+            {
+              "id": 1000031,
+              "bars": 4,
+              "chords": ["Bb", "C", "F", "Dm"],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1000004,
+          "name": "BRIDGE",
+          "turns": [
+            {
+              "id": 1000040,
+              "bars": 2,
+              "chords": ["Gm", "F"],
+              "type": "warn",
+              "instruction": "Höjning — OBS annorlunda harmonik"
+            }
+          ]
+        },
+        {
+          "id": 1000005,
+          "name": "OUTRO",
+          "turns": [
+            {
+              "id": 1000050,
+              "bars": 1,
+              "chords": ["Bb"],
+              "type": "stop",
+              "instruction": "Slutackord"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
