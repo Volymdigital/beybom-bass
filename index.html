@@ -2470,6 +2470,75 @@ async function restoreVersion(timestamp) {
 
 // ─── File System Access API ───
 const _fsSupported = ('showSaveFilePicker' in window);
+const _HANDLE_DB = 'beybom_filehandle';
+const _HANDLE_STORE = 'handles';
+
+async function saveHandleToDB(handle) {
+  return new Promise((resolve) => {
+    const req = indexedDB.open(_HANDLE_DB, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore(_HANDLE_STORE);
+    req.onsuccess = () => {
+      const db = req.result;
+      const tx = db.transaction(_HANDLE_STORE, 'readwrite');
+      tx.objectStore(_HANDLE_STORE).put(handle, 'main');
+      tx.oncomplete = resolve;
+      tx.onerror = resolve;
+    };
+    req.onerror = resolve;
+  });
+}
+
+async function loadHandleFromDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open(_HANDLE_DB, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore(_HANDLE_STORE);
+    req.onsuccess = () => {
+      const db = req.result;
+      const tx = db.transaction(_HANDLE_STORE, 'readonly');
+      const get = tx.objectStore(_HANDLE_STORE).get('main');
+      get.onsuccess = () => resolve(get.result || null);
+      get.onerror = () => resolve(null);
+    };
+    req.onerror = () => resolve(null);
+  });
+}
+
+async function clearHandleFromDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open(_HANDLE_DB, 1);
+    req.onsuccess = () => {
+      const tx = req.result.transaction(_HANDLE_STORE, 'readwrite');
+      tx.objectStore(_HANDLE_STORE).delete('main');
+      tx.oncomplete = resolve;
+    };
+    req.onerror = resolve;
+  });
+}
+
+async function tryRestoreFileHandle() {
+  if (!_fsSupported) return false;
+  const handle = await loadHandleFromDB();
+  if (!handle) return false;
+  try {
+    // Check if we already have read/write permission (no dialog needed)
+    let perm = await handle.queryPermission({ mode: 'readwrite' });
+    if (perm === 'prompt') {
+      // Request permission — Chrome will auto-grant if file hasn't moved
+      perm = await handle.requestPermission({ mode: 'readwrite' });
+    }
+    if (perm !== 'granted') {
+      await clearHandleFromDB();
+      return false;
+    }
+    _fileHandle = handle;
+    updateSaveIndicator('bound');
+    return true;
+  } catch (e) {
+    console.warn('Handle restore failed:', e);
+    await clearHandleFromDB();
+    return false;
+  }
+}
 
 async function bindFile() {
   if (!_fsSupported) {
@@ -2485,6 +2554,7 @@ async function bindFile() {
       }]
     });
     _fileHandle = handle;
+    await saveHandleToDB(handle);
     updateSaveIndicator('bound');
     // Write current state immediately
     await writeToFile(songs);
@@ -2628,7 +2698,25 @@ saveState = function() {
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-loadState().then(() => showSetlist());
+loadState().then(async () => {
+  // Try to restore previously bound file handle
+  const restored = await tryRestoreFileHandle();
+  if (restored) {
+    // Load data from file (overrides localStorage — file is the source of truth)
+    const fileData = await loadFromFile();
+    if (fileData && Array.isArray(fileData) && fileData.length > 0) {
+      songs = fileData.map(s => migrateSong(s));
+      songs.forEach(s => {
+        if (!s.sections) s.sections = [];
+        if (!s.id) s.id = String(Date.now() + Math.random());
+      });
+      // Sync localStorage with file data
+      localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
+      showToast('Laddades från bunden fil ✓');
+    }
+  }
+  showSetlist();
+});
 </script>
 </body>
 </html>
