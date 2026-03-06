@@ -831,39 +831,6 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
 .save-indicator.saving .save-dot { background: #FFD54F; animation: pulse-dot 0.6s infinite; }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-/* Rollback modal */
-.rollback-backdrop {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.78); z-index: 3000;
-  align-items: center; justify-content: center;
-}
-.rollback-modal {
-  background: var(--panel); border: 1px solid var(--border2);
-  border-radius: 4px; padding: 20px; min-width: 300px; max-width: 420px;
-  max-height: 70vh; display: flex; flex-direction: column; gap: 10px;
-}
-.rollback-title {
-  font-family: var(--font-mono); font-size: 0.6rem;
-  color: var(--text-muted); letter-spacing: 2px;
-}
-.rollback-list {
-  display: flex; flex-direction: column; gap: 4px;
-  overflow-y: auto; max-height: 50vh;
-}
-.rollback-item {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 8px 10px; background: var(--panel2);
-  border: 1px solid var(--border); border-radius: 2px;
-  font-family: var(--font-mono); font-size: 0.7rem;
-  color: var(--text-dim); cursor: pointer; transition: all 0.12s;
-}
-.rollback-item:hover { border-color: var(--accent); color: var(--text); }
-.rollback-item .rb-time { color: var(--text); }
-.rollback-item .rb-songs { color: var(--text-muted); font-size: 0.6rem; }
-.rollback-empty {
-  color: var(--text-muted); font-family: var(--font-mono);
-  font-size: 0.7rem; padding: 16px; text-align: center;
-}
 </style>
 </head>
 <body>
@@ -920,7 +887,6 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   <!-- Persistence actions (always visible) -->
   <div id="tb-persist-actions" style="display:flex;gap:4px;align-items:center;">
     <button class="pill active" id="btn-manual-save" onclick="manualSave()">SPARA</button>
-    <button class="pill" id="btn-versions" onclick="openRollbackModal()">↺</button>
   </div>
 </div>
 
@@ -951,16 +917,7 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   </div>
 </div>
 
-<!-- Rollback modal -->
-<div class="rollback-backdrop" id="rollback-backdrop" onclick="closeRollbackModal()">
-  <div class="rollback-modal" onclick="event.stopPropagation()">
-    <div class="rollback-title">⟲ VERSIONSHISTORIK</div>
-    <div class="rollback-list" id="rollback-list"></div>
-    <div style="display:flex;gap:6px;">
-      <button class="pill" onclick="closeRollbackModal()">STÄNG</button>
-    </div>
-  </div>
-</div>
+
 
 <!-- ════════════════════════════════
      SONG VIEW
@@ -2378,321 +2335,63 @@ document.addEventListener('keydown', e => {
 });
 
 // ═══════════════════════════════════════════════════
-//  PERSISTENCE LAYER — IndexedDB + File System Access
+//  PERSISTENCE — beybom-setlist.json is the SSoT
 // ═══════════════════════════════════════════════════
-const VERSION_DB_NAME = 'beybom_versions';
-const VERSION_STORE = 'snapshots';
-const MAX_VERSIONS = 20;
 let _fileHandle = null;
-let _fileSaveTimer = null;
-let _lastSaveTime = 0;
 
-// ─── IndexedDB version store ───
-function openVersionDB() {
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.open(VERSION_DB_NAME, 1);
-    req.onupgradeneeded = () => {
-      const db = req.result;
-      if (!db.objectStoreNames.contains(VERSION_STORE)) {
-        db.createObjectStore(VERSION_STORE, { keyPath: 'timestamp' });
-      }
-    };
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  });
-}
-
-async function saveVersion(data) {
-  try {
-    const db = await openVersionDB();
-    const tx = db.transaction(VERSION_STORE, 'readwrite');
-    const store = tx.objectStore(VERSION_STORE);
-    const snapshot = {
-      timestamp: Date.now(),
-      songCount: data.length,
-      data: JSON.stringify(data)
-    };
-    store.put(snapshot);
-
-    // Prune old versions
-    const getAll = store.getAll();
-    getAll.onsuccess = () => {
-      const all = getAll.result.sort((a, b) => b.timestamp - a.timestamp);
-      const toDelete = all.slice(MAX_VERSIONS);
-      toDelete.forEach(v => store.delete(v.timestamp));
-    };
-    await new Promise((resolve, reject) => {
-      tx.oncomplete = resolve;
-      tx.onerror = reject;
-    });
-  } catch (e) {
-    console.warn('Version save failed:', e);
-  }
-}
-
-async function getVersions() {
-  try {
-    const db = await openVersionDB();
-    const tx = db.transaction(VERSION_STORE, 'readonly');
-    const store = tx.objectStore(VERSION_STORE);
-    return new Promise((resolve) => {
-      const req = store.getAll();
-      req.onsuccess = () => {
-        const all = req.result.sort((a, b) => b.timestamp - a.timestamp);
-        resolve(all);
-      };
-      req.onerror = () => resolve([]);
-    });
-  } catch (e) {
-    return [];
-  }
-}
-
-async function restoreVersion(timestamp) {
-  try {
-    const db = await openVersionDB();
-    const tx = db.transaction(VERSION_STORE, 'readonly');
-    const store = tx.objectStore(VERSION_STORE);
-    return new Promise((resolve) => {
-      const req = store.get(timestamp);
-      req.onsuccess = () => {
-        if (req.result) {
-          resolve(JSON.parse(req.result.data));
-        } else {
-          resolve(null);
-        }
-      };
-      req.onerror = () => resolve(null);
-    });
-  } catch (e) {
-    return null;
-  }
-}
-
-// ─── File System Access API ───
-const _fsSupported = ('showOpenFilePicker' in window);
-const _HANDLE_DB = 'beybom_filehandle';
-const _HANDLE_STORE = 'handles';
-
-async function saveHandleToDB(handle) {
-  return new Promise((resolve) => {
-    const req = indexedDB.open(_HANDLE_DB, 1);
-    req.onupgradeneeded = () => req.result.createObjectStore(_HANDLE_STORE);
-    req.onsuccess = () => {
-      const db = req.result;
-      const tx = db.transaction(_HANDLE_STORE, 'readwrite');
-      tx.objectStore(_HANDLE_STORE).put(handle, 'main');
-      tx.oncomplete = resolve;
-      tx.onerror = resolve;
-    };
-    req.onerror = resolve;
-  });
-}
-
-async function loadHandleFromDB() {
-  return new Promise((resolve) => {
-    const req = indexedDB.open(_HANDLE_DB, 1);
-    req.onupgradeneeded = () => req.result.createObjectStore(_HANDLE_STORE);
-    req.onsuccess = () => {
-      const db = req.result;
-      const tx = db.transaction(_HANDLE_STORE, 'readonly');
-      const get = tx.objectStore(_HANDLE_STORE).get('main');
-      get.onsuccess = () => resolve(get.result || null);
-      get.onerror = () => resolve(null);
-    };
-    req.onerror = () => resolve(null);
-  });
-}
-
-async function clearHandleFromDB() {
-  return new Promise((resolve) => {
-    const req = indexedDB.open(_HANDLE_DB, 1);
-    req.onsuccess = () => {
-      const tx = req.result.transaction(_HANDLE_STORE, 'readwrite');
-      tx.objectStore(_HANDLE_STORE).delete('main');
-      tx.oncomplete = resolve;
-    };
-    req.onerror = resolve;
-  });
-}
-
-async function tryRestoreFileHandle() {
-  if (!_fsSupported) return false;
-  const handle = await loadHandleFromDB();
-  if (!handle) return false;
-  try {
-    // Check if we already have read/write permission (no dialog needed)
-    let perm = await handle.queryPermission({ mode: 'readwrite' });
-    if (perm === 'prompt') {
-      // Request permission — Chrome will auto-grant if file hasn't moved
-      perm = await handle.requestPermission({ mode: 'readwrite' });
-    }
-    if (perm !== 'granted') {
-      await clearHandleFromDB();
-      return false;
-    }
-    _fileHandle = handle;
-
-    return true;
-  } catch (e) {
-    console.warn('Handle restore failed:', e);
-    await clearHandleFromDB();
-    return false;
-  }
-}
-
-async function bindFile() {
-  if (!_fsSupported) {
-    showToast('Din webbläsare stöder inte filbindning (kräver Chrome/Edge)');
-    return false;
-  }
-  try {
-    const [handle] = await window.showOpenFilePicker({
-      multiple: false,
-      mode: 'readwrite',
-      types: [{
-        description: 'JSON-filer',
-        accept: { 'application/json': ['.json'] }
-      }]
-    });
-    _fileHandle = handle;
-    await saveHandleToDB(handle);
-
-    showToast('Fil bunden ✓ — klicka SPARA för att skriva');
-    return true;
-  } catch (e) {
-    if (e.name !== 'AbortError') {
-      console.warn('File bind failed:', e);
-      showToast('Filbindning avbruten');
-    }
-    return false;
-  }
-}
-
+// Write to file via File System Access API
 async function writeToFile(data) {
   if (!_fileHandle) return;
-  const attempt = async () => {
+  try {
     const writable = await _fileHandle.createWritable();
     await writable.write(JSON.stringify(data, null, 2));
     await writable.close();
-  };
-  try {
-    await attempt();
-    _lastSaveTime = Date.now();
   } catch (e) {
-    console.warn('File write failed (retrying):', e.name, e.message);
+    console.warn('File write failed:', e.name, e.message);
     if (e.name === 'NotAllowedError') {
       _fileHandle = null;
-      showToast('Filrättigheter borttagna — klicka SPARA igen');
+    }
+    showToast('Filskrivning misslyckades — klicka SPARA igen');
+  }
+}
+
+// Manual save — prompts for file if not bound
+async function manualSave() {
+  if (!_fileHandle) {
+    if (!('showSaveFilePicker' in window)) {
+      // Fallback: download the file
+      const blob = new Blob([JSON.stringify(songs, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'beybom-setlist.json';
+      a.click();
+      showToast('Fil nedladdad ✓');
       return;
     }
     try {
-      await new Promise(r => setTimeout(r, 1000));
-      await attempt();
-      _lastSaveTime = Date.now();
-    } catch (e2) {
-      console.warn('File write retry failed:', e2.name, e2.message);
-      _fileHandle = null;
-      showToast('Filskrivning misslyckades — klicka SPARA igen');
+      _fileHandle = await window.showSaveFilePicker({
+        suggestedName: 'beybom-setlist.json',
+        types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
+      });
+    } catch (e) {
+      if (e.name !== 'AbortError') showToast('Spara avbruten');
+      return;
     }
-  }
-}
-
-async function loadFromFile() {
-  if (!_fileHandle) return null;
-  try {
-    const file = await _fileHandle.getFile();
-    const text = await file.text();
-    return JSON.parse(text);
-  } catch (e) {
-    console.warn('File read failed:', e);
-    return null;
-  }
-}
-
-// ─── Manual save ───
-async function manualSave() {
-  // If not bound, prompt user to pick a file first
-  if (!_fileHandle) {
-    const bound = await bindFile();
-    if (!bound) return; // user cancelled
   }
   const btn = document.getElementById('btn-manual-save');
   if (btn) btn.textContent = 'SPARAR...';
-  await saveVersion(songs);
+  saveState(); // sync localStorage
   await writeToFile(songs);
   if (btn) btn.textContent = 'SPARA';
   showToast('Sparad ✓');
 }
 
-// (saveIndicator removed — SPARA button always visible)
-
-// ─── Rollback modal ───
-async function openRollbackModal() {
-  const versions = await getVersions();
-  const list = document.getElementById('rollback-list');
-  list.innerHTML = '';
-  if (versions.length === 0) {
-    list.innerHTML = '<div class="rollback-empty">Inga versioner sparade ännu.</div>';
-  } else {
-    versions.forEach(v => {
-      const d = new Date(v.timestamp);
-      const timeStr = d.toLocaleDateString('sv-SE') + ' ' + d.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      const item = document.createElement('div');
-      item.className = 'rollback-item';
-      item.innerHTML = `<span class="rb-time">${timeStr}</span><span class="rb-songs">${v.songCount} låtar</span>`;
-      item.onclick = () => confirmRestore(v.timestamp, timeStr);
-      list.appendChild(item);
-    });
-  }
-  document.getElementById('rollback-backdrop').style.display = 'flex';
-}
-
-function closeRollbackModal() {
-  document.getElementById('rollback-backdrop').style.display = 'none';
-}
-
-async function confirmRestore(timestamp, label) {
-  if (!confirm(`Återställ till version från ${label}?`)) return;
-  const data = await restoreVersion(timestamp);
-  if (!data) { showToast('Kunde inte läsa version'); return; }
-  songs = data.map(s => migrateSong(s));
-  songs.forEach(s => {
-    if (!s.sections) s.sections = [];
-    if (!s.id) s.id = String(Date.now() + Math.random());
-  });
-  saveState();
-  closeRollbackModal();
-  showSetlist();
-  showToast('Återställd ✓');
-}
-
-
 
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-loadState().then(async () => {
-  // Restore file handle for SPARA button (never overwrites data)
-  const handleRestored = await tryRestoreFileHandle();
-
-  // ONLY use file as recovery if localStorage was completely empty
-  const hadLocalData = !!localStorage.getItem('beybom_songs_v2');
-  if (handleRestored && !hadLocalData) {
-    const fileData = await loadFromFile();
-    if (fileData && Array.isArray(fileData) && fileData.length > 0) {
-      songs = fileData.map(s => migrateSong(s));
-      songs.forEach(s => {
-        if (!s.sections) s.sections = [];
-        if (!s.id) s.id = String(Date.now() + Math.random());
-      });
-      localStorage.setItem('beybom_songs_v2', JSON.stringify(songs));
-      showToast('Återställd från bunden fil ✓');
-    }
-  }
-
+loadState().then(() => {
   showSetlist();
-  if (handleRestored && hadLocalData) showToast('Fil bunden — klicka SPARA för att skriva');
 });
 </script>
 </body>
