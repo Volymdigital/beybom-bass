@@ -443,9 +443,9 @@ body {
 .turns-container {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
   gap: 2px;
-  overflow: hidden;
   border-radius: 0 2px 2px 0;
 }
 
@@ -2126,6 +2126,8 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   if (!layers.blocks) block.style.background = 'var(--panel2)';
 
   const bars = turn.bars;
+  // Each turn takes proportional width: bars/16 of row (16 bars = full row)
+  block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
   const restIcon = turn.type === 'rest' ? '◼' : '◻';
 
   // Top row
