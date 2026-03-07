@@ -2094,7 +2094,7 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   }
 
   (sec.turns || []).forEach((turn, ti) => {
-    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt));
+    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt, totalBars));
   });
 
   if (sec.turns.length === 0) {
@@ -2124,7 +2124,7 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   return row;
 }
 
-function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
+function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt, totalBars) {
   normalizeTurn(turn);
 
   // Section color as primary background
@@ -2139,8 +2139,10 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   if (!layers.blocks) block.style.background = 'var(--panel2)';
 
   const bars = turn.bars;
-  // Each turn takes proportional width: bars/16 of row (16 bars = full row)
-  block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
+  // Only use fixed flex-basis when section has > 16 bars (wrapping)
+  if (totalBars > 16) {
+    block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
+  }
   const restIcon = turn.type === 'rest' ? '🔇' : '🔈';
   const restTitle = turn.type === 'rest' ? 'MUTAD — klicka för att spela' : 'SPELAR — klicka för att muta';
 
