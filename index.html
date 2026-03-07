@@ -525,17 +525,18 @@ body.edit-mode .chord-slot.editing { background: rgba(0,230,118,0.08); }
   white-space: nowrap;
   text-align: center;
 }
-.chord-slot-text .cq { /* quality suffix */
+.chord-slot-text .cq { /* quality suffix: m, 7, Maj, sus4 etc. */
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: 0.85rem;
   vertical-align: super;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.80);
   letter-spacing: 0;
+  font-weight: 500;
 }
 .chord-slot-text .cb { /* bass note */
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.65);
 }
 .chord-slot.empty .chord-slot-text { opacity: 0.12; }
 .turn-block.rest .chord-slot-text { opacity: 0.4; }
