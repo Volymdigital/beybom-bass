@@ -494,12 +494,20 @@ body {
 
 .turn-rest-btn {
   background: none; border: none; cursor: pointer;
-  font-size: 0.65rem; line-height: 1; opacity: 0.35;
-  padding: 0; color: var(--text);
-  transition: opacity 0.12s;
+  font-size: 0.85rem; line-height: 1; opacity: 0.5;
+  padding: 4px;
+  color: var(--text);
+  transition: opacity 0.12s, transform 0.1s;
+  min-width: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 }
-.turn-rest-btn:hover { opacity: 0.8; }
-.turn-block.rest .turn-rest-btn { opacity: 0.6; color: #aaa; }
+.turn-rest-btn:hover { opacity: 1; background: rgba(255,255,255,0.08); }
+.turn-rest-btn:active { transform: scale(0.9); }
+.turn-block.rest .turn-rest-btn { opacity: 0.9; color: #e57373; background: rgba(229,115,115,0.1); }
 
 /* Chords: slot grid — set via JS style.gridTemplateColumns */
 .turn-chords {
@@ -2128,14 +2136,15 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   const bars = turn.bars;
   // Each turn takes proportional width: bars/16 of row (16 bars = full row)
   block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
-  const restIcon = turn.type === 'rest' ? '◼' : '◻';
+  const restIcon = turn.type === 'rest' ? '🔇' : '🔈';
+  const restTitle = turn.type === 'rest' ? 'MUTAD — klicka för att spela' : 'SPELAR — klicka för att muta';
 
   // Top row
   const topEl = document.createElement('div');
   topEl.className = 'turn-top';
   topEl.innerHTML = `
     <div class="turn-bars">${bars} TAKT${bars !== 1 ? 'ER' : ''}</div>
-    <button class="turn-rest-btn" title="${turn.type==='rest'?'INGEN BAS':'SPELA'}" onclick="toggleTurnRest(${si},${ti})">${restIcon}</button>
+    <button class="turn-rest-btn" title="${restTitle}" onclick="toggleTurnRest(${si},${ti})">${restIcon}</button>
   `;
   block.appendChild(topEl);
 
