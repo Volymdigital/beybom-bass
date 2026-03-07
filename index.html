@@ -2086,12 +2086,7 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   // Turns container
   const turnsEl = document.createElement('div');
   turnsEl.className = 'turns-container';
-
-  // Only wrap if total bars > 16
-  const totalBars = (sec.turns || []).reduce((sum, t) => sum + (t.bars || 4), 0);
-  if (totalBars > 16) {
-    turnsEl.style.flexWrap = 'wrap';
-  }
+  turnsEl.style.flexWrap = 'wrap';
 
   (sec.turns || []).forEach((turn, ti) => {
     turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt, totalBars));
@@ -2139,10 +2134,8 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt, totalBars
   if (!layers.blocks) block.style.background = 'var(--panel2)';
 
   const bars = turn.bars;
-  // Only use fixed flex-basis when section has > 16 bars (wrapping)
-  if (totalBars > 16) {
-    block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
-  }
+  // Proportional 16-bar grid: each turn takes bars/16 of the row
+  block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
   const restIcon = turn.type === 'rest' ? '🔇' : '🔈';
   const restTitle = turn.type === 'rest' ? 'MUTAD — klicka för att spela' : 'SPELAR — klicka för att muta';
 
