@@ -443,7 +443,6 @@ body {
 .turns-container {
   flex: 1;
   display: flex;
-  flex-wrap: wrap;
   align-items: stretch;
   gap: 2px;
   border-radius: 0 2px 2px 0;
@@ -2087,6 +2086,12 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   // Turns container
   const turnsEl = document.createElement('div');
   turnsEl.className = 'turns-container';
+
+  // Only wrap if total bars > 16
+  const totalBars = (sec.turns || []).reduce((sum, t) => sum + (t.bars || 4), 0);
+  if (totalBars > 16) {
+    turnsEl.style.flexWrap = 'wrap';
+  }
 
   (sec.turns || []).forEach((turn, ti) => {
     turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt));
