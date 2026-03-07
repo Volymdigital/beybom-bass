@@ -2140,7 +2140,7 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   // Chord slots grid
   const chordsEl = document.createElement('div');
   chordsEl.className = 'turn-chords';
-  chordsEl.style.gridTemplateColumns = `repeat(${bars}, 1fr)`;
+  chordsEl.style.gridTemplateColumns = `repeat(${Math.min(bars, 16)}, 1fr)`;
 
   for (let b = 0; b < bars; b++) {
     const rawChord = turn.chords[b] || '';
