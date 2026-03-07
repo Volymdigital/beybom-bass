@@ -541,6 +541,28 @@ body.edit-mode .chord-slot.editing { background: rgba(0,230,118,0.08); }
 .chord-slot.empty .chord-slot-text { opacity: 0.12; }
 .turn-block.rest .chord-slot-text { opacity: 0.4; }
 
+/* Multi-chord per bar: sub-beat divisions */
+.chord-sub-beats {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+.chord-sub-beat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.chord-sub-beat + .chord-sub-beat {
+  border-left: 1px dashed rgba(255,255,255,0.15);
+}
+.chord-sub-beat .chord-slot-text {
+  font-size: 1.1rem;
+}
+
 /* slot-num removed */
 
 /* Inline chord input (edit mode) */
@@ -1905,7 +1927,7 @@ function openSlotEdit(slotEl, si, ti, b) {
   input.className = 'slot-input';
   input.value = raw;
   input.placeholder = '—';
-  input.maxLength = 8;
+  input.maxLength = 24;
   slotEl.classList.add('editing');
   slotEl.appendChild(input);
   input.focus();
@@ -2093,12 +2115,28 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
     slot.className = `chord-slot${b === 0 ? ' beat1' : ''}${isEmpty ? ' empty' : ''}`;
     slot.dataset.si = si; slot.dataset.ti = ti; slot.dataset.b = b;
 
-    // Parse + transpose
-    const { display, root, qual, bass } = parseChordToken(rawChord, offset);
+    // Check for multiple chords per bar (space-separated)
+    const chordTokens = rawChord.trim().split(/\s+/).filter(Boolean);
 
-    slot.innerHTML = `
-      <div class="chord-slot-text">${isEmpty ? '–' : `${root}<span class="cq">${qual}</span><span class="cb">${bass}</span>`}</div>
-    `;
+    if (chordTokens.length > 1) {
+      // Multi-chord: render sub-beat divisions
+      const subBeats = document.createElement('div');
+      subBeats.className = 'chord-sub-beats';
+      chordTokens.forEach(token => {
+        const { root, qual, bass } = parseChordToken(token, offset);
+        const sub = document.createElement('div');
+        sub.className = 'chord-sub-beat';
+        sub.innerHTML = `<div class="chord-slot-text">${root}<span class="cq">${qual}</span><span class="cb">${bass}</span></div>`;
+        subBeats.appendChild(sub);
+      });
+      slot.appendChild(subBeats);
+    } else {
+      // Single chord (original behavior)
+      const { root, qual, bass } = parseChordToken(rawChord, offset);
+      slot.innerHTML = `
+        <div class="chord-slot-text">${isEmpty ? '–' : `${root}<span class="cq">${qual}</span><span class="cb">${bass}</span>`}</div>
+      `;
+    }
 
     // Slot always clickable for chord edit
     slot.style.cursor = 'pointer';
