@@ -1,0 +1,2629 @@
+[
+  {
+    "title": "Look Who's Laughing Now",
+    "artist": "Benjamin Ingrosso",
+    "key": "F",
+    "keyOffset": 0,
+    "bpm": 125,
+    "notes": "F Mixolydian (Eb istället för E). Grundloop genom hela låten.",
+    "tracksMode": "auto",
+    "chordRaw": "[Chorus/Loop]\nF Eb Bb C",
+    "sections": [
+      {
+        "id": 1730001001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730001002,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001003,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730001004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730001005,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001006,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001007,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001008,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730001009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730001010,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001011,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001012,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001013,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730001014,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730001015,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001016,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001017,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001018,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730001019,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730001020,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001021,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001022,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001023,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730001024,
+        "name": "OUTRO",
+        "turns": [
+          {
+            "id": 1730001025,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730001026,
+            "bars": 4,
+            "chords": ["F", "Eb", "Bb", "C"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Free Fallin'",
+    "artist": "Tom Petty",
+    "key": "F",
+    "keyOffset": 0,
+    "bpm": 84,
+    "notes": "Tvåackordsloop F-Csus genom hela låten. Gitarrister spelar ofta med capo 3.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nF Csus F Csus\n\n[Vers]\nF Csus F Csus\nF Csus F Csus\nF Csus F Csus\n\n[Chorus]\nF Csus F Csus\nF Csus F Csus\n\n[Outro]\nF Csus F Csus",
+    "sections": [
+      {
+        "id": 1730002001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730002002,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": "Picked riff feel"
+          }
+        ]
+      },
+      {
+        "id": 1730002003,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730002004,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730002005,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730002006,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730002007,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730002008,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730002009,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730002010,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730002011,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730002012,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730002013,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730002014,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730002015,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730002016,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730002017,
+        "name": "OUTRO",
+        "turns": [
+          {
+            "id": 1730002018,
+            "bars": 4,
+            "chords": ["F", "Csus", "F", "Csus"],
+            "type": "play",
+            "instruction": "Repeat & fade"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Kristina från Vilhelmina",
+    "artist": "Sven-Ingvars",
+    "key": "G",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "Er tonart G. Originalnoter visar D — denna är transponerad upp en kvart. Verifiera mot ert arrangemang.",
+    "tracksMode": "auto",
+    "chordRaw": "[Vers]\nG D7 G G7\nC G D7 G\n\n[Chorus]\nC G7 C D7\nG D7 G G",
+    "sections": [
+      {
+        "id": 1730003001,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730003002,
+            "bars": 4,
+            "chords": ["G", "D7", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730003003,
+            "bars": 4,
+            "chords": ["C", "G", "D7", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730003004,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730003005,
+            "bars": 4,
+            "chords": ["C", "G7", "C", "D7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730003006,
+            "bars": 4,
+            "chords": ["G", "D7", "G", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730003007,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730003008,
+            "bars": 4,
+            "chords": ["G", "D7", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730003009,
+            "bars": 4,
+            "chords": ["C", "G", "D7", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730003010,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730003011,
+            "bars": 4,
+            "chords": ["C", "G7", "C", "D7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730003012,
+            "bars": 4,
+            "chords": ["G", "D7", "G", "G"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Bella Ciao",
+    "artist": "Traditional",
+    "key": "Am",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "Traditionell. Am-centrerad folkprogression. Verifiera kadens (E vs E7) mot ert arrangemang.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nAm Dm Am E7\n\n[Vers]\nAm Dm Am E7\nAm Dm Am E7\n\n[Chorus]\nAm Dm Am E7 Am",
+    "sections": [
+      {
+        "id": 1730004001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730004002,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730004003,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730004004,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730004005,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730004006,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730004007,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730004008,
+            "bars": 1,
+            "chords": ["Am"],
+            "type": "play",
+            "instruction": "Upplösning"
+          }
+        ]
+      },
+      {
+        "id": 1730004009,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730004010,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730004011,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730004012,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730004013,
+            "bars": 4,
+            "chords": ["Am", "Dm", "Am", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730004014,
+            "bars": 1,
+            "chords": ["Am"],
+            "type": "stop",
+            "instruction": "Slutackord"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Don't Stop Me Now",
+    "artist": "Queen",
+    "key": "F",
+    "keyOffset": 0,
+    "bpm": 156,
+    "notes": "Komplex harmonik. Intro är lång och rubato-känsla. Bridge = drums + vocal only.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nF Am Dm Gm C F F7\nBb Gm D7 Gm Gm C\n\n[Vers]\nF Am Dm Gm C\nF Am Dm Gm C\n\n[Prechorus]\nF F7\n\n[Chorus]\nBb Gm D7 Gm\nD7 Gm Gm C\nF Dm Gm C\n\n[Bridge]\nDrums + vocal\n\n[Solo]\nAs Vers",
+    "sections": [
+      {
+        "id": 1730005001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730005002,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": "Rubato/fri känsla"
+          },
+          {
+            "id": 1730005003,
+            "bars": 3,
+            "chords": ["C", "F", "F7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005004,
+            "bars": 4,
+            "chords": ["Bb", "Gm", "D7", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005005,
+            "bars": 2,
+            "chords": ["Gm", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005006,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730005007,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005008,
+            "bars": 1,
+            "chords": ["C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005009,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005010,
+            "bars": 1,
+            "chords": ["C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005011,
+        "name": "PRECHORUS",
+        "turns": [
+          {
+            "id": 1730005012,
+            "bars": 2,
+            "chords": ["F", "F7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005013,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730005014,
+            "bars": 4,
+            "chords": ["Bb", "Gm", "D7", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005015,
+            "bars": 4,
+            "chords": ["D7", "Gm", "Gm", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005016,
+            "bars": 4,
+            "chords": ["F", "Dm", "Gm", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005017,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730005018,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005019,
+            "bars": 1,
+            "chords": ["C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005020,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005021,
+            "bars": 1,
+            "chords": ["C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005022,
+        "name": "PRECHORUS",
+        "turns": [
+          {
+            "id": 1730005023,
+            "bars": 2,
+            "chords": ["F", "F7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005024,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730005025,
+            "bars": 4,
+            "chords": ["Bb", "Gm", "D7", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005026,
+            "bars": 4,
+            "chords": ["D7", "Gm", "Gm", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005027,
+            "bars": 4,
+            "chords": ["F", "Dm", "Gm", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005028,
+        "name": "BRIDGE",
+        "turns": [
+          {
+            "id": 1730005029,
+            "bars": 4,
+            "chords": ["", "", "", ""],
+            "type": "rest",
+            "instruction": "Drums + vocal only"
+          }
+        ]
+      },
+      {
+        "id": 1730005030,
+        "name": "SOLO",
+        "turns": [
+          {
+            "id": 1730005031,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": "Som vers"
+          },
+          {
+            "id": 1730005032,
+            "bars": 1,
+            "chords": ["C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005033,
+            "bars": 4,
+            "chords": ["F", "Am", "Dm", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005034,
+            "bars": 1,
+            "chords": ["C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730005035,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730005036,
+            "bars": 4,
+            "chords": ["Bb", "Gm", "D7", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005037,
+            "bars": 4,
+            "chords": ["D7", "Gm", "Gm", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730005038,
+            "bars": 4,
+            "chords": ["F", "Dm", "Gm", "C"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Händerna mot himlen",
+    "artist": "Petra Marklund",
+    "key": "F",
+    "keyOffset": 0,
+    "bpm": 128,
+    "notes": "Bb/C/F/Dm-loop. Diatoniskt i F-dur.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nBb C F Bb\nBb C F Dm\n\n[Vers]\nBb C F Bb\nBb C F Dm\n\n[Chorus]\nBb C F Bb\nBb C F Dm\nC F Bb",
+    "sections": [
+      {
+        "id": 1730006001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730006002,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006003,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006004,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006005,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730006006,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730006007,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006008,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006009,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006010,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730006011,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730006012,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006013,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730006014,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730006015,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006016,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006017,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006018,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730006019,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730006020,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730006021,
+            "bars": 4,
+            "chords": ["Bb", "C", "F", "Dm"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Celebration",
+    "artist": "Kool & the Gang",
+    "key": "C",
+    "keyOffset": 0,
+    "bpm": 120,
+    "notes": "Org C per Musicnotes. Andra källor säger Db/Ab — verifiera mot ert arrangemang. Bridge har Cmaj7-Bm-E-Am7-D.",
+    "tracksMode": "auto",
+    "chordRaw": "[Vers/Chorus Vamp]\nF C G\n\n[Bridge]\nCmaj7 Bm E E7 Am7 D\n\n[Chant]\nC C F F C F C G",
+    "sections": [
+      {
+        "id": 1730007001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730007002,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730007003,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730007004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730007005,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730007006,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730007007,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730007008,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730007009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730007010,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730007011,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730007012,
+        "name": "BRIDGE",
+        "turns": [
+          {
+            "id": 1730007013,
+            "bars": 4,
+            "chords": ["Cmaj7", "Bm", "E", "E7"],
+            "type": "warn",
+            "instruction": "Annorlunda harmonik"
+          },
+          {
+            "id": 1730007014,
+            "bars": 2,
+            "chords": ["Am7", "D"],
+            "type": "play",
+            "instruction": "Tillbaka till vamp"
+          }
+        ]
+      },
+      {
+        "id": 1730007015,
+        "name": "CHANT",
+        "turns": [
+          {
+            "id": 1730007016,
+            "bars": 4,
+            "chords": ["C", "C", "F", "F"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730007017,
+            "bars": 4,
+            "chords": ["C", "F", "C", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730007018,
+        "name": "OUTRO",
+        "turns": [
+          {
+            "id": 1730007019,
+            "bars": 4,
+            "chords": ["F", "C", "G", "C"],
+            "type": "play",
+            "instruction": "Repeat & fade"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Shut Up and Dance",
+    "artist": "Walk the Moon",
+    "key": "Db",
+    "keyOffset": 0,
+    "bpm": 128,
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Vers]\nGb Ab Bbm Ab Gb Ab Db Ab/C\n\n[Prechorus]\nDb/F Gb Db Ab/C Gb\nDb/F Gb Ab\n\n[Chorus]\nDb Gb Ab Bbm",
+    "sections": [
+      {
+        "id": 1730008001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730008002,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008003,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730008004,
+            "bars": 4,
+            "chords": ["Gb", "Ab", "Bbm", "Ab"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008005,
+            "bars": 4,
+            "chords": ["Gb", "Ab", "Db", "Ab/C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008006,
+        "name": "PRECHORUS",
+        "turns": [
+          {
+            "id": 1730008007,
+            "bars": 4,
+            "chords": ["Db/F", "Gb", "Db", "Ab/C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008008,
+            "bars": 3,
+            "chords": ["Db/F", "Gb", "Ab"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730008010,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008011,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008012,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730008013,
+            "bars": 4,
+            "chords": ["Gb", "Ab", "Bbm", "Ab"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008014,
+            "bars": 4,
+            "chords": ["Gb", "Ab", "Db", "Ab/C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008015,
+        "name": "PRECHORUS",
+        "turns": [
+          {
+            "id": 1730008016,
+            "bars": 4,
+            "chords": ["Db/F", "Gb", "Db", "Ab/C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008017,
+            "bars": 3,
+            "chords": ["Db/F", "Gb", "Ab"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008018,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730008019,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008020,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008021,
+        "name": "BRIDGE",
+        "turns": [
+          {
+            "id": 1730008022,
+            "bars": 4,
+            "chords": ["Gb", "Ab", "Bbm", "Ab"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730008023,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730008024,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730008025,
+            "bars": 4,
+            "chords": ["Db", "Gb", "Ab", "Bbm"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Gimme! Gimme! Gimme!",
+    "artist": "Molly Sandén",
+    "key": "C#m",
+    "keyOffset": 0,
+    "bpm": 120,
+    "notes": "Enharmoniskt Dbm. 4-ackordsloop genom hela låten.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nB C#m A F#m\n\n[Vers]\nB C#m A F#m\n\n[Chorus]\nB C#m A F#m",
+    "sections": [
+      {
+        "id": 1730009001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730009002,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009003,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730009004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730009005,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009006,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009007,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009008,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730009009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730009010,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009011,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009012,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009013,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730009014,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730009015,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009016,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009017,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009018,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730009019,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730009020,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009021,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009022,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730009023,
+            "bars": 4,
+            "chords": ["B", "C#m", "A", "F#m"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Säg mig var du står",
+    "artist": "Carola & Zara Larsson",
+    "key": "Em",
+    "keyOffset": 0,
+    "bpm": 116,
+    "notes": "Em-centrerad loop. Vissa plattformar kallar det G (relativ dur).",
+    "tracksMode": "auto",
+    "chordRaw": "[Vers]\nEm Am D G\n\n[Chorus]\nEm Am D G",
+    "sections": [
+      {
+        "id": 1730010001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730010002,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010003,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730010004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730010005,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010006,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010007,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010008,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730010009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730010010,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010011,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010012,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010013,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730010014,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730010015,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010016,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010017,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010018,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730010019,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730010020,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010021,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010022,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730010023,
+            "bars": 4,
+            "chords": ["Em", "Am", "D", "G"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "I Will Survive",
+    "artist": "Gloria Gaynor",
+    "key": "Am",
+    "keyOffset": 0,
+    "bpm": 117,
+    "notes": "Klassisk 8-takters mollprogression. Bm7b5→E7 dominant turnaround.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nE7\n\n[Vers/Chorus Loop]\nAm Dm G G7\nCmaj7 Fmaj7 Bm7b5 E7",
+    "sections": [
+      {
+        "id": 1730011001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730011002,
+            "bars": 2,
+            "chords": ["E7", "E7"],
+            "type": "play",
+            "instruction": "Pickup"
+          }
+        ]
+      },
+      {
+        "id": 1730011003,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730011004,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011005,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011006,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011007,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730011008,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730011009,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011010,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011011,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011012,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730011013,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730011014,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011015,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011016,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011017,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730011018,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730011019,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011020,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011021,
+            "bars": 4,
+            "chords": ["Am", "Dm", "G", "G7"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730011022,
+            "bars": 4,
+            "chords": ["Cmaj7", "Fmaj7", "Bm7b5", "E7"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "I'm So Excited",
+    "artist": "The Pointer Sisters",
+    "key": "Gm",
+    "keyOffset": 0,
+    "bpm": 120,
+    "notes": "",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nGm Cm7 Eb Bbsus4 Bb\n\n[Vers]\nGm Cm7 Eb Bbsus4 Bb\n\n[Pre]\nAm Gm Dm7\n\n[Chorus]\nGm Eb F Gm",
+    "sections": [
+      {
+        "id": 1730012001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730012002,
+            "bars": 4,
+            "chords": ["Gm", "Cm7", "Eb", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730012003,
+            "bars": 4,
+            "chords": ["Gm", "Cm7", "Eb", "Bb"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730012004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730012005,
+            "bars": 4,
+            "chords": ["Gm", "Cm7", "Eb", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730012006,
+            "bars": 4,
+            "chords": ["Gm", "Cm7", "Eb", "Bb"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730012007,
+        "name": "PRECHORUS",
+        "turns": [
+          {
+            "id": 1730012008,
+            "bars": 3,
+            "chords": ["Am", "Gm", "Dm7"],
+            "type": "play",
+            "instruction": "Build"
+          }
+        ]
+      },
+      {
+        "id": 1730012009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730012010,
+            "bars": 4,
+            "chords": ["Gm", "Eb", "F", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730012011,
+            "bars": 4,
+            "chords": ["Gm", "Eb", "F", "Gm"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730012012,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730012013,
+            "bars": 4,
+            "chords": ["Gm", "Cm7", "Eb", "Bb"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730012014,
+            "bars": 4,
+            "chords": ["Gm", "Cm7", "Eb", "Bb"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730012015,
+        "name": "PRECHORUS",
+        "turns": [
+          {
+            "id": 1730012016,
+            "bars": 3,
+            "chords": ["Am", "Gm", "Dm7"],
+            "type": "play",
+            "instruction": "Build"
+          }
+        ]
+      },
+      {
+        "id": 1730012017,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730012018,
+            "bars": 4,
+            "chords": ["Gm", "Eb", "F", "Gm"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730012019,
+            "bars": 4,
+            "chords": ["Gm", "Eb", "F", "Gm"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Don't Stop Believin'",
+    "artist": "Journey",
+    "key": "E",
+    "keyOffset": 0,
+    "bpm": 119,
+    "notes": "I-V-vi-IV-familjen. Bridge har speciell B/A→A-rörelse.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro]\nE B C#m A\nE B G#m A\n\n[Vers]\nE B C#m A\nE B G#m A\n\n[Bridge]\nB/A A B/A A\nE E B E A\n\n[Chorus]\nE B C#m A",
+    "sections": [
+      {
+        "id": 1730013001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730013002,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": "Piano"
+          },
+          {
+            "id": 1730013003,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730013004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730013005,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013006,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013007,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013008,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730013009,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730013010,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013011,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013012,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013013,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730013014,
+        "name": "BRIDGE",
+        "turns": [
+          {
+            "id": 1730013015,
+            "bars": 4,
+            "chords": ["B/A", "A", "B/A", "A"],
+            "type": "warn",
+            "instruction": "Speciell basrörelse B/A→A"
+          },
+          {
+            "id": 1730013016,
+            "bars": 4,
+            "chords": ["E", "E", "B/A", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013017,
+            "bars": 4,
+            "chords": ["B/A", "A", "B", "E"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013018,
+            "bars": 2,
+            "chords": ["B", "A"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730013019,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730013020,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013021,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013022,
+            "bars": 4,
+            "chords": ["E", "B", "C#m", "A"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730013023,
+            "bars": 4,
+            "chords": ["E", "B", "G#m", "A"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Here I Go Again",
+    "artist": "Whitesnake",
+    "key": "G",
+    "keyOffset": 0,
+    "bpm": 82,
+    "notes": "G/C/D-motor. Bridge: Em-Am.",
+    "tracksMode": "auto",
+    "chordRaw": "[Vers]\nG D C D\n\n[Chorus]\nG C D C D\nG C D C G\n\n[Bridge]\nEm Am Em Am C D\n\n[Solo]\nG D C D",
+    "sections": [
+      {
+        "id": 1730014001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730014002,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014003,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730014004,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014005,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014006,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014007,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014008,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730014009,
+            "bars": 4,
+            "chords": ["G", "C", "D", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014010,
+            "bars": 4,
+            "chords": ["D", "G", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014011,
+            "bars": 2,
+            "chords": ["C", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014012,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730014013,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014014,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014015,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014016,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014017,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730014018,
+            "bars": 4,
+            "chords": ["G", "C", "D", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014019,
+            "bars": 4,
+            "chords": ["D", "G", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014020,
+            "bars": 2,
+            "chords": ["C", "G"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014021,
+        "name": "BRIDGE",
+        "turns": [
+          {
+            "id": 1730014022,
+            "bars": 4,
+            "chords": ["Em", "Am", "Em", "Am"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014023,
+            "bars": 2,
+            "chords": ["C", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014024,
+        "name": "SOLO",
+        "turns": [
+          {
+            "id": 1730014025,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014026,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014027,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014028,
+            "bars": 4,
+            "chords": ["G", "D", "C", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730014029,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730014030,
+            "bars": 4,
+            "chords": ["G", "C", "D", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730014031,
+            "bars": 4,
+            "chords": ["D", "G", "C", "D"],
+            "type": "play",
+            "instruction": "Repeat & fade"
+          },
+          {
+            "id": 1730014032,
+            "bars": 2,
+            "chords": ["C", "G"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Genom eld och vatten",
+    "artist": "Sarek",
+    "key": "C",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "C-G-F-C grundloop. Bas: pumpa C i puls.",
+    "tracksMode": "auto",
+    "chordRaw": "[Vers]\nC G F C\n\n[Chorus]\nC G F C",
+    "sections": [
+      {
+        "id": 1730015001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730015002,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015003,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730015004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730015005,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015006,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015007,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015008,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730015009,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730015010,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015011,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730015012,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730015013,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015014,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015015,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015016,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730015017,
+        "name": "CHORUS",
+        "turns": [
+          {
+            "id": 1730015018,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730015019,
+            "bars": 4,
+            "chords": ["C", "G", "F", "C"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Proud Mary",
+    "artist": "Ike & Tina Turner",
+    "key": "D",
+    "keyOffset": 0,
+    "bpm": "",
+    "notes": "Spoken intro build över D. Interlude har kromatiska färger (C-A, G-F-D). Big wheel: A-Bm-G.",
+    "tracksMode": "auto",
+    "chordRaw": "[Intro Talk]\nD D D D\n\n[Vers]\nD D D D\nA Bm G D\n\n[Interlude]\nD D D D D D D D\n\n[Vers]\nD D D D\nD C G D\nA Bm G D\n\n[Interlude 2]\nC A C A C A G F D\n\n[Outro]\nD D D D",
+    "sections": [
+      {
+        "id": 1730016001,
+        "name": "INTRO",
+        "turns": [
+          {
+            "id": 1730016002,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": "Spoken build"
+          },
+          {
+            "id": 1730016003,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730016004,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730016005,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": "D-vamp"
+          },
+          {
+            "id": 1730016006,
+            "bars": 4,
+            "chords": ["A", "Bm", "G", "D"],
+            "type": "play",
+            "instruction": "Big wheel"
+          }
+        ]
+      },
+      {
+        "id": 1730016007,
+        "name": "MELLANSPEL",
+        "turns": [
+          {
+            "id": 1730016008,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016009,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730016010,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730016011,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016012,
+            "bars": 4,
+            "chords": ["D", "C", "G", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016013,
+            "bars": 4,
+            "chords": ["A", "Bm", "G", "D"],
+            "type": "play",
+            "instruction": "Big wheel"
+          }
+        ]
+      },
+      {
+        "id": 1730016014,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730016015,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016016,
+            "bars": 4,
+            "chords": ["D", "C", "G", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016017,
+            "bars": 4,
+            "chords": ["A", "Bm", "G", "D"],
+            "type": "play",
+            "instruction": "Big wheel"
+          }
+        ]
+      },
+      {
+        "id": 1730016018,
+        "name": "MELLANSPEL",
+        "turns": [
+          {
+            "id": 1730016019,
+            "bars": 4,
+            "chords": ["C", "A", "C", "A"],
+            "type": "warn",
+            "instruction": "Kromatiskt interlude"
+          },
+          {
+            "id": 1730016020,
+            "bars": 4,
+            "chords": ["C", "A", "G", "F"],
+            "type": "warn",
+            "instruction": "Kromatisk nedgång"
+          },
+          {
+            "id": 1730016021,
+            "bars": 4,
+            "chords": ["D", "F", "G", "D"],
+            "type": "play",
+            "instruction": ""
+          }
+        ]
+      },
+      {
+        "id": 1730016022,
+        "name": "VERS",
+        "turns": [
+          {
+            "id": 1730016023,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016024,
+            "bars": 4,
+            "chords": ["D", "C", "G", "D"],
+            "type": "play",
+            "instruction": ""
+          },
+          {
+            "id": 1730016025,
+            "bars": 4,
+            "chords": ["A", "Bm", "G", "D"],
+            "type": "play",
+            "instruction": "Big wheel"
+          }
+        ]
+      },
+      {
+        "id": 1730016026,
+        "name": "OUTRO",
+        "turns": [
+          {
+            "id": 1730016027,
+            "bars": 4,
+            "chords": ["D", "D", "D", "D"],
+            "type": "play",
+            "instruction": "Repeat & fade"
+          },
+          {
+            "id": 1730016028,
+            "bars": 1,
+            "chords": ["D"],
+            "type": "stop",
+            "instruction": ""
+          }
+        ]
+      }
+    ]
+  }
+]

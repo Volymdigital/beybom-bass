@@ -201,7 +201,7 @@
       "title": "Gimme! Gimme! Gimme!",
       "artist": "Molly Sandén",
       "key": "Dbm",
-      "keyOffset": 2,
+      "keyOffset": 3,
       "bpm": "",
       "notes": "",
       "tracksMode": "auto",
@@ -546,7 +546,7 @@
       "title": "Shut Up and Dance",
       "artist": "WALK THE MOON",
       "key": "Db",
-      "keyOffset": 2,
+      "keyOffset": 1,
       "bpm": "",
       "notes": "Utan tracks",
       "tracksMode": "auto",
@@ -2112,6 +2112,550 @@
       "id": "1772758417673.1719"
     },
     {
+      "title": "Does Ur Mother Know",
+      "artist": "BRUNOZ",
+      "key": "G",
+      "keyOffset": 2,
+      "bpm": 136,
+      "notes": "Arr: Jocke Niehoff. Intro har specifikt riff. Refräng har utskriven basgång.",
+      "tracksMode": "auto",
+      "chordRaw": "[Intro]\nG G G G\n\n[Vers]\nG G G G\nG G Em G\nC G/B Am G\nD D G G\n\n[Vers 2]\nG G Em G\nC G/B Am G\nD D G G\n\n[Ref]\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nG G7 C/G Cm/G\nG Cm/G G Cm/G\n\n[Mellanspel]\nG G G G\n\n[Vers 3]\nG G G G\nG G Em G\nC G/B Am G\nD D G G\n\n[Ref 2]\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\n\n[Ref 3]\nG G7 C/G Cm/G\nG Cm/G G Cm/G\nG Am7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\n\n[Outro]\nG G G G G",
+      "sections": [
+        {
+          "id": 1772763364978.8428,
+          "name": "INTRO",
+          "turns": [
+            {
+              "id": 1772763364978.5173,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Specifikt basriff"
+            },
+            {
+              "id": 1772763364978.8418,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.952,
+          "name": "VERS",
+          "turns": [
+            {
+              "id": 1772763364978.0166,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.55,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "Em",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.18,
+              "bars": 4,
+              "chords": [
+                "C",
+                "G/B",
+                "Am",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.132,
+              "bars": 4,
+              "chords": [
+                "D",
+                "D",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.4863,
+          "name": "VERS",
+          "turns": [
+            {
+              "id": 1772763364978.16,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "Em",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.1257,
+              "bars": 4,
+              "chords": [
+                "C",
+                "G/B",
+                "Am",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.2854,
+              "bars": 4,
+              "chords": [
+                "D",
+                "D",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.9353,
+          "name": "REF",
+          "turns": [
+            {
+              "id": 1772763364978.5767,
+              "bars": 4,
+              "chords": [
+                "Am7",
+                "Bbm6",
+                "G/B",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.2585,
+              "bars": 4,
+              "chords": [
+                "C",
+                "F/C",
+                "C",
+                "F/C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.9841,
+              "bars": 4,
+              "chords": [
+                "C",
+                "C",
+                "C",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Genomgångstoner /E /F /F# till G"
+            },
+            {
+              "id": 1772763364978.3718,
+              "bars": 4,
+              "chords": [
+                "Am7",
+                "Bbm6",
+                "G/B",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.136,
+              "bars": 4,
+              "chords": [
+                "C",
+                "F/C",
+                "C",
+                "F/C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.5032,
+              "bars": 4,
+              "chords": [
+                "C",
+                "C",
+                "C",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Genomgångstoner /E /F /F# till G"
+            },
+            {
+              "id": 1772763364978.854,
+              "bars": 4,
+              "chords": [
+                "Am7",
+                "Bbm6",
+                "G/B",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.7769,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G7",
+                "C/G",
+                "Cm/G"
+              ],
+              "type": "play",
+              "instruction": "Utskriven basgång"
+            },
+            {
+              "id": 1772763364978.1338,
+              "bars": 4,
+              "chords": [
+                "G",
+                "Cm/G",
+                "G",
+                "Cm/G"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.7544,
+          "name": "MELLANSPEL",
+          "turns": [
+            {
+              "id": 1772763364978.8008,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Introriff"
+            },
+            {
+              "id": 1772763364978.9902,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.508,
+          "name": "VERS",
+          "turns": [
+            {
+              "id": 1772763364978.0945,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.5227,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "Em",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.504,
+              "bars": 4,
+              "chords": [
+                "C",
+                "G/B",
+                "Am",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.174,
+              "bars": 4,
+              "chords": [
+                "D",
+                "D",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.1992,
+          "name": "REF",
+          "turns": [
+            {
+              "id": 1772763364978.2415,
+              "bars": 4,
+              "chords": [
+                "Am7",
+                "Bbm6",
+                "G/B",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.3445,
+              "bars": 4,
+              "chords": [
+                "C",
+                "F/C",
+                "C",
+                "F/C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.1575,
+              "bars": 4,
+              "chords": [
+                "C",
+                "C",
+                "C",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Genomgångstoner /E /F /F# till G"
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.461,
+          "name": "REF",
+          "turns": [
+            {
+              "id": 1772763364978.2815,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G7",
+                "C/G",
+                "Cm/G"
+              ],
+              "type": "play",
+              "instruction": "Utskriven basgång"
+            },
+            {
+              "id": 1772763364978.3472,
+              "bars": 4,
+              "chords": [
+                "G",
+                "Cm/G",
+                "G",
+                "Cm/G"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.845,
+              "bars": 4,
+              "chords": [
+                "G",
+                "Am7",
+                "Bbm6",
+                "G/B"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.9426,
+              "bars": 4,
+              "chords": [
+                "C",
+                "F/C",
+                "C",
+                "F/C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.5032,
+              "bars": 4,
+              "chords": [
+                "C",
+                "C",
+                "C",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Genomgångstoner /E /F /F# till G"
+            },
+            {
+              "id": 1772763364978.4668,
+              "bars": 4,
+              "chords": [
+                "Am7",
+                "Bbm6",
+                "G/B",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.2268,
+              "bars": 4,
+              "chords": [
+                "C",
+                "F/C",
+                "C",
+                "F/C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.423,
+              "bars": 4,
+              "chords": [
+                "C",
+                "C",
+                "C",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Genomgångstoner /E /F /F# till G"
+            },
+            {
+              "id": 1772763364978.742,
+              "bars": 4,
+              "chords": [
+                "Am7",
+                "Bbm6",
+                "G/B",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.9739,
+              "bars": 4,
+              "chords": [
+                "C",
+                "F/C",
+                "C",
+                "F/C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772763364978.457,
+              "bars": 4,
+              "chords": [
+                "C",
+                "C",
+                "C",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Genomgångstoner /E /F /F# till G"
+            }
+          ]
+        },
+        {
+          "id": 1772763364978.7605,
+          "name": "OUTRO",
+          "turns": [
+            {
+              "id": 1772763364978.99,
+              "bars": 4,
+              "chords": [
+                "G",
+                "G",
+                "G",
+                "G"
+              ],
+              "type": "play",
+              "instruction": "Utskriven baslinje"
+            },
+            {
+              "id": 1772763364978.287,
+              "bars": 1,
+              "chords": [
+                "G"
+              ],
+              "type": "stop",
+              "instruction": "Slutackord"
+            }
+          ]
+        }
+      ],
+      "id": "1772763364978.4614"
+    },
+    {
       "title": "What's Up?",
       "artist": "4 Non Blondes",
       "key": "A",
@@ -2743,550 +3287,6 @@
         }
       ],
       "id": "1772758417673.4287"
-    },
-    {
-      "title": "Does Ur Mother Know",
-      "artist": "BRUNOZ",
-      "key": "G",
-      "keyOffset": 2,
-      "bpm": 136,
-      "notes": "Arr: Jocke Niehoff. Intro har specifikt riff. Refräng har utskriven basgång.",
-      "tracksMode": "auto",
-      "chordRaw": "[Intro]\nG G G G\n\n[Vers]\nG G G G\nG G Em G\nC G/B Am G\nD D G G\n\n[Vers 2]\nG G Em G\nC G/B Am G\nD D G G\n\n[Ref]\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nG G7 C/G Cm/G\nG Cm/G G Cm/G\n\n[Mellanspel]\nG G G G\n\n[Vers 3]\nG G G G\nG G Em G\nC G/B Am G\nD D G G\n\n[Ref 2]\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\n\n[Ref 3]\nG G7 C/G Cm/G\nG Cm/G G Cm/G\nG Am7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\nAm7 Bbm6 G/B\nC F/C C F/C C /E /F /F# G\n\n[Outro]\nG G G G G",
-      "sections": [
-        {
-          "id": 1772763364978.8428,
-          "name": "INTRO",
-          "turns": [
-            {
-              "id": 1772763364978.5173,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Specifikt basriff"
-            },
-            {
-              "id": 1772763364978.8418,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.952,
-          "name": "VERS",
-          "turns": [
-            {
-              "id": 1772763364978.0166,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.55,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "Em",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.18,
-              "bars": 4,
-              "chords": [
-                "C",
-                "G/B",
-                "Am",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.132,
-              "bars": 4,
-              "chords": [
-                "D",
-                "D",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.4863,
-          "name": "VERS",
-          "turns": [
-            {
-              "id": 1772763364978.16,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "Em",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.1257,
-              "bars": 4,
-              "chords": [
-                "C",
-                "G/B",
-                "Am",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.2854,
-              "bars": 4,
-              "chords": [
-                "D",
-                "D",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.9353,
-          "name": "REF",
-          "turns": [
-            {
-              "id": 1772763364978.5767,
-              "bars": 4,
-              "chords": [
-                "Am7",
-                "Bbm6",
-                "G/B",
-                ""
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.2585,
-              "bars": 4,
-              "chords": [
-                "C",
-                "F/C",
-                "C",
-                "F/C"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.9841,
-              "bars": 4,
-              "chords": [
-                "C",
-                "C",
-                "C",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Genomgångstoner /E /F /F# till G"
-            },
-            {
-              "id": 1772763364978.3718,
-              "bars": 4,
-              "chords": [
-                "Am7",
-                "Bbm6",
-                "G/B",
-                ""
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.136,
-              "bars": 4,
-              "chords": [
-                "C",
-                "F/C",
-                "C",
-                "F/C"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.5032,
-              "bars": 4,
-              "chords": [
-                "C",
-                "C",
-                "C",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Genomgångstoner /E /F /F# till G"
-            },
-            {
-              "id": 1772763364978.854,
-              "bars": 4,
-              "chords": [
-                "Am7",
-                "Bbm6",
-                "G/B",
-                ""
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.7769,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G7",
-                "C/G",
-                "Cm/G"
-              ],
-              "type": "play",
-              "instruction": "Utskriven basgång"
-            },
-            {
-              "id": 1772763364978.1338,
-              "bars": 4,
-              "chords": [
-                "G",
-                "Cm/G",
-                "G",
-                "Cm/G"
-              ],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.7544,
-          "name": "MELLANSPEL",
-          "turns": [
-            {
-              "id": 1772763364978.8008,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Introriff"
-            },
-            {
-              "id": 1772763364978.9902,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.508,
-          "name": "VERS",
-          "turns": [
-            {
-              "id": 1772763364978.0945,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.5227,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "Em",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.504,
-              "bars": 4,
-              "chords": [
-                "C",
-                "G/B",
-                "Am",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.174,
-              "bars": 4,
-              "chords": [
-                "D",
-                "D",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.1992,
-          "name": "REF",
-          "turns": [
-            {
-              "id": 1772763364978.2415,
-              "bars": 4,
-              "chords": [
-                "Am7",
-                "Bbm6",
-                "G/B",
-                ""
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.3445,
-              "bars": 4,
-              "chords": [
-                "C",
-                "F/C",
-                "C",
-                "F/C"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.1575,
-              "bars": 4,
-              "chords": [
-                "C",
-                "C",
-                "C",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Genomgångstoner /E /F /F# till G"
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.461,
-          "name": "REF",
-          "turns": [
-            {
-              "id": 1772763364978.2815,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G7",
-                "C/G",
-                "Cm/G"
-              ],
-              "type": "play",
-              "instruction": "Utskriven basgång"
-            },
-            {
-              "id": 1772763364978.3472,
-              "bars": 4,
-              "chords": [
-                "G",
-                "Cm/G",
-                "G",
-                "Cm/G"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.845,
-              "bars": 4,
-              "chords": [
-                "G",
-                "Am7",
-                "Bbm6",
-                "G/B"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.9426,
-              "bars": 4,
-              "chords": [
-                "C",
-                "F/C",
-                "C",
-                "F/C"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.5032,
-              "bars": 4,
-              "chords": [
-                "C",
-                "C",
-                "C",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Genomgångstoner /E /F /F# till G"
-            },
-            {
-              "id": 1772763364978.4668,
-              "bars": 4,
-              "chords": [
-                "Am7",
-                "Bbm6",
-                "G/B",
-                ""
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.2268,
-              "bars": 4,
-              "chords": [
-                "C",
-                "F/C",
-                "C",
-                "F/C"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.423,
-              "bars": 4,
-              "chords": [
-                "C",
-                "C",
-                "C",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Genomgångstoner /E /F /F# till G"
-            },
-            {
-              "id": 1772763364978.742,
-              "bars": 4,
-              "chords": [
-                "Am7",
-                "Bbm6",
-                "G/B",
-                ""
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.9739,
-              "bars": 4,
-              "chords": [
-                "C",
-                "F/C",
-                "C",
-                "F/C"
-              ],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1772763364978.457,
-              "bars": 4,
-              "chords": [
-                "C",
-                "C",
-                "C",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Genomgångstoner /E /F /F# till G"
-            }
-          ]
-        },
-        {
-          "id": 1772763364978.7605,
-          "name": "OUTRO",
-          "turns": [
-            {
-              "id": 1772763364978.99,
-              "bars": 4,
-              "chords": [
-                "G",
-                "G",
-                "G",
-                "G"
-              ],
-              "type": "play",
-              "instruction": "Utskriven baslinje"
-            },
-            {
-              "id": 1772763364978.287,
-              "bars": 1,
-              "chords": [
-                "G"
-              ],
-              "type": "stop",
-              "instruction": "Slutackord"
-            }
-          ]
-        }
-      ],
-      "id": "1772763364978.4614"
     },
     {
       "title": "Eloise",
@@ -4088,10 +4088,10 @@
               "id": 1772763364978.4873,
               "bars": 4,
               "chords": [
-                "Bbm",
-                "Gb",
-                "Ab",
-                "Ab"
+                "",
+                "",
+                "",
+                ""
               ],
               "type": "play",
               "instruction": ""
@@ -5851,6 +5851,66 @@
           ]
         },
         {
+          "id": 1772807632263.738,
+          "name": "CHORUS",
+          "turns": [
+            {
+              "id": 1772807632263.4712,
+              "bars": 4,
+              "chords": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772807647561.4373,
+              "bars": 4,
+              "chords": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
+          "id": 1772807668489.6572,
+          "name": "CHORUS",
+          "turns": [
+            {
+              "id": 1772807668489.951,
+              "bars": 4,
+              "chords": [
+                "F",
+                "Eb",
+                "Bb",
+                "C"
+              ],
+              "type": "play",
+              "instruction": ""
+            },
+            {
+              "id": 1772807673555.1985,
+              "bars": 4,
+              "chords": [
+                "F",
+                "Eb",
+                "Bb",
+                "C"
+              ],
+              "type": "play",
+              "instruction": ""
+            }
+          ]
+        },
+        {
           "id": 1730001024,
           "name": "OUTRO",
           "turns": [
@@ -5887,7 +5947,7 @@
       "title": "Free Fallin'",
       "artist": "Tom Petty",
       "key": "F",
-      "keyOffset": 2,
+      "keyOffset": 9,
       "bpm": 84,
       "notes": "Tvåackordsloop F-Csus genom hela låten. Gitarrister spelar ofta med capo 3.",
       "tracksMode": "auto",
@@ -6080,7 +6140,7 @@
       "title": "Kristina från Vilhelmina",
       "artist": "Sven-Ingvars",
       "key": "G",
-      "keyOffset": 2,
+      "keyOffset": 9,
       "bpm": "",
       "notes": "Er tonart G. Originalnoter visar D — denna är transponerad upp en kvart. Verifiera mot ert arrangemang.",
       "tracksMode": "auto",
@@ -6945,7 +7005,7 @@
       "title": "Säg mig var du står",
       "artist": "Carola & Zara Larsson",
       "key": "Em",
-      "keyOffset": 2,
+      "keyOffset": 0,
       "bpm": 116,
       "notes": "Em-centrerad loop. Vissa plattformar kallar det G (relativ dur).",
       "tracksMode": "auto",
@@ -7646,7 +7706,7 @@
       "title": "Don't Stop Believin'",
       "artist": "Journey",
       "key": "E",
-      "keyOffset": 2,
+      "keyOffset": 0,
       "bpm": 119,
       "notes": "I-V-vi-IV-familjen. Bridge har speciell B/A→A-rörelse.",
       "tracksMode": "auto",
@@ -7903,7 +7963,7 @@
       "title": "Here I Go Again",
       "artist": "Whitesnake",
       "key": "G",
-      "keyOffset": 2,
+      "keyOffset": 1,
       "bpm": 82,
       "notes": "G/C/D-motor. Bridge: Em-Am.",
       "tracksMode": "auto",
@@ -8528,7 +8588,7 @@
       "title": "Girls Got Rhythm - Jingel",
       "artist": "BEYBOM Vara",
       "key": "D",
-      "keyOffset": 2,
+      "keyOffset": 9,
       "bpm": "",
       "notes": "Intro fullt ställ.",
       "tracksMode": "auto",
@@ -8597,7 +8657,7 @@
       "title": "Viva la Vida - Jingel",
       "artist": "BEYBOM Vara",
       "key": "Em",
-      "keyOffset": 2,
+      "keyOffset": 10,
       "bpm": "",
       "notes": "Intro + drums. Räkna in 3, 4.",
       "tracksMode": "auto",
@@ -8914,7 +8974,6 @@
         "1772763364978.3608",
         "1772796811.6868134",
         "1772763364978.244",
-        "1772763364978.4631",
         "1772796812.1639504",
         "1772796812.1991997",
         "1772796812.1837544",
