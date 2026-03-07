@@ -271,7 +271,24 @@ body {
   color: var(--text-dim);
   flex: 1;
 }
-
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-wrap input { padding-right: 28px; }
+.search-clear {
+  position: absolute;
+  right: 4px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+}
+.search-clear:hover { color: var(--text-dim); }
 .song-list { padding: 0 24px 24px; display: flex; flex-direction: column; gap: 3px; }
 
 .song-row {
@@ -965,7 +982,13 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
 
   <div class="setlist-header">
     <h2 id="setlist-title">SETLIST</h2>
-    <button class="pill" onclick="addNewSong()">+ NY LÅT</button>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <div class="search-wrap">
+        <input id="song-search" class="te-input" placeholder="Sök låt / artist..." style="font-size:0.8rem;min-width:180px;" oninput="renderSetlist()">
+        <button class="search-clear" onclick="document.getElementById('song-search').value='';renderSetlist()">×</button>
+      </div>
+      <button class="pill" onclick="addNewSong()">+ NY LÅT</button>
+    </div>
   </div>
   <div class="song-list" id="song-list"></div>
 </div>
@@ -1664,7 +1687,18 @@ function renderSetlist() {
   const list = document.getElementById('song-list');
   list.innerHTML = '';
   const sl = getActiveSetlist();
-  const visible = getVisibleSongs();
+  let visible = getVisibleSongs();
+
+  // Search filter — searches ALL songs by title/artist
+  const searchInput = document.getElementById('song-search');
+  const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  if (query) {
+    // When searching, search ALL songs regardless of setlist
+    visible = songs.filter(s =>
+      s.title.toLowerCase().includes(query) ||
+      (s.artist && s.artist.toLowerCase().includes(query))
+    );
+  }
 
   visible.forEach((song, visibleIndex) => {
     const globalIndex = songs.indexOf(song);
