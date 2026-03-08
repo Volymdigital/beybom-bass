@@ -2089,7 +2089,7 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   turnsEl.style.flexWrap = 'wrap';
 
   (sec.turns || []).forEach((turn, ti) => {
-    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt, totalBars));
+    turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt));
   });
 
   if (sec.turns.length === 0) {
@@ -2119,7 +2119,7 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   return row;
 }
 
-function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt, totalBars) {
+function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   normalizeTurn(turn);
 
   // Section color as primary background
