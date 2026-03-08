@@ -563,6 +563,10 @@ body.edit-mode .chord-slot.editing { background: rgba(0,230,118,0.08); }
   font-weight: 700;
   color: #fff;
 }
+.chord-slot-text .cs { /* slash separator */
+  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+}
 /* When bass note present: shrink root, enlarge bass */
 .has-bass .chord-slot-text {
   font-size: 0.85rem;
@@ -2188,8 +2192,9 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
       // Single chord (original behavior)
       const { root, qual, bass } = parseChordToken(rawChord, offset);
       if (bass) slot.classList.add('has-bass');
+      const bassHtml = bass ? `<span class="cs">/</span><span class="cb">${bass.slice(1)}</span>` : '';
       slot.innerHTML = `
-        <div class="chord-slot-text">${isEmpty ? '–' : `${root}<span class="cq">${qual}</span><span class="cb">${bass}</span>`}</div>
+        <div class="chord-slot-text">${isEmpty ? '–' : `${root}<span class="cq">${qual}</span>${bassHtml}`}</div>
       `;
     }
 
