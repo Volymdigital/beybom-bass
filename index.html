@@ -483,6 +483,61 @@ body {
 .turn-block.rest .turn-rest-btn { position: relative; z-index: 1; }
 .turn-block.rest.alt { background: var(--rest-alt); }
 .turn-block.play-alt { background: var(--play-alt); }
+
+/* Repeat markers */
+.repeat-start, .repeat-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.45);
+  width: 20px;
+  flex-shrink: 0;
+  user-select: none;
+}
+.repeat-badge {
+  position: absolute;
+  top: 2px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* Volta bracket (1st/2nd ending) */
+.volta-bracket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  border-top: 2px solid rgba(255,255,255,0.5);
+  border-left: 2px solid rgba(255,255,255,0.5);
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.65);
+  padding-left: 4px;
+  line-height: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+.ending-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.5rem;
+  font-family: var(--font-mono);
+  padding: 1px 4px;
+  cursor: pointer;
+  line-height: 1;
+}
+.ending-btn:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.ending-btn.active { border-color: rgba(255,255,255,0.5); color: #fff; background: rgba(255,255,255,0.1); }
 .turn-block.warn { background: var(--marks); }
 .turn-block.warn.alt { background: var(--marks-alt); }
 .turn-block.stop { background: var(--stop); }
@@ -2098,10 +2153,14 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   const labelCol = document.createElement('div');
   labelCol.className = 'sec-label-col';
   labelCol.style.borderLeftColor = familyBorderColor;
+  const repeatCount = sec.repeat || 1;
+  const repeatLabel = repeatCount > 1 ? `<div class="sec-repeat-label">×${repeatCount}</div>` : '';
   labelCol.innerHTML = `
     <div class="sec-name">${sec.name}</div>
+    ${repeatLabel}
     ${isEditMode ? `
       <div class="sec-label-actions">
+        <button class="sec-action-btn" onclick="cycleRepeat(${si})" title="Repris">🔁</button>
         <button class="sec-action-btn" onclick="editSectionName(${si})" title="Byt namn">✏</button>
         <button class="sec-action-btn del" onclick="deleteSection(${si})" title="Ta bort">✕</button>
       </div>
@@ -2109,10 +2168,19 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   `;
   row.appendChild(labelCol);
 
+  // Repeat start marker
+  if (repeatCount > 1) {
+    const repStart = document.createElement('div');
+    repStart.className = 'repeat-start';
+    repStart.textContent = '𝄆';
+    row.appendChild(repStart);
+  }
+
   // Turns container
   const turnsEl = document.createElement('div');
   turnsEl.className = 'turns-container';
   turnsEl.style.flexWrap = 'wrap';
+  turnsEl.style.position = 'relative';
 
   (sec.turns || []).forEach((turn, ti) => {
     turnsEl.appendChild(buildTurnBlock(turn, si, ti, offset, song, family, familyAlt));
@@ -2142,6 +2210,20 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   turnsEl.appendChild(dupBtn);
 
   row.appendChild(turnsEl);
+
+  // Repeat end marker + badge
+  if (repeatCount > 1) {
+    const repEnd = document.createElement('div');
+    repEnd.className = 'repeat-end';
+    repEnd.textContent = '𝄇';
+    row.appendChild(repEnd);
+    // Badge
+    const badge = document.createElement('div');
+    badge.className = 'repeat-badge';
+    badge.textContent = `×${repeatCount}`;
+    row.style.position = 'relative';
+    row.appendChild(badge);
+  }
   return row;
 }
 
@@ -2157,11 +2239,21 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
   const block = document.createElement('div');
   block.className = `turn-block ${typeClass} ${restClass}`;
   block.style.background = secColor;
+  block.style.position = 'relative';
   if (!layers.blocks) block.style.background = 'var(--panel2)';
 
   const bars = turn.bars;
   // Proportional 16-bar grid: each turn takes bars/16 of the row
   block.style.flex = `0 0 calc(${(bars / 16) * 100}% - 2px)`;
+
+  // Volta bracket (ending indicator)
+  if (turn.ending) {
+    const volta = document.createElement('div');
+    volta.className = 'volta-bracket';
+    volta.textContent = `${turn.ending}.`;
+    block.appendChild(volta);
+    block.style.paddingTop = '16px';
+  }
   const restIcon = turn.type === 'rest' ? '🔇' : '🔈';
   const restTitle = turn.type === 'rest' ? 'MUTAD — klicka för att spela' : 'SPELAR — klicka för att muta';
 
@@ -2245,7 +2337,8 @@ function buildTurnBlock(turn, si, ti, offset, song, family, familyAlt) {
       <select class="te-input te-select" style="max-width:72px;font-size:0.6rem;" onchange="updateTurnType(${si},${ti},this.value)">
         ${['play','rest','warn','stop'].map(t=>`<option value="${t}"${turn.type===t?' selected':''}>${t.toUpperCase()}</option>`).join('')}
       </select>
-      <button class="pill danger" style="padding:3px 6px;font-size:0.52rem;" onclick="deleteTurn(${si},${ti})">✕</button>
+      <button class="pill" style="padding:3px 6px;font-size:0.52rem;" onclick="deleteTurn(${si},${ti})">✕</button>
+      <button class="ending-btn${turn.ending ? ' active' : ''}" onclick="cycleEnding(${si},${ti})" title="Ending (volta)">${turn.ending ? turn.ending + '.' : '—'}</button>
     `;
     block.appendChild(ctrlEl);
   }
@@ -2260,6 +2353,26 @@ function toggleTurnRest(si, ti) {
   const song = songs[currentSongIndex];
   const turn = song.sections[si].turns[ti];
   turn.type = turn.type === 'rest' ? 'play' : 'rest';
+  saveState();
+  renderSections();
+}
+
+function cycleRepeat(si) {
+  const song = songs[currentSongIndex];
+  const sec = song.sections[si];
+  const cur = sec.repeat || 1;
+  sec.repeat = cur >= 4 ? 1 : cur + 1;
+  if (sec.repeat === 1) delete sec.repeat;
+  saveState();
+  renderSections();
+}
+
+function cycleEnding(si, ti) {
+  const song = songs[currentSongIndex];
+  const turn = song.sections[si].turns[ti];
+  const cur = turn.ending || 0;
+  turn.ending = cur >= 3 ? 0 : cur + 1;
+  if (!turn.ending) delete turn.ending;
   saveState();
   renderSections();
 }
