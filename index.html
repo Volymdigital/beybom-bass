@@ -467,7 +467,7 @@ body {
 .turn-block.type-rest { border-left: 3px solid #666; }
 .turn-block.type-warn { border-left: 3px solid #D4A017; }
 .turn-block.type-stop { border-left: 3px solid #E53E3E; }
-.turn-block.rest { background: var(--rest); }
+.turn-block.rest { opacity: 0.35; }
 .turn-block.rest.alt { background: var(--rest-alt); }
 .turn-block.play-alt { background: var(--play-alt); }
 .turn-block.warn { background: var(--marks); }
@@ -506,7 +506,7 @@ body {
 }
 .turn-rest-btn:hover { opacity: 1; background: rgba(255,255,255,0.08); }
 .turn-rest-btn:active { transform: scale(0.9); }
-.turn-block.rest .turn-rest-btn { opacity: 0.9; color: #e57373; background: rgba(229,115,115,0.1); }
+.turn-block.rest .turn-rest-btn { opacity: 1; color: #e57373; background: rgba(229,115,115,0.15); }
 
 /* Chords: slot grid — set via JS style.gridTemplateColumns */
 .turn-chords {
