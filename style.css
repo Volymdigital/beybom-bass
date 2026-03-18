@@ -59,7 +59,8 @@ body {
 #topbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: var(--topbar-h);
+  height: auto;
+  min-height: var(--topbar-h);
   background: var(--panel);
   border-bottom: 1px solid var(--border);
   display: flex;
@@ -67,8 +68,8 @@ body {
   gap: 10px;
   padding: 0 16px;
   z-index: 1000;
-  flex-wrap: nowrap;
-  overflow: hidden;
+  flex-wrap: wrap;
+  overflow: visible;
 }
 
 #topbar .tb-brand {
@@ -148,7 +149,7 @@ body {
    VIEWS
 ══════════════════════════════════════ */
 .view {
-  padding-top: var(--topbar-h);
+  padding-top: calc(var(--topbar-h) + 8px);
   min-height: 100vh;
 }
 
