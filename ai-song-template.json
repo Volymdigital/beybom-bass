@@ -1,65 +1,87 @@
 {
   "_instructions": {
-    "purpose": "Denna fil är en mall för att importera AI-analyserade låtar till BEYBOM Bass Player-appen.",
+    "purpose": "Mall för att importera låtar till BEYBOM Bass Player-appen via en extern LLM.",
     "how_to_use": [
-      "1. Ge en AI-modell (t.ex. ChatGPT, Claude) denna fil + låtinformation (titel, artist, tonart, ackordschema).",
-      "2. Be AI:n fylla i fälten enligt schemat nedan.",
-      "3. Kopiera den färdiga JSON-arrayen och importera den via ↑ JSON-knappen i appen.",
-      "4. Appen accepterar en array med ett eller flera låtobjekt."
+      "1. Kopiera hela denna fil som kontext till en AI-modell (ChatGPT, Claude, etc.).",
+      "2. Ge AI:n låtinformation (titel, artist, tonart, ackordschema).",
+      "3. Be AI:n returnera ENBART en JSON-array (inga kommentarer, inget annat).",
+      "4. Importera i appen via ↑ JSON-knappen.",
+      "5. Appen accepterar en array med ett eller flera låtobjekt."
     ],
-    "prompt_template": "Analysera följande låt och returnera ett JSON-objekt som matchar BEYBOM-schemat:\n\nLåt: [TITEL]\nArtist: [ARTIST]\nTonart: [t.ex. Am, Bb, F#]\nBPM: [om känd]\nAckordschema: [t.ex. verse: Am G C G, chorus: F C G Am]\n\nReturnera exakt en JSON-array med ett objekt. Följ schemat i ai-song-template.json exakt.",
-    "chord_format": {
-      "standard": "Ackord på ett slag: 'Am', 'G', 'Bb', 'C#m', 'F/A'",
-      "slash_chords": "Bastone efter slash: 'G/B' = G med B i basen",
-      "empty_slot": "Tom takt/slag: '' (tom sträng)",
-      "per_bar": "Varje slot i 'chords'-arrayen = ett TAKTSLAG (inte ett ackord per takt)"
-    },
-    "section_types": {
-      "intro": "INTRO",
-      "verse": "VERS",
-      "pre_chorus": "PRECHORUS",
-      "chorus": "CHORUS",
-      "bridge": "BRIDGE",
-      "outro": "OUTRO",
-      "solo": "SOLO",
-      "custom": "Valfritt namn med versaler"
-    },
-    "turn_types": {
-      "play": "Normal bass — spela ackordet",
-      "rest": "Ingen bas — pianist/gitarrist spelar men bas tyst",
-      "warn": "OBS-markering — svårt parti, öva extra",
-      "stop": "Stopp/slut — fullständigt stopp i låten"
-    }
+    "prompt_template": "Analysera följande låt och returnera ett JSON-objekt som matchar BEYBOM-schemat. Returnera ENBART en JSON-array, inget annat.\n\nLåt: [TITEL]\nArtist: [ARTIST]\nTonart: [t.ex. Am, Bb, F#m]\nBPM: [om känd]\n\nRegler:\n- Varje ackordsrad i chordRaw = en turn.\n- bars = antal ACKORD på raden (INTE hårdkodat 4).\n- chords-arrayen = ett ackord per takt, längd = bars.\n- Slash-ackord (t.ex. G/B, D/F#) = ett ackord i en takt.\n- Flera ackord i SAMMA takt: skriv dem blankstegsseparerade i EN sträng (t.ex. 'Am G' = två ackord i en takt).\n- Ackord i chords-arrayen ska vara EXAKT SAMMA ackord som i chordRaw. Transponera INGENTING.\n- Sektionsnamn i sections MÅSTE matcha rubrikerna i chordRaw (med VERSALER).\n- Ge varje section och turn ett unikt numeriskt id.\n- Följ schemat i ai-song-template.json exakt."
+  },
+
+  "_normalization_rules": {
+    "summary": "Så här omvandlas chordRaw till sections/turns i appen.",
+    "step_1_parse_headings": "Varje [Rubrik] i chordRaw skapar en section med name = RUBRIK (versaler).",
+    "step_2_parse_chord_lines": "Varje rad under en rubrik som innehåller ≥50% ackord skapar en turn.",
+    "step_3_count_bars": "Antal takter (bars) = antal ackordtokens på raden. Alltså INTE alltid 4.",
+    "step_4_fill_chords_array": "chords-arrayen fylls vänster till höger med ackorden från raden, ett per takt.",
+    "step_5_slash_chords": "G/B räknas som ETT ackord i EN takt. / är en del av ackordet, inte en separator.",
+    "step_6_multi_chord_per_bar": "Om du vill ha flera ackord i samma takt: skriv dem som EN sträng i arrayen, t.ex. 'Am G'. Appen renderar dem som sub-beats.",
+    "step_7_non_chord_tokens": "Tokens som '/', '|', 'x2' etc. ignoreras vid ackordräkning men kan stå kvar i chordRaw.",
+    "chord_detection_regex": "/^[A-G][#b]?(?:m(?:aj|in)?|maj|dim|aug|sus|add)?\\d*(?:\\/[A-G][#b]?)?$/"
+  },
+
+  "_chord_format": {
+    "valid_roots": "C, C#, Db, D, D#, Eb, E, F, F#, Gb, G, G#, Ab, A, A#, Bb, B",
+    "qualities": "m, maj, min, dim, aug, sus, add (+ valfri siffra: 2,4,5,6,7,9,11,13)",
+    "examples": [
+      "C", "Am", "F#m", "Bb", "Db",
+      "Cmaj7", "Am7", "Gsus4", "Fadd9", "Bdim", "Eaug",
+      "G/B (G med B i basen)", "D/F# (D med F# i basen)", "Am/E"
+    ],
+    "empty_slot": "'' (tom sträng = ingen ackord i den takten)"
+  },
+
+  "_section_types": {
+    "INTRO": "Introduktion",
+    "VERSE": "Vers",
+    "PRE-CHORUS": "Pre-chorus",
+    "CHORUS": "Refräng",
+    "BRIDGE": "Bridge (mellanspel)",
+    "M8": "Mittåtta / Mellandel",
+    "SOLO": "Solo",
+    "OUTRO": "Outro / Avslutning",
+    "custom": "Valfritt namn med VERSALER"
+  },
+
+  "_turn_types": {
+    "play": "Normal bass — spela ackordet",
+    "rest": "Ingen bas — resten av bandet spelar men bas tyst",
+    "warn": "OBS — svårt parti, öva extra, annorlunda harmonik",
+    "stop": "Stopp — fullständigt stopp i låten"
   },
 
   "_schema": {
     "title": "string — låttitel",
     "artist": "string — artist/band",
-    "key": "string — grundtonart i standardnotation: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B, Am, etc.",
-    "keyOffset": "integer — halvstegstransponering från grundtonart (0 = ingen transponering)",
-    "bpm": "string eller integer — tempo (lämna '' om okänt)",
-    "notes": "string — fritext för spelanteckningar (lämna '' om inga)",
-    "tracksMode": "'auto' (standard) | 'on' | 'off'",
-    "chordRaw": "string — råtext med ackord, används för referenspanelen. Formatera med sektionsrubriker: [Intro], [Verse], [Chorus] etc. på egna rader. Enkla ackord per rad separerade med mellanslag.",
+    "key": "string — grundtonart: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B (+ m för moll: Am, Bbm, etc.)",
+    "keyOffset": "integer — alltid 0 vid import (transponering sker i appen)",
+    "bpm": "string eller integer — tempo ('' om okänt)",
+    "notes": "string — fritext spelanteckningar ('' om inga)",
+    "tracksMode": "'auto'",
+    "chordRaw": "string — råtext med ackord. Sektionsrubriker inom [brackets]. Ackord separerade med mellanslag, en rad per ackordsföljd. \\n för radbrytning.",
     "sections": [
       {
-        "id": "number — unikt ID, använd Date.now() + index",
-        "name": "string — sektionsnamn med VERSALER: 'INTRO', 'VERS', 'CHORUS', etc.",
+        "id": "number — unikt (t.ex. 1000001)",
+        "name": "string — sektionsnamn i VERSALER, matchar rubrik i chordRaw",
         "turns": [
           {
-            "id": "number — unikt ID, använd Date.now() + index",
-            "bars": "integer — antal takter i detta block (vanligen 2 eller 4)",
-            "chords": ["array av strängar — en sträng per takt, ackord eller '' om tom"],
+            "id": "number — unikt (t.ex. 1000010)",
+            "bars": "integer — antal ackord på denna rad (RÄKNA ACKORDEN, hårdkoda INTE 4)",
+            "chords": ["array av strängar — ett ackord per takt, längd MÅSTE = bars"],
             "type": "'play' | 'rest' | 'warn' | 'stop'",
-            "instruction": "string — fritext spelinstruktion (lämna '' om ingen)"
+            "instruction": "string — spelinstruktion, '' om ingen"
           }
         ]
       }
     ]
   },
 
-  "_example": [
+  "_examples": [
     {
+      "_comment": "Exempel 1: Enkel låt med 4-takters sektioner",
       "title": "Händerna mot himlen",
       "artist": "Petra Marklund",
       "key": "Bb",
@@ -71,81 +93,91 @@
       "sections": [
         {
           "id": 1000001,
-          "name": "INTRO",
+          "name": "VERSE",
           "turns": [
-            {
-              "id": 1000010,
-              "bars": 4,
-              "chords": ["Bb", "C", "F", "Gm"],
-              "type": "rest",
-              "instruction": "Ingen bas första varvet"
-            }
+            { "id": 1000010, "bars": 4, "chords": ["Bb", "C", "F", "Gm"], "type": "rest", "instruction": "Ingen bas" },
+            { "id": 1000011, "bars": 4, "chords": ["Bb", "C", "Dm", "Gm"], "type": "play", "instruction": "" }
           ]
         },
         {
           "id": 1000002,
-          "name": "VERS",
-          "turns": [
-            {
-              "id": 1000020,
-              "bars": 4,
-              "chords": ["Bb", "C", "F", "Gm"],
-              "type": "play",
-              "instruction": ""
-            },
-            {
-              "id": 1000021,
-              "bars": 4,
-              "chords": ["Bb", "C", "Dm", "Gm"],
-              "type": "play",
-              "instruction": ""
-            }
-          ]
-        },
-        {
-          "id": 1000003,
           "name": "CHORUS",
           "turns": [
-            {
-              "id": 1000030,
-              "bars": 4,
-              "chords": ["Bb", "C", "F", "Bb"],
-              "type": "play",
-              "instruction": "Pump"
-            },
-            {
-              "id": 1000031,
-              "bars": 4,
-              "chords": ["Bb", "C", "F", "Dm"],
-              "type": "play",
-              "instruction": ""
-            }
+            { "id": 1000020, "bars": 4, "chords": ["Bb", "C", "F", "Bb"], "type": "play", "instruction": "Pump" },
+            { "id": 1000021, "bars": 4, "chords": ["Bb", "C", "F", "Dm"], "type": "play", "instruction": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "Exempel 2: Varierat taktal + slash-ackord",
+      "title": "Angels",
+      "artist": "Robbie Williams",
+      "key": "G",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "",
+      "tracksMode": "auto",
+      "chordRaw": "[Verse]\nG D/F# Em C\nG D\n\n[Pre-Chorus]\nC D G Em\nC D\n\n[Chorus]\nG Em C D\nG Em C D G",
+      "sections": [
+        {
+          "id": 2000001,
+          "name": "VERSE",
+          "turns": [
+            { "id": 2000010, "bars": 4, "chords": ["G", "D/F#", "Em", "C"], "type": "play", "instruction": "" },
+            { "id": 2000011, "bars": 2, "chords": ["G", "D"], "type": "play", "instruction": "" }
           ]
         },
         {
-          "id": 1000004,
+          "id": 2000002,
+          "name": "PRE-CHORUS",
+          "turns": [
+            { "id": 2000020, "bars": 4, "chords": ["C", "D", "G", "Em"], "type": "play", "instruction": "" },
+            { "id": 2000021, "bars": 2, "chords": ["C", "D"], "type": "play", "instruction": "" }
+          ]
+        },
+        {
+          "id": 2000003,
+          "name": "CHORUS",
+          "turns": [
+            { "id": 2000030, "bars": 4, "chords": ["G", "Em", "C", "D"], "type": "play", "instruction": "" },
+            { "id": 2000031, "bars": 5, "chords": ["G", "Em", "C", "D", "G"], "type": "play", "instruction": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "Exempel 3: Komplex låt — 7 takter, varierande rader",
+      "title": "Stad i ljus",
+      "artist": "Tommy Körberg",
+      "key": "G",
+      "keyOffset": 0,
+      "bpm": "",
+      "notes": "",
+      "tracksMode": "auto",
+      "chordRaw": "[Verse]\nG D G Em D C G\nEm D G Em C D\n\n[Chorus]\nG C D Em C D B\nEm D C Am D\n\n[Bridge]\nG D G Em D G",
+      "sections": [
+        {
+          "id": 3000001,
+          "name": "VERSE",
+          "turns": [
+            { "id": 3000010, "bars": 7, "chords": ["G", "D", "G", "Em", "D", "C", "G"], "type": "play", "instruction": "" },
+            { "id": 3000011, "bars": 6, "chords": ["Em", "D", "G", "Em", "C", "D"], "type": "play", "instruction": "" }
+          ]
+        },
+        {
+          "id": 3000002,
+          "name": "CHORUS",
+          "turns": [
+            { "id": 3000020, "bars": 7, "chords": ["G", "C", "D", "Em", "C", "D", "B"], "type": "play", "instruction": "" },
+            { "id": 3000021, "bars": 5, "chords": ["Em", "D", "C", "Am", "D"], "type": "play", "instruction": "" }
+          ]
+        },
+        {
+          "id": 3000003,
           "name": "BRIDGE",
           "turns": [
-            {
-              "id": 1000040,
-              "bars": 2,
-              "chords": ["Gm", "F"],
-              "type": "warn",
-              "instruction": "Höjning — OBS annorlunda harmonik"
-            }
-          ]
-        },
-        {
-          "id": 1000005,
-          "name": "OUTRO",
-          "turns": [
-            {
-              "id": 1000050,
-              "bars": 1,
-              "chords": ["Bb"],
-              "type": "stop",
-              "instruction": "Slutackord"
-            }
+            { "id": 3000030, "bars": 6, "chords": ["G", "D", "G", "Em", "D", "G"], "type": "play", "instruction": "" }
           ]
         }
       ]
