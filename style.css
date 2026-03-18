@@ -1012,3 +1012,151 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
 .save-indicator.saving .save-dot { background: #FFD54F; animation: pulse-dot 0.6s infinite; }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
+/* ══════════════════════════════════════
+   MOBILE / TOUCH — min 44px touch targets
+══════════════════════════════════════ */
+@media (pointer: coarse) {
+  /* Topbar: taller, wrap buttons */
+  #topbar {
+    height: auto;
+    min-height: var(--topbar-h);
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  .view { padding-top: 60px; }
+
+  /* All pill buttons: min 44px touch target */
+  .pill {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 14px;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Topbar tracks pills */
+  .tb-tracks .pill { padding: 10px 10px; }
+
+  /* Section action buttons (rename, delete, repeat) */
+  .sec-action-btn {
+    min-width: 36px;
+    min-height: 36px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sec-label-actions { display: flex; }
+
+  /* Turn block: delete button always visible on touch */
+  .turn-delete-btn {
+    opacity: 1;
+    min-width: 36px;
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+
+  /* Turn rest button bigger */
+  .turn-rest-btn {
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1rem;
+  }
+
+  /* Open button on song rows */
+  .btn-open {
+    min-height: 44px;
+    min-width: 60px;
+    padding: 10px 14px;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Song row: taller for easier tap */
+  .song-row { padding: 14px; min-height: 60px; }
+
+  /* Key transpose buttons */
+  .key-btn {
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Setlist tabs: taller */
+  .setlist-tab {
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 0.68rem;
+  }
+  .setlist-tab-add { min-height: 48px; padding: 0 14px; }
+  .setlist-tab-btn {
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Turn add/duplicate buttons */
+  .turn-add-btn {
+    min-width: 44px;
+    font-size: 1.4rem;
+  }
+
+  /* Chord slots: slightly larger for tap */
+  .chord-slot { min-height: 52px; padding: 6px 4px; }
+
+  /* Nav float buttons: already good (56px) */
+
+  /* Ending button */
+  .ending-btn {
+    min-width: 32px;
+    min-height: 28px;
+    font-size: 0.6rem;
+    padding: 4px 6px;
+  }
+
+  /* Setlist toggle button */
+  .song-row-setlist-toggle {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 0.6rem;
+  }
+
+  /* Song header: stack on narrow */
+  .song-header { padding: 12px 16px 10px; gap: 12px; }
+  .sh-title { font-size: 1.8rem; }
+
+  /* Section label column slightly wider */
+  .sec-label-col { width: 80px; padding: 8px 8px 8px 10px; }
+
+  /* Add section button */
+  .add-section-btn {
+    min-height: 48px;
+    padding: 14px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .song-header { flex-direction: column; align-items: flex-start; }
+  .sh-meta { width: 100%; }
+  .song-content { padding: 12px 12px; }
+  .song-list { padding: 0 12px 12px; }
+  .sec-label-col { width: 64px; }
+  .sec-name { font-size: 0.85rem; letter-spacing: 1px; }
+  .chord-slot-text { font-size: 1.1rem; }
+  .has-bass .chord-slot-text .cb { font-size: 1.1rem; }
+  #tb-song-title { font-size: 0.85rem; }
+  .tb-brand { font-size: 1.2rem !important; }
+}
