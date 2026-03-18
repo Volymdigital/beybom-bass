@@ -686,6 +686,9 @@ function renderSetlist() {
     try { window._setlistSortable = Sortable.create(list, {
       animation: 150, ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
       filter: '.btn-open, .song-row-setlist-toggle',
+      preventOnFilter: false,
+      delay: 120,
+      delayOnTouchOnly: true,
       onEnd(evt) {
         if (sl) {
           // Reorder within setlist
