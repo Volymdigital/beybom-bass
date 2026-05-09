@@ -1261,17 +1261,28 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     padding: 8px 12px;
   }
 
-  /* --- SECTIONS: compact --- */
-  .song-content { padding: 8px 10px; gap: 2px; }
+  /* --- SECTIONS: compact, 2 rows of turns --- */
+  .song-content { padding: 6px 8px; gap: 2px; }
+  .section-row { min-height: 56px; }
   .sec-label-col {
-    width: 56px;
-    padding: 6px 6px 6px 8px;
+    width: 48px;
+    padding: 4px 4px 4px 6px;
   }
-  .sec-name { font-size: 0.78rem; letter-spacing: 1px; }
-  .chord-slot { min-height: 44px; padding: 4px 2px; }
-  .chord-slot-text { font-size: 1.05rem; }
-  .has-bass .chord-slot-text { font-size: 0.75rem; }
-  .has-bass .chord-slot-text .cb { font-size: 1.05rem; }
+  .sec-name { font-size: 0.72rem; letter-spacing: 0.5px; }
+
+  /* Turns wrap to 2 rows on mobile */
+  .turns-container {
+    flex-wrap: wrap;
+    gap: 1px;
+  }
+  .turn-block {
+    flex: 1 1 45%;
+    min-width: 45%;
+  }
+  .chord-slot { min-height: 38px; padding: 3px 2px; }
+  .chord-slot-text { font-size: 1rem; }
+  .has-bass .chord-slot-text { font-size: 0.7rem; }
+  .has-bass .chord-slot-text .cb { font-size: 1rem; }
 
   /* --- FOOTER: hide move buttons on mobile --- */
   .song-footer { display: none; }
@@ -1289,11 +1300,31 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
     font-size: 1.2rem;
   }
 
-  /* --- SETLIST VIEW: compact --- */
-  .setlist-tabs { min-height: 44px; padding: 0 10px; }
-  .setlist-tab { padding: 0 12px; font-size: 0.62rem; }
-  .setlist-header { padding: 12px 14px 8px; }
-  .song-list { padding: 0 10px 10px; }
+  /* --- SETLIST VIEW: tabs prominent and scrollable --- */
+  .setlist-tabs {
+    min-height: 48px;
+    padding: 0 8px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 0;
+  }
+  .setlist-tab {
+    padding: 0 14px;
+    font-size: 0.65rem;
+    min-height: 44px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  .setlist-tab.active {
+    border-bottom-width: 3px;
+  }
+  .setlist-tab-add {
+    min-height: 44px;
+    flex-shrink: 0;
+  }
+  .setlist-header { padding: 10px 12px 6px; }
+  .setlist-header h2 { font-size: 1.4rem; }
+  .song-list { padding: 0 8px 10px; }
   .song-row { padding: 10px 10px; }
 
   /* --- LYRICS: compact --- */
