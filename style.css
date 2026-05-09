@@ -1148,16 +1148,166 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
   }
 }
 
-/* Small phones */
-@media (max-width: 480px) {
-  .song-header { flex-direction: column; align-items: flex-start; }
-  .sh-meta { width: 100%; }
-  .song-content { padding: 12px 12px; }
-  .song-list { padding: 0 12px 12px; }
-  .sec-label-col { width: 64px; }
-  .sec-name { font-size: 0.85rem; letter-spacing: 1px; }
-  .chord-slot-text { font-size: 1.1rem; }
-  .has-bass .chord-slot-text .cb { font-size: 1.1rem; }
-  #tb-song-title { font-size: 0.85rem; }
-  .tb-brand { font-size: 1.2rem !important; }
+/* ══════════════════════════════════════
+   MOBILE LIVE MODE (≤768px)
+   Focus: Played key (large), orig key (small),
+   chord sections visible, minimal chrome
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* --- TOPBAR: hide non-essential controls in song view --- */
+  #tb-tracks-label,
+  #tb-tracks-group,
+  #tb-sep-tracks,
+  #tb-layers,
+  #tb-persist-actions,
+  #tb-setlist-actions,
+  #tb-mode-btn { display: none !important; }
+
+  /* Topbar: slim single row */
+  #topbar {
+    min-height: 44px;
+    padding: 4px 10px;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+  .tb-brand { font-size: 1rem !important; letter-spacing: 2px; }
+  .tb-sep { height: 20px; }
+  .tb-spacer { display: none; }
+  #tb-song-title {
+    font-size: 0.75rem;
+    flex: 1;
+    text-align: right;
+  }
+  .pill {
+    min-height: 38px;
+    min-width: 38px;
+    padding: 6px 10px;
+    font-size: 0.6rem;
+  }
+
+  /* --- VIEWS: tighter padding --- */
+  .view { padding-top: 48px; }
+
+  /* --- SONG HEADER: compact mobile layout --- */
+  .song-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 14px 8px;
+    gap: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* Top row: title + artist + position */
+  .sh-left { gap: 1px; }
+  .sh-num { font-size: 0.55rem; }
+  .sh-title { font-size: 1.4rem; letter-spacing: 1px; }
+  .sh-artist { font-size: 0.7rem; }
+
+  /* Meta: keys in a horizontal row */
+  .sh-meta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  /* Original key: small, muted */
+  .sh-meta-item:first-child {
+    flex: 0 0 auto;
+  }
+  .sh-meta-item:first-child .sh-meta-label { font-size: 0.42rem; }
+  .sh-meta-item:first-child .sh-meta-val.key-orig {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* Played key: LARGE, prominent */
+  .sh-meta-item:nth-child(2) {
+    flex: 1;
+  }
+  .sh-meta-item:nth-child(2) .sh-meta-label { font-size: 0.42rem; }
+  .key-control {
+    padding: 4px 10px;
+    gap: 10px;
+  }
+  .key-control .sh-meta-val.key-cur {
+    font-size: 2.4rem !important;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  .key-btn {
+    font-size: 1.4rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* BPM: compact */
+  #sv-bpm-item .sh-meta-label { font-size: 0.42rem; }
+  #sv-bpm-item .sh-meta-val { font-size: 1.1rem; }
+
+  /* Tracks badge: hide on mobile */
+  .sh-tracks-badge { display: none; }
+
+  /* --- CHORD REF: always visible, 2-line preview --- */
+  .chord-ref-bar { padding: 4px 14px 0 !important; }
+  #chord-ref-panel {
+    margin: 0 14px !important;
+    max-height: 5.5em;
+    overflow: hidden;
+    font-size: 0.72rem;
+    line-height: 1.8;
+    padding: 8px 12px;
+  }
+
+  /* --- SECTIONS: compact --- */
+  .song-content { padding: 8px 10px; gap: 2px; }
+  .sec-label-col {
+    width: 56px;
+    padding: 6px 6px 6px 8px;
+  }
+  .sec-name { font-size: 0.78rem; letter-spacing: 1px; }
+  .chord-slot { min-height: 44px; padding: 4px 2px; }
+  .chord-slot-text { font-size: 1.05rem; }
+  .has-bass .chord-slot-text { font-size: 0.75rem; }
+  .has-bass .chord-slot-text .cb { font-size: 1.05rem; }
+
+  /* --- FOOTER: hide move buttons on mobile --- */
+  .song-footer { display: none; }
+
+  /* --- NAV FLOATS: centered bottom, full width --- */
+  .song-nav-float {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    justify-content: space-between;
+  }
+  .nav-float-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 1.2rem;
+  }
+
+  /* --- SETLIST VIEW: compact --- */
+  .setlist-tabs { min-height: 44px; padding: 0 10px; }
+  .setlist-tab { padding: 0 12px; font-size: 0.62rem; }
+  .setlist-header { padding: 12px 14px 8px; }
+  .song-list { padding: 0 10px 10px; }
+  .song-row { padding: 10px 10px; }
+
+  /* --- LYRICS: compact --- */
+  #lyrics-panel { padding: 4px 14px; }
+
+  /* --- NOTES/ADD-SECTION: hide in live mode on mobile --- */
+  #notes-area { display: none !important; }
+  #add-section-wrap { display: none !important; }
+
+  /* --- Section actions: hide on mobile (edit) --- */
+  .sec-label-actions { display: none !important; }
+  .sec-label-col .sec-add-turn { display: none !important; }
+  .turn-delete-btn { display: none !important; }
+
+  /* --- Ending buttons: smaller --- */
+  .ending-btn { font-size: 0.45rem; padding: 2px 4px; }
 }

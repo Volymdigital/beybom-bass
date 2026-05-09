@@ -577,6 +577,7 @@ function renderSetlistTabs() {
   setlists.forEach(sl => {
     const tab = document.createElement('button');
     tab.className = 'setlist-tab' + (activeSetlistId === sl.id ? ' active' : '');
+    tab.setAttribute('data-setlist-id', sl.id);
     tab.innerHTML = `${sl.name.toUpperCase()}<span class="setlist-tab-actions"><span class="setlist-tab-btn" data-action="rename" data-id="${sl.id}">✏</span><span class="setlist-tab-btn del" data-action="delete" data-id="${sl.id}">✕</span></span>`;
     tab.addEventListener('click', e => {
       const btn = e.target.closest('[data-action]');
@@ -681,25 +682,72 @@ function renderSetlist() {
   });
 
   // Sortable — works on both master list and setlists
+  // Also supports drag-to-tab: drop a song on a setlist tab to add it
   if (window._setlistSortable) window._setlistSortable.destroy();
   if (list && typeof Sortable !== 'undefined') {
+    let _dragSongId = null;
+    let _dragPos = { x: 0, y: 0 };
+    const _trackPos = (e) => { _dragPos = { x: e.clientX || e.touches?.[0]?.clientX || 0, y: e.clientY || e.touches?.[0]?.clientY || 0 }; };
+
+    const _highlightTabs = () => {
+      document.querySelectorAll('.setlist-tab[data-setlist-id]').forEach(tab => {
+        const r = tab.getBoundingClientRect();
+        const over = _dragPos.x >= r.left && _dragPos.x <= r.right && _dragPos.y >= r.top && _dragPos.y <= r.bottom;
+        tab.classList.toggle('drag-over', over);
+      });
+      if (_dragSongId) requestAnimationFrame(_highlightTabs);
+    };
+
     try { window._setlistSortable = Sortable.create(list, {
       animation: 150, ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
       filter: '.btn-open, .song-row-setlist-toggle',
       preventOnFilter: false,
       delay: 120,
       delayOnTouchOnly: true,
+      onStart(evt) {
+        _dragSongId = evt.item.getAttribute('data-song-id');
+        document.addEventListener('pointermove', _trackPos);
+        document.addEventListener('touchmove', _trackPos, { passive: true });
+        requestAnimationFrame(_highlightTabs);
+      },
       onEnd(evt) {
-        if (sl) {
-          // Reorder within setlist
-          const moved = sl.songIds.splice(evt.oldIndex, 1)[0];
-          sl.songIds.splice(evt.newIndex, 0, moved);
+        document.removeEventListener('pointermove', _trackPos);
+        document.removeEventListener('touchmove', _trackPos);
+
+        // Check if dropped on a setlist tab
+        const dropTab = document.elementFromPoint(_dragPos.x, _dragPos.y);
+        const tabEl = dropTab ? dropTab.closest('.setlist-tab[data-setlist-id]') : null;
+        document.querySelectorAll('.setlist-tab').forEach(t => t.classList.remove('drag-over'));
+
+        if (tabEl && _dragSongId) {
+          const targetSlId = tabEl.getAttribute('data-setlist-id');
+          const targetSl = setlists.find(s => s.id === targetSlId);
+          if (targetSl && !targetSl.songIds.includes(_dragSongId)) {
+            targetSl.songIds.push(_dragSongId);
+            const songTitle = songs.find(s => s.id === _dragSongId)?.title || '';
+            showToast(`${songTitle} → ${targetSl.name} ✓`);
+            saveState(); renderSetlist();
+          } else if (targetSl) {
+            showToast('Redan i listan');
+          }
+          // Undo Sortable's DOM reorder since we handled it as a tab drop
+          if (evt.oldIndex !== evt.newIndex) {
+            const item = list.children[evt.newIndex];
+            if (evt.oldIndex < evt.newIndex) list.insertBefore(item, list.children[evt.oldIndex]);
+            else list.insertBefore(item, list.children[evt.oldIndex + 1]);
+          }
         } else {
-          // Reorder master list
-          const moved = songs.splice(evt.oldIndex, 1)[0];
-          songs.splice(evt.newIndex, 0, moved);
+          // Normal reorder within list
+          if (sl) {
+            const moved = sl.songIds.splice(evt.oldIndex, 1)[0];
+            sl.songIds.splice(evt.newIndex, 0, moved);
+          } else {
+            const moved = songs.splice(evt.oldIndex, 1)[0];
+            songs.splice(evt.newIndex, 0, moved);
+          }
+          saveState(); renderSetlist();
         }
-        saveState(); renderSetlist();
+        _dragSongId = null;
       }
     }); } catch(e) { console.warn('Sortable setlist:', e); }
   }
