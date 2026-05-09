@@ -1017,6 +1017,15 @@ body.edit-mode .sec-label-col { border-right-color: var(--border2); }
    MOBILE / TOUCH — min 44px touch targets
 ══════════════════════════════════════ */
 @media (pointer: coarse) {
+  /* --- Hide non-essential topbar controls on touch devices --- */
+  #tb-tracks-label,
+  #tb-tracks-group,
+  #tb-sep-tracks,
+  #tb-layers,
+  #tb-persist-actions,
+  #tb-setlist-actions,
+  #tb-mode-btn { display: none !important; }
+
   /* Topbar: taller, wrap buttons */
   #topbar {
     height: auto;
