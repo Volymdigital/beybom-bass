@@ -1516,10 +1516,38 @@ function importJSON(e) {
   const reader = new FileReader();
   reader.onload = ev => {
     try {
-      songs = JSON.parse(ev.target.result).map(s => migrateSong(s));
+      const imported = JSON.parse(ev.target.result);
+      const arr = Array.isArray(imported) ? imported : (imported.songs || []);
+      const incoming = arr.map(s => migrateSong(s));
+
+      let added = 0, updated = 0;
+
+      incoming.forEach(imp => {
+        if (!imp.sections) imp.sections = [];
+        const impKey = `${(imp.title || '').trim().toLowerCase()}|${(imp.artist || '').trim().toLowerCase()}`;
+
+        // Find existing song by title+artist
+        const existIdx = songs.findIndex(s => {
+          const sKey = `${(s.title || '').trim().toLowerCase()}|${(s.artist || '').trim().toLowerCase()}`;
+          return sKey === impKey;
+        });
+
+        if (existIdx >= 0) {
+          // Merge: update data but preserve id
+          const existId = songs[existIdx].id;
+          songs[existIdx] = { ...imp, id: existId };
+          updated++;
+        } else {
+          // New song
+          imp.id = String(Date.now() + Math.random());
+          songs.push(imp);
+          added++;
+        }
+      });
+
       saveState();
       showSetlist();
-      showToast('Import klar!');
+      showToast(`Import: ${added} nya, ${updated} uppdaterade`);
     } catch { showToast('Fel vid import'); }
   };
   reader.readAsText(file);
