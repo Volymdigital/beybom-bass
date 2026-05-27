@@ -24,7 +24,7 @@ repo-context.zip
 *.zip
 dist/
 build/
-state/
+state/backup/
 
 # === Env / Secrets ===
 .env
