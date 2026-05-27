@@ -25,7 +25,7 @@
   <div class="tb-sep" id="tb-sep-nav"></div>
 
   <!-- Mode toggle -->
-  <button class="pill" id="tb-mode-btn" onclick="toggleMode()">EDIT</button>
+  <button class="pill" id="tb-mode-btn" onclick="toggleMode()">LIVE</button>
   <div class="tb-sep"></div>
 
   <!-- Tracks 3-state (visible in song view) -->
@@ -85,7 +85,7 @@
 </div>
 
 <!-- Setlist name modal -->
-<div id="setlist-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:2000;align-items:center;justify-content:center;" onclick="closeSetlistModal()">
+<div id="setlist-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.2);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:2000;align-items:center;justify-content:center;" onclick="closeSetlistModal()">
   <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:260px;" onclick="event.stopPropagation()">
     <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;" id="setlist-modal-label">NY SETLIST</div>
     <input id="setlist-modal-input" class="te-input" placeholder="Namn på setlist..." style="font-size:0.85rem;"
@@ -98,7 +98,7 @@
 </div>
 
 <!-- NY LÅT modal -->
-<div id="newsong-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:2000;align-items:center;justify-content:center;" onclick="closeNewSongModal()">
+<div id="newsong-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.2);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:2000;align-items:center;justify-content:center;" onclick="closeNewSongModal()">
   <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:280px;" onclick="event.stopPropagation()">
     <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;">NY LÅT</div>
     <input id="newsong-title" class="te-input" placeholder="Låttitel..." style="font-size:0.85rem;"
@@ -165,10 +165,19 @@
     <div id="lyrics-display"><span class="lyrics-status">Tryck HÄMTA för att söka via LRCLIB.</span></div>
   </div>
 
+  <!-- Notes -->
+  <div class="notes-area" id="notes-area" style="padding:8px 24px 0;display:none;">
+    <div class="notes-label">ANTECKNINGAR</div>
+    <textarea class="notes-input" id="sv-notes" placeholder="Egna kommentarer, varningar..." oninput="saveSong()"></textarea>
+  </div>
+
   <!-- Main content: section rows -->
   <div class="song-content" id="song-content">
     <!-- rendered by JS -->
   </div>
+
+  <!-- Waveform -->
+  <div id="waveform-area"></div>
 
   <!-- Add section: + button -->
   <div id="add-section-wrap" style="padding:4px 24px 8px;display:flex;justify-content:center;">
@@ -176,7 +185,7 @@
   </div>
 
   <!-- Section picker modal -->
-  <div id="section-picker-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:2000;align-items:center;justify-content:center;" onclick="closeSectionPicker()">
+  <div id="section-picker-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.2);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:2000;align-items:center;justify-content:center;" onclick="closeSectionPicker()">
     <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:220px;" onclick="event.stopPropagation()">
       <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:4px;">VÄLJ SEKTION</div>
       <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('INTRO')">INTRO</button>
@@ -187,12 +196,6 @@
       <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('M8')">M8</button>
       <button class="pill" style="text-align:left;padding:9px 14px;font-size:0.75rem;" onclick="confirmAddSection('OUTRO')">OUTRO</button>
     </div>
-  </div>
-
-  <!-- Notes -->
-  <div class="notes-area" id="notes-area" style="padding:8px 24px 0;display:none;">
-    <div class="notes-label">ANTECKNINGAR</div>
-    <textarea class="notes-input" id="sv-notes" placeholder="Egna kommentarer, varningar..." oninput="saveSong()"></textarea>
   </div>
 
   <!-- Footer -->
@@ -206,6 +209,39 @@
   <div class="song-nav-float" id="song-nav-float">
     <button class="nav-float-btn" id="nav-prev-btn" onclick="navSong(-1)" title="Föregående låt">◀</button>
     <button class="nav-float-btn" id="nav-next-btn" onclick="navSong(1)" title="Nästa låt">▶</button>
+<!-- Waveform cropping modal -->
+<div id="waveform-crop-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.2);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:3000;align-items:center;justify-content:center;">
+  <div style="background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:15px;min-width:320px;max-width:90%;box-shadow:0 10px 30px rgba(0,0,0,0.5);" onclick="event.stopPropagation()">
+    <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:2px;font-weight:700;">BESKÄR VÅGFORM PÅ HÖJDEN</div>
+    
+    <!-- Crop Preview Area -->
+    <div id="crop-preview-container" style="position:relative;width:100%;overflow:hidden;background:#000;border:1px solid var(--border);border-radius:2px;">
+      <img id="crop-preview-img" style="width:100%;display:block;height:auto;" src="">
+      <!-- Shaded overlays -->
+      <div id="crop-overlay-top" style="position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,0.6);pointer-events:none;transition:height 0.05s;"></div>
+      <div id="crop-overlay-bottom" style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);pointer-events:none;transition:height 0.05s;"></div>
+    </div>
+
+    <!-- Sliders -->
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:between;font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);">
+        <span>TA BORT UPPTILL</span>
+        <span id="crop-top-val" style="margin-left:auto;color:var(--accent)">0%</span>
+      </div>
+      <input type="range" id="crop-top-slider" min="0" max="80" value="0" style="width:100%;accent-color:var(--accent);" oninput="updateCropPreview()">
+      
+      <div style="display:flex;justify-content:between;font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);margin-top:4px;">
+        <span>TA BORT NEDTILL</span>
+        <span id="crop-bottom-val" style="margin-left:auto;color:var(--accent)">0%</span>
+      </div>
+      <input type="range" id="crop-bottom-slider" min="0" max="80" value="0" style="width:100%;accent-color:var(--accent);" oninput="updateCropPreview()">
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:6px;">
+      <button class="pill active" style="flex:1;padding:10px 14px;" onclick="saveCroppedWaveform()">SPARA BESKÄRNING</button>
+      <button class="pill" style="padding:10px 14px;" onclick="closeCropModal()">AVBRYT</button>
+    </div>
   </div>
 </div>
 

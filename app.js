@@ -518,11 +518,12 @@ function toggleMode() {
     isEditMode = !isEditMode;
     document.body.classList.toggle('edit-mode', isEditMode);
     const btn = document.getElementById('tb-mode-btn');
-    btn.textContent = isEditMode ? 'LIVE' : 'EDIT';
+    btn.textContent = isEditMode ? 'EDIT' : 'LIVE';
     btn.classList.toggle('active', isEditMode);
     
-    document.getElementById('notes-area').style.display = isEditMode ? 'flex' : 'none';
+    document.getElementById('notes-area').style.display = 'flex';
     renderSections();
+    renderWaveform();
   } else {
     // On setlist: toggle live mode
     isLiveMode = !isLiveMode;
@@ -557,7 +558,7 @@ function getActiveSetlist() {
 
 function getVisibleSongs() {
   const sl = getActiveSetlist();
-  if (!sl) return songs; // master = all songs
+  if (!sl) return songs.filter(s => !s.isEra); // master = all songs except eras
   return sl.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
 }
 
@@ -643,20 +644,44 @@ function renderSetlist() {
     );
   }
 
+  let songCounter = 0;
   visible.forEach((song, visibleIndex) => {
     const globalIndex = songs.indexOf(song);
-    const displayNum = sl ? visibleIndex + 1 : globalIndex + 1;
     const row = document.createElement('div');
-    row.className = 'song-row';
-    row.style.cursor = 'grab';
-    row.draggable = true;
     row.setAttribute('data-song-id', song.id);
+    row.draggable = true;
+    row.style.cursor = 'grab';
     row.addEventListener('dragstart', e => {
       e.dataTransfer.setData('songId', song.id);
       e.dataTransfer.effectAllowed = 'copy';
       row.style.opacity = '0.5';
     });
     row.addEventListener('dragend', () => { row.style.opacity = ''; });
+
+    if (song.isEra) {
+      row.className = 'song-row era-marker-row';
+      let toggleBtn = '';
+      if (sl) {
+        toggleBtn = `<button class="song-row-setlist-toggle in" style="border-color:#550010;color:#ff4070;"
+          onclick="event.stopPropagation();toggleSongInSetlist('${sl.id}','${song.id}')">
+          ✕ TA BORT
+        </button>`;
+      }
+      row.innerHTML = `
+        <div class="era-marker-info">
+          <div class="era-marker-title">${song.title}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          ${toggleBtn}
+        </div>
+      `;
+      list.appendChild(row);
+      return;
+    }
+
+    songCounter++;
+    const displayNum = sl ? songCounter : globalIndex + 1;
+    row.className = 'song-row';
 
     let toggleBtn = '';
     if (sl) {
@@ -867,13 +892,193 @@ function openSong(index) {
 
   // Edit mode UI
   
-  document.getElementById('notes-area').style.display = isEditMode ? 'flex' : 'none';
+  document.getElementById('notes-area').style.display = 'flex';
 
   // Lyrics
   renderLyricsDisplay(song);
 
   renderSections();
+  renderWaveform();
   applyLayerClasses();
+}
+
+// ═══════════════════════════════════════════════════
+//  WAVEFORM (DRAG & DROP + CROP)
+// ═══════════════════════════════════════════════════
+function renderWaveform() {
+  const container = document.getElementById('waveform-area');
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (currentSongIndex < 0) return;
+  const song = songs[currentSongIndex];
+
+  if (song.waveform) {
+    // Show waveform
+    const wrapper = document.createElement('div');
+    wrapper.className = 'waveform-wrapper';
+
+    const img = document.createElement('img');
+    img.src = song.waveform;
+    img.className = 'waveform-img';
+    img.alt = 'Waveform';
+    wrapper.appendChild(img);
+
+    if (isEditMode) {
+      const delBtn = document.createElement('button');
+      delBtn.className = 'waveform-del-btn';
+      delBtn.textContent = '✕ TA BORT';
+      delBtn.onclick = function(e) {
+        e.stopPropagation();
+        if (confirm('Vill du ta bort vågformen?')) {
+          delete song.waveform;
+          saveState();
+          renderWaveform();
+        }
+      };
+      wrapper.appendChild(delBtn);
+    }
+    container.appendChild(wrapper);
+  } else {
+    // If no waveform, only show dropzone in edit mode
+    if (isEditMode) {
+      const dropzone = document.createElement('div');
+      dropzone.className = 'waveform-dropzone';
+
+      const text = document.createElement('div');
+      text.className = 'dropzone-text';
+      text.textContent = 'DRAG & DROP VÅGFORM HÄR';
+      dropzone.appendChild(text);
+
+      const sub = document.createElement('div');
+      sub.className = 'dropzone-sub';
+      sub.textContent = 'Släpp en bild (eller klicka) för att beskära och ladda upp';
+      dropzone.appendChild(sub);
+
+      // Hidden file input
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'image/*';
+      fileInput.style.display = 'none';
+      dropzone.appendChild(fileInput);
+
+      // Listeners
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('drag-over');
+      });
+      dropzone.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('drag-over');
+      });
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('drag-over');
+      });
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('drag-over');
+        const files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          handleWaveformFile(files[0]);
+        }
+      });
+
+      dropzone.addEventListener('click', () => {
+        fileInput.click();
+      });
+      fileInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+          handleWaveformFile(files[0]);
+        }
+      });
+
+      container.appendChild(dropzone);
+    }
+  }
+}
+
+function handleWaveformFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showToast('Felaktigt filformat. Välj en bildfil.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const dataUrl = e.target.result;
+    const img = document.getElementById('crop-preview-img');
+    img.onload = function() {
+      // Reset sliders and show modal
+      document.getElementById('crop-top-slider').value = 0;
+      document.getElementById('crop-bottom-slider').value = 0;
+      updateCropPreview();
+      document.getElementById('waveform-crop-backdrop').style.display = 'flex';
+    };
+    img.src = dataUrl;
+  };
+  reader.readAsDataURL(file);
+}
+
+function updateCropPreview() {
+  const topVal = document.getElementById('crop-top-slider').value;
+  const bottomVal = document.getElementById('crop-bottom-slider').value;
+
+  document.getElementById('crop-top-val').textContent = topVal + '%';
+  document.getElementById('crop-bottom-val').textContent = bottomVal + '%';
+
+  document.getElementById('crop-overlay-top').style.height = topVal + '%';
+  document.getElementById('crop-overlay-bottom').style.height = bottomVal + '%';
+}
+
+function saveCroppedWaveform() {
+  if (currentSongIndex < 0) return;
+  const song = songs[currentSongIndex];
+  const img = document.getElementById('crop-preview-img');
+  
+  if (!img.src || img.naturalWidth === 0) {
+    showToast('Ingen bild laddad.');
+    return;
+  }
+
+  const topPercent = parseInt(document.getElementById('crop-top-slider').value);
+  const bottomPercent = parseInt(document.getElementById('crop-bottom-slider').value);
+
+  const nw = img.naturalWidth;
+  const nh = img.naturalHeight;
+
+  const cropTopPx = Math.round((topPercent / 100) * nh);
+  const cropBottomPx = Math.round((bottomPercent / 100) * nh);
+  const finalHeight = nh - cropTopPx - cropBottomPx;
+
+  if (finalHeight <= 0) {
+    showToast('Hela bilden kan inte beskäras bort.');
+    return;
+  }
+
+  // Draw to offscreen canvas
+  const canvas = document.createElement('canvas');
+  canvas.width = nw;
+  canvas.height = finalHeight;
+  const ctx = canvas.getContext('2d');
+  
+  ctx.drawImage(img, 0, cropTopPx, nw, finalHeight, 0, 0, nw, finalHeight);
+  
+  try {
+    const croppedDataUrl = canvas.toDataURL('image/png');
+    song.waveform = croppedDataUrl;
+    saveState();
+    closeCropModal();
+    renderWaveform();
+    showToast('Vågform sparad ✓ (kom ihåg att klicka på SPARA för att skriva till disk)');
+  } catch (err) {
+    console.error('Canvas export error:', err);
+    showToast('Kunde inte beskära bilden.');
+  }
+}
+
+function closeCropModal() {
+  document.getElementById('waveform-crop-backdrop').style.display = 'none';
+  document.getElementById('crop-preview-img').src = '';
 }
 
 // ═══════════════════════════════════════════════════
@@ -1032,12 +1237,11 @@ function renderSections() {
 
   applyLayerClasses();
 
-  if (isEditMode) {
-    if (_sectionSortable) _sectionSortable.destroy();
-    if (typeof Sortable === "undefined" || !container) return;
+  if (_sectionSortable) _sectionSortable.destroy();
+  if (typeof Sortable !== "undefined" && container) {
     try { _sectionSortable = Sortable.create(container, {
       animation: 150, ghostClass: 'sortable-ghost',
-      filter: '.turn-block, .sec-label-col button, .turn-edit-overlay',
+      handle: '.sec-drag-handle',
       onEnd(evt) {
         pushUndo();
         const song = songs[currentSongIndex];
@@ -1065,8 +1269,11 @@ function buildSectionRow(sec, si, song, family, familyAlt) {
   const repeatCount = sec.repeat || 1;
   const repeatLabel = repeatCount > 1 ? `<div class="sec-repeat-label">×${repeatCount}</div>` : '';
   labelCol.innerHTML = `
-    <div class="sec-name">${sec.name}</div>
-    ${repeatLabel}
+    <div class="sec-drag-handle" title="Dra för att ändra ordning">☰</div>
+    <div class="sec-label-content">
+      <div class="sec-name">${sec.name}</div>
+      ${repeatLabel}
+    </div>
     ${isEditMode ? `
       <div class="sec-label-actions">
         <button class="sec-action-btn" onclick="cycleRepeat(${si})" title="Repris">🔁</button>
