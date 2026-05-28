@@ -15352,7 +15352,7 @@
       "key": "Ab",
       "keyOffset": 2,
       "bpm": 120,
-      "notes": "Börjar utan bas 16 takter ---> Bb",
+      "notes": "Börjar utan bas 16 takter ---> Bb\nNästa låt Break Free ",
       "tracksMode": "auto",
       "chordRaw": "[Intro]\nG C D G\n\n[Chorus]\nG C D G",
       "sections": [
@@ -15474,7 +15474,7 @@
       "key": "Gm",
       "keyOffset": 2,
       "bpm": 130,
-      "notes": "Börjar Utan bas 4 takter --> A\nObs variant på stick ",
+      "notes": "Börjar Utan bas 4 takter --> A\nObs variant på stick. Nästa My number one",
       "tracksMode": "auto",
       "chordRaw": "[Intro]\nGm Bb Eb C\n\n[Chorus]\nGm Bb Eb C",
       "sections": [
@@ -15527,6 +15527,36 @@
           ]
         },
         {
+          "id": 1779891455245.3413,
+          "name": "VERSE",
+          "turns": [
+            {
+              "id": 1779891455245.236,
+              "chords": [
+                "G",
+                "C",
+                "Bb",
+                "Eb"
+              ],
+              "instruction": "",
+              "bars": 4,
+              "type": "play"
+            },
+            {
+              "id": 1779891455245.8086,
+              "chords": [
+                "G",
+                "C",
+                "Bb",
+                "D"
+              ],
+              "instruction": "",
+              "bars": 4,
+              "type": "play"
+            }
+          ]
+        },
+        {
           "id": 0.8934165282276725,
           "name": "CHORUS",
           "turns": [
@@ -15536,7 +15566,7 @@
                 "Eb",
                 "Eb",
                 "G",
-                "F"
+                "F D"
               ],
               "instruction": "EDM-pump",
               "bars": 4,
